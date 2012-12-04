@@ -1,0 +1,5 @@
+form.form-horizontal(action=url_for(action: "generate") method="post")
+  .control-group
+    label.control-label Template Value:
+    input.input-medium(type="text" name="value" placeholder="Type Something Here...")
+  button.btn(type="submit") Generate MS Word Doc (.docx)
