@@ -10,6 +10,7 @@ class Template
       }
     }
   end
+
   def self.zip_dir(zipfile, dir)
     Zip::ZipFile.open(zipfile, Zip::ZipFile::CREATE) do |entries|
       input_filenames = Dir.glob("#{dir}/**/*", File::FNM_DOTMATCH).reject {|fn| File.directory?(fn) }
@@ -19,6 +20,13 @@ class Template
         entries.add(entryname, filename)
       end
     end
+  end
+
+  def self.write_file(filename, contents)
+    # Heroku doesn't support File.write.  boooooooo!
+    f = File.open(filename, 'w')
+    f.write(contents)
+    f.close
   end
 
   def self.generate(value)
@@ -33,7 +41,7 @@ class Template
     Rails.logger.info "TEMPLATE: setting VARIABLE_NAME to '#{value}'"
     contents = contents.gsub(/VARIABLE_NAME/, value)
     Rails.logger.info "TEMPLATE: writing #{contents.size} bytes into '#{tmpdir}/word/document.xml'"
-    File.write("#{tmpdir}/word/document.xml", contents)
+    write_file("#{tmpdir}/word/document.xml", contents)
     output_file = "#{tmpdir}/output.docx"
     Rails.logger.info "TEMPLATE: creating '#{output_file}'"
     zip_dir output_file, tmpdir
