@@ -1,6 +1,8 @@
 class TemplateController < ApplicationController
   def index
-    Rails.logger.info "Hello World"
+  end
+
+  def editor
   end
 
   def generate

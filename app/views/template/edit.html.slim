@@ -1,0 +1,15 @@
+section#edit-bar
+
+section#template
+  form.form-horizontal(action=url_for(action: "generate") method="post")
+
+    .control-group.tf-text
+      label.control-label Template Value:
+      input.input-medium(type="text" name="FIELD_123" placeholder="Type Something Here...")
+    
+    .control-group.tf-text
+      label.control-label Template Other Value:
+      input.input-medium(type="text" name="FIELD_124" placeholder="Type Something Here...")
+
+script
+  | TemplateEditor.initialize()
