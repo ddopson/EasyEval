@@ -14,6 +14,7 @@ group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
+  gem 'tilt-jade', git: 'https://github.com/ddopson/tilt-jade.git', branch: 'master'
 end
 gem 'jquery-rails'
 gem "thin", ">= 1.5.0"
@@ -35,3 +36,4 @@ gem "quiet_assets", ">= 1.0.1", :group => :development
 
 gem 'slim'
 gem "rubyzip", ">= 0.9.9"
+gem 'backbone-rails'
