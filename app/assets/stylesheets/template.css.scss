@@ -5,3 +5,33 @@
 .being-edited {
   color: red
 }
+
+question {
+  margin-top: 10px;
+  display: block;
+}
+
+question_text {
+  display: block;
+  color: #333;
+  font-size: 17.5px;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+text {
+  display: block;
+  color: #333;
+  font-size: 14.5px;
+  font-weight: bold;
+}
+
+section_text {
+  display: block;
+  color: #333;
+  font-size: 19.5px;
+  font-weight: bold;
+  text-decoration: underline;
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
