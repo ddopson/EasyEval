@@ -41,6 +41,7 @@ class Template
     contents = File.read("#{tmpdir}/word/document.xml")
     Rails.logger.info "TEMPLATE: read #{contents.size} bytes from '#{tmpdir}/word/document.xml'"
     params.each {|key, value|
+      key = "FILLIN_#{key}"
       Rails.logger.info "TEMPLATE: setting #{key} to '#{value}'"
       contents = contents.gsub(key, value)
     }
