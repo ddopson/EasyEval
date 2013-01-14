@@ -8,6 +8,23 @@ require "active_resource/railtie"
 require "sprockets/railtie"
 # require "rails/test_unit/railtie"
 
+class PrettyJsonResponse
+  def initialize(app)
+    @app = app
+  end
+
+  def call(env)
+    status, headers, response = @app.call(env)
+    if headers["Content-Type"] =~ /^application\/json/
+      obj = JSON.parse(response.body)
+      pretty_str = JSON.pretty_unparse(obj)
+      response = [pretty_str]
+      headers["Content-Length"] = Rack::Utils.bytesize(pretty_str).to_s
+    end
+    [status, headers, response]
+  end
+end
+
 if defined?(Bundler)
   # If you precompile assets before deploying to production, use this line
   Bundler.require(*Rails.groups(:assets => %w(development test)))
@@ -78,5 +95,7 @@ module Easyeval
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    config.middleware.use PrettyJsonResponse
   end
 end
