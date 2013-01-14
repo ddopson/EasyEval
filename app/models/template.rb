@@ -29,8 +29,10 @@ class Template
     f.close
   end
 
-  def self.generate(value)
-    template_file = "#{Rails.root}/templates/hello-world.docx"
+  def self.generate(template_file, params)
+    unless template_file.match(/^\//)
+      template_file = "#{Rails.root}/templates/#{template_file}"
+    end
     tmpdir=Dir.mktmpdir("generate")
     Rails.logger.info "TEMPLATE: Unzipping word doc '#{template_file}' into '#{tmpdir}'"
     unzip_file template_file, tmpdir
@@ -38,8 +40,10 @@ class Template
     Rails.logger.info "TEMPLATE: reading '#{tmpdir}/word/document.xml'"
     contents = File.read("#{tmpdir}/word/document.xml")
     Rails.logger.info "TEMPLATE: read #{contents.size} bytes from '#{tmpdir}/word/document.xml'"
-    Rails.logger.info "TEMPLATE: setting VARIABLE_NAME to '#{value}'"
-    contents = contents.gsub(/VARIABLE_NAME/, value)
+    params.each {|key, value|
+      Rails.logger.info "TEMPLATE: setting #{key} to '#{value}'"
+      contents = contents.gsub(key, value)
+    }
     Rails.logger.info "TEMPLATE: writing #{contents.size} bytes into '#{tmpdir}/word/document.xml'"
     write_file("#{tmpdir}/word/document.xml", contents)
     output_file = "#{tmpdir}/output.docx"
