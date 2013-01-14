@@ -1,25 +1,25 @@
 question
-  question_text Name of Claimant:
-  input.input-medium(type="text" name="TEXTBOX_1" placeholder="TEXTBOX_1"),
-  input.input-medium(type="text" name="TEXTBOX_2" placeholder="TEXTBOX_2")
+  question_text Q1 Identity of Claimant:
+  input.input-medium(type="text" name="Q1_FIRST" placeholder="First"),
+  input.input-medium(type="text" name="Q1_LAST" placeholder="Last")
 question
   question_text A. Date of Birth:
-  input.input-medium(type="text" name="TEXTBOX_3" placeholder="TEXTBOX_3")
+  input.input-medium(type="text" name="Q1_BIRTHDATE" placeholder="dd/mm/yyyy")
 question
   question_text B. Case No:
-  input.input-medium(type="text" name="TEXTBOX_4" placeholder="TEXTBOX_4")
+  input.input-medium(type="text" name="Q1_CASENUM" placeholder="case_number")
 question
   question_text C. RQID:
-  input.input-medium(type="text" name="TEXTBOX_5" placeholder="TEXTBOX_5")
+  input.input-medium(type="text" name="Q1_RQID" placeholder="rqid")
 question
   question_text D. Adjudicator:
-  input.input-medium(type="text" name="TEXTBOX_6" placeholder="TEXTBOX_6")
+  input.input-medium(type="text" name="Q1_ADJUDICATOR" placeholder="Adjudicator")
 question
   question_text E. Date and Time of Exam:
-  input.input-medium(type="text" name="TEXTBOX_7" placeholder="TEXTBOX_7")
+  input.input-medium(type="text" name="Q1_EXAMDATE" placeholder="dd/mm/yyyy")
 question
   question_text F. Location:
-  input.input-medium(type="text" name="TEXTBOX_8" placeholder="TEXTBOX_8")
+  input.input-medium(type="text" name="Q1_EXAMLOC" placeholder="????")
 question
   question_text 3. What kind of examination is this? (programming note: the only questions affected are between 98 and 152)
   label.checkbox: input(type="checkbox") Complex psychological evaluation (HIDE: Prep for Memory Qs, 121-123b, 110, 136-138, 127-129, 133-133b, 142-146b) (SHOW: 98-99, 112-116, 100-102, 200, 135-135a, 125-126, 131-132, 144-145, 147-152, 149, 302, 303-306)
@@ -29,9 +29,10 @@ question
   section_text IDENTIFICATION
 question
   question_text 4. What is the claimant’s age?
-  input.input-medium(type="text" name="TEXTBOX_9" placeholder="TEXTBOX_9")
+  input.input-medium(type="text" name="Q4" placeholder="age?")
 question
   question_text 5. What is the claimant’s ethnicity/race?
+  input.checkbox_values(type="hidden" name="Q5_VALUES")
   label.checkbox: input(type="checkbox") American Indian
   label.checkbox: input(type="checkbox") African American
   label.checkbox: input(type="checkbox") Asian American
@@ -40,29 +41,32 @@ question
   label.checkbox: input(type="checkbox") Native Hawaiian
   label.checkbox: input(type="checkbox") Pacific Islander
   label.checkbox: input(type="checkbox") Other
-  input.input-medium(type="text" name="TEXTBOX_10" placeholder="TEXTBOX_10")
+  input.input-medium(type="text" placeholder="")
 question
   question_text 6. What is the claimant’s birthplace?
-  input.input-medium(type="text" name="TEXTBOX_11" placeholder="TEXTBOX_11")
+  input.input-medium(type="text" name="Q6" placeholder="birthplace?")
   section_text GENERAL OBSERVATIONS
 question
   question_text 8. When did the claimant arrive to the examination?
+  input.checkbox_values(type="hidden" name="Q8_VALUES")
   label.checkbox: input(type="checkbox") Early
   label.checkbox: input(type="checkbox") On time
   label.checkbox: input(type="checkbox") Late
 question
-  question_text 8a. Was the claimant accompanied by anyone?
-  label.checkbox: input(type="checkbox") no
-  label.checkbox: input(type="checkbox") yes, the claimant was accompanied by
-  input.input-medium(type="text" name="TEXTBOX_12" placeholder="TEXTBOX_12")
+  question_text 8a. Was the claimant:
+  input.checkbox_values(type="hidden" name="Q8A_VALUES")
+  label.checkbox: input(type="checkbox") unaccompanied
+  label.checkbox: input(type="checkbox") accompanied by
+  input.input-medium(type="text" name="Q8a" placeholder="who")
 question
   question_text 9. How did the claimant get to the examination?
+  input.checkbox_values(type="hidden" name="Q9_VALUES")
   label.checkbox: input(type="checkbox") Drove
   label.checkbox: input(type="checkbox") DSHS arranged the transportation
   label.checkbox: input(type="checkbox") Taxi
   label.checkbox: input(type="checkbox") Public transportation
   label.checkbox: input(type="checkbox") Driven by
-  input.input-medium(type="text" name="TEXTBOX_13" placeholder="TEXTBOX_13")
+  input.input-medium(type="text" placeholder="other")
 question
   question_text 11. Is the claimant considered a reliable historian?
   label.checkbox: input(type="checkbox") yes
