@@ -1,4 +1,5 @@
 form(action=url_for(action: "generate") method="post")
+  label.checkbox: input(type="checkbox" name="JSON_ONLY" value=true) JSON ONLY (DEBUGGING)
   = render partial: 'doc'
   button.btn(type="submit") Generate MS Word Doc (.docx)
 
