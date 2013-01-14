@@ -5,9 +5,12 @@ class TemplateController < ApplicationController
   def editor
   end
 
+  def json
+    render :json => params
+  end
+
   def generate
-    options = {}
-    output_file = Template.generate(params[:value])
+    output_file = Template.generate("real.docx", params[:value])
     send_file output_file, type: "application/msword"
   end
 end
