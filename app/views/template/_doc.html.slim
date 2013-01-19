@@ -32,7 +32,7 @@ question
   input.input-medium(type="text" name="Q4" placeholder="age?")
 question
   question_text 5. What is the claimant’s ethnicity/race?
-  input.checkbox_values(type="hidden" name="Q5_VALUES")
+  input.checkbox_values(type="hidden" name="Q5")
   label.checkbox: input(type="checkbox") American Indian
   label.checkbox: input(type="checkbox") African American
   label.checkbox: input(type="checkbox") Asian American
@@ -40,42 +40,48 @@ question
   label.checkbox: input(type="checkbox") Hispanic American
   label.checkbox: input(type="checkbox") Native Hawaiian
   label.checkbox: input(type="checkbox") Pacific Islander
-  label.checkbox: input(type="checkbox") Other
-  input.input-medium(type="text" placeholder="")
+  label.checkbox.checkbox_other: input(type="checkbox") Other
 question
   question_text 6. What is the claimant’s birthplace?
   input.input-medium(type="text" name="Q6" placeholder="birthplace?")
   section_text GENERAL OBSERVATIONS
 question
   question_text 8. When did the claimant arrive to the examination?
-  input.checkbox_values(type="hidden" name="Q8_VALUES")
+  input.checkbox_values(type="hidden" name="Q8")
   label.checkbox: input(type="checkbox") Early
   label.checkbox: input(type="checkbox") On time
   label.checkbox: input(type="checkbox") Late
 question
   question_text 8a. Was the claimant:
-  input.checkbox_values(type="hidden" name="Q8A_VALUES")
+  input.checkbox_values(type="hidden" name="Q8A")
   label.checkbox: input(type="checkbox") unaccompanied
-  label.checkbox: input(type="checkbox") accompanied by
-  input.input-medium(type="text" name="Q8a" placeholder="who")
+  label.checkbox.checkbox_other: input(type="checkbox" prepend=true) accompanied by
 question
   question_text 9. How did the claimant get to the examination?
-  input.checkbox_values(type="hidden" name="Q9_VALUES")
+  input.checkbox_values(type="hidden" name="Q9")
   label.checkbox: input(type="checkbox") Drove
   label.checkbox: input(type="checkbox") DSHS arranged the transportation
   label.checkbox: input(type="checkbox") Taxi
   label.checkbox: input(type="checkbox") Public transportation
-  label.checkbox: input(type="checkbox") Driven by
-  input.input-medium(type="text" placeholder="other")
+  label.checkbox.checkbox_other: input(type="checkbox" prepend="Driven by") Driven by
 question
   question_text 11. Is the claimant considered a reliable historian?
+  input.checkbox_values(type="hidden" name="Q11")
   label.checkbox: input(type="checkbox") yes
   label.checkbox: input(type="checkbox") no (enable 11a)
 question
   question_text 11a. If no, who is the reliable historian for this interview?
-  input.input-medium(type="text" name="TEXTBOX_14" placeholder="TEXTBOX_14")CHIEF COMPLAINT
+  input.input-medium(type="text" name="Q11A" placeholder="")
+
+section_text CHIEF COMPLAINT
+question
+  question_text 12.
+  input.input-medium(type="text" name="TEXTBOX_16" placeholder="TEXTBOX_16")
+
+section_text HISTORY OF PRESENT ILLNESS
 question
   question_text 13. What is the claimant’s chief complaint? Select all that apply.
+  input.checkbox_values(type="hidden" name="Q13")
   label.checkbox: input(type="checkbox") Alzheimer’s Disease
   label.checkbox: input(type="checkbox") Anorexia
   label.checkbox: input(type="checkbox") Anxiety
@@ -94,13 +100,9 @@ question
   label.checkbox: input(type="checkbox") Posttraumatic Stress Disorder
   label.checkbox: input(type="checkbox") Schizophrenia
   label.checkbox: input(type="checkbox") Schizoaffective Disorder
-  label.checkbox: input(type="checkbox") Other
-  input.input-medium(type="text" name="TEXTBOX_15" placeholder="TEXTBOX_15")
-  section_text REVIEW OF RECORDS
-question
-  question_text 12.
-  input.input-medium(type="text" name="TEXTBOX_16" placeholder="TEXTBOX_16")
-  section_text HISTORY OF PRESENT ILLNESS
+  label.checkbox.checkbox_other: input(type="checkbox") Other
+
+section_text REVIEW OF RECORDS
 question
   question_text 14. When was the claimant first diagnosed? Please enter in this format: Month Year.
   input.input-medium(type="text" name="TEXTBOX_17" placeholder="TEXTBOX_17")
@@ -111,10 +113,7 @@ question
 question
   question_text 15. Were there any special circumstances surrounding the onset of this impairment or condition?
   label.checkbox: input(type="checkbox") no
-  label.checkbox: input(type="checkbox") yes (enable 15a)
-question
-  question_text 15a. If yes, please describe.
-  input.input-medium(type="text" name="TEXTBOX_19" placeholder="TEXTBOX_19")
+  label.checkbox.checkbox_other: input(type="checkbox") yes (enable 15a)
 question
   question_text 16. What are the claimant’s current symptoms? Select all that apply. ONLY SHOW OPTIONS THAT LINKS THE SELECTION FROM #13. (programming note: each diagnosis and corresponding symptoms should be in its own sentence)
   section_text Alzheimer’s Disease
@@ -298,8 +297,7 @@ question
   label.checkbox: input(type="checkbox") Understanding words and ideas
   label.checkbox: input(type="checkbox") Reading speed and fluency
   label.checkbox: input(type="checkbox") General vocabulary skills
-  label.checkbox: input(type="checkbox") Other:
-  input.input-medium(type="text" name="TEXTBOX_21" placeholder="TEXTBOX_21")
+  label.checkbox.checkbox_other: input(type="checkbox") Other:
   text Mathematic Disorder:
   label.checkbox: input(type="checkbox") Mathematic ability is substantially below the expected level.
   label.checkbox: input(type="checkbox") This disturbance significantly interferes with academic achievement or math centered activities.
@@ -310,8 +308,7 @@ question
   label.checkbox: input(type="checkbox") Memorization of number facts
   label.checkbox: input(type="checkbox") Trouble with counting
   label.checkbox: input(type="checkbox") Trouble telling time
-  label.checkbox: input(type="checkbox") Other:
-  input.input-medium(type="text" name="TEXTBOX_22" placeholder="TEXTBOX_22")
+  label.checkbox.checkbox_other: input(type="checkbox") Other:
   text Disorder of Written Expression:
   label.checkbox: input(type="checkbox") Written expression is substantially below the expected level.
   label.checkbox: input(type="checkbox") This disturbance significantly interferes with academic achievement or activities that require writing skills.
@@ -321,14 +318,12 @@ question
   label.checkbox: input(type="checkbox") Accurately copying letters and words
   label.checkbox: input(type="checkbox") Spelling Consistency
   label.checkbox: input(type="checkbox") Writing organization and coherence
-  label.checkbox: input(type="checkbox") Other:
-  input.input-medium(type="text" name="TEXTBOX_23" placeholder="TEXTBOX_23")
+  label.checkbox.checkbox_other: input(type="checkbox") Other:
   text Learning disabilities in motor skills:
   label.checkbox: input(type="checkbox") Problems with movement
   label.checkbox: input(type="checkbox") Problems with coordination
   label.checkbox: input(type="checkbox") Problems with activities requiring hand-eye coordination
-  label.checkbox: input(type="checkbox") Other:
-  input.input-medium(type="text" name="TEXTBOX_24" placeholder="TEXTBOX_24")
+  label.checkbox.checkbox_other: input(type="checkbox") Other:
   text Learning disabilities in language:
   label.checkbox: input(type="checkbox") Problems understanding spoken language
   label.checkbox: input(type="checkbox") Inability to produce spoken language
@@ -339,8 +334,7 @@ question
   label.checkbox: input(type="checkbox") Inability to understand the meaning of words
   label.checkbox: input(type="checkbox") Inability to understand parts of speech
   label.checkbox: input(type="checkbox") Inability to understand directions
-  label.checkbox: input(type="checkbox") Other:
-  input.input-medium(type="text" name="TEXTBOX_25" placeholder="TEXTBOX_25")
+  label.checkbox.checkbox_other: input(type="checkbox") Other:
   text Learning Disorder Symptoms by Grade Level (use with child template only)
   text Preschool signs and symptoms of learning disabilities
   label.checkbox: input(type="checkbox") Problems pronouncing words
@@ -920,8 +914,7 @@ question
   label.checkbox: input(type="checkbox") Muscle Problems
   label.checkbox: input(type="checkbox") Thyroid Disease
   label.checkbox: input(type="checkbox") Urinary Tract Problems
-  label.checkbox: input(type="checkbox") Other
-  input.input-medium(type="text" name="TEXTBOX_56" placeholder="TEXTBOX_56")
+  label.checkbox.checkbox_other: input(type="checkbox") Other
   label.checkbox: input(type="checkbox") None Reported
 
 section_text SOCIAL and FAMILY HISTORY
@@ -932,8 +925,7 @@ question
   label.checkbox: input(type="checkbox") Married (show A38)
   label.checkbox: input(type="checkbox") Divorced
   label.checkbox: input(type="checkbox") Getting a divorce
-  label.checkbox: input(type="checkbox") Other
-  input.input-medium(type="text" name="TEXTBOX_57" placeholder="TEXTBOX_57")
+  label.checkbox.checkbox_other: input(type="checkbox") Other
 question
   question_text A38. If applicable, how is the relationship?
   label.checkbox: input(type="checkbox") good
@@ -958,20 +950,15 @@ question
   label.checkbox: input(type="checkbox") Homeless
 question
   question_text 42a. Does the claimant live alone?
-  label.checkbox: input(type="checkbox") yes
-  label.checkbox: input(type="checkbox") no, with
-  input.input-medium(type="text" name="TEXTBOX_60" placeholder="TEXTBOX_60")
+  label.checkbox: input(type="checkbox") lives alone
+  label.checkbox.checkbox_other: input(type="checkbox" prepend=true) lives with
 question
   question_text 42b. In what city does the claimant currently reside? Include state abbreviation.
   input.input-medium(type="text" name="TEXTBOX_61" placeholder="TEXTBOX_61")
 question
   question_text 43. Does the family have a history of mental illness?
-  label.checkbox: input(type="checkbox") no
-  label.checkbox: input(type="checkbox") yes (enable 44)
-question
-  question_text 44. If yes, who has the mental illness, and please describe?
-  input.input-medium(type="text" name="TEXTBOX_62" placeholder="TEXTBOX_62")
-  text DELETE the following: Note to evaluator: Be cautious when discussion traumatic events with the claimant. Make sure the claimant does not relive the trauma as a result of the questioning.
+  label.checkbox: input(type="checkbox") no family history of mental illness
+  label.checkbox.checkbox_other: input(type="checkbox") family has a history of
 question
   question_text 45. Was there a history of child abuse?
   label.checkbox: input(type="checkbox") no
@@ -1132,8 +1119,7 @@ question
   label.checkbox: input(type="checkbox") Average
   label.checkbox: input(type="checkbox") Slender
   label.checkbox: input(type="checkbox") Underweight
-  label.checkbox: input(type="checkbox") Other
-  input.input-medium(type="text" name="TEXTBOX_86" placeholder="TEXTBOX_86")
+  label.checkbox.checkbox_other: input(type="checkbox") Other
 question
   question_text 68. How was the claimant’s eye contact?
   label.checkbox: input(type="checkbox") Good
@@ -1213,16 +1199,14 @@ question
   label.checkbox: input(type="checkbox") Difficulty staying asleep
   label.checkbox: input(type="checkbox") Sleeping too much
   label.checkbox: input(type="checkbox") Persistent nightmares
-  label.checkbox: input(type="checkbox") Other
-  input.input-medium(type="text" name="TEXTBOX_93" placeholder="TEXTBOX_93")
+  label.checkbox.checkbox_other: input(type="checkbox") Other
 question
   question_text 92. Regarding appetite, what does the claimant say? Select all that apply.
   label.checkbox: input(type="checkbox") No problems
   label.checkbox: input(type="checkbox") Lack of appetite
   label.checkbox: input(type="checkbox") Easily forgets meals
   label.checkbox: input(type="checkbox") Often over eats
-  label.checkbox: input(type="checkbox") Other
-  input.input-medium(type="text" name="TEXTBOX_94" placeholder="TEXTBOX_94")
+  label.checkbox.checkbox_other: input(type="checkbox") Other
 
 section_text MENTAL STATUS EXAMINATION
 section_text CONTENT OF THOUGHT
@@ -1300,18 +1284,15 @@ question
 question
   question_text 94. Was the claimant orientated to person?
   label.checkbox: input(type="checkbox") yes
-  label.checkbox: input(type="checkbox") no,
-  input.input-medium(type="text" name="TEXTBOX_101" placeholder="TEXTBOX_101")
+  label.checkbox.checkbox_other: input(type="checkbox" prepend=true) no,
 question
   question_text 95. Was the claimant orientated to place?
   label.checkbox: input(type="checkbox") yes
-  label.checkbox: input(type="checkbox") no,
-  input.input-medium(type="text" name="TEXTBOX_102" placeholder="TEXTBOX_102")
+  label.checkbox.checkbox_other: input(type="checkbox" prepend=true) no,
 question
   question_text 96. Was the claimant orientated to time?
   label.checkbox: input(type="checkbox") yes
-  label.checkbox: input(type="checkbox") no,
-  input.input-medium(type="text" name="TEXTBOX_103" placeholder="TEXTBOX_103")
+  label.checkbox.checkbox_other: input(type="checkbox" prepend=true) no,
 
 section_text INTELLECTUAL FUNCTIONING/SENSORIUM
 section_text PSYCHOLOGICAL TESTING
@@ -1773,8 +1754,7 @@ question
 question
   question_text 156. Is the claimant able to complete ADLs efficiently?
   label.checkbox: input(type="checkbox") yes
-  label.checkbox: input(type="checkbox") no,
-  input.input-medium(type="text" name="TEXTBOX_128" placeholder="TEXTBOX_128")
+  label.checkbox.checkbox_other: input(type="checkbox") no,
 question
   question_text A156a. Is the claimant able to handle personal funds?
   label.checkbox: input(type="checkbox") yes
@@ -1815,7 +1795,7 @@ question
   label.checkbox: input(type="checkbox") no
 question
   question_text 160a. If yes, please describe?
-  input.input-medium(type="text" name="TEXTBOX_132" placeholder="TEXTBOX_132")
+  input.input-medium(type="text" name="Q160A" placeholder="")
 question
   question_text 181. How is the claimant’s support system?
   label.checkbox: input(type="checkbox") Good
@@ -1890,8 +1870,7 @@ question
   label.checkbox: input(type="checkbox") Taking a leave of absence to manage mental illness
   label.checkbox: input(type="checkbox") Frequent involvement with law enforcement
   label.checkbox: input(type="checkbox") Behavioral disturbances
-  label.checkbox: input(type="checkbox") Other
-  input.input-medium(type="text" name="TEXTBOX_145" placeholder="TEXTBOX_145")
+  label.checkbox.checkbox_other: input(type="checkbox") Other
 question
   question_text 169. Has the claimant’s ability to work been impacted by physical and mental limitations?
   label.checkbox: input(type="checkbox") yes
@@ -1915,8 +1894,7 @@ question
   label.checkbox: input(type="checkbox") Delusions
   label.checkbox: input(type="checkbox") Blurred vision
   label.checkbox: input(type="checkbox") Lower back pain
-  label.checkbox: input(type="checkbox") Other
-  input.input-medium(type="text" name="TEXTBOX_146" placeholder="TEXTBOX_146")
+  label.checkbox.checkbox_other: input(type="checkbox") Other
 
 section_text DSM-IV DIAGNOSIS
 question
@@ -1999,8 +1977,7 @@ question
   label.checkbox: input(type="checkbox") 315.1 Mathematics Disorder
   label.checkbox: input(type="checkbox") 315.2 Disorder of Written Expression
   label.checkbox: input(type="checkbox") 315.9 Learning Disorder NOS
-  label.checkbox: input(type="checkbox") Other
-  input.input-medium(type="text" name="TEXTBOX_147" placeholder="TEXTBOX_147")
+  label.checkbox.checkbox_other: input(type="checkbox") Other
 question
   question_text 163. Axis II: Please select from the following choices.
   label.checkbox: input(type="checkbox") No diagnosis
@@ -2021,8 +1998,7 @@ question
   label.checkbox: input(type="checkbox") 318.2 Profound Mental Retardation
   label.checkbox: input(type="checkbox") 319 Mental retardation, severity unspecified
   label.checkbox: input(type="checkbox") V62.89 Borderline Intellectual Functioning
-  label.checkbox: input(type="checkbox") Other
-  input.input-medium(type="text" name="TEXTBOX_148" placeholder="TEXTBOX_148")
+  label.checkbox.checkbox_other: input(type="checkbox") Other
   label.checkbox: input(type="checkbox") Deferred
 question
   question_text 164. Axis III: Medical conditions are insert from previous question.
@@ -2141,8 +2117,7 @@ section_text Capability of Managing Funds
 question
   question_text A187. What is the claimant’s ability to manage employment benefits?
   label.checkbox: input(type="checkbox") likely satisfactory
-  label.checkbox: input(type="checkbox") likely poor given
-  input.input-medium(type="text" name="TEXTBOX_153" placeholder="TEXTBOX_153")
+  label.checkbox.checkbox_other: input(type="checkbox" prepend=true) likely poor given
 question
   question_text A188. Does the claimant need a protective payee?
   label.checkbox: input(type="checkbox") yes

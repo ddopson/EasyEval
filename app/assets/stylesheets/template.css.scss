@@ -35,3 +35,14 @@ section_text {
   margin-top: 30px;
   margin-bottom: 10px;
 }
+
+.checkbox_other {
+  // Match height of the textbox inside
+  height: 20px;
+}
+
+input.other_textbox {
+  margin-left: 10px;
+  vertical-align: top;
+}
+
