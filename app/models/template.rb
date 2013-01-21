@@ -40,11 +40,16 @@ class Template
     Rails.logger.info "TEMPLATE: reading '#{tmpdir}/word/document.xml'"
     contents = File.read("#{tmpdir}/word/document.xml")
     Rails.logger.info "TEMPLATE: read #{contents.size} bytes from '#{tmpdir}/word/document.xml'"
-    params.each {|key, value|
-      key = "FILLIN_#{key}"
-      Rails.logger.info "TEMPLATE: setting #{key} to '#{value}'"
-      contents = contents.gsub(key, value)
-    }
+    contents.gsub!(/FILLIN_([A-Z0-9_]+)/) do |m|
+      key = $1
+      if value = params[key]
+        Rails.logger.info "Replacing '#{m}' with '#{value}'"
+        value
+      else
+        Rails.logger.warn "No value defined for #{m}"
+        "UNDEFINED(#{key})"
+      end
+    end
     Rails.logger.info "TEMPLATE: writing #{contents.size} bytes into '#{tmpdir}/word/document.xml'"
     write_file("#{tmpdir}/word/document.xml", contents)
     output_file = "#{tmpdir}/output.docx"
