@@ -46,3 +46,23 @@ input.other_textbox {
   vertical-align: top;
 }
 
+
+table
+{
+  border-collapse:collapse;
+}
+
+th {
+  background: #B9C9FE;
+  border: 1px solid #039;
+  color: #039;
+  padding: 3px;
+}
+
+td {
+  background: #E8EDFF;
+  border: 1px solid white;
+  color: #669;
+  padding: 3px;
+  text-align: center;
+}
