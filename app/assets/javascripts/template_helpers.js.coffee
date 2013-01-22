@@ -5,6 +5,9 @@ class window.TemplateHelpers
 
     $('.checkbox_other').on 'change', (evt) -> self.process_checkbox_other(@, evt)
 
+    $('.checkbox_enabler').on 'change', (evt) -> self.process_checkbox_enabler(@, evt)
+    $('.checkbox_enabler').each (idx, checkbox) -> self.process_checkbox_enabler(checkbox, null)
+
   process_checkbox: (checkbox, evt) ->
     return unless $(checkbox).parent().is('question')
     valuesbox = $(checkbox).parent().find('.checkbox_values')
@@ -47,4 +50,11 @@ class window.TemplateHelpers
     else
       o.hide()
 
+
+  process_checkbox_enabler: (checkbox, evt) ->
+    sel = $(checkbox.firstChild).attr('data-selector')
+    if checkbox.firstChild.checked
+      $(sel).show()
+    else
+      $(sel).hide()
 
