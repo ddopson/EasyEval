@@ -1371,22 +1371,33 @@ question
 section_text IMMEDIATE MEMORY
 question
   question_text 123. How many digits did the claimant remember forward and backward?
-  text Record the last level completed correctly by checking the item in the column “Last level completed?”
-  text Digits Forward
-  text Last level completed?
-  text Digits Backward
-  text Last level completed?
-  text Unable to complete
-  label.checkbox: input(type="checkbox")   text Unable to complete
-  label.checkbox: input(type="checkbox")   text 3-8-4-9
-  label.checkbox: input(type="checkbox")   text 7-9-2
-  label.checkbox: input(type="checkbox")   text 6-7-4-3-1
-  label.checkbox: input(type="checkbox")   text 6-5-1-3
-  label.checkbox: input(type="checkbox")   text 2-4-8-5-9-3
-  label.checkbox: input(type="checkbox")   text 1-8-5-7-9
-  label.checkbox: input(type="checkbox")   text 4-7-9-3-1-2-8
-  label.checkbox: input(type="checkbox")   text 2-4-8-1-3-7
-  label.checkbox: input(type="checkbox") question
+  table
+    tr
+      th Digits Forward
+      th Last level completed?
+      th Digits Backward
+      th Last level completed?
+    tr
+      td 3-8-4-9
+      td: label.checkbox: input(type="checkbox") correct?
+      td 7-9-2
+      td: label.checkbox: input(type="checkbox") correct?
+    tr
+      td 6-7-4-3-1
+      td: label.checkbox: input(type="checkbox") correct?
+      td 6-5-1-3
+      td: label.checkbox: input(type="checkbox") correct?
+    tr
+      td 2-4-8-5-9-3
+      td: label.checkbox: input(type="checkbox") correct?
+      td 1-8-5-7-9
+      td: label.checkbox: input(type="checkbox") correct?
+    tr
+      td 4-7-9-3-1-2-8
+      td: label.checkbox: input(type="checkbox") correct?
+      td 2-4-8-1-3-7
+      td: label.checkbox: input(type="checkbox") correct?
+
 question
   question_text 123B. Given the claimant’s performance on these tasks, please rate their overall memory functions.
   label.checkbox: input(type="checkbox") poor
@@ -1515,16 +1526,25 @@ question
   input.input-medium(type="text" name="Q132" placeholder="")
 question
   question_text 133. Please ask the following questions and check the Correct Answer box if answered correctly.
-  text $9 + $7 =
-  label.checkbox: input(type="checkbox") Correct Answer: $16
-  text $23 – $10  =
-  label.checkbox: input(type="checkbox") Correct Answer: $13
-  text $11 x 10 =
-  label.checkbox: input(type="checkbox") Correct Answer: $110
-  text $9  3 =
-  label.checkbox: input(type="checkbox") Correct Answer: $3
-  text 47c + 10c =
-  label.checkbox: input(type="checkbox") Correct Answer: 57c
+  table
+    tr
+      th Question
+      th Answer
+    tr
+      td $9 + $7 =
+      td: label.checkbox: input(type="checkbox") Correct Answer: $16
+    tr
+      td $23 – $10  =
+      td: label.checkbox: input(type="checkbox") Correct Answer: $13
+    tr
+      td $11 x 10 =
+      td: label.checkbox: input(type="checkbox") Correct Answer: $110
+    tr
+      td $9  3 =
+      td: label.checkbox: input(type="checkbox") Correct Answer: $3
+    tr
+      td 47c + 10c =
+      td: label.checkbox: input(type="checkbox") Correct Answer: 57c
   text (This insert is generated using the number of Correct Answer boxes checked in the above table.)
   text SERIALS
   text Begin at 100 and subtract 7, and keep going until I say stop.
