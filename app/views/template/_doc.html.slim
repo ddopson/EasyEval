@@ -1,131 +1,134 @@
-question
-  question_text Q1 Identity of Claimant:
-  input.input-medium(type="text" name="Q1_FIRST" placeholder="First"),
-  input.input-medium(type="text" name="Q1_LAST" placeholder="Last")
-question
-  question_text A. Date of Birth:
-  input.input-medium(type="text" name="Q1_BIRTHDATE" placeholder="dd/mm/yyyy")
-question
-  question_text B. Case No:
-  input.input-medium(type="text" name="Q1_CASENUM" placeholder="case_number")
-question
-  question_text C. RQID:
-  input.input-medium(type="text" name="Q1_RQID" placeholder="rqid")
-question
-  question_text D. Adjudicator:
-  input.input-medium(type="text" name="Q1_ADJUDICATOR" placeholder="Adjudicator")
-question
-  question_text E. Date and Time of Exam:
-  input.input-medium(type="text" name="Q1_EXAMDATE" placeholder="dd/mm/yyyy")
-question
-  question_text F. Location:
-  input.input-medium(type="text" name="Q1_EXAMLOC" placeholder="????")
-question
-  question_text 3. What kind of examination is this? (programming note: the only questions affected are between 98 and 152)
-  label.checkbox: input(type="checkbox") Complex psychological evaluation (HIDE: Prep for Memory Qs, 121-123b, 110, 136-138, 127-129, 133-133b, 142-146b) (SHOW: 98-99, 112-116, 100-102, 200, 135-135a, 125-126, 131-132, 144-145, 147-152, 149, 302, 303-306)
-  label.checkbox: input(type="checkbox") Psychological diagnostic evaluation (HIDE: 98-99, 112-116, 100-102, 200, 135-135a, 125-126, 131-132, 144-145, 149, 302, 303-306) (SHOW: Prep for Memory Qs, 121-123b, 110, 136-138, 127-129, 133-133b, 142-146b, 147-152)
-  label.checkbox: input(type="checkbox") Psychological diagnostic evaluation with memory assessment (HIDE: Prep for Memory Qs, 121-123b, 100-102, 200 135-135a, 125-126, 131-132, 144-145) (SHOW: 98-99, 112-116, 110, 136-138, 127-129, 133-133b, 142-146b, 147-152, 149, 302, 303-306)
-  label.checkbox: input(type="checkbox") Psychological diagnostic evaluation with intelligence assessment (HIDE: 112-116, 110, 136-138, 127-129, 133-133b, 142-146b, 149, 302, 303-306) (SHOW: 98-99, 121-123b, Prep for Memory Qs, 100-102, 200, 135-135a, 125-126, 131-132, 144-145, 147-152)
-  section_text IDENTIFICATION
-question
-  question_text 4. What is the claimant’s age?
-  input.input-medium(type="text" name="Q4" placeholder="age?")
-question
-  question_text 5. What is the claimant’s ethnicity/race?
-  input.checkbox_values(type="hidden" name="Q5")
-  label.checkbox: input(type="checkbox") American Indian
-  label.checkbox: input(type="checkbox") African American
-  label.checkbox: input(type="checkbox") Asian American
-  label.checkbox: input(type="checkbox") Caucasian American
-  label.checkbox: input(type="checkbox") Hispanic American
-  label.checkbox: input(type="checkbox") Native Hawaiian
-  label.checkbox: input(type="checkbox") Pacific Islander
-  label.checkbox.checkbox_other: input(type="checkbox") Other
-question
-  question_text 6. What is the claimant’s birthplace?
-  input.input-medium(type="text" name="Q6" placeholder="birthplace?")
-  section_text GENERAL OBSERVATIONS
-question
-  question_text 8. When did the claimant arrive to the examination?
-  input.checkbox_values(type="hidden" name="Q8")
-  label.checkbox: input(type="checkbox") Early
-  label.checkbox: input(type="checkbox") On time
-  label.checkbox: input(type="checkbox") Late
-question
-  question_text 8A. Was the claimant:
-  input.checkbox_values(type="hidden" name="Q8A")
-  label.checkbox: input(type="checkbox") unaccompanied
-  label.checkbox.checkbox_other: input(type="checkbox" prepend=true) accompanied by
-question
-  question_text 9. How did the claimant get to the examination?
-  input.checkbox_values(type="hidden" name="Q9")
-  label.checkbox: input(type="checkbox") Drove
-  label.checkbox: input(type="checkbox") DSHS arranged the transportation
-  label.checkbox: input(type="checkbox") Taxi
-  label.checkbox: input(type="checkbox") Public transportation
-  label.checkbox.checkbox_other: input(type="checkbox" prepend="Driven by") Driven by
-question
-  question_text 11. Is the claimant considered a reliable historian?
-  input.checkbox_values(type="hidden" name="Q11")
-  label.checkbox: input(type="checkbox") yes
-  label.checkbox: input(type="checkbox") no (enable 11a)
-question
-  question_text 11A. If no, who is the reliable historian for this interview?
-  input.input-medium(type="text" name="Q11A" placeholder="")
-
-section_text CHIEF COMPLAINT
-question
-  question_text 12.
-  input.input-medium(type="text" name="Q12" placeholder="")
-
-section_text HISTORY OF PRESENT ILLNESS
-question
-  question_text 13. What is the claimant’s chief complaint? Select all that apply.
-  input.checkbox_values(type="hidden" name="Q13")
-  label.checkbox.checkbox_enabler: input(type="checkbox" data-selector="#Q16A") Alzheimer’s Disease
-  label.checkbox.checkbox_enabler: input(type="checkbox" data-selector="#Q16B") Anorexia
-  label.checkbox.checkbox_enabler: input(type="checkbox" data-selector="#Q16C") Anxiety
-  label.checkbox.checkbox_enabler: input(type="checkbox" data-selector="#Q16D") Attention Disorder
-  label.checkbox.checkbox_enabler: input(type="checkbox" data-selector="#Q16E") Autism Disorders
-  label.checkbox.checkbox_enabler: input(type="checkbox" data-selector="#Q16F") Bipolar Disorder
-  label.checkbox.checkbox_enabler: input(type="checkbox" data-selector="#Q16G") Cognitive Disorder NOS
-  label.checkbox.checkbox_enabler: input(type="checkbox" data-selector="#Q16H") Depression
-  label.checkbox.checkbox_enabler: input(type="checkbox" data-selector="#Q16I") Dysthymic Disorder
-  label.checkbox.checkbox_enabler: input(type="checkbox" data-selector="#Q16J") Learning Disability
-  label.checkbox.checkbox_enabler: input(type="checkbox" data-selector="#Q16K") Mental Retardation
-  label.checkbox.checkbox_enabler: input(type="checkbox" data-selector="#Q16L") Obsessive Compulsive Disorder
-  label.checkbox.checkbox_enabler: input(type="checkbox" data-selector="#Q16M") Panic Disorder
-  label.checkbox.checkbox_enabler: input(type="checkbox" data-selector="#Q16N") Personality Disorder
-  label.checkbox.checkbox_enabler: input(type="checkbox" data-selector="#Q16O") Postconcussion Syndrome
-  label.checkbox.checkbox_enabler: input(type="checkbox" data-selector="#Q16P") Posttraumatic Stress Disorder
-  label.checkbox.checkbox_enabler: input(type="checkbox" data-selector="#Q16Q") Schizoaffective Disorder
-  label.checkbox.checkbox_other: input(type="checkbox") Other
-
-section_text REVIEW OF RECORDS
-question
-  question_text 14. When was the claimant first diagnosed? Please enter in this format: Month Year.
-  input.input-medium(type="text" name="Q14" placeholder="")
-question
-  question_text 14A. Who diagnosed the claimant?
-  input.input-medium(type="text" name="Q14A" placeholder="")
-  text Repeat 14 and 14a for each diagnosis. If possible have the diagnoses from question 13 filter down to this section. It would allow the doctor to specify who diagnosed the claimant and when for each diagnosis.
-question
-  question_text 15. Were there any special circumstances surrounding the onset of this impairment or condition?
-  label.checkbox: input(type="checkbox") no
-  label.checkbox.checkbox_other: input(type="checkbox") yes (enable 15a)
-
-question
-  question_text 16. What are the claimant’s current symptoms? Select all that apply.
-  = render partial: 'Q16-illness'
+section#Identification
+  section_text Identification
+  question
+    question_text Q1 Identity of Claimant:
+    input.input-medium(type="text" name="Q1_FIRST" placeholder="First"),
+    input.input-medium(type="text" name="Q1_LAST" placeholder="Last")
+  question
+    question_text A. Date of Birth:
+    input.input-medium(type="text" name="Q1_BIRTHDATE" placeholder="dd/mm/yyyy")
+  question
+    question_text B. Case No:
+    input.input-medium(type="text" name="Q1_CASENUM" placeholder="case_number")
+  question
+    question_text C. RQID:
+    input.input-medium(type="text" name="Q1_RQID" placeholder="rqid")
+  question
+    question_text D. Adjudicator:
+    input.input-medium(type="text" name="Q1_ADJUDICATOR" placeholder="Adjudicator")
+  question
+    question_text E. Date and Time of Exam:
+    input.input-medium(type="text" name="Q1_EXAMDATE" placeholder="dd/mm/yyyy")
+  question
+    question_text F. Location:
+    input.input-medium(type="text" name="Q1_EXAMLOC" placeholder="????")
+  question
+    question_text 3. What kind of examination is this? (programming note: the only questions affected are between 98 and 152)
+    label.checkbox: input(type="checkbox") Complex psychological evaluation (HIDE: Prep for Memory Qs, 121-123b, 110, 136-138, 127-129, 133-133b, 142-146b) (SHOW: 98-99, 112-116, 100-102, 200, 135-135a, 125-126, 131-132, 144-145, 147-152, 149, 302, 303-306)
+    label.checkbox: input(type="checkbox") Psychological diagnostic evaluation (HIDE: 98-99, 112-116, 100-102, 200, 135-135a, 125-126, 131-132, 144-145, 149, 302, 303-306) (SHOW: Prep for Memory Qs, 121-123b, 110, 136-138, 127-129, 133-133b, 142-146b, 147-152)
+    label.checkbox: input(type="checkbox") Psychological diagnostic evaluation with memory assessment (HIDE: Prep for Memory Qs, 121-123b, 100-102, 200 135-135a, 125-126, 131-132, 144-145) (SHOW: 98-99, 112-116, 110, 136-138, 127-129, 133-133b, 142-146b, 147-152, 149, 302, 303-306)
+    label.checkbox: input(type="checkbox") Psychological diagnostic evaluation with intelligence assessment (HIDE: 112-116, 110, 136-138, 127-129, 133-133b, 142-146b, 149, 302, 303-306) (SHOW: 98-99, 121-123b, Prep for Memory Qs, 100-102, 200, 135-135a, 125-126, 131-132, 144-145, 147-152)
+  
+  question
+    question_text 4. What is the claimant’s age?
+    input.input-medium(type="text" name="Q4" placeholder="age?")
+  question
+    question_text 5. What is the claimant’s ethnicity/race?
+    input.checkbox_values(type="hidden" name="Q5")
+    label.checkbox: input(type="checkbox") American Indian
+    label.checkbox: input(type="checkbox") African American
+    label.checkbox: input(type="checkbox") Asian American
+    label.checkbox: input(type="checkbox") Caucasian American
+    label.checkbox: input(type="checkbox") Hispanic American
+    label.checkbox: input(type="checkbox") Native Hawaiian
+    label.checkbox: input(type="checkbox") Pacific Islander
+    label.checkbox.checkbox_other: input(type="checkbox") Other
+  question
+    question_text 6. What is the claimant’s birthplace?
+    input.input-medium(type="text" name="Q6" placeholder="birthplace?")
 
 
+section#General-Observations
+  section_text General Observations
+  question
+    question_text 8. When did the claimant arrive to the examination?
+    input.checkbox_values(type="hidden" name="Q8")
+    label.checkbox: input(type="checkbox") Early
+    label.checkbox: input(type="checkbox") On time
+    label.checkbox: input(type="checkbox") Late
+  question
+    question_text 8A. Was the claimant:
+    input.checkbox_values(type="hidden" name="Q8A")
+    label.checkbox: input(type="checkbox") unaccompanied
+    label.checkbox.checkbox_other: input(type="checkbox" prepend=true) accompanied by
+  question
+    question_text 9. How did the claimant get to the examination?
+    input.checkbox_values(type="hidden" name="Q9")
+    label.checkbox: input(type="checkbox") Drove
+    label.checkbox: input(type="checkbox") DSHS arranged the transportation
+    label.checkbox: input(type="checkbox") Taxi
+    label.checkbox: input(type="checkbox") Public transportation
+    label.checkbox.checkbox_other: input(type="checkbox" prepend="Driven by") Driven by
+  question
+    question_text 11. Is the claimant considered a reliable historian?
+    input.checkbox_values(type="hidden" name="Q11")
+    label.checkbox: input(type="checkbox") yes
+    label.checkbox: input(type="checkbox") no (enable 11a)
+  question
+    question_text 11A. If no, who is the reliable historian for this interview?
+    input.input-medium(type="text" name="Q11A" placeholder="")
 
 
-  text Other: Please write in a list of the current symptoms.
-  input.input-medium(type="text" name="Q16G" placeholder="")
-question
-  question_text 16A. Please provide any additional symptoms.
-  input.input-medium(type="text" name="Q16A" placeholder="")
+section#Chief-Complaint
+  section_text Chief Complaint
+  question
+    question_text 13. What is the claimant’s chief complaint? Select all that apply.
+    input.checkbox_values(type="hidden" name="Q13")
+    label.checkbox.checkbox_enabler: input(type="checkbox" data-selector="#Q16A") Alzheimer’s Disease
+    label.checkbox.checkbox_enabler: input(type="checkbox" data-selector="#Q16B") Anorexia
+    label.checkbox.checkbox_enabler: input(type="checkbox" data-selector="#Q16C") Anxiety
+    label.checkbox.checkbox_enabler: input(type="checkbox" data-selector="#Q16D") Attention Disorder
+    label.checkbox.checkbox_enabler: input(type="checkbox" data-selector="#Q16E") Autism Disorders
+    label.checkbox.checkbox_enabler: input(type="checkbox" data-selector="#Q16F") Bipolar Disorder
+    label.checkbox.checkbox_enabler: input(type="checkbox" data-selector="#Q16G") Cognitive Disorder NOS
+    label.checkbox.checkbox_enabler: input(type="checkbox" data-selector="#Q16H") Depression
+    label.checkbox.checkbox_enabler: input(type="checkbox" data-selector="#Q16I") Dysthymic Disorder
+    label.checkbox.checkbox_enabler: input(type="checkbox" data-selector="#Q16J") Learning Disability
+    label.checkbox.checkbox_enabler: input(type="checkbox" data-selector="#Q16K") Mental Retardation
+    label.checkbox.checkbox_enabler: input(type="checkbox" data-selector="#Q16L") Obsessive Compulsive Disorder
+    label.checkbox.checkbox_enabler: input(type="checkbox" data-selector="#Q16M") Panic Disorder
+    label.checkbox.checkbox_enabler: input(type="checkbox" data-selector="#Q16N") Personality Disorder
+    label.checkbox.checkbox_enabler: input(type="checkbox" data-selector="#Q16O") Postconcussion Syndrome
+    label.checkbox.checkbox_enabler: input(type="checkbox" data-selector="#Q16P") Posttraumatic Stress Disorder
+    label.checkbox.checkbox_enabler: input(type="checkbox" data-selector="#Q16Q") Schizoaffective Disorder
+    label.checkbox.checkbox_other: input(type="checkbox") Other
+
+
+section#Review-of-Records
+  section_text Review of Records
+  question
+    question_text 14. When was the claimant first diagnosed? Please enter in this format: Month Year.
+    input.input-medium(type="text" name="Q14" placeholder="")
+  question
+    question_text 14A. Who diagnosed the claimant?
+    input.input-medium(type="text" name="Q14A" placeholder="")
+    text Repeat 14 and 14a for each diagnosis. If possible have the diagnoses from question 13 filter down to this section. It would allow the doctor to specify who diagnosed the claimant and when for each diagnosis.
+  question
+    question_text 15. Were there any special circumstances surrounding the onset of this impairment or condition?
+    label.checkbox: input(type="checkbox") no
+    label.checkbox.checkbox_other: input(type="checkbox") yes (enable 15a)
+
+
+section#History-of-Present-Illness
+  section_text History of Present Illness
+  question
+    question_text 16. What are the claimant’s current symptoms? Select all that apply.
+    = render partial: 'Q16-illness'
+    question
+      question_text 16A. Please provide any additional symptoms.
+      input.input-medium(type="text" name="Q16A" placeholder="")
+
+
 question
   question_text 17. Describe in detail the effect of each impairment on the claimant’s daily functioning. Please focus on relationships and work ability.
   input.input-medium(type="text" name="Q17" placeholder="")
@@ -154,1468 +157,1473 @@ question
   label.checkbox: input(type="checkbox") no
 question
   question_text 20A. If no, please provide details.
-  input.input-medium(type="text" name="Q20A" placeholder="")CURRENT MEDICATIONS
-question
-  question_text 21. Is the claimant taking any medications?
-  label.checkbox: input(type="checkbox") no (disable the rest this section)
-  label.checkbox: input(type="checkbox") yes (enable 21a, 22, and 22table)
-question
-  question_text 177. If yes, who is writing the prescriptions?
-  label.checkbox: input(type="checkbox") A psychiatrist
-  label.checkbox: input(type="checkbox") A PCP
-  label.checkbox: input(type="checkbox") A nurse practitioner
-question
-  question_text 21A. If yes, did the claimant take any medication today?
-  label.checkbox: input(type="checkbox") yes
-  label.checkbox: input(type="checkbox") no
-question
-  question_text 22. What medication is the claimant taking?  Select all that apply.
-  text Note to programmer: medication list used in drop down menu in the table.
-  section_text Abilify (aripiprazole)
-  section_text Intuniv (guanfacine)
-  section_text Prozac (fluoxetine)
-  section_text Adderall (amphetamine)
-  section_text Invega (paliperidone)
-  section_text Remeron (mirtazapine)
-  text Adderall XR (amphetamine- extended release)
-  section_text Klonopin (clonazepam)
-  section_text Risperdal (risperidone)
-  section_text Anafranil (clomipramine)
-  section_text Lamictal (lamotrigine)
-  section_text Ritalin (methylphenidate)
-  section_text Asendin (amoxapine)
-  section_text Lexapro (escitalopram)
-  text Ritalin LA (methylphenidate- long acting)
-  section_text Ativan (Lorazepam)
-  section_text Librium (chlordiazepoxide)
-  text Ritalin SR (methylphenidate- extended release)
-  section_text Aventyl (nortriptyline)
-  section_text lithium citrate
-  section_text Sarafem (fluoxetine)
-  section_text BuSpar (buspirone)
-  section_text Lithobid (lithium carbonate)
-  section_text Seroquel (quetiapine)
-  section_text Celexa (citalopram)
-  section_text Loxitane (loxapine)
-  section_text Sinequan (doxepin)
-  section_text Clozaril (clozapine)
-  section_text Ludiomil (maprotiline)
-  section_text Stelazine (olanzapine)
-  text Concerta (methylphenidate – long acting)
-  section_text Luvox (fluvoxamine)
-  section_text Strattera (atomoxetine)
-  section_text Cymbalta (duloxetine)
-  section_text Marplan (isocarboxazid)
-  section_text Surmontil (trimipramine)
-  text Daytrana (methylphenidate patch)
-  text Metadate CD (methylphenidate- extended release)
-  text Symbyax (Prozac &amp; Zyprexa- fluoxetine &amp; olanzapine)
-  section_text Depakote (divalproex sodium)
-  text Metadate ER (methylphenidate- extended release)
-  section_text Tegretol (carbamazepine)
-  section_text Desoxyn (methamphetamine)
-  section_text Methylin (methylphenidate)
-  section_text Thioridazine
-  section_text Desyrel (Trazodone)
-  section_text Moban (molindone)
-  section_text Thorazine (chlorpromazine)
-  text Dexedrine (dextroamphetamine)
-  section_text Nardil (phenelzine)
-  section_text Tofranil (imipramine)
-  text Dextrostat (dextroamphetamine)
-  section_text Navane (thiothixene)
-  text Tofranil-PM (imipramine pamoate)
-  section_text Effexor (venlafaxine)
-  section_text Neurontin (gabapentin)
-  section_text Topamax (topiramate)
-  section_text Elavil (amitriptyline)
-  section_text Norpramin (desipramine)
-  section_text Tranxene (clorazepate)
-  section_text Emsam (selegiline)
-  section_text Orap (pimozide)
-  section_text Trileptal (oxcarbazepine)
-  section_text Eskalith (lithium carbonate)
-  section_text Serax (Oxazepam)
-  section_text Valium (diazepam)
-  section_text Fanapt (iloperidone)
-  section_text Pamelor (nortriptyline)
-  section_text Vivactil (protriptyline)
-  section_text Fluphenazine
-  section_text Parnate (tranylcypromine)
-  text Vyvanse (lisdexamfetamine dimesylate)
-  section_text Focalin (dexmethylphenidate)
-  section_text Paxil (paroxetine)
-  section_text Wellbutrin (bupropion)
-  text Focalin XR (dexmethylphenidate- extended release)
-  section_text Perphenazine
-  section_text Xanax (alprazolam)
-  section_text Geodon (ziprasidone)
-  section_text Pexeva (paroxetine-mesylate)
-  section_text Zoloft (sertraline)
-  section_text Haldol (haloperidol)
-  section_text Pristiq (desvenlafaxine)
-  section_text Zyprexa (olanzapine)
-  section_text Other
-  input.input-medium(type="text" name="Q22" placeholder="")
-  section_text 22table.
-  section_text Medication
-  section_text Dosage (mg)
-  section_text Usefulness
-  text (medication list in a drop down menu)
-  section_text
-  input.input-medium(type="text" name="Q22" placeholder="")
-  section_text Option selected
-  text (medication list in a drop down menu)
-  section_text
-  input.input-medium(type="text" name="Q22" placeholder="")
-  section_text Option selected
-  text (medication list in a drop down menu)
-  section_text
-  input.input-medium(type="text" name="Q22" placeholder="")
-  section_text Option selected
-  text * “Add a new medication” button will open a window with the following info:
-  text Name of Medication: (drop down menu)
-  text Dosage (mg):
-  input.input-medium(type="text" name="Q22" placeholder="")
-  label.checkbox: input(type="checkbox") Usefulness:good  FORMCHECKBOX  minimal  FORMCHECKBOX  poor
+  input.input-medium(type="text" name="Q20A" placeholder="")
+  
+section#Current-Medications
+  section_text Current Medications
+  question
+    question_text 21. Is the claimant taking any medications?
+    label.checkbox: input(type="checkbox") no (disable the rest this section)
+    label.checkbox: input(type="checkbox") yes (enable 21a, 22, and 22table)
+  question
+    question_text 177. If yes, who is writing the prescriptions?
+    label.checkbox: input(type="checkbox") A psychiatrist
+    label.checkbox: input(type="checkbox") A PCP
+    label.checkbox: input(type="checkbox") A nurse practitioner
+  question
+    question_text 21A. If yes, did the claimant take any medication today?
+    label.checkbox: input(type="checkbox") yes
+    label.checkbox: input(type="checkbox") no
+  question
+    question_text 22. What medication is the claimant taking?  Select all that apply.
+    text Note to programmer: medication list used in drop down menu in the table.
+    section_text Abilify (aripiprazole)
+    section_text Intuniv (guanfacine)
+    section_text Prozac (fluoxetine)
+    section_text Adderall (amphetamine)
+    section_text Invega (paliperidone)
+    section_text Remeron (mirtazapine)
+    text Adderall XR (amphetamine- extended release)
+    section_text Klonopin (clonazepam)
+    section_text Risperdal (risperidone)
+    section_text Anafranil (clomipramine)
+    section_text Lamictal (lamotrigine)
+    section_text Ritalin (methylphenidate)
+    section_text Asendin (amoxapine)
+    section_text Lexapro (escitalopram)
+    text Ritalin LA (methylphenidate- long acting)
+    section_text Ativan (Lorazepam)
+    section_text Librium (chlordiazepoxide)
+    text Ritalin SR (methylphenidate- extended release)
+    section_text Aventyl (nortriptyline)
+    section_text lithium citrate
+    section_text Sarafem (fluoxetine)
+    section_text BuSpar (buspirone)
+    section_text Lithobid (lithium carbonate)
+    section_text Seroquel (quetiapine)
+    section_text Celexa (citalopram)
+    section_text Loxitane (loxapine)
+    section_text Sinequan (doxepin)
+    section_text Clozaril (clozapine)
+    section_text Ludiomil (maprotiline)
+    section_text Stelazine (olanzapine)
+    text Concerta (methylphenidate – long acting)
+    section_text Luvox (fluvoxamine)
+    section_text Strattera (atomoxetine)
+    section_text Cymbalta (duloxetine)
+    section_text Marplan (isocarboxazid)
+    section_text Surmontil (trimipramine)
+    text Daytrana (methylphenidate patch)
+    text Metadate CD (methylphenidate- extended release)
+    text Symbyax (Prozac &amp; Zyprexa- fluoxetine &amp; olanzapine)
+    section_text Depakote (divalproex sodium)
+    text Metadate ER (methylphenidate- extended release)
+    section_text Tegretol (carbamazepine)
+    section_text Desoxyn (methamphetamine)
+    section_text Methylin (methylphenidate)
+    section_text Thioridazine
+    section_text Desyrel (Trazodone)
+    section_text Moban (molindone)
+    section_text Thorazine (chlorpromazine)
+    text Dexedrine (dextroamphetamine)
+    section_text Nardil (phenelzine)
+    section_text Tofranil (imipramine)
+    text Dextrostat (dextroamphetamine)
+    section_text Navane (thiothixene)
+    text Tofranil-PM (imipramine pamoate)
+    section_text Effexor (venlafaxine)
+    section_text Neurontin (gabapentin)
+    section_text Topamax (topiramate)
+    section_text Elavil (amitriptyline)
+    section_text Norpramin (desipramine)
+    section_text Tranxene (clorazepate)
+    section_text Emsam (selegiline)
+    section_text Orap (pimozide)
+    section_text Trileptal (oxcarbazepine)
+    section_text Eskalith (lithium carbonate)
+    section_text Serax (Oxazepam)
+    section_text Valium (diazepam)
+    section_text Fanapt (iloperidone)
+    section_text Pamelor (nortriptyline)
+    section_text Vivactil (protriptyline)
+    section_text Fluphenazine
+    section_text Parnate (tranylcypromine)
+    text Vyvanse (lisdexamfetamine dimesylate)
+    section_text Focalin (dexmethylphenidate)
+    section_text Paxil (paroxetine)
+    section_text Wellbutrin (bupropion)
+    text Focalin XR (dexmethylphenidate- extended release)
+    section_text Perphenazine
+    section_text Xanax (alprazolam)
+    section_text Geodon (ziprasidone)
+    section_text Pexeva (paroxetine-mesylate)
+    section_text Zoloft (sertraline)
+    section_text Haldol (haloperidol)
+    section_text Pristiq (desvenlafaxine)
+    section_text Zyprexa (olanzapine)
+    section_text Other
+    input.input-medium(type="text" name="Q22" placeholder="")
+    section_text 22table.
+    section_text Medication
+    section_text Dosage (mg)
+    section_text Usefulness
+    text (medication list in a drop down menu)
+    section_text
+    input.input-medium(type="text" name="Q22" placeholder="")
+    section_text Option selected
+    text (medication list in a drop down menu)
+    section_text
+    input.input-medium(type="text" name="Q22" placeholder="")
+    section_text Option selected
+    text (medication list in a drop down menu)
+    section_text
+    input.input-medium(type="text" name="Q22" placeholder="")
+    section_text Option selected
+    text * “Add a new medication” button will open a window with the following info:
+    text Name of Medication: (drop down menu)
+    text Dosage (mg):
+    input.input-medium(type="text" name="Q22" placeholder="")
+    label.checkbox: input(type="checkbox") Usefulness:good  FORMCHECKBOX  minimal  FORMCHECKBOX  poor
 
-section_text PAST PSYCHIATRIC HISTORY
-question
-  question_text 29. Has the claimant ever been admitted to a psychiatric hospital?
-  label.checkbox: input(type="checkbox") no (disable the rest of this section)
-  label.checkbox: input(type="checkbox") yes (enable 30,31,31a, and 31b)
-question
-  question_text 30. If yes, what was the date of the last admittance? Please enter in this format: Month Year.
-  input.input-medium(type="text" name="Q30" placeholder="")
-question
-  question_text 31. What was the reason for the admittance?
-  input.input-medium(type="text" name="Q31" placeholder="")
-question
-  question_text 31A. What treatment did the claimant receive while admitted?
-  input.input-medium(type="text" name="Q31A" placeholder="")
-question
-  question_text 31B. What was the claimant’s response to the treatment?
-  input.input-medium(type="text" name="Q31B" placeholder="")
+section#Past-Psychiatric-History
+  section_text Past Psychiatric History
+  question
+    question_text 29. Has the claimant ever been admitted to a psychiatric hospital?
+    label.checkbox: input(type="checkbox") no (disable the rest of this section)
+    label.checkbox: input(type="checkbox") yes (enable 30,31,31a, and 31b)
+  question
+    question_text 30. If yes, what was the date of the last admittance? Please enter in this format: Month Year.
+    input.input-medium(type="text" name="Q30" placeholder="")
+  question
+    question_text 31. What was the reason for the admittance?
+    input.input-medium(type="text" name="Q31" placeholder="")
+  question
+    question_text 31A. What treatment did the claimant receive while admitted?
+    input.input-medium(type="text" name="Q31A" placeholder="")
+  question
+    question_text 31B. What was the claimant’s response to the treatment?
+    input.input-medium(type="text" name="Q31B" placeholder="")
 
-section_text ALCOHOL AND/OR DRUG ABUSE
-question
-  question_text A32. Has the claimant ever abused alcohol, tobacco, or illicit substances?
-  label.checkbox: input(type="checkbox") no  (disable the rest this section)
-  label.checkbox: input(type="checkbox") yes (enable A33-A36a, A189)
-question
-  question_text A33. If yes, what is the substance? Select all that apply.
-  label.checkbox: input(type="checkbox") Alcohol
-  label.checkbox: input(type="checkbox") Marijuana
-  label.checkbox: input(type="checkbox") Cocaine
-  label.checkbox: input(type="checkbox") Heroin
-  label.checkbox: input(type="checkbox") Methamphetamines
-  label.checkbox: input(type="checkbox") Tobacco
-  label.checkbox: input(type="checkbox") Other
-  input.input-medium(type="text" name="QA33" placeholder="")
-question
-  question_text A34. On what date did claimant first use the substance? Please enter in this format: Month Year.
-  input.input-medium(type="text" name="QA34" placeholder="")
-question
-  question_text A34A. On what date did the claimant begin to use the substance abusively? Please enter in this format: Month Year.
-  input.input-medium(type="text" name="QA34A" placeholder="")
-question
-  question_text A35. What is the number of days that the claimant used the substance?
-  label.checkbox: input(type="checkbox")
-  input.input-medium(type="text" name="QA35" placeholder="") days per week
-  label.checkbox: input(type="checkbox")
-  input.input-medium(type="text" name="QA35" placeholder="") days per month
-question
-  question_text A35A. During the claimant’s worst abusive period, how much of the substance was consumed per day?
-  input.input-medium(type="text" name="QA35A" placeholder="")
-question
-  question_text A36. Is the substance abuse still occurring?
-  label.checkbox: input(type="checkbox") no
-  label.checkbox: input(type="checkbox") yes
-question
-  question_text A36A. If no, how long has the claimant been ‘clean?’
-  label.checkbox: input(type="checkbox")
-  input.input-medium(type="text" name="QA36A" placeholder="") months
-  label.checkbox: input(type="checkbox")
-  input.input-medium(type="text" name="QA36A" placeholder="") years
-  text Programmer: Repeat questions 34, 34a, 35, 35a, 36, and 36a for each substance selected in question 33
-question
-  question_text A189. Did the claimant appear to be under the influence of drugs or alcohol?
-  label.checkbox: input(type="checkbox") yes
-  label.checkbox: input(type="checkbox") 12no
+section#Alcohol-and-Drug-Abuse
+  section_text Alcohol and Drug Abuse
+  question
+    question_text A32. Has the claimant ever abused alcohol, tobacco, or illicit substances?
+    label.checkbox: input(type="checkbox") no  (disable the rest this section)
+    label.checkbox: input(type="checkbox") yes (enable A33-A36a, A189)
+  question
+    question_text A33. If yes, what is the substance? Select all that apply.
+    label.checkbox: input(type="checkbox") Alcohol
+    label.checkbox: input(type="checkbox") Marijuana
+    label.checkbox: input(type="checkbox") Cocaine
+    label.checkbox: input(type="checkbox") Heroin
+    label.checkbox: input(type="checkbox") Methamphetamines
+    label.checkbox: input(type="checkbox") Tobacco
+    label.checkbox: input(type="checkbox") Other
+    input.input-medium(type="text" name="QA33" placeholder="")
+  question
+    question_text A34. On what date did claimant first use the substance? Please enter in this format: Month Year.
+    input.input-medium(type="text" name="QA34" placeholder="")
+  question
+    question_text A34A. On what date did the claimant begin to use the substance abusively? Please enter in this format: Month Year.
+    input.input-medium(type="text" name="QA34A" placeholder="")
+  question
+    question_text A35. What is the number of days that the claimant used the substance?
+    label.checkbox: input(type="checkbox")
+    input.input-medium(type="text" name="QA35" placeholder="") days per week
+    label.checkbox: input(type="checkbox")
+    input.input-medium(type="text" name="QA35" placeholder="") days per month
+  question
+    question_text A35A. During the claimant’s worst abusive period, how much of the substance was consumed per day?
+    input.input-medium(type="text" name="QA35A" placeholder="")
+  question
+    question_text A36. Is the substance abuse still occurring?
+    label.checkbox: input(type="checkbox") no
+    label.checkbox: input(type="checkbox") yes
+  question
+    question_text A36A. If no, how long has the claimant been ‘clean?’
+    label.checkbox: input(type="checkbox")
+    input.input-medium(type="text" name="QA36A" placeholder="") months
+    label.checkbox: input(type="checkbox")
+    input.input-medium(type="text" name="QA36A" placeholder="") years
+    text Programmer: Repeat questions 34, 34a, 35, 35a, 36, and 36a for each substance selected in question 33
+  question
+    question_text A189. Did the claimant appear to be under the influence of drugs or alcohol?
+    label.checkbox: input(type="checkbox") yes
+    label.checkbox: input(type="checkbox") 12no
 
-section_text PAST MEDICAL HISTORY
-section_text Head Injuries
-question
-  question_text 23. Has the claimant ever sustained a major head injury?
-  label.checkbox: input(type="checkbox") no (disable the rest this section)
-  label.checkbox: input(type="checkbox") yes (enable 24, 25, 26, 26a)
-question
-  question_text 24. If yes, did the claimant experience a lack of consciousness, feel dazed, or see stars?
-  label.checkbox: input(type="checkbox") no
-  label.checkbox: input(type="checkbox") yes
-question
-  question_text 25. What is the date of the injury? Please enter in this format: Month Year.
-  input.input-medium(type="text" name="Q25" placeholder="")
-question
-  question_text 26. Was the claimant treated at a hospital?
-  label.checkbox: input(type="checkbox") no
-  label.checkbox: input(type="checkbox") yes
-question
-  question_text 26A. If yes, what is the name of the hospital?
-  input.input-medium(type="text" name="Q26A" placeholder="")
-question
-  question_text 27. List any previous surgeries. If none, enter “None reported.”
-  input.input-medium(type="text" name="Q27" placeholder="")
-question
-  question_text 28. List any medical conditions.
-  text Select any of the following common medical conditions or write-in another option.
-  label.checkbox: input(type="checkbox") Allergies
-  label.checkbox: input(type="checkbox") Arthritis
-  label.checkbox: input(type="checkbox") Asthma
-  label.checkbox: input(type="checkbox") Back Pain
-  label.checkbox: input(type="checkbox") Cancer
-  label.checkbox: input(type="checkbox") Chest Pains
-  label.checkbox: input(type="checkbox") Chronic Pain
-  label.checkbox: input(type="checkbox") Degenerative Disc Disease
-  label.checkbox: input(type="checkbox") Diabetes
-  label.checkbox: input(type="checkbox") Digestive Problems
-  label.checkbox: input(type="checkbox") Fibromyalgia
-  label.checkbox: input(type="checkbox") Headaches
-  label.checkbox: input(type="checkbox") Heart Disease
-  label.checkbox: input(type="checkbox") Hepatitis
-  label.checkbox: input(type="checkbox") High Blood Pressure
-  label.checkbox: input(type="checkbox") Joint Problems
-  label.checkbox: input(type="checkbox") Lung Disease
-  label.checkbox: input(type="checkbox") Muscle Problems
-  label.checkbox: input(type="checkbox") Thyroid Disease
-  label.checkbox: input(type="checkbox") Urinary Tract Problems
-  label.checkbox.checkbox_other: input(type="checkbox") Other
-  label.checkbox: input(type="checkbox") None Reported
+section#Past-Medical-History
+  section_text Past Medical History
+  question
+    question_text 23. Has the claimant ever sustained a major head injury?
+    label.checkbox: input(type="checkbox") no (disable the rest this section)
+    label.checkbox: input(type="checkbox") yes (enable 24, 25, 26, 26a)
+  question
+    question_text 24. If yes, did the claimant experience a lack of consciousness, feel dazed, or see stars?
+    label.checkbox: input(type="checkbox") no
+    label.checkbox: input(type="checkbox") yes
+  question
+    question_text 25. What is the date of the injury? Please enter in this format: Month Year.
+    input.input-medium(type="text" name="Q25" placeholder="")
+  question
+    question_text 26. Was the claimant treated at a hospital?
+    label.checkbox: input(type="checkbox") no
+    label.checkbox: input(type="checkbox") yes
+  question
+    question_text 26A. If yes, what is the name of the hospital?
+    input.input-medium(type="text" name="Q26A" placeholder="")
+  question
+    question_text 27. List any previous surgeries. If none, enter “None reported.”
+    input.input-medium(type="text" name="Q27" placeholder="")
+  question
+    question_text 28. List any medical conditions.
+    text Select any of the following common medical conditions or write-in another option.
+    label.checkbox: input(type="checkbox") Allergies
+    label.checkbox: input(type="checkbox") Arthritis
+    label.checkbox: input(type="checkbox") Asthma
+    label.checkbox: input(type="checkbox") Back Pain
+    label.checkbox: input(type="checkbox") Cancer
+    label.checkbox: input(type="checkbox") Chest Pains
+    label.checkbox: input(type="checkbox") Chronic Pain
+    label.checkbox: input(type="checkbox") Degenerative Disc Disease
+    label.checkbox: input(type="checkbox") Diabetes
+    label.checkbox: input(type="checkbox") Digestive Problems
+    label.checkbox: input(type="checkbox") Fibromyalgia
+    label.checkbox: input(type="checkbox") Headaches
+    label.checkbox: input(type="checkbox") Heart Disease
+    label.checkbox: input(type="checkbox") Hepatitis
+    label.checkbox: input(type="checkbox") High Blood Pressure
+    label.checkbox: input(type="checkbox") Joint Problems
+    label.checkbox: input(type="checkbox") Lung Disease
+    label.checkbox: input(type="checkbox") Muscle Problems
+    label.checkbox: input(type="checkbox") Thyroid Disease
+    label.checkbox: input(type="checkbox") Urinary Tract Problems
+    label.checkbox.checkbox_other: input(type="checkbox") Other
+    label.checkbox: input(type="checkbox") None Reported
 
-section_text SOCIAL and FAMILY HISTORY
-question
-  question_text A37. What is the claimant’s current relationship status?
-  label.checkbox: input(type="checkbox") Single, not in a committed relationship
-  label.checkbox: input(type="checkbox") In a committed relationship (show A38)
-  label.checkbox: input(type="checkbox") Married (show A38)
-  label.checkbox: input(type="checkbox") Divorced
-  label.checkbox: input(type="checkbox") Getting a divorce
-  label.checkbox.checkbox_other: input(type="checkbox") Other
-question
-  question_text A38. If applicable, how is the relationship?
-  label.checkbox: input(type="checkbox") good
-  label.checkbox: input(type="checkbox") fair
-  label.checkbox: input(type="checkbox") poor
-question
-  question_text A39. Does the claimant have children?
-  label.checkbox: input(type="checkbox") yes (enable A40)
-  label.checkbox: input(type="checkbox") no
-question
-  question_text A40. If yes, how old?
-  input.input-medium(type="text" name="QA40" placeholder="")
-question
-  question_text A41. If claimant has deceased children, please provide details.
-  input.input-medium(type="text" name="QA41" placeholder="")
-question
-  question_text 42. What is the claimant’s living situation?
-  label.checkbox: input(type="checkbox") Apartment
-  label.checkbox: input(type="checkbox") Home
-  label.checkbox: input(type="checkbox") Trailer
-  label.checkbox: input(type="checkbox") Public Housing
-  label.checkbox: input(type="checkbox") Homeless
-question
-  question_text 42A. Does the claimant live alone?
-  label.checkbox: input(type="checkbox") lives alone
-  label.checkbox.checkbox_other: input(type="checkbox" prepend=true) lives with
-question
-  question_text 42B. In what city does the claimant currently reside? Include state abbreviation.
-  input.input-medium(type="text" name="Q42B" placeholder="")
-question
-  question_text 43. Does the family have a history of mental illness?
-  label.checkbox: input(type="checkbox") no family history of mental illness
-  label.checkbox.checkbox_other: input(type="checkbox") family has a history of
-question
-  question_text 45. Was there a history of child abuse?
-  label.checkbox: input(type="checkbox") no
-  label.checkbox: input(type="checkbox") yes (enable 46 and 47)
-question
-  question_text 46. If yes, what was the nature of the conflict?
-  input.input-medium(type="text" name="Q46" placeholder="")
-question
-  question_text 47. Is the trauma resolved?
-  label.checkbox: input(type="checkbox") no
-  label.checkbox: input(type="checkbox") yes
+section#Social-and-Family-History
+  section_text Social and Family History
+  question
+    question_text A37. What is the claimant’s current relationship status?
+    label.checkbox: input(type="checkbox") Single, not in a committed relationship
+    label.checkbox: input(type="checkbox") In a committed relationship (show A38)
+    label.checkbox: input(type="checkbox") Married (show A38)
+    label.checkbox: input(type="checkbox") Divorced
+    label.checkbox: input(type="checkbox") Getting a divorce
+    label.checkbox.checkbox_other: input(type="checkbox") Other
+  question
+    question_text A38. If applicable, how is the relationship?
+    label.checkbox: input(type="checkbox") good
+    label.checkbox: input(type="checkbox") fair
+    label.checkbox: input(type="checkbox") poor
+  question
+    question_text A39. Does the claimant have children?
+    label.checkbox: input(type="checkbox") yes (enable A40)
+    label.checkbox: input(type="checkbox") no
+  question
+    question_text A40. If yes, how old?
+    input.input-medium(type="text" name="QA40" placeholder="")
+  question
+    question_text A41. If claimant has deceased children, please provide details.
+    input.input-medium(type="text" name="QA41" placeholder="")
+  question
+    question_text 42. What is the claimant’s living situation?
+    label.checkbox: input(type="checkbox") Apartment
+    label.checkbox: input(type="checkbox") Home
+    label.checkbox: input(type="checkbox") Trailer
+    label.checkbox: input(type="checkbox") Public Housing
+    label.checkbox: input(type="checkbox") Homeless
+  question
+    question_text 42A. Does the claimant live alone?
+    label.checkbox: input(type="checkbox") lives alone
+    label.checkbox.checkbox_other: input(type="checkbox" prepend=true) lives with
+  question
+    question_text 42B. In what city does the claimant currently reside? Include state abbreviation.
+    input.input-medium(type="text" name="Q42B" placeholder="")
+  question
+    question_text 43. Does the family have a history of mental illness?
+    label.checkbox: input(type="checkbox") no family history of mental illness
+    label.checkbox.checkbox_other: input(type="checkbox") family has a history of
+  question
+    question_text 45. Was there a history of child abuse?
+    label.checkbox: input(type="checkbox") no
+    label.checkbox: input(type="checkbox") yes (enable 46 and 47)
+  question
+    question_text 46. If yes, what was the nature of the conflict?
+    input.input-medium(type="text" name="Q46" placeholder="")
+  question
+    question_text 47. Is the trauma resolved?
+    label.checkbox: input(type="checkbox") no
+    label.checkbox: input(type="checkbox") yes
 
-section_text EMPLOYMENT HISTORY
-question
-  question_text A52. Is the claimant currently employed?
-  label.checkbox: input(type="checkbox") No (enable A53-A56 and A184, A186)
-  label.checkbox: input(type="checkbox") Yes (enable A54-A56, and A186)
-  label.checkbox: input(type="checkbox") The claimant has no employment history.  (enable A53 and A184)
-question
-  question_text A53. If no, is the claimant currently looking for work?
-  label.checkbox: input(type="checkbox") no
-  label.checkbox: input(type="checkbox") yes
-question
-  question_text A184. How you would describe the claimant’s attitude regarding seeking employment?
-  label.checkbox: input(type="checkbox") positive
-  label.checkbox: input(type="checkbox") negative
-question
-  question_text A54. If applicable, what was the reason the claimant left the last place of employment?
-  input.input-medium(type="text" name="QA54" placeholder="")
-question
-  question_text A55. Please list all the jobs the claimant has held down.
-  section_text End Date
-  section_text Duration
-  section_text Employer
-  section_text Job Title/ Position
-  section_text Reason For Leaving
-  section_text
-  input.input-medium(type="text" name="QA55" placeholder="")
-  section_text
-  input.input-medium(type="text" name="QA55" placeholder="")
-  section_text
-  input.input-medium(type="text" name="QA55" placeholder="")
-  section_text
-  input.input-medium(type="text" name="QA55" placeholder="")
-  section_text
-  input.input-medium(type="text" name="QA55" placeholder="")
-  section_text
-  input.input-medium(type="text" name="QA55" placeholder="")
-  section_text
-  input.input-medium(type="text" name="QA55" placeholder="")
-  section_text
-  input.input-medium(type="text" name="QA55" placeholder="")
-  section_text
-  input.input-medium(type="text" name="QA55" placeholder="")
-  section_text
-  input.input-medium(type="text" name="QA55" placeholder="")
-  text (programmer: allow for additional rows on table if necessary)
-question
-  question_text A186. What is the claimant’s work history?
-  label.checkbox: input(type="checkbox") good
-  label.checkbox: input(type="checkbox") limited
-  label.checkbox: input(type="checkbox") no reported work history
-question
-  question_text A56. What are the reasons for the periods of unemployment?
-  input.input-medium(type="text" name="QA56" placeholder="")
+section#Employment-History
+  section_text Employment History
+  question
+    question_text A52. Is the claimant currently employed?
+    label.checkbox: input(type="checkbox") No (enable A53-A56 and A184, A186)
+    label.checkbox: input(type="checkbox") Yes (enable A54-A56, and A186)
+    label.checkbox: input(type="checkbox") The claimant has no employment history.  (enable A53 and A184)
+  question
+    question_text A53. If no, is the claimant currently looking for work?
+    label.checkbox: input(type="checkbox") no
+    label.checkbox: input(type="checkbox") yes
+  question
+    question_text A184. How you would describe the claimant’s attitude regarding seeking employment?
+    label.checkbox: input(type="checkbox") positive
+    label.checkbox: input(type="checkbox") negative
+  question
+    question_text A54. If applicable, what was the reason the claimant left the last place of employment?
+    input.input-medium(type="text" name="QA54" placeholder="")
+  question
+    question_text A55. Please list all the jobs the claimant has held down.
+    section_text End Date
+    section_text Duration
+    section_text Employer
+    section_text Job Title/ Position
+    section_text Reason For Leaving
+    section_text
+    input.input-medium(type="text" name="QA55" placeholder="")
+    section_text
+    input.input-medium(type="text" name="QA55" placeholder="")
+    section_text
+    input.input-medium(type="text" name="QA55" placeholder="")
+    section_text
+    input.input-medium(type="text" name="QA55" placeholder="")
+    section_text
+    input.input-medium(type="text" name="QA55" placeholder="")
+    section_text
+    input.input-medium(type="text" name="QA55" placeholder="")
+    section_text
+    input.input-medium(type="text" name="QA55" placeholder="")
+    section_text
+    input.input-medium(type="text" name="QA55" placeholder="")
+    section_text
+    input.input-medium(type="text" name="QA55" placeholder="")
+    section_text
+    input.input-medium(type="text" name="QA55" placeholder="")
+    text (programmer: allow for additional rows on table if necessary)
+  question
+    question_text A186. What is the claimant’s work history?
+    label.checkbox: input(type="checkbox") good
+    label.checkbox: input(type="checkbox") limited
+    label.checkbox: input(type="checkbox") no reported work history
+  question
+    question_text A56. What are the reasons for the periods of unemployment?
+    input.input-medium(type="text" name="QA56" placeholder="")
 
-section_text EDUCATIONAL HISTORY
-question
-  question_text 48. What was the last education level completed?
-  input.input-medium(type="text" name="Q48" placeholder="")
-question
-  question_text 49. What was the claimant’s academic performance?
-  label.checkbox: input(type="checkbox") Above average
-  label.checkbox: input(type="checkbox") Average
-  label.checkbox: input(type="checkbox") Below average
-question
-  question_text 49A. Please provide any additional relevant information about claimant’s academic performance.
-  input.input-medium(type="text" name="Q49A" placeholder="")
-question
-  question_text 50. Was the claimant enrolled in special education?
-  label.checkbox: input(type="checkbox") no
-  label.checkbox: input(type="checkbox") yes (enable 51)
-question
-  question_text 51. If yes, what were the subjects?
-  input.input-medium(type="text" name="Q51" placeholder="")
 
-section_text LEGAL/CRIMINAL HISTORY
-question
-  question_text A57. Has the claimant ever been arrested?
-  label.checkbox: input(type="checkbox") no  (disable the rest of this section)
-  label.checkbox: input(type="checkbox") yes (enable A57a-A60a)
-question
-  question_text A57A. If yes, what was the arrest for?
-  input.input-medium(type="text" name="QA57A" placeholder="")
-question
-  question_text A58. If yes, what was the date of the last arrest? Please enter in this format: Month Year.
-  input.input-medium(type="text" name="QA58" placeholder="")
-question
-  question_text A59. What was the outcome of the arrest?
-  input.input-medium(type="text" name="QA59" placeholder="")
-question
-  question_text A60. Has the claimant ever been incarcerated?
-  label.checkbox: input(type="checkbox") yes
-  label.checkbox: input(type="checkbox") no
-question
-  question_text A60A. If yes, how long was the incarceration?
-  input.input-medium(type="text" name="QA60A" placeholder="")
+section#Educational-History
+  section_text Educational History
+  question
+    question_text 48. What was the last education level completed?
+    input.input-medium(type="text" name="Q48" placeholder="")
+  question
+    question_text 49. What was the claimant’s academic performance?
+    label.checkbox: input(type="checkbox") Above average
+    label.checkbox: input(type="checkbox") Average
+    label.checkbox: input(type="checkbox") Below average
+  question
+    question_text 49A. Please provide any additional relevant information about claimant’s academic performance.
+    input.input-medium(type="text" name="Q49A" placeholder="")
+  question
+    question_text 50. Was the claimant enrolled in special education?
+    label.checkbox: input(type="checkbox") no
+    label.checkbox: input(type="checkbox") yes (enable 51)
+  question
+    question_text 51. If yes, what were the subjects?
+    input.input-medium(type="text" name="Q51" placeholder="")
 
-section_text MILITARY HISTORY
-question
-  question_text A61. Has the claimant served in the military?
-  label.checkbox: input(type="checkbox") no (disable the rest of this section)
-  label.checkbox: input(type="checkbox") yes (enable A62-A64)
-question
-  question_text A62. If yes, what are the dates of service?
-  input.input-medium(type="text" name="QA62" placeholder="") to
-  input.input-medium(type="text" name="QA62" placeholder="").
-question
-  question_text A63. What was the claimant’s highest rank?
-  input.input-medium(type="text" name="QA63" placeholder="")
-question
-  question_text A63A. Did the claimant receive any medals and/or ribbons?
-  label.checkbox: input(type="checkbox") yes
-  label.checkbox: input(type="checkbox") no
-question
-  question_text A63B. Was any disciplinary action (Article 15, Captain’s Mast) taken?
-  label.checkbox: input(type="checkbox") yes
-  label.checkbox: input(type="checkbox") no
-question
-  question_text A63C. Was the claimant honorably discharged?
-  label.checkbox: input(type="checkbox") yes
-  label.checkbox: input(type="checkbox") no
-question
-  question_text A64. Was the claimant deployed?
-  label.checkbox: input(type="checkbox") yes
-  label.checkbox: input(type="checkbox") no
 
-section_text MENTAL STATUS EXAMINATION
-section_text GENERAL APPEARANCE
-question
-  question_text 65. In relation to stated age, how did the claimant appear?
-  label.checkbox: input(type="checkbox") Older
-  label.checkbox: input(type="checkbox") The Same Age
-  label.checkbox: input(type="checkbox") Younger
-question
-  question_text 66. How was the claimant’s hygiene?
-  label.checkbox: input(type="checkbox") Good
-  label.checkbox: input(type="checkbox") Fair
-  label.checkbox: input(type="checkbox") Poor
-question
-  question_text 66A. Was the claimant groomed or unkempt?
-  label.checkbox: input(type="checkbox") Groomed
-  label.checkbox: input(type="checkbox") Unkempt
-question
-  question_text 67. In relation to height, what was the claimant’s build?
-  label.checkbox: input(type="checkbox") Obese
-  label.checkbox: input(type="checkbox") Overweight
-  label.checkbox: input(type="checkbox") Average
-  label.checkbox: input(type="checkbox") Slender
-  label.checkbox: input(type="checkbox") Underweight
-  label.checkbox.checkbox_other: input(type="checkbox") Other
-question
-  question_text 68. How was the claimant’s eye contact?
-  label.checkbox: input(type="checkbox") Good
-  label.checkbox: input(type="checkbox") Fair
-  label.checkbox: input(type="checkbox") Poor
-question
-  question_text 69. With respect to the material’s content, how were the claimant’s facial expressions?
-  label.checkbox: input(type="checkbox") Appropriate
-  label.checkbox: input(type="checkbox") Inappropriate
-  label.checkbox: input(type="checkbox") Nonexistent
-question
-  question_text 70. Were the claimant’s clothes presentable?
-  label.checkbox: input(type="checkbox") yes
-  label.checkbox: input(type="checkbox") no
-question
-  question_text 71. Describe the clothing.
-  input.input-medium(type="text" name="Q71" placeholder="")
-question
-  question_text 72. Was the clothing appropriate for the weather?
-  label.checkbox: input(type="checkbox") yes
-  label.checkbox: input(type="checkbox") no
-question
-  question_text 73. Was evidence of psychomotor agitation present?
-  label.checkbox: input(type="checkbox") no (disable 73a)
-  label.checkbox: input(type="checkbox") yes (enable 73a)
-question
-  question_text 73A. If yes, please provide examples.
-  input.input-medium(type="text" name="Q73A" placeholder="")
-question
-  question_text 73B. Was evidence of psychomotor retardation present?
-  label.checkbox: input(type="checkbox") no (disable 73c)
-  label.checkbox: input(type="checkbox") yes (enable 73c)
-question
-  question_text 73C. If yes, please provide examples.
-  input.input-medium(type="text" name="Q73C" placeholder="")
+section#Legal-Criminal-History
+  section_text Legal / Criminal History
+  question
+    question_text A57. Has the claimant ever been arrested?
+    label.checkbox: input(type="checkbox") no  (disable the rest of this section)
+    label.checkbox: input(type="checkbox") yes (enable A57a-A60a)
+  question
+    question_text A57A. If yes, what was the arrest for?
+    input.input-medium(type="text" name="QA57A" placeholder="")
+  question
+    question_text A58. If yes, what was the date of the last arrest? Please enter in this format: Month Year.
+    input.input-medium(type="text" name="QA58" placeholder="")
+  question
+    question_text A59. What was the outcome of the arrest?
+    input.input-medium(type="text" name="QA59" placeholder="")
+  question
+    question_text A60. Has the claimant ever been incarcerated?
+    label.checkbox: input(type="checkbox") yes
+    label.checkbox: input(type="checkbox") no
+  question
+    question_text A60A. If yes, how long was the incarceration?
+    input.input-medium(type="text" name="QA60A" placeholder="")
 
-section_text MENTAL STATUS EXAMINATION
-section_text ATTITUDE &amp; BEHAVIOR
-question
-  question_text 10. How was the claimant during the interview?
-  label.checkbox: input(type="checkbox") Cooperative
-  label.checkbox: input(type="checkbox") Difficult
-  label.checkbox: input(type="checkbox") Belligerent
-question
-  question_text 74. Was the claimant’s behavior pleasant?
-  label.checkbox: input(type="checkbox") normal#1yes
-  label.checkbox: input(type="checkbox") no
-  section_text DELETE #75.
-question
-  question_text 76. Describe the claimant’s attitude?
-  label.checkbox: input(type="checkbox") Positive
-  label.checkbox: input(type="checkbox") Negative
-question
-  question_text 77. Was there evidence of malingering or factitious behavior?
-  label.checkbox: input(type="checkbox") normal#1yes (enable 77a)
-  label.checkbox: input(type="checkbox") no  (disable 77a)
-question
-  question_text 77A. If yes, please describe.
-  input.input-medium(type="text" name="Q77A" placeholder="")
 
-section_text MENTAL STATUS EXAMINATION
-section_text MOOD/AFFECT
-question
-  question_text 88. What is claimant’s current mood?
-  input.input-medium(type="text" name="Q88" placeholder="")
-question
-  question_text 89. Was the claimant’s affect consistent with stated mood?
-  label.checkbox: input(type="checkbox") normal#1yes (disable 90)
-  label.checkbox: input(type="checkbox") no (enable 90)
-question
-  question_text 90. If no, how did the claimant appear?
-  input.input-medium(type="text" name="Q90" placeholder="")
-question
-  question_text 91. Regarding sleep, what does the claimant say? Select all that apply.
-  label.checkbox: input(type="checkbox") No problems
-  label.checkbox: input(type="checkbox") Difficulty falling asleep
-  label.checkbox: input(type="checkbox") Difficulty staying asleep
-  label.checkbox: input(type="checkbox") Sleeping too much
-  label.checkbox: input(type="checkbox") Persistent nightmares
-  label.checkbox.checkbox_other: input(type="checkbox") Other
-question
-  question_text 92. Regarding appetite, what does the claimant say? Select all that apply.
-  label.checkbox: input(type="checkbox") No problems
-  label.checkbox: input(type="checkbox") Lack of appetite
-  label.checkbox: input(type="checkbox") Easily forgets meals
-  label.checkbox: input(type="checkbox") Often over eats
-  label.checkbox.checkbox_other: input(type="checkbox") Other
+section#Military-History
+  section_text Military History
+  question
+    question_text A61. Has the claimant served in the military?
+    label.checkbox: input(type="checkbox") no (disable the rest of this section)
+    label.checkbox: input(type="checkbox") yes (enable A62-A64)
+  question
+    question_text A62. If yes, what are the dates of service?
+    input.input-medium(type="text" name="QA62" placeholder="") to
+    input.input-medium(type="text" name="QA62" placeholder="").
+  question
+    question_text A63. What was the claimant’s highest rank?
+    input.input-medium(type="text" name="QA63" placeholder="")
+  question
+    question_text A63A. Did the claimant receive any medals and/or ribbons?
+    label.checkbox: input(type="checkbox") yes
+    label.checkbox: input(type="checkbox") no
+  question
+    question_text A63B. Was any disciplinary action (Article 15, Captain’s Mast) taken?
+    label.checkbox: input(type="checkbox") yes
+    label.checkbox: input(type="checkbox") no
+  question
+    question_text A63C. Was the claimant honorably discharged?
+    label.checkbox: input(type="checkbox") yes
+    label.checkbox: input(type="checkbox") no
+  question
+    question_text A64. Was the claimant deployed?
+    label.checkbox: input(type="checkbox") yes
+    label.checkbox: input(type="checkbox") no
 
-section_text MENTAL STATUS EXAMINATION
-section_text CONTENT OF THOUGHT
-question
-  question_text 82. Does the claimant have auditory hallucinations?
-  label.checkbox: input(type="checkbox") normal#1yes (enable 83)
-  label.checkbox: input(type="checkbox") no (disable 83)
-question
-  question_text 83. If yes, describe hallucinations.
-  input.input-medium(type="text" name="Q83" placeholder="")
-question
-  question_text 84. Does the claimant have visual, tactile, or olfactory hallucinations?
-  label.checkbox: input(type="checkbox") normal#1yes (enable 85)
-  label.checkbox: input(type="checkbox") no (disable 85)
-question
-  question_text 85. If yes, describe hallucinations.
-  input.input-medium(type="text" name="Q85" placeholder="")
-question
-  question_text 86. Does the claimant have suicidal ideations?
-  label.checkbox: input(type="checkbox") yes (enable 86a)
-  label.checkbox: input(type="checkbox") no (disable 86a)
-question
-  question_text 86A. If yes, please provide details.
-  input.input-medium(type="text" name="Q86A" placeholder="")
-question
-  question_text 86B. Does the claimant have homicidal ideations?
-  label.checkbox: input(type="checkbox") normal#1yes (enable 86c)
-  label.checkbox: input(type="checkbox") no (disable 86c)
-question
-  question_text 86C. If yes, please provide details.
-  input.input-medium(type="text" name="Q86C" placeholder="")
-question
-  question_text 87. Does the claimant have delusions?
-  label.checkbox: input(type="checkbox") normal#1yes (enable 87a)
-  label.checkbox: input(type="checkbox") no (disable 87a)
-question
-  question_text 87A. If yes, please provide details.
-  input.input-medium(type="text" name="Q87A" placeholder="")
+section#Mental-Status-Examination
+  section_text Mental Status Examination - General Appearance
+  question
+    question_text 65. In relation to stated age, how did the claimant appear?
+    label.checkbox: input(type="checkbox") Older
+    label.checkbox: input(type="checkbox") The Same Age
+    label.checkbox: input(type="checkbox") Younger
+  question
+    question_text 66. How was the claimant’s hygiene?
+    label.checkbox: input(type="checkbox") Good
+    label.checkbox: input(type="checkbox") Fair
+    label.checkbox: input(type="checkbox") Poor
+  question
+    question_text 66A. Was the claimant groomed or unkempt?
+    label.checkbox: input(type="checkbox") Groomed
+    label.checkbox: input(type="checkbox") Unkempt
+  question
+    question_text 67. In relation to height, what was the claimant’s build?
+    label.checkbox: input(type="checkbox") Obese
+    label.checkbox: input(type="checkbox") Overweight
+    label.checkbox: input(type="checkbox") Average
+    label.checkbox: input(type="checkbox") Slender
+    label.checkbox: input(type="checkbox") Underweight
+    label.checkbox.checkbox_other: input(type="checkbox") Other
+  question
+    question_text 68. How was the claimant’s eye contact?
+    label.checkbox: input(type="checkbox") Good
+    label.checkbox: input(type="checkbox") Fair
+    label.checkbox: input(type="checkbox") Poor
+  question
+    question_text 69. With respect to the material’s content, how were the claimant’s facial expressions?
+    label.checkbox: input(type="checkbox") Appropriate
+    label.checkbox: input(type="checkbox") Inappropriate
+    label.checkbox: input(type="checkbox") Nonexistent
+  question
+    question_text 70. Were the claimant’s clothes presentable?
+    label.checkbox: input(type="checkbox") yes
+    label.checkbox: input(type="checkbox") no
+  question
+    question_text 71. Describe the clothing.
+    input.input-medium(type="text" name="Q71" placeholder="")
+  question
+    question_text 72. Was the clothing appropriate for the weather?
+    label.checkbox: input(type="checkbox") yes
+    label.checkbox: input(type="checkbox") no
+  question
+    question_text 73. Was evidence of psychomotor agitation present?
+    label.checkbox: input(type="checkbox") no (disable 73a)
+    label.checkbox: input(type="checkbox") yes (enable 73a)
+  question
+    question_text 73A. If yes, please provide examples.
+    input.input-medium(type="text" name="Q73A" placeholder="")
+  question
+    question_text 73B. Was evidence of psychomotor retardation present?
+    label.checkbox: input(type="checkbox") no (disable 73c)
+    label.checkbox: input(type="checkbox") yes (enable 73c)
+  question
+    question_text 73C. If yes, please provide examples.
+    input.input-medium(type="text" name="Q73C" placeholder="")
 
-section_text MENTAL STATUS EXAMINATION
-section_text STREAM OF MENTAL ACTIVITY/SPEECH
-question
-  question_text 78. Was the claimant’s speech logical and coherent?
-  label.checkbox: input(type="checkbox") yes (disable 78a)
-  label.checkbox: input(type="checkbox") no (enable 78a)
-question
-  question_text 78A. If no, please describe.
-  input.input-medium(type="text" name="Q78A" placeholder="")
-question
-  question_text 79. Describe the articulation.
-  label.checkbox: input(type="checkbox") Clear
-  label.checkbox: input(type="checkbox") Distorted
-  label.checkbox: input(type="checkbox") Garbled
-question
-  question_text 80. Describe the speech velocity.
-  label.checkbox: input(type="checkbox") High
-  label.checkbox: input(type="checkbox") Normal
-  label.checkbox: input(type="checkbox") Low
-question
-  question_text 81. Describe the speech volume.
-  label.checkbox: input(type="checkbox") High
-  label.checkbox: input(type="checkbox") Normal
-  label.checkbox: input(type="checkbox") Low
+  section_text Mental Status Examination - Attitude &amp; Behavior
+  question
+    question_text 10. How was the claimant during the interview?
+    label.checkbox: input(type="checkbox") Cooperative
+    label.checkbox: input(type="checkbox") Difficult
+    label.checkbox: input(type="checkbox") Belligerent
+  question
+    question_text 74. Was the claimant’s behavior pleasant?
+    label.checkbox: input(type="checkbox") normal#1yes
+    label.checkbox: input(type="checkbox") no
+    section_text DELETE #75.
+  question
+    question_text 76. Describe the claimant’s attitude?
+    label.checkbox: input(type="checkbox") Positive
+    label.checkbox: input(type="checkbox") Negative
+  question
+    question_text 77. Was there evidence of malingering or factitious behavior?
+    label.checkbox: input(type="checkbox") normal#1yes (enable 77a)
+    label.checkbox: input(type="checkbox") no  (disable 77a)
+  question
+    question_text 77A. If yes, please describe.
+    input.input-medium(type="text" name="Q77A" placeholder="")
 
-section_text INTELLECTUAL FUNCTIONING/SENSORIUM
-section_text ORIENTATION
-question
-  question_text 93. How was the claimant orientated?
-  label.checkbox: input(type="checkbox") None
-  label.checkbox: input(type="checkbox") x1 (enable 94-96)
-  label.checkbox: input(type="checkbox") x2 (enable 94-96)
-  label.checkbox: input(type="checkbox") x3
-  text If needed, complete the additional questions to provide more information.
-  text OPTIONAL: Only complete if needed for clarification
-question
-  question_text 94. Was the claimant orientated to person?
-  label.checkbox: input(type="checkbox") yes
-  label.checkbox.checkbox_other: input(type="checkbox" prepend=true) no,
-question
-  question_text 95. Was the claimant orientated to place?
-  label.checkbox: input(type="checkbox") yes
-  label.checkbox.checkbox_other: input(type="checkbox" prepend=true) no,
-question
-  question_text 96. Was the claimant orientated to time?
-  label.checkbox: input(type="checkbox") yes
-  label.checkbox.checkbox_other: input(type="checkbox" prepend=true) no,
+  section_text Mental Status Examination - Mood / Affect
+  question
+    question_text 88. What is claimant’s current mood?
+    input.input-medium(type="text" name="Q88" placeholder="")
+  question
+    question_text 89. Was the claimant’s affect consistent with stated mood?
+    label.checkbox: input(type="checkbox") normal#1yes (disable 90)
+    label.checkbox: input(type="checkbox") no (enable 90)
+  question
+    question_text 90. If no, how did the claimant appear?
+    input.input-medium(type="text" name="Q90" placeholder="")
+  question
+    question_text 91. Regarding sleep, what does the claimant say? Select all that apply.
+    label.checkbox: input(type="checkbox") No problems
+    label.checkbox: input(type="checkbox") Difficulty falling asleep
+    label.checkbox: input(type="checkbox") Difficulty staying asleep
+    label.checkbox: input(type="checkbox") Sleeping too much
+    label.checkbox: input(type="checkbox") Persistent nightmares
+    label.checkbox.checkbox_other: input(type="checkbox") Other
+  question
+    question_text 92. Regarding appetite, what does the claimant say? Select all that apply.
+    label.checkbox: input(type="checkbox") No problems
+    label.checkbox: input(type="checkbox") Lack of appetite
+    label.checkbox: input(type="checkbox") Easily forgets meals
+    label.checkbox: input(type="checkbox") Often over eats
+    label.checkbox.checkbox_other: input(type="checkbox") Other
 
-section_text INTELLECTUAL FUNCTIONING/SENSORIUM
-section_text PSYCHOLOGICAL TESTING
-question
-  question_text 98. Which tests did the claimant take? Select all that apply.
-  text Intellectual Ability (98a)
-  label.checkbox: input(type="checkbox") Wechsler Adult Intelligence Scale (WAIS-IV)
-  label.checkbox: input(type="checkbox") Woodcock Johnson III
-  label.checkbox: input(type="checkbox") Test of Nonverbal Intelligence (TONI-III)
-  label.checkbox: input(type="checkbox") Leiter International Performance Scale- Revised (Leiter-R)
-  label.checkbox: input(type="checkbox") Stanford Binet Intelligence Test
-  label.checkbox: input(type="checkbox") Raven Progressive Matrices
-  label.checkbox: input(type="checkbox") Leiter International Scale
-  label.checkbox: input(type="checkbox") DELETE THIS OPTION-Wechsler Intelligence Scale for Children (WISC-IV)
-  text Memory Functioning (98b)
-  label.checkbox: input(type="checkbox") Wechsler Memory Scale (WMS-IV)
-  label.checkbox: input(type="checkbox") Rey 15 Item Recognition Test
-  text Neuropsychological Tests (98c)
-  label.checkbox: input(type="checkbox") Trail Making A and B
-  label.checkbox: input(type="checkbox") Halstead-Reitan
-  label.checkbox: input(type="checkbox") Luria-Nebraska
-question
-  question_text 99. Describe the claimant’s testing behaviors.
-  input.input-medium(type="text" name="Q99" placeholder="")
+  section_text Mental Status Examination - Content of Thought
+  question
+    question_text 82. Does the claimant have auditory hallucinations?
+    label.checkbox: input(type="checkbox") normal#1yes (enable 83)
+    label.checkbox: input(type="checkbox") no (disable 83)
+  question
+    question_text 83. If yes, describe hallucinations.
+    input.input-medium(type="text" name="Q83" placeholder="")
+  question
+    question_text 84. Does the claimant have visual, tactile, or olfactory hallucinations?
+    label.checkbox: input(type="checkbox") normal#1yes (enable 85)
+    label.checkbox: input(type="checkbox") no (disable 85)
+  question
+    question_text 85. If yes, describe hallucinations.
+    input.input-medium(type="text" name="Q85" placeholder="")
+  question
+    question_text 86. Does the claimant have suicidal ideations?
+    label.checkbox: input(type="checkbox") yes (enable 86a)
+    label.checkbox: input(type="checkbox") no (disable 86a)
+  question
+    question_text 86A. If yes, please provide details.
+    input.input-medium(type="text" name="Q86A" placeholder="")
+  question
+    question_text 86B. Does the claimant have homicidal ideations?
+    label.checkbox: input(type="checkbox") normal#1yes (enable 86c)
+    label.checkbox: input(type="checkbox") no (disable 86c)
+  question
+    question_text 86C. If yes, please provide details.
+    input.input-medium(type="text" name="Q86C" placeholder="")
+  question
+    question_text 87. Does the claimant have delusions?
+    label.checkbox: input(type="checkbox") normal#1yes (enable 87a)
+    label.checkbox: input(type="checkbox") no (disable 87a)
+  question
+    question_text 87A. If yes, please provide details.
+    input.input-medium(type="text" name="Q87A" placeholder="")
 
-section_text INTELLECTUAL FUNCTIONING/SENSORIUM
-section_text PREPARATIONS FOR MEMORY QUESTIONS
-question
-  text * Please repeat these objects *
-  text LAMP, WATCH, and PEN
-  text * Remember them! *
-  text Check the box below to begin a 5-minute timer.
-  label.checkbox: input(type="checkbox") Timer (5 minutes)
-  text (Programmer: Please show question 122 at the end of the allotted time)
+  section_text Mental Status Examination - Stream of Mental Activity / Speech
+  question
+    question_text 78. Was the claimant’s speech logical and coherent?
+    label.checkbox: input(type="checkbox") yes (disable 78a)
+    label.checkbox: input(type="checkbox") no (enable 78a)
+  question
+    question_text 78A. If no, please describe.
+    input.input-medium(type="text" name="Q78A" placeholder="")
+  question
+    question_text 79. Describe the articulation.
+    label.checkbox: input(type="checkbox") Clear
+    label.checkbox: input(type="checkbox") Distorted
+    label.checkbox: input(type="checkbox") Garbled
+  question
+    question_text 80. Describe the speech velocity.
+    label.checkbox: input(type="checkbox") High
+    label.checkbox: input(type="checkbox") Normal
+    label.checkbox: input(type="checkbox") Low
+  question
+    question_text 81. Describe the speech volume.
+    label.checkbox: input(type="checkbox") High
+    label.checkbox: input(type="checkbox") Normal
+    label.checkbox: input(type="checkbox") Low
 
-section_text INTELLECTUAL FUNCTIONING/SENSORIUM
-section_text MEMORY
-section_text INDEX SCORES
-question
-  question_text 112. Please paste table of index scores from memory testing.
-  input.input-medium(type="text" name="Q112" placeholder="")
+section#Intellectual-Functioning-Sensorium
+  section_text Intellectual Functioning / Sensorium - Orientation
+  question
+    question_text 93. How was the claimant orientated?
+    label.checkbox: input(type="checkbox") None
+    label.checkbox: input(type="checkbox") x1 (enable 94-96)
+    label.checkbox: input(type="checkbox") x2 (enable 94-96)
+    label.checkbox: input(type="checkbox") x3
+    text If needed, complete the additional questions to provide more information.
+    text OPTIONAL: Only complete if needed for clarification
+  question
+    question_text 94. Was the claimant orientated to person?
+    label.checkbox: input(type="checkbox") yes
+    label.checkbox.checkbox_other: input(type="checkbox" prepend=true) no,
+  question
+    question_text 95. Was the claimant orientated to place?
+    label.checkbox: input(type="checkbox") yes
+    label.checkbox.checkbox_other: input(type="checkbox" prepend=true) no,
+  question
+    question_text 96. Was the claimant orientated to time?
+    label.checkbox: input(type="checkbox") yes
+    label.checkbox.checkbox_other: input(type="checkbox" prepend=true) no,
 
-section_text SUBTEST SCORES
-question
-  question_text 113. Please paste table of subtest scores from memory testing.
-  input.input-medium(type="text" name="Q113" placeholder="")
-question
-  question_text 114. Comments regarding this claimant’s performance on the memory testing.
-  input.input-medium(type="text" name="Q114" placeholder="")
-question
-  question_text 116. Regarding the claimant’s Delayed and Immediate Memory scores, please rate abilities. Please select all that apply.
-  label.checkbox: input(type="checkbox") very superior
-  label.checkbox: input(type="checkbox") superior
-  label.checkbox: input(type="checkbox") high average
-  label.checkbox: input(type="checkbox") average
-  label.checkbox: input(type="checkbox") low average
-  label.checkbox: input(type="checkbox") borderline
-  label.checkbox: input(type="checkbox") extremely low
-  label.checkbox: input(type="checkbox") consistent
-  label.checkbox: input(type="checkbox") inconsistent
+  section_text Intellectual Functioning / Sensorium - Psychological Testing
+  question
+    question_text 98. Which tests did the claimant take? Select all that apply.
+    text Intellectual Ability (98a)
+    label.checkbox: input(type="checkbox") Wechsler Adult Intelligence Scale (WAIS-IV)
+    label.checkbox: input(type="checkbox") Woodcock Johnson III
+    label.checkbox: input(type="checkbox") Test of Nonverbal Intelligence (TONI-III)
+    label.checkbox: input(type="checkbox") Leiter International Performance Scale- Revised (Leiter-R)
+    label.checkbox: input(type="checkbox") Stanford Binet Intelligence Test
+    label.checkbox: input(type="checkbox") Raven Progressive Matrices
+    label.checkbox: input(type="checkbox") Leiter International Scale
+    label.checkbox: input(type="checkbox") DELETE THIS OPTION-Wechsler Intelligence Scale for Children (WISC-IV)
+    text Memory Functioning (98b)
+    label.checkbox: input(type="checkbox") Wechsler Memory Scale (WMS-IV)
+    label.checkbox: input(type="checkbox") Rey 15 Item Recognition Test
+    text Neuropsychological Tests (98c)
+    label.checkbox: input(type="checkbox") Trail Making A and B
+    label.checkbox: input(type="checkbox") Halstead-Reitan
+    label.checkbox: input(type="checkbox") Luria-Nebraska
+  question
+    question_text 99. Describe the claimant’s testing behaviors.
+    input.input-medium(type="text" name="Q99" placeholder="")
 
-section_text REMOTE MEMORY (if using interview questions)
-question
-  question_text 121. Did the claimant remember autobiographical history and past events?
-  label.checkbox: input(type="checkbox") yes
-  label.checkbox: input(type="checkbox") no
+  section_text Intellectual Functioning / Sensorium - Preperations for Memory Questions
+  question
+    text * Please repeat these objects *
+    text LAMP, WATCH, and PEN
+    text * Remember them! *
+    text Check the box below to begin a 5-minute timer.
+    label.checkbox: input(type="checkbox") Timer (5 minutes)
+    text (Programmer: Please show question 122 at the end of the allotted time)
 
-section_text RECENT MEMORY
-question
-  question_text 122. How many objects did the claimant remember after 5-minutes?
-  label.checkbox: input(type="checkbox") 0
-  label.checkbox: input(type="checkbox") 1
-  label.checkbox: input(type="checkbox") 2
-  label.checkbox: input(type="checkbox") 3
+  section_text Intellectual Functioning / Sensorium - Memory Index Scores
+  question
+    question_text 112. Please paste table of index scores from memory testing.
+    input.input-medium(type="text" name="Q112" placeholder="")
 
-section_text IMMEDIATE MEMORY
-question
-  question_text 123. How many digits did the claimant remember forward and backward?
+  question
+    question_text 113. Please paste table of subtest scores from memory testing.
+    input.input-medium(type="text" name="Q113" placeholder="")
+  question
+    question_text 114. Comments regarding this claimant’s performance on the memory testing.
+    input.input-medium(type="text" name="Q114" placeholder="")
+  question
+    question_text 116. Regarding the claimant’s Delayed and Immediate Memory scores, please rate abilities. Please select all that apply.
+    label.checkbox: input(type="checkbox") very superior
+    label.checkbox: input(type="checkbox") superior
+    label.checkbox: input(type="checkbox") high average
+    label.checkbox: input(type="checkbox") average
+    label.checkbox: input(type="checkbox") low average
+    label.checkbox: input(type="checkbox") borderline
+    label.checkbox: input(type="checkbox") extremely low
+    label.checkbox: input(type="checkbox") consistent
+    label.checkbox: input(type="checkbox") inconsistent
+
+  text Remote Memory
+  question
+    question_text 121. Did the claimant remember autobiographical history and past events?
+    label.checkbox: input(type="checkbox") yes
+    label.checkbox: input(type="checkbox") no
+
+  text Recent Memory
+  question
+    question_text 122. How many objects did the claimant remember after 5-minutes?
+    label.checkbox: input(type="checkbox") 0
+    label.checkbox: input(type="checkbox") 1
+    label.checkbox: input(type="checkbox") 2
+    label.checkbox: input(type="checkbox") 3
+
+  text Immediate Memory
+  question
+    question_text 123. How many digits did the claimant remember forward and backward?
+    table
+      tr
+        th Digits Forward
+        th Last level completed?
+        th Digits Backward
+        th Last level completed?
+      tr
+        td 3-8-4-9
+        td: label.checkbox: input(type="checkbox") correct?
+        td 7-9-2
+        td: label.checkbox: input(type="checkbox") correct?
+      tr
+        td 6-7-4-3-1
+        td: label.checkbox: input(type="checkbox") correct?
+        td 6-5-1-3
+        td: label.checkbox: input(type="checkbox") correct?
+      tr
+        td 2-4-8-5-9-3
+        td: label.checkbox: input(type="checkbox") correct?
+        td 1-8-5-7-9
+        td: label.checkbox: input(type="checkbox") correct?
+      tr
+        td 4-7-9-3-1-2-8
+        td: label.checkbox: input(type="checkbox") correct?
+        td 2-4-8-1-3-7
+        td: label.checkbox: input(type="checkbox") correct?
+
+  question
+    question_text 123B. Given the claimant’s performance on these tasks, please rate their overall memory functions.
+    label.checkbox: input(type="checkbox") poor
+    label.checkbox: input(type="checkbox") fair
+    label.checkbox: input(type="checkbox") good
+    label.checkbox: input(type="checkbox") limited
+
+  section_text Intellectual Functioning / Sensorium - Intellectual Functioning Index Scores
+  question
+    question_text 100. Please paste table of index scores from intellectual testing.
+    input.input-medium(type="text" name="Q100" placeholder="")
+  question
+    question_text 101. Please paste table of subtest scores from intellectual testing.
+    input.input-medium(type="text" name="Q101" placeholder="")
+  question
+    question_text 102. Comments regarding this claimant’s performance on the intellectual testing.
+    input.input-medium(type="text" name="Q102" placeholder="")
+  question
+    question_text 200. What level is the claimant’s verbal comprehension skills (VCI)?
+    label.checkbox: input(type="checkbox") very superior
+    label.checkbox: input(type="checkbox") superior
+    label.checkbox: input(type="checkbox") high average
+    label.checkbox: input(type="checkbox") average
+    label.checkbox: input(type="checkbox") low average
+    label.checkbox: input(type="checkbox") borderline
+    label.checkbox: input(type="checkbox") extremely low
+  question
+    question_text 110. What is the claimant’s level of intellectual functioning?
+    label.checkbox: input(type="checkbox") Above average
+    label.checkbox: input(type="checkbox") Average
+    label.checkbox: input(type="checkbox") Below average
+
+  section_text Intellectual Functioning / Sensorium - Concentration
+  question
+    question_text 135. What level is the claimant’s working memory as indicated by the intelligence assessment?
+    label.checkbox: input(type="checkbox") very superior
+    label.checkbox: input(type="checkbox") superior
+    label.checkbox: input(type="checkbox") high average
+    label.checkbox: input(type="checkbox") average
+    label.checkbox: input(type="checkbox") low average
+    label.checkbox: input(type="checkbox") borderline
+    label.checkbox: input(type="checkbox") extremely low
+  question
+    question_text 135A. What is the index score for this assessment section?
+    input.input-medium(type="text" name="Q135A" placeholder="")
+    text INSTRUCTIONS: Three-step commands
+    text Ask “Which hand is your dominant hand?”
+    text Then state: Before you touch the top of your head with your dominant hand; first touch your left knee and then clap three times.”
+    text If they fail that prompt then use:  “After you touch your left knee and clap three times, touch the top of your head.”
+    text Note how many repetitions, if any.
+    text If you use the second one, note that claimant needed “2 repetitions and modification of instructions.”
+  question
+    question_text 136. Was the claimant able to complete 3-step commands?
+    label.checkbox: input(type="checkbox") yes, with no repetitions
+    label.checkbox: input(type="checkbox") yes, with one repetition
+    label.checkbox: input(type="checkbox") yes, with two repetitions
+    label.checkbox: input(type="checkbox") yes, with two repetitions and modification of the instructions
+    label.checkbox: input(type="checkbox") no even after several repetitions
+
+  section_text Intellectual Functioning / Sensorium - Spelling
+  question
+    question_text 137. Was the claimant able to spell WORLD forward?
+    label.checkbox: input(type="checkbox") yes
+    label.checkbox: input(type="checkbox") no
+  question
+    question_text 138. Was the claimant able to spell WORLD backward?
+    label.checkbox: input(type="checkbox") yes
+    label.checkbox: input(type="checkbox") no
+
+  section_text Intellectual Functioning / Sensorium - Fund of Knowledge / Information
+  question
+    question_text 125. What level is the claimant’s fund of knowledge as seen in the subtest Information?
+    label.checkbox: input(type="checkbox") very superior
+    label.checkbox: input(type="checkbox") superior
+    label.checkbox: input(type="checkbox") high average
+    label.checkbox: input(type="checkbox") average
+    label.checkbox: input(type="checkbox") low average
+    label.checkbox: input(type="checkbox") borderline
+    label.checkbox: input(type="checkbox") extremely low
+  question
+    question_text 126. What is the core test’s scaled score?
+    input.input-medium(type="text" name="Q126" placeholder="")
+  question
+    question_text 127. Is the claimant’s fund of knowledge consistent with education level and background?
+    label.checkbox: input(type="checkbox") yes
+    label.checkbox: input(type="checkbox") no
+  question
+    question_text 128. Is the claimant aware of current events?
+    label.checkbox: input(type="checkbox") yes
+    label.checkbox: input(type="checkbox") limited
+    label.checkbox: input(type="checkbox") no
+  question
+    question_text 129. Please ask and record the answers the following current event questions.
+    text What is the current president of the United State of America?
+    label.checkbox: input(type="checkbox") Correct Answer
+    text   What is the capital of this state?
+    label.checkbox: input(type="checkbox") Correct Answer
+    text Who is the governor of this state?
+    label.checkbox: input(type="checkbox") Correct Answer
+    text Which states border this state?
+    label.checkbox: input(type="checkbox") Correct Answer
+    text   How many eggs are in one dozen?
+    label.checkbox: input(type="checkbox") Correct Answer
+    text Why do we put food in the refrigerator?
+    label.checkbox: input(type="checkbox") Correct Answer
+
+  section_text Intellectual Functioning / Sensorium - Calculations
+  question
+    question_text 131. What level is the claimant’s ability to solve basic mathematical problems?
+    label.checkbox: input(type="checkbox") very superior
+    label.checkbox: input(type="checkbox") superior
+    label.checkbox: input(type="checkbox") high average
+    label.checkbox: input(type="checkbox") average
+    label.checkbox: input(type="checkbox") low average
+    label.checkbox: input(type="checkbox") borderline
+    label.checkbox: input(type="checkbox") extremely low
+  question
+    question_text 132. What is this core test’s scaled score?
+    input.input-medium(type="text" name="Q132" placeholder="")
+  question
+    question_text 133. Please ask the following questions and check the Correct Answer box if answered correctly.
+    table
+      tr
+        th Question
+        th Answer
+      tr
+        td $9 + $7 =
+        td: label.checkbox: input(type="checkbox") Correct Answer: $16
+      tr
+        td $23 – $10  =
+        td: label.checkbox: input(type="checkbox") Correct Answer: $13
+      tr
+        td $11 x 10 =
+        td: label.checkbox: input(type="checkbox") Correct Answer: $110
+      tr
+        td $9  3 =
+        td: label.checkbox: input(type="checkbox") Correct Answer: $3
+      tr
+        td 47c + 10c =
+        td: label.checkbox: input(type="checkbox") Correct Answer: 57c
+    
+  text Begin at 100 and subtract 7, and keep going until I say stop.
   table
     tr
-      th Digits Forward
-      th Last level completed?
-      th Digits Backward
-      th Last level completed?
-    tr
-      td 3-8-4-9
-      td: label.checkbox: input(type="checkbox") correct?
-      td 7-9-2
-      td: label.checkbox: input(type="checkbox") correct?
-    tr
-      td 6-7-4-3-1
-      td: label.checkbox: input(type="checkbox") correct?
-      td 6-5-1-3
-      td: label.checkbox: input(type="checkbox") correct?
-    tr
-      td 2-4-8-5-9-3
-      td: label.checkbox: input(type="checkbox") correct?
-      td 1-8-5-7-9
-      td: label.checkbox: input(type="checkbox") correct?
-    tr
-      td 4-7-9-3-1-2-8
-      td: label.checkbox: input(type="checkbox") correct?
-      td 2-4-8-1-3-7
-      td: label.checkbox: input(type="checkbox") correct?
-
-question
-  question_text 123B. Given the claimant’s performance on these tasks, please rate their overall memory functions.
-  label.checkbox: input(type="checkbox") poor
-  label.checkbox: input(type="checkbox") fair
-  label.checkbox: input(type="checkbox") good
-  label.checkbox: input(type="checkbox") limited
-
-section_text INTELLECTUAL FUNCTIONING/SENSORIUM
-section_text INTELLECTUAL FUNCTIONING
-section_text INDEX SCORES
-question
-  question_text 100. Please paste table of index scores from intellectual testing.
-  input.input-medium(type="text" name="Q100" placeholder="")
-
-section_text SUBTEST SCORES
-question
-  question_text 101. Please paste table of subtest scores from intellectual testing.
-  input.input-medium(type="text" name="Q101" placeholder="")
-question
-  question_text 102. Comments regarding this claimant’s performance on the intellectual testing.
-  input.input-medium(type="text" name="Q102" placeholder="")
-question
-  question_text 200. What level is the claimant’s verbal comprehension skills (VCI)?
-  label.checkbox: input(type="checkbox") very superior
-  label.checkbox: input(type="checkbox") superior
-  label.checkbox: input(type="checkbox") high average
-  label.checkbox: input(type="checkbox") average
-  label.checkbox: input(type="checkbox") low average
-  label.checkbox: input(type="checkbox") borderline
-  label.checkbox: input(type="checkbox") extremely low
-question
-  question_text 110. What is the claimant’s level of intellectual functioning?
-  label.checkbox: input(type="checkbox") Above average
-  label.checkbox: input(type="checkbox") Average
-  label.checkbox: input(type="checkbox") Below average
-
-section_text INTELLECTUAL FUNCTIONING/SENSORIUM
-section_text CONCENTRATION
-question
-  question_text 135. What level is the claimant’s working memory as indicated by the intelligence assessment?
-  label.checkbox: input(type="checkbox") very superior
-  label.checkbox: input(type="checkbox") superior
-  label.checkbox: input(type="checkbox") high average
-  label.checkbox: input(type="checkbox") average
-  label.checkbox: input(type="checkbox") low average
-  label.checkbox: input(type="checkbox") borderline
-  label.checkbox: input(type="checkbox") extremely low
-question
-  question_text 135A. What is the index score for this assessment section?
-  input.input-medium(type="text" name="Q135A" placeholder="")
-  text INSTRUCTIONS: Three-step commands
-  text Ask “Which hand is your dominant hand?”
-  text Then state: Before you touch the top of your head with your dominant hand; first touch your left knee and then clap three times.”
-  text If they fail that prompt then use:  “After you touch your left knee and clap three times, touch the top of your head.”
-  text Note how many repetitions, if any.
-  text If you use the second one, note that claimant needed “2 repetitions and modification of instructions.”
-question
-  question_text 136. Was the claimant able to complete 3-step commands?
-  label.checkbox: input(type="checkbox") yes, with no repetitions
-  label.checkbox: input(type="checkbox") yes, with one repetition
-  label.checkbox: input(type="checkbox") yes, with two repetitions
-  label.checkbox: input(type="checkbox") yes, with two repetitions and modification of the instructions
-  label.checkbox: input(type="checkbox") no even after several repetitions
-
-section_text SPELLING
-question
-  question_text 137. Was the claimant able to spell WORLD forward?
-  label.checkbox: input(type="checkbox") yes
-  label.checkbox: input(type="checkbox") no
-question
-  question_text 138. Was the claimant able to spell WORLD backward?
-  label.checkbox: input(type="checkbox") yes
-  label.checkbox: input(type="checkbox") no
-
-section_text INTELLECTUAL FUNCTIONING/SENSORIUM
-section_text FUND OF KNOWLEDGE/INFORMATION
-question
-  question_text 125. What level is the claimant’s fund of knowledge as seen in the subtest Information?
-  label.checkbox: input(type="checkbox") very superior
-  label.checkbox: input(type="checkbox") superior
-  label.checkbox: input(type="checkbox") high average
-  label.checkbox: input(type="checkbox") average
-  label.checkbox: input(type="checkbox") low average
-  label.checkbox: input(type="checkbox") borderline
-  label.checkbox: input(type="checkbox") extremely low
-question
-  question_text 126. What is the core test’s scaled score?
-  input.input-medium(type="text" name="Q126" placeholder="")
-question
-  question_text 127. Is the claimant’s fund of knowledge consistent with education level and background?
-  label.checkbox: input(type="checkbox") yes
-  label.checkbox: input(type="checkbox") no
-question
-  question_text 128. Is the claimant aware of current events?
-  label.checkbox: input(type="checkbox") yes
-  label.checkbox: input(type="checkbox") limited
-  label.checkbox: input(type="checkbox") no
-question
-  question_text 129. Please ask and record the answers the following current event questions.
-  text What is the current president of the United State of America?
-  label.checkbox: input(type="checkbox") Correct Answer
-  text   What is the capital of this state?
-  label.checkbox: input(type="checkbox") Correct Answer
-  text Who is the governor of this state?
-  label.checkbox: input(type="checkbox") Correct Answer
-  text Which states border this state?
-  label.checkbox: input(type="checkbox") Correct Answer
-  text   How many eggs are in one dozen?
-  label.checkbox: input(type="checkbox") Correct Answer
-  text Why do we put food in the refrigerator?
-  label.checkbox: input(type="checkbox") Correct Answer
-
-section_text INTELLECTUAL FUNCTIONING/SENSORIUM
-section_text CALCULATIONS
-question
-  question_text 131. What level is the claimant’s ability to solve basic mathematical problems?
-  label.checkbox: input(type="checkbox") very superior
-  label.checkbox: input(type="checkbox") superior
-  label.checkbox: input(type="checkbox") high average
-  label.checkbox: input(type="checkbox") average
-  label.checkbox: input(type="checkbox") low average
-  label.checkbox: input(type="checkbox") borderline
-  label.checkbox: input(type="checkbox") extremely low
-question
-  question_text 132. What is this core test’s scaled score?
-  input.input-medium(type="text" name="Q132" placeholder="")
-question
-  question_text 133. Please ask the following questions and check the Correct Answer box if answered correctly.
-  table
-    tr
-      th Question
+      th Series
       th Answer
     tr
-      td $9 + $7 =
-      td: label.checkbox: input(type="checkbox") Correct Answer: $16
+      td Serial 7’s
+      td Correct Answer: 100-93-86-79-72-65-58-51-44-37-30-23-16-9-2
     tr
-      td $23 – $10  =
-      td: label.checkbox: input(type="checkbox") Correct Answer: $13
-    tr
-      td $11 x 10 =
-      td: label.checkbox: input(type="checkbox") Correct Answer: $110
-    tr
-      td $9  3 =
-      td: label.checkbox: input(type="checkbox") Correct Answer: $3
-    tr
-      td 47c + 10c =
-      td: label.checkbox: input(type="checkbox") Correct Answer: 57c
-  text (This insert is generated using the number of Correct Answer boxes checked in the above table.)
-  text SERIALS
-  text Begin at 100 and subtract 7, and keep going until I say stop.
-  text Serial 7’s
-  text Correct Answer: 100-93-86-79-72-65-58-51-44-37-30-23-16-9-2
-  text Serial 3’s
-  text Correct Answer: 100-97-94-91-88-85-82 -79-76-73-70…
-question
-  question_text 133A. Was the claimant able to execute serial-7’s?
-  label.checkbox: input(type="checkbox") yes
-  label.checkbox: input(type="checkbox") yes, but made a few errors
-  label.checkbox: input(type="checkbox") no, the claimant completed serial-3’s accurately
-  label.checkbox: input(type="checkbox") no, the claimant was unable to execute serial-7s or serial-3
+      td Serial 3’s
+      td Correct Answer: 100-97-94-91-88-85-82-79-76-73-70-67-64-61-…
+  question
+    question_text 133A. Was the claimant able to execute serial-7’s?
+    label.checkbox: input(type="checkbox") yes
+    label.checkbox: input(type="checkbox") yes, but made a few errors
+    label.checkbox: input(type="checkbox") no, the claimant completed serial-3’s accurately
+    label.checkbox: input(type="checkbox") no, the claimant was unable to execute serial-7s or serial-3
 
-section_text WORD PROBLEMS
-question
-  text T-shirts are generally priced $5 each, but today, they are on sale.  T-shirts are priced 2 for $9, how much would 6 t-shirts cost? (
-  label.checkbox: input(type="checkbox") Correct Answer: $27
-  text A pack of chewing gum cost 99 cents.  There are 25 pieces of chewing gum in a pack.  How many pieces of gum are in six packs?
-  label.checkbox: input(type="checkbox") Correct Answer: 150
-  question_text 133B. Was the claimant able to correctly answer word problems?
-  label.checkbox: input(type="checkbox") yes
-  label.checkbox: input(type="checkbox") no
+  section_text Intellectual Functioning / Sensorium - Word Problems
+  question
+    table
+      tr
+        th Question
+        th Answer
+      tr
+        td T-shirts are generally priced $5 each, but today, they are on sale.  T-shirts are priced 2 for $9, how much would 6 t-shirts cost? (
+        td: label.checkbox: input(type="checkbox") Correct Answer: $27
+      tr
+        td A pack of chewing gum cost 99 cents.  There are 25 pieces of chewing gum in a pack.  How many pieces of gum are in six packs?
+        td: label.checkbox: input(type="checkbox") Correct Answer: 150
 
-section_text INTELLECTUAL FUNCTIONING/SENSORIUM
-section_text ABSTRACT THINKING  &amp; SIMILARITIES/DIFFERENCES
-question
-  question_text 144. What level is the claimant’s ability to think abstractly (Similarities)?
-  label.checkbox: input(type="checkbox") very superior
-  label.checkbox: input(type="checkbox") superior
-  label.checkbox: input(type="checkbox") high average
-  label.checkbox: input(type="checkbox") average
-  label.checkbox: input(type="checkbox") low average
-  label.checkbox: input(type="checkbox") borderline
-  label.checkbox: input(type="checkbox") extremely low
-question
-  question_text 145. What is the scaled score for this test?
-  input.input-medium(type="text" name="Q145" placeholder="")
-  text For the next four questions, the correct answer is provided; however, score similar responses appropriately.
-question
-  question_text 142. What does the proverb, “Time is golden,” mean?
-  label.checkbox: input(type="checkbox") Correct Answer: Precious.
-question
-  question_text 142A. What does the proverb, “Rome was not built in a day,” mean?
-  label.checkbox: input(type="checkbox") Correct Answer: Major growth takes time.
-question
-  question_text 146. What are the similarities and differences of “a boat and a car “?
-  label.checkbox: input(type="checkbox") Correct Answer: Both are transportation, but one is for water and the other land.
-question
-  question_text 146A. What are the similarities and differences of “a pen and a pencil”?
-  label.checkbox: input(type="checkbox") Correct Answer: Both are writing instruments, but one has ink and the other graphite or lead.
-question
-  question_text 146B. Automatically generated.
+    question_text 133B. Was the claimant able to correctly answer word problems?
+    label.checkbox: input(type="checkbox") yes
+    label.checkbox: input(type="checkbox") no
 
-section_text INTELLECTUAL FUNCTIONING/SENSORIUM
-section_text JUDGMENT/INSIGHT
-question
-  question_text 147. What is the claimant’s insight into own condition?
-  label.checkbox: input(type="checkbox") Good
-  label.checkbox: input(type="checkbox") Fair
-  label.checkbox: input(type="checkbox") Limited
-  label.checkbox: input(type="checkbox") Impaired
-  text For the next two questions, the correct answer is provided; however, score similar responses appropriately.
-question
-  question_text 150. What would the claimant do if the claimant smelled smoke in a crowded movie theater?
-  label.checkbox: input(type="checkbox") Correct Answer: Alert local authorities.
-  label.checkbox: input(type="checkbox") Incorrect Answer
-question
-  question_text 151. What would the claimant do if the claimant found a lost purse in a store?
-  label.checkbox: input(type="checkbox") Correct Answer: Turn in the purse to a store manager.
-  label.checkbox: input(type="checkbox") Incorrect Answer
-question
-  question_text 152. Automatically generated.
+  section_text Intellectual Functioning / Sensorium - Abstract Thinking
+  question
+    question_text 144. What level is the claimant’s ability to think abstractly (Similarities)?
+    label.checkbox: input(type="checkbox") very superior
+    label.checkbox: input(type="checkbox") superior
+    label.checkbox: input(type="checkbox") high average
+    label.checkbox: input(type="checkbox") average
+    label.checkbox: input(type="checkbox") low average
+    label.checkbox: input(type="checkbox") borderline
+    label.checkbox: input(type="checkbox") extremely low
+  question
+    question_text 145. What is the scaled score for this test?
+    input.input-medium(type="text" name="Q145" placeholder="")
+    text For the next four questions, the correct answer is provided; however, score similar responses appropriately.
+  question
+    question_text 142. What does the proverb, “Time is golden,” mean?
+    label.checkbox: input(type="checkbox") Correct Answer: Precious.
+  question
+    question_text 142A. What does the proverb, “Rome was not built in a day,” mean?
+    label.checkbox: input(type="checkbox") Correct Answer: Major growth takes time.
+  question
+    question_text 146. What are the similarities and differences of “a boat and a car “?
+    label.checkbox: input(type="checkbox") Correct Answer: Both are transportation, but one is for water and the other land.
+  question
+    question_text 146A. What are the similarities and differences of “a pen and a pencil”?
+    label.checkbox: input(type="checkbox") Correct Answer: Both are writing instruments, but one has ink and the other graphite or lead.
+  question
+    question_text 146B. Automatically generated.
 
-section_text INTELLECTUAL FUNCTIONING/SENSORIUM
-section_text NEUROPSYCHOLOGICAL TESTS
-question
-  question_text 149. Trail Making Tests
-  p The following is a chart containing the norms for this Trail making A &amp; B test. Please use the data to fill in the rows on the table for question 149. The numbers listed are in seconds.
-  table
-    tr
-      th(colspan=1) Percent.
-      th(colspan=2) Ages 20-39
-      th(colspan=2) Ages 40-49
-      th(colspan=2) Ages 50-59
-      th(colspan=2) Ages 60-69
-      th(colspan=2) Ages 70-79
-    tr
-      th Trails
-      th A
-      th B
-      th A
-      th B
-      th A
-      th B
-      th A
-      th B
-      th A
-      th B
-    tr
-      th 90
-      td 21
-      td 45
-      td 22
-      td 49
-      td 25
-      td 55
-      td 29
-      td 64
-      td 38
-      td 79
-    tr
-      th 75
-      td 26
-      td 55
-      td 28
-      td 57
-      td 29
-      td 75
-      td 35
-      td 89
-      td 54
-      td 132
-    tr
-      th 50
-      td 32
-      td 69
-      td 34
-      td 78
-      td 38
-      td 98
-      td 48
-      td 119
-      td 80
-      td 196
-    tr
-      th 25
-      td 42
-      td 94
-      td 45
-      td 100
-      td 49
-      td 135
-      td 67
-      td 172
-      td 105
-      td 292
-    tr
-      th 10
-      td 50
-      td 129
-      td 59
-      td 151
-      td 67
-      td 177
-      td 104
-      td 282
-      td 168
-      td 450
-  p
-  table
-    tr
-      th(colspan=5) TRAIL MAKING TESTS
-    tr
-      th Trails
-      th Seconds
-      th Errors
-      th Percentile Range
-      th Functioning
-    tr
-      th TRAIL A
-      td: input.input-medium(type="text" name="Q149_A1" placeholder="")
-      td: input.input-medium(type="text" name="Q149_A2" placeholder="")
-      td: input.input-medium(type="text" name="Q149_A3" placeholder="")
-      td: input.input-medium(type="text" name="Q149_A4" placeholder="")
-    tr
-      th TRAIL B
-      td: input.input-medium(type="text" name="Q149_B1" placeholder="")
-      td: input.input-medium(type="text" name="Q149_B2" placeholder="")
-      td: input.input-medium(type="text" name="Q149_B3" placeholder="")
-      td: input.input-medium(type="text" name="Q149_B4" placeholder="")
-question
-  question_text 302. Please discuss the findings of any neuropsychological testing administered.
-  input.input-medium(type="text" name="Q302" placeholder="")
+  section_text Intellectual Functioning / Sensorium - Judgement and Insight
+  question
+    question_text 147. What is the claimant’s insight into own condition?
+    label.checkbox: input(type="checkbox") Good
+    label.checkbox: input(type="checkbox") Fair
+    label.checkbox: input(type="checkbox") Limited
+    label.checkbox: input(type="checkbox") Impaired
+    text For the next two questions, the correct answer is provided; however, score similar responses appropriately.
+  question
+    question_text 150. What would the claimant do if the claimant smelled smoke in a crowded movie theater?
+    label.checkbox: input(type="checkbox") Correct Answer: Alert local authorities.
+    label.checkbox: input(type="checkbox") Incorrect Answer
+  question
+    question_text 151. What would the claimant do if the claimant found a lost purse in a store?
+    label.checkbox: input(type="checkbox") Correct Answer: Turn in the purse to a store manager.
+    label.checkbox: input(type="checkbox") Incorrect Answer
+  question
+    question_text 152. Automatically generated.
 
-section_text INTELLECTUAL FUNCTIONING/SENSORIUM
-section_text ADDITIONAL PSYCHOLOGICAL ASSESSMENTS
-question
-  question_text 303. Please select any additional testing that was requested an administered. Select all that apply.
-  text Personality and Behavior Assessments
-  label.checkbox: input(type="checkbox") Vineland Adaptive Behavior Scale
-  label.checkbox: input(type="checkbox") MMPI-2-RF
-  label.checkbox: input(type="checkbox") Rorschach
-  label.checkbox: input(type="checkbox") MCMI
-question
-  question_text 304. If a test is selected, please discuss the result here.
-  input.input-medium(type="text" name="Q304" placeholder="")
-question
-  question_text 305. Please select any additional testing that was requested an administered. Select all that apply.
-  text Malingering Measures
-  label.checkbox: input(type="checkbox") Test of Malingering Memory (TOMM)
-  label.checkbox: input(type="checkbox") Structured Interview of Malingering Symptoms (SIMS)
-  label.checkbox: input(type="checkbox") Miller Forensic Assessment of Symptoms Test (M-FAST)
-  label.checkbox: input(type="checkbox") Portland Digit Symbol Test
-  label.checkbox: input(type="checkbox") Validity Indicator Profile (VIP)
-question
-  question_text 306. If a test is selected, please discuss the result here.
-  input.input-medium(type="text" name="Q306" placeholder="")
+  section_text Intellectual Functioning / Sensorium - Neuropsychological Tests
+  question
+    question_text 149. Trail Making Tests
+    p The following is a chart containing the norms for this Trail making A &amp; B test. Please use the data to fill in the rows on the table for question 149. The numbers listed are in seconds.
+    table
+      tr
+        th(colspan=1) Percent.
+        th(colspan=2) Ages 20-39
+        th(colspan=2) Ages 40-49
+        th(colspan=2) Ages 50-59
+        th(colspan=2) Ages 60-69
+        th(colspan=2) Ages 70-79
+      tr
+        th Trails
+        th A
+        th B
+        th A
+        th B
+        th A
+        th B
+        th A
+        th B
+        th A
+        th B
+      tr
+        th 90
+        td 21
+        td 45
+        td 22
+        td 49
+        td 25
+        td 55
+        td 29
+        td 64
+        td 38
+        td 79
+      tr
+        th 75
+        td 26
+        td 55
+        td 28
+        td 57
+        td 29
+        td 75
+        td 35
+        td 89
+        td 54
+        td 132
+      tr
+        th 50
+        td 32
+        td 69
+        td 34
+        td 78
+        td 38
+        td 98
+        td 48
+        td 119
+        td 80
+        td 196
+      tr
+        th 25
+        td 42
+        td 94
+        td 45
+        td 100
+        td 49
+        td 135
+        td 67
+        td 172
+        td 105
+        td 292
+      tr
+        th 10
+        td 50
+        td 129
+        td 59
+        td 151
+        td 67
+        td 177
+        td 104
+        td 282
+        td 168
+        td 450
+    p
+    table
+      tr
+        th(colspan=5) TRAIL MAKING TESTS
+      tr
+        th Trails
+        th Seconds
+        th Errors
+        th Percentile Range
+        th Functioning
+      tr
+        th TRAIL A
+        td: input.input-medium(type="text" name="Q149_A1" placeholder="")
+        td: input.input-medium(type="text" name="Q149_A2" placeholder="")
+        td: input.input-medium(type="text" name="Q149_A3" placeholder="")
+        td: input.input-medium(type="text" name="Q149_A4" placeholder="")
+      tr
+        th TRAIL B
+        td: input.input-medium(type="text" name="Q149_B1" placeholder="")
+        td: input.input-medium(type="text" name="Q149_B2" placeholder="")
+        td: input.input-medium(type="text" name="Q149_B3" placeholder="")
+        td: input.input-medium(type="text" name="Q149_B4" placeholder="")
+  question
+    question_text 302. Please discuss the findings of any neuropsychological testing administered.
+    input.input-medium(type="text" name="Q302" placeholder="")
 
-section_text CURRENT LEVEL OF FUNCTIONING
-section_text ACTIVITIES OF DAILY LIVING
-question
-  question_text 153. What is the claimant’s typical day like?
-  input.input-medium(type="text" name="Q153" placeholder="")
-question
-  question_text A154. Which tasks does the claimant do alone? Select all that apply.
-  label.checkbox: input(type="checkbox") Cooking
-  label.checkbox: input(type="checkbox") Grocery shop
-  label.checkbox: input(type="checkbox") Self-care
-  label.checkbox: input(type="checkbox") Laundry
-  label.checkbox: input(type="checkbox") None
-question
-  question_text A155. Which tasks do the claimant require help to do? Select all that apply.
-  label.checkbox: input(type="checkbox") Cooking
-  label.checkbox: input(type="checkbox") Grocery shop
-  label.checkbox: input(type="checkbox") Self-care
-  label.checkbox: input(type="checkbox") Laundry
-  label.checkbox: input(type="checkbox") None
-question
-  question_text A155A. Who helps with these tasks?
-  input.input-medium(type="text" name="QA155A" placeholder="")
-question
-  question_text 156. Is the claimant able to complete ADLs efficiently?
-  label.checkbox: input(type="checkbox") yes
-  label.checkbox.checkbox_other: input(type="checkbox") no,
-question
-  question_text A156A. Is the claimant able to handle personal funds?
-  label.checkbox: input(type="checkbox") yes
-  label.checkbox: input(type="checkbox") no (show A156a)
-question
-  question_text A156B. If no, who handles this for the claimant?
-  input.input-medium(type="text" name="QA156B" placeholder="")
+  section_text Intellectual Functioning / Sensorium - Additional Psychological Assessments
+  question
+    question_text 303. Please select any additional testing that was requested an administered. Select all that apply.
+    text Personality and Behavior Assessments
+    label.checkbox: input(type="checkbox") Vineland Adaptive Behavior Scale
+    label.checkbox: input(type="checkbox") MMPI-2-RF
+    label.checkbox: input(type="checkbox") Rorschach
+    label.checkbox: input(type="checkbox") MCMI
+  question
+    question_text 304. If a test is selected, please discuss the result here.
+    input.input-medium(type="text" name="Q304" placeholder="")
+  question
+    question_text 305. Please select any additional testing that was requested an administered. Select all that apply.
+    text Malingering Measures
+    label.checkbox: input(type="checkbox") Test of Malingering Memory (TOMM)
+    label.checkbox: input(type="checkbox") Structured Interview of Malingering Symptoms (SIMS)
+    label.checkbox: input(type="checkbox") Miller Forensic Assessment of Symptoms Test (M-FAST)
+    label.checkbox: input(type="checkbox") Portland Digit Symbol Test
+    label.checkbox: input(type="checkbox") Validity Indicator Profile (VIP)
+  question
+    question_text 306. If a test is selected, please discuss the result here.
+    input.input-medium(type="text" name="Q306" placeholder="")
 
-section_text CURRENT LEVEL OF FUNCTIONING
-section_text SOCIAL FUNCTIONING
-question
-  question_text A157. Does the claimant have social friends?
-  label.checkbox: input(type="checkbox") no (enable A157a)
-  label.checkbox: input(type="checkbox") yes, the number of social friends is
-  input.input-medium(type="text" name="QA157" placeholder="") (enable A157b)
-question
-  question_text A157A. If no, is the claimant isolated from people?
-  label.checkbox: input(type="checkbox") yes
-  label.checkbox: input(type="checkbox") no
-question
-  question_text A157B. If yes, please add detail.
-  input.input-medium(type="text" name="QA157B" placeholder="")
-question
-  question_text 158. Is the claimant a member of an organized group?
-  label.checkbox: input(type="checkbox") no
-  label.checkbox: input(type="checkbox") yes
-question
-  question_text 159. Does the claimant participate in recreational activities?
-  label.checkbox: input(type="checkbox") yes
-  label.checkbox: input(type="checkbox") no
-question
-  question_text 159A. Is a house of worship regularly attended?
-  label.checkbox: input(type="checkbox") yes
-  label.checkbox: input(type="checkbox") no
-question
-  question_text 160. Does the claimant have a history of violence?
-  label.checkbox: input(type="checkbox") yes (enable 160a)
-  label.checkbox: input(type="checkbox") no
-question
-  question_text 160A. If yes, please describe?
-  input.input-medium(type="text" name="Q160A" placeholder="")
-question
-  question_text 181. How is the claimant’s support system?
-  label.checkbox: input(type="checkbox") Good
-  label.checkbox: input(type="checkbox") Fair
-  label.checkbox: input(type="checkbox") Limited
-  label.checkbox: input(type="checkbox") Poor
-question
-  question_text 181A. Who is included in the support system?
-  input.input-medium(type="text" name="Q181A" placeholder="")
-question
-  question_text 299. How are the claimant’s social and interpersonal relationships?
-  label.checkbox: input(type="checkbox") good
-  label.checkbox: input(type="checkbox") fair
-  label.checkbox: input(type="checkbox") poor
-question
-  question_text 300. Did the claimant act appropriately with the provider and office staff?
-  label.checkbox: input(type="checkbox") yes
-  label.checkbox: input(type="checkbox") no (enable 301)
-question
-  question_text 301. Please explain any inappropriate behavior.
-  input.input-medium(type="text" name="Q301" placeholder="")
+section#Current-Level-of-Functioning
+  section_text Current Level of Functioning - Activities of Daily Living
+  question
+    question_text 153. What is the claimant’s typical day like?
+    input.input-medium(type="text" name="Q153" placeholder="")
+  question
+    question_text A154. Which tasks does the claimant do alone? Select all that apply.
+    label.checkbox: input(type="checkbox") Cooking
+    label.checkbox: input(type="checkbox") Grocery shop
+    label.checkbox: input(type="checkbox") Self-care
+    label.checkbox: input(type="checkbox") Laundry
+    label.checkbox: input(type="checkbox") None
+  question
+    question_text A155. Which tasks do the claimant require help to do? Select all that apply.
+    label.checkbox: input(type="checkbox") Cooking
+    label.checkbox: input(type="checkbox") Grocery shop
+    label.checkbox: input(type="checkbox") Self-care
+    label.checkbox: input(type="checkbox") Laundry
+    label.checkbox: input(type="checkbox") None
+  question
+    question_text A155A. Who helps with these tasks?
+    input.input-medium(type="text" name="QA155A" placeholder="")
+  question
+    question_text 156. Is the claimant able to complete ADLs efficiently?
+    label.checkbox: input(type="checkbox") yes
+    label.checkbox.checkbox_other: input(type="checkbox") no,
+  question
+    question_text A156A. Is the claimant able to handle personal funds?
+    label.checkbox: input(type="checkbox") yes
+    label.checkbox: input(type="checkbox") no (show A156a)
+  question
+    question_text A156B. If no, who handles this for the claimant?
+    input.input-medium(type="text" name="QA156B" placeholder="")
 
-section_text CURRENT LEVEL OF FUNCTIONING
-section_text CONCENTRATION, PERSISTANCE &amp; PACE
-question
-  question_text A161. Please provide the length of time (in minutes) the claimant participates in the following activities per day. Also, enter one of the claimant’s hobbies and the length of time the claimant can sustain the activity. If duration is listed, please provide a unit of time.
-  table
-    tr
-      th Activity
-      th Remarks
-      th Activity
-      th Remarks
-    tr
-      td Reading
-      td: input.input-medium(type="text" name="QA161" placeholder="")
-      td Watch TV
-      td: input.input-medium(type="text" name="QA161" placeholder="")
-    tr
-      td Walking
-      td: input.input-medium(type="text" name="QA161" placeholder="")
-      td Driving
-      td: input.input-medium(type="text" name="QA161" placeholder="")
-    tr
-      td Standing
-      td: input.input-medium(type="text" name="QA161" placeholder="")
-      td Cooking
-      td: input.input-medium(type="text" name="QA161" placeholder="")
-    tr
-      td Computer
-      td: input.input-medium(type="text" name="QA161" placeholder="")
-      td Laundry
-      td: input.input-medium(type="text" name="QA161" placeholder="")
-    tr
-      td Hobby
-      td: input.input-medium(type="text" name="QA161" placeholder="")
-      td Grocery shopping
-      td: input.input-medium(type="text" name="QA161" placeholder="")
+  section_text Current Level of Functioning - Social Functioning
+  question
+    question_text A157. Does the claimant have social friends?
+    label.checkbox: input(type="checkbox") no (enable A157a)
+    label.checkbox: input(type="checkbox") yes, the number of social friends is
+    input.input-medium(type="text" name="QA157" placeholder="") (enable A157b)
+  question
+    question_text A157A. If no, is the claimant isolated from people?
+    label.checkbox: input(type="checkbox") yes
+    label.checkbox: input(type="checkbox") no
+  question
+    question_text A157B. If yes, please add detail.
+    input.input-medium(type="text" name="QA157B" placeholder="")
+  question
+    question_text 158. Is the claimant a member of an organized group?
+    label.checkbox: input(type="checkbox") no
+    label.checkbox: input(type="checkbox") yes
+  question
+    question_text 159. Does the claimant participate in recreational activities?
+    label.checkbox: input(type="checkbox") yes
+    label.checkbox: input(type="checkbox") no
+  question
+    question_text 159A. Is a house of worship regularly attended?
+    label.checkbox: input(type="checkbox") yes
+    label.checkbox: input(type="checkbox") no
+  question
+    question_text 160. Does the claimant have a history of violence?
+    label.checkbox: input(type="checkbox") yes (enable 160a)
+    label.checkbox: input(type="checkbox") no
+  question
+    question_text 160A. If yes, please describe?
+    input.input-medium(type="text" name="Q160A" placeholder="")
+  question
+    question_text 181. How is the claimant’s support system?
+    label.checkbox: input(type="checkbox") Good
+    label.checkbox: input(type="checkbox") Fair
+    label.checkbox: input(type="checkbox") Limited
+    label.checkbox: input(type="checkbox") Poor
+  question
+    question_text 181A. Who is included in the support system?
+    input.input-medium(type="text" name="Q181A" placeholder="")
+  question
+    question_text 299. How are the claimant’s social and interpersonal relationships?
+    label.checkbox: input(type="checkbox") good
+    label.checkbox: input(type="checkbox") fair
+    label.checkbox: input(type="checkbox") poor
+  question
+    question_text 300. Did the claimant act appropriately with the provider and office staff?
+    label.checkbox: input(type="checkbox") yes
+    label.checkbox: input(type="checkbox") no (enable 301)
+  question
+    question_text 301. Please explain any inappropriate behavior.
+    input.input-medium(type="text" name="Q301" placeholder="")
 
-section_text CURRENT LEVEL OF FUNCTIONING
-section_text DECOMPENSATION &amp; DETERIORATION
-question
-  question_text 167. Is there evidence of deterioration and decompensation in the work place? For children, this would read “in school?”
-  label.checkbox: input(type="checkbox") yes (enable 168)
-  label.checkbox: input(type="checkbox") no (disable 168)
-question
-  question_text 168. If yes, where is the deterioration and decompensation seen or evidenced by?
-  label.checkbox: input(type="checkbox") Voluntary psychiatric commitment
-  label.checkbox: input(type="checkbox") Difficulty getting along with coworkers
-  label.checkbox: input(type="checkbox") Taking a leave of absence to manage mental illness
-  label.checkbox: input(type="checkbox") Frequent involvement with law enforcement
-  label.checkbox: input(type="checkbox") Behavioral disturbances
-  label.checkbox.checkbox_other: input(type="checkbox") Other
-question
-  question_text 169. Has the claimant’s ability to work been impacted by physical and mental limitations?
-  label.checkbox: input(type="checkbox") yes
-  label.checkbox: input(type="checkbox") no
-question
-  question_text 170. What are the new difficulties reported by claimant? Select all that apply.
-  label.checkbox: input(type="checkbox") Sustaining concentration and attention
-  label.checkbox: input(type="checkbox") Remembering information
-  label.checkbox: input(type="checkbox") Making good judgments at work
-  label.checkbox: input(type="checkbox") Following multi-step directions
-  label.checkbox: input(type="checkbox") Socializing with friends
-  label.checkbox: input(type="checkbox") Motivation
-  label.checkbox: input(type="checkbox") Fatigue
-  label.checkbox: input(type="checkbox") Apathy
-  label.checkbox: input(type="checkbox") Behavioral problems
-  label.checkbox: input(type="checkbox") Insomnia
-  label.checkbox: input(type="checkbox") Poor appetite
-  label.checkbox: input(type="checkbox") Inability to complete ADLS in a timely manner
-  label.checkbox: input(type="checkbox") Suicidal ideations
-  label.checkbox: input(type="checkbox") Hallucinations
-  label.checkbox: input(type="checkbox") Delusions
-  label.checkbox: input(type="checkbox") Blurred vision
-  label.checkbox: input(type="checkbox") Lower back pain
-  label.checkbox.checkbox_other: input(type="checkbox") Other
+  section_text Current Level of Functioning - Concentration, Persistance, and Pace
+  question
+    question_text A161. Please provide the length of time (in minutes) the claimant participates in the following activities per day. Also, enter one of the claimant’s hobbies and the length of time the claimant can sustain the activity. If duration is listed, please provide a unit of time.
+    table
+      tr
+        th Activity
+        th Remarks
+        th Activity
+        th Remarks
+      tr
+        td Reading
+        td: input.input-medium(type="text" name="QA161" placeholder="")
+        td Watch TV
+        td: input.input-medium(type="text" name="QA161" placeholder="")
+      tr
+        td Walking
+        td: input.input-medium(type="text" name="QA161" placeholder="")
+        td Driving
+        td: input.input-medium(type="text" name="QA161" placeholder="")
+      tr
+        td Standing
+        td: input.input-medium(type="text" name="QA161" placeholder="")
+        td Cooking
+        td: input.input-medium(type="text" name="QA161" placeholder="")
+      tr
+        td Computer
+        td: input.input-medium(type="text" name="QA161" placeholder="")
+        td Laundry
+        td: input.input-medium(type="text" name="QA161" placeholder="")
+      tr
+        td Hobby
+        td: input.input-medium(type="text" name="QA161" placeholder="")
+        td Grocery shopping
+        td: input.input-medium(type="text" name="QA161" placeholder="")
 
-section_text DSM-IV DIAGNOSIS
-question
-  question_text 162. What is the claimant’s Axis I diagnosis? Select all that apply.
-  label.checkbox: input(type="checkbox") DELETE-Bipolar I Disorder
-  label.checkbox: input(type="checkbox") 290.10 Dementia of the Alzheimer's Type, With Early Onset, Uncomplicated
-  label.checkbox: input(type="checkbox") 290.11 Dementia of the Alzheimer's Type, With Early Onset, With Delirium
-  label.checkbox: input(type="checkbox") 290.12 Dementia of the Alzheimer's Type, With Early Onset, With Delusions
-  label.checkbox: input(type="checkbox") 290.13 Dementia of the Alzheimer's Type, With Early Onset, With Depressed Mood
-  label.checkbox: input(type="checkbox") 290.20 Dementia of the Alzheimer's Type, With Late Onset, With Delusions
-  label.checkbox: input(type="checkbox") 290.21 Dementia of the Alzheimer's Type, With Late Onset, With Depressed Mood
-  label.checkbox: input(type="checkbox") 290.3 Dementia of the Alzheimer's Type, With Late Onset, With Delirium
-  label.checkbox: input(type="checkbox") 296.80 Bipolar Disorder NOS
-  label.checkbox: input(type="checkbox") 296.56 Bipolar I Disorder, most recent episode depressed, in full remission
-  label.checkbox: input(type="checkbox") 296.55 Bipolar I Disorder, most recent episode depressed, in partial remission
-  label.checkbox: input(type="checkbox") 296.51 Bipolar I Disorder, most recent episode depressed, mild
-  label.checkbox: input(type="checkbox") 296.52 Bipolar I Disorder, most recent episode depressed, moderate
-  label.checkbox: input(type="checkbox") 296.53 Bipolar I Disorder, most recent episode depressed, severe without psychotic features
-  label.checkbox: input(type="checkbox") 296.54 Bipolar I Disorder, most recent episode depressed, severe with psychotic features
-  label.checkbox: input(type="checkbox") 296.50 Bipolar I Disorder, most recent episode depressed, unspecified
-  label.checkbox: input(type="checkbox") 296.40 Bipolar I Disorder, most recent episode hypomanic
-  label.checkbox: input(type="checkbox") 296.46 Bipolar I Disorder, most recent episode manic, in full remission
-  label.checkbox: input(type="checkbox") 296.45 Bipolar I Disorder, most recent episode manic, in partial remission
-  label.checkbox: input(type="checkbox") 296.41 Bipolar I Disorder, most recent episode manic, mild
-  label.checkbox: input(type="checkbox") 296.42 Bipolar I Disorder, most recent episode manic, moderate
-  label.checkbox: input(type="checkbox") 296.43 Bipolar I Disorder, most recent episode manic, severe without psychotic features
-  label.checkbox: input(type="checkbox") 296.44 Bipolar I Disorder, most recent episode manic, severe with psychotic features
-  label.checkbox: input(type="checkbox") 296.40 Bipolar I Disorder, most recent episode manic, unspecified
-  label.checkbox: input(type="checkbox") 296.66 Bipolar I Disorder, most recent episode mixed, in full remission
-  label.checkbox: input(type="checkbox") 296.65 Bipolar I Disorder, most recent episode mixed, in partial remission
-  label.checkbox: input(type="checkbox") 296.61 Bipolar I Disorder, most recent episode mixed, mild
-  label.checkbox: input(type="checkbox") 296.62 Bipolar I Disorder, most recent episode mixed, moderate
-  label.checkbox: input(type="checkbox") 296.63 Bipolar I Disorder, most recent episode mixed, severe without psychotic features
-  label.checkbox: input(type="checkbox") 296.64 Bipolar I Disorder, most recent episode mixed, severe with psychotic features
-  label.checkbox: input(type="checkbox") 296.60 Bipolar I Disorder, most recent episode mixed, unspecified
-  label.checkbox: input(type="checkbox") 296.7 Bipolar I Disorder, most recent episode unspecified
-  label.checkbox: input(type="checkbox") 296.06 Bipolar I Disorder, single manic episode, in full remission
-  label.checkbox: input(type="checkbox") 296.05 Bipolar I Disorder, single manic episode, in partial remission
-  label.checkbox: input(type="checkbox") 296.01 Bipolar I Disorder, single manic episode, mild
-  label.checkbox: input(type="checkbox") 296.02 Bipolar I Disorder, single manic episode, moderate
-  label.checkbox: input(type="checkbox") 296.03 Bipolar I Disorder, single manic episode, severe without psychotic features
-  label.checkbox: input(type="checkbox") 296.04 Bipolar I Disorder, single manic episode, severe with psychotic features
-  label.checkbox: input(type="checkbox") 296.00 Bipolar I Disorder, single manic episode, unspecified
-  label.checkbox: input(type="checkbox") 294.9 Cognitive Disorder NOS
-  label.checkbox: input(type="checkbox") 295.20 Schizophrenia, Catatonic Type
-  label.checkbox: input(type="checkbox") 295.10 Schizophrenia, Disorganized Type
-  label.checkbox: input(type="checkbox") 295.30 Schizophrenia, Paranoid Type
-  label.checkbox: input(type="checkbox") 295.60 Schizophrenia, Residual Type
-  label.checkbox: input(type="checkbox") 295.90 Schizophrenia, Undifferentiated Type
-  label.checkbox: input(type="checkbox") 295.70 Schizoaffective Disorder
-  label.checkbox: input(type="checkbox") 296.20 Major Depressive Disorder, Single Episode, unspecified
-  label.checkbox: input(type="checkbox") 296.21 Major Depressive Disorder, Single Episode, Mild
-  label.checkbox: input(type="checkbox") 296.22 Major Depressive Disorder, Single Episode, Moderate
-  label.checkbox: input(type="checkbox") 296.23 Major Depressive Disorder, Single Episode, Severe without psychotic features
-  label.checkbox: input(type="checkbox") 296.24 Major Depressive Disorder, Single Episode, Severe with psychotic features
-  label.checkbox: input(type="checkbox") 296.25 Major Depressive Disorder, Single Episode, in partial remission
-  label.checkbox: input(type="checkbox") 296.26 Major Depressive Disorder, Single Episode, in full remission
-  label.checkbox: input(type="checkbox") 296.30 Major Depressive Disorder, Recurrent, unspecified
-  label.checkbox: input(type="checkbox") 296.31 Major Depressive Disorder, Recurrent, Mild
-  label.checkbox: input(type="checkbox") 296.32 Major Depressive Disorder, Recurrent, Moderate
-  label.checkbox: input(type="checkbox") 296.33 Major Depressive Disorder Recurrent, Severe without psychotic features
-  label.checkbox: input(type="checkbox") 296.34 Major Depressive Disorder, Recurrent, Severe with psychotic features
-  label.checkbox: input(type="checkbox") 296.35 Major Depressive Disorder, Recurrent, in partial remission
-  label.checkbox: input(type="checkbox") 296.36 Major Depressive Disorder, Recurrent, in full remission
-  label.checkbox: input(type="checkbox") 296.89 Bipolar II Disorder
-  label.checkbox: input(type="checkbox") 299.00 Autistic Disorder
-  label.checkbox: input(type="checkbox") 300.01 Panic Disorder without Agoraphobia
-  label.checkbox: input(type="checkbox") 300.02 Generalized Anxiety Disorder
-  label.checkbox: input(type="checkbox") 300.21 Panic Disorder with Agoraphobia
-  label.checkbox: input(type="checkbox") 300.3 Obsessive-compulsive Disorder
-  label.checkbox: input(type="checkbox") 300.4 Dysthymic Disorder
-  label.checkbox: input(type="checkbox") 307.1 Anorexia nervosa
-  label.checkbox: input(type="checkbox") 309.81 Posttraumatic Stress Disorder
-  label.checkbox: input(type="checkbox") 310.2 Postconcussion Syndrome
-  label.checkbox: input(type="checkbox") 314.00 Attention Deficit/Hyperactivity Disorder, Predominantly Inattentive Type
-  label.checkbox: input(type="checkbox") 314.01 Attention Deficit/Hyperactivity Disorder, Combined Type
-  label.checkbox: input(type="checkbox") 314.01 Attention Deficit/Hyperactivity Disorder, Predominantly Hyperactive-Impulsive  Type
-  label.checkbox: input(type="checkbox") 314.9 Attention Deficit/Hyperactivity Disorder NOS
-  label.checkbox: input(type="checkbox") 315.00 Reading Disorder
-  label.checkbox: input(type="checkbox") 315.1 Mathematics Disorder
-  label.checkbox: input(type="checkbox") 315.2 Disorder of Written Expression
-  label.checkbox: input(type="checkbox") 315.9 Learning Disorder NOS
-  label.checkbox.checkbox_other: input(type="checkbox") Other
-question
-  question_text 163. Axis II: Please select from the following choices.
-  label.checkbox: input(type="checkbox") No diagnosis
-  label.checkbox: input(type="checkbox") 301.0 Paranoid Personality Disorder
-  label.checkbox: input(type="checkbox") 301.20 Schizoid Personality Disorder
-  label.checkbox: input(type="checkbox") 301.22 Schizotypal Personality Disorder
-  label.checkbox: input(type="checkbox") 301.7 Antisocial Personality Disorder
-  label.checkbox: input(type="checkbox") 301.83 Borderline Personality Disorder
-  label.checkbox: input(type="checkbox") 301.50 Histrionic Personality Disorder
-  label.checkbox: input(type="checkbox") 301.81 Narcissistic Personality Disorder
-  label.checkbox: input(type="checkbox") 301.82 Avoidant Personality Disorder
-  label.checkbox: input(type="checkbox") 301.6 Dependent Personality Disorder
-  label.checkbox: input(type="checkbox") 301.4 Obsessive-compulsive Personality Disorder
-  label.checkbox: input(type="checkbox") 301.9 Personality Disorder NOS
-  label.checkbox: input(type="checkbox") 317 Mild Mental Retardation
-  label.checkbox: input(type="checkbox") 318.0 Moderate Mental Retardation
-  label.checkbox: input(type="checkbox") 318.1 Severe Mental Retardation
-  label.checkbox: input(type="checkbox") 318.2 Profound Mental Retardation
-  label.checkbox: input(type="checkbox") 319 Mental retardation, severity unspecified
-  label.checkbox: input(type="checkbox") V62.89 Borderline Intellectual Functioning
-  label.checkbox.checkbox_other: input(type="checkbox") Other
-  label.checkbox: input(type="checkbox") Deferred
-question
-  question_text 164. Axis III: Medical conditions are insert from previous question.
-question
-  question_text 165. Axis IV: Please select any stressors from the following list that may contribute to an Axis IV diagnosis. Select all that apply.
-  text PROBLEMS WITH PRIMARY SUPPORT GROUP
-  label.checkbox: input(type="checkbox") Death of a family member
-  label.checkbox: input(type="checkbox") Health problems in family
-  label.checkbox: input(type="checkbox") Disruption of family by separation
-  label.checkbox: input(type="checkbox") Disruption of family by divorce
-  label.checkbox: input(type="checkbox") Disruption of family by estrangement
-  label.checkbox: input(type="checkbox") Removal from the home
-  label.checkbox: input(type="checkbox") Remarriage of parent
-  label.checkbox: input(type="checkbox") Sexual abuse
-  label.checkbox: input(type="checkbox") Physical abuse
-  label.checkbox: input(type="checkbox") Parental overprotection
-  label.checkbox: input(type="checkbox") Neglect of child
-  label.checkbox: input(type="checkbox") Inadequate discipline
-  label.checkbox: input(type="checkbox") Discord with siblings
-  label.checkbox: input(type="checkbox") Birth of a sibling
-  text PROBLEMS RELATED TO THE SOCIAL ENVIRONMENT
-  label.checkbox: input(type="checkbox") Death or loss of friend
-  label.checkbox: input(type="checkbox") Inadequate social support
-  label.checkbox: input(type="checkbox") Living alone
-  label.checkbox: input(type="checkbox") Difficulty with acculturation
-  label.checkbox: input(type="checkbox") Discrimination
-  label.checkbox: input(type="checkbox") Adjustment to life-cycle transition
-  text EDUCATIONAL PROBLEMS
-  label.checkbox: input(type="checkbox") Illiteracy
-  label.checkbox: input(type="checkbox") Academic problems
-  label.checkbox: input(type="checkbox") Discord with teachers
-  label.checkbox: input(type="checkbox") Discord with classmates
-  label.checkbox: input(type="checkbox") Inadequate school environment
-  text OCCUPATIONAL PROBLEMS
-  label.checkbox: input(type="checkbox") Unemployment
-  label.checkbox: input(type="checkbox") Threat of job loss
-  label.checkbox: input(type="checkbox") Stressful work schedule
-  label.checkbox: input(type="checkbox") Difficult work conditions
-  label.checkbox: input(type="checkbox") Job dissatisfaction
-  label.checkbox: input(type="checkbox") Job change
-  label.checkbox: input(type="checkbox") Discord with boss
-  label.checkbox: input(type="checkbox") Discord with co-workers
-  text HOUSING PROBLEMS
-  label.checkbox: input(type="checkbox") Homelessness
-  label.checkbox: input(type="checkbox") Inadequate housing
-  label.checkbox: input(type="checkbox") Unsafe neighborhood
-  label.checkbox: input(type="checkbox") Discord with neighbors
-  label.checkbox: input(type="checkbox") Discord with landlord
-  text ECONOMIC PROBLEMS
-  label.checkbox: input(type="checkbox") Extreme poverty
-  label.checkbox: input(type="checkbox") Inadequate finances
-  label.checkbox: input(type="checkbox") Insufficient welfare support
-  text PROBLEMS WITH ACCESS TO HEALTH CARE SERVICES
-  label.checkbox: input(type="checkbox") Inadequate health care services
-  label.checkbox: input(type="checkbox") Transportation to health care facilities unavailable
-  label.checkbox: input(type="checkbox") Inadequate health insurance
-  text PROBLEMS RELATED TO INTERACTION WITH THE LEGAL SYSTEM
-  label.checkbox: input(type="checkbox") Arrest
-  label.checkbox: input(type="checkbox") Incarceration
-  label.checkbox: input(type="checkbox") Litigation
-  label.checkbox: input(type="checkbox") Victim of a crime
-  text OTHER PSYCHOSOCIAL AND ENVIRONMENTAL PROBLEMS
-  label.checkbox: input(type="checkbox") Exposure to disasters
-  label.checkbox: input(type="checkbox") Exposure to war
-  label.checkbox: input(type="checkbox") Discord with non-family caregivers
-  label.checkbox: input(type="checkbox") Discord with physician
-  label.checkbox: input(type="checkbox") Unavailability of social services agencies
-question
-  question_text 165A. Provide any additional information as needed.
-  input.input-medium(type="text" name="Q165A" placeholder="")
-question
-  question_text 166. Axis V: Please record the claimant’s current GAF.
-  input.input-medium(type="text" name="Q166" placeholder="")
+  section_text Current Level of Functioning - Decompensation and Deterioration
+  question
+    question_text 167. Is there evidence of deterioration and decompensation in the work place? For children, this would read “in school?”
+    label.checkbox: input(type="checkbox") yes (enable 168)
+    label.checkbox: input(type="checkbox") no (disable 168)
+  question
+    question_text 168. If yes, where is the deterioration and decompensation seen or evidenced by?
+    label.checkbox: input(type="checkbox") Voluntary psychiatric commitment
+    label.checkbox: input(type="checkbox") Difficulty getting along with coworkers
+    label.checkbox: input(type="checkbox") Taking a leave of absence to manage mental illness
+    label.checkbox: input(type="checkbox") Frequent involvement with law enforcement
+    label.checkbox: input(type="checkbox") Behavioral disturbances
+    label.checkbox.checkbox_other: input(type="checkbox") Other
+  question
+    question_text 169. Has the claimant’s ability to work been impacted by physical and mental limitations?
+    label.checkbox: input(type="checkbox") yes
+    label.checkbox: input(type="checkbox") no
+  question
+    question_text 170. What are the new difficulties reported by claimant? Select all that apply.
+    label.checkbox: input(type="checkbox") Sustaining concentration and attention
+    label.checkbox: input(type="checkbox") Remembering information
+    label.checkbox: input(type="checkbox") Making good judgments at work
+    label.checkbox: input(type="checkbox") Following multi-step directions
+    label.checkbox: input(type="checkbox") Socializing with friends
+    label.checkbox: input(type="checkbox") Motivation
+    label.checkbox: input(type="checkbox") Fatigue
+    label.checkbox: input(type="checkbox") Apathy
+    label.checkbox: input(type="checkbox") Behavioral problems
+    label.checkbox: input(type="checkbox") Insomnia
+    label.checkbox: input(type="checkbox") Poor appetite
+    label.checkbox: input(type="checkbox") Inability to complete ADLS in a timely manner
+    label.checkbox: input(type="checkbox") Suicidal ideations
+    label.checkbox: input(type="checkbox") Hallucinations
+    label.checkbox: input(type="checkbox") Delusions
+    label.checkbox: input(type="checkbox") Blurred vision
+    label.checkbox: input(type="checkbox") Lower back pain
+    label.checkbox.checkbox_other: input(type="checkbox") Other
 
-section_text  DISCUSSION/PROGNOSIS
-question
-  question_text 171. Did the claimant respond in an open and honest manner?
-  label.checkbox: input(type="checkbox") normal#1yes
-  label.checkbox: input(type="checkbox") no
-question
-  question_text 172. Was there any exaggeration in the claimant’s responses?
-  label.checkbox: input(type="checkbox") normal#1yes (show 172a)
-  label.checkbox: input(type="checkbox") no
-question
-  question_text 172A. If yes, please describe.
-  input.input-medium(type="text" name="Q172A" placeholder="")
-question
-  question_text 173. Were there any inconsistencies?
-  label.checkbox: input(type="checkbox") normal#1yes (show 174)
-  label.checkbox: input(type="checkbox") no
-question
-  question_text 174. If yes, please provide examples.
-  input.input-medium(type="text" name="Q174" placeholder="")
-question
-  question_text 175. As evidenced by the claimant’s current and past compliance with treatment, is the claimant willing to receive treatment (psychotherapy or medications)?
-  label.checkbox: input(type="checkbox") yes
-  label.checkbox: input(type="checkbox") no
-question
-  question_text 180. What is the claimant’s willingness to use resources?
-  label.checkbox: input(type="checkbox") good
-  label.checkbox: input(type="checkbox") fair
-  label.checkbox: input(type="checkbox") limited
-  label.checkbox: input(type="checkbox") poor
-question
-  question_text 182. Is improvement likely?
-  label.checkbox: input(type="checkbox") yes
-  label.checkbox: input(type="checkbox") no
-  label.checkbox: input(type="checkbox") guarded
-question
-  question_text 183. What is the likelihood the claimant will be able to respond to routine changes in the work place?
-  label.checkbox: input(type="checkbox") good
-  label.checkbox: input(type="checkbox") bad
-  label.checkbox: input(type="checkbox") guarded
+section#DSM-IV-Diagnosis
+  section_text DSM-IV Diagnosis
+  question
+    question_text 162. What is the claimant’s Axis I diagnosis? Select all that apply.
+    label.checkbox: input(type="checkbox") DELETE-Bipolar I Disorder
+    label.checkbox: input(type="checkbox") 290.10 Dementia of the Alzheimer's Type, With Early Onset, Uncomplicated
+    label.checkbox: input(type="checkbox") 290.11 Dementia of the Alzheimer's Type, With Early Onset, With Delirium
+    label.checkbox: input(type="checkbox") 290.12 Dementia of the Alzheimer's Type, With Early Onset, With Delusions
+    label.checkbox: input(type="checkbox") 290.13 Dementia of the Alzheimer's Type, With Early Onset, With Depressed Mood
+    label.checkbox: input(type="checkbox") 290.20 Dementia of the Alzheimer's Type, With Late Onset, With Delusions
+    label.checkbox: input(type="checkbox") 290.21 Dementia of the Alzheimer's Type, With Late Onset, With Depressed Mood
+    label.checkbox: input(type="checkbox") 290.3 Dementia of the Alzheimer's Type, With Late Onset, With Delirium
+    label.checkbox: input(type="checkbox") 296.80 Bipolar Disorder NOS
+    label.checkbox: input(type="checkbox") 296.56 Bipolar I Disorder, most recent episode depressed, in full remission
+    label.checkbox: input(type="checkbox") 296.55 Bipolar I Disorder, most recent episode depressed, in partial remission
+    label.checkbox: input(type="checkbox") 296.51 Bipolar I Disorder, most recent episode depressed, mild
+    label.checkbox: input(type="checkbox") 296.52 Bipolar I Disorder, most recent episode depressed, moderate
+    label.checkbox: input(type="checkbox") 296.53 Bipolar I Disorder, most recent episode depressed, severe without psychotic features
+    label.checkbox: input(type="checkbox") 296.54 Bipolar I Disorder, most recent episode depressed, severe with psychotic features
+    label.checkbox: input(type="checkbox") 296.50 Bipolar I Disorder, most recent episode depressed, unspecified
+    label.checkbox: input(type="checkbox") 296.40 Bipolar I Disorder, most recent episode hypomanic
+    label.checkbox: input(type="checkbox") 296.46 Bipolar I Disorder, most recent episode manic, in full remission
+    label.checkbox: input(type="checkbox") 296.45 Bipolar I Disorder, most recent episode manic, in partial remission
+    label.checkbox: input(type="checkbox") 296.41 Bipolar I Disorder, most recent episode manic, mild
+    label.checkbox: input(type="checkbox") 296.42 Bipolar I Disorder, most recent episode manic, moderate
+    label.checkbox: input(type="checkbox") 296.43 Bipolar I Disorder, most recent episode manic, severe without psychotic features
+    label.checkbox: input(type="checkbox") 296.44 Bipolar I Disorder, most recent episode manic, severe with psychotic features
+    label.checkbox: input(type="checkbox") 296.40 Bipolar I Disorder, most recent episode manic, unspecified
+    label.checkbox: input(type="checkbox") 296.66 Bipolar I Disorder, most recent episode mixed, in full remission
+    label.checkbox: input(type="checkbox") 296.65 Bipolar I Disorder, most recent episode mixed, in partial remission
+    label.checkbox: input(type="checkbox") 296.61 Bipolar I Disorder, most recent episode mixed, mild
+    label.checkbox: input(type="checkbox") 296.62 Bipolar I Disorder, most recent episode mixed, moderate
+    label.checkbox: input(type="checkbox") 296.63 Bipolar I Disorder, most recent episode mixed, severe without psychotic features
+    label.checkbox: input(type="checkbox") 296.64 Bipolar I Disorder, most recent episode mixed, severe with psychotic features
+    label.checkbox: input(type="checkbox") 296.60 Bipolar I Disorder, most recent episode mixed, unspecified
+    label.checkbox: input(type="checkbox") 296.7 Bipolar I Disorder, most recent episode unspecified
+    label.checkbox: input(type="checkbox") 296.06 Bipolar I Disorder, single manic episode, in full remission
+    label.checkbox: input(type="checkbox") 296.05 Bipolar I Disorder, single manic episode, in partial remission
+    label.checkbox: input(type="checkbox") 296.01 Bipolar I Disorder, single manic episode, mild
+    label.checkbox: input(type="checkbox") 296.02 Bipolar I Disorder, single manic episode, moderate
+    label.checkbox: input(type="checkbox") 296.03 Bipolar I Disorder, single manic episode, severe without psychotic features
+    label.checkbox: input(type="checkbox") 296.04 Bipolar I Disorder, single manic episode, severe with psychotic features
+    label.checkbox: input(type="checkbox") 296.00 Bipolar I Disorder, single manic episode, unspecified
+    label.checkbox: input(type="checkbox") 294.9 Cognitive Disorder NOS
+    label.checkbox: input(type="checkbox") 295.20 Schizophrenia, Catatonic Type
+    label.checkbox: input(type="checkbox") 295.10 Schizophrenia, Disorganized Type
+    label.checkbox: input(type="checkbox") 295.30 Schizophrenia, Paranoid Type
+    label.checkbox: input(type="checkbox") 295.60 Schizophrenia, Residual Type
+    label.checkbox: input(type="checkbox") 295.90 Schizophrenia, Undifferentiated Type
+    label.checkbox: input(type="checkbox") 295.70 Schizoaffective Disorder
+    label.checkbox: input(type="checkbox") 296.20 Major Depressive Disorder, Single Episode, unspecified
+    label.checkbox: input(type="checkbox") 296.21 Major Depressive Disorder, Single Episode, Mild
+    label.checkbox: input(type="checkbox") 296.22 Major Depressive Disorder, Single Episode, Moderate
+    label.checkbox: input(type="checkbox") 296.23 Major Depressive Disorder, Single Episode, Severe without psychotic features
+    label.checkbox: input(type="checkbox") 296.24 Major Depressive Disorder, Single Episode, Severe with psychotic features
+    label.checkbox: input(type="checkbox") 296.25 Major Depressive Disorder, Single Episode, in partial remission
+    label.checkbox: input(type="checkbox") 296.26 Major Depressive Disorder, Single Episode, in full remission
+    label.checkbox: input(type="checkbox") 296.30 Major Depressive Disorder, Recurrent, unspecified
+    label.checkbox: input(type="checkbox") 296.31 Major Depressive Disorder, Recurrent, Mild
+    label.checkbox: input(type="checkbox") 296.32 Major Depressive Disorder, Recurrent, Moderate
+    label.checkbox: input(type="checkbox") 296.33 Major Depressive Disorder Recurrent, Severe without psychotic features
+    label.checkbox: input(type="checkbox") 296.34 Major Depressive Disorder, Recurrent, Severe with psychotic features
+    label.checkbox: input(type="checkbox") 296.35 Major Depressive Disorder, Recurrent, in partial remission
+    label.checkbox: input(type="checkbox") 296.36 Major Depressive Disorder, Recurrent, in full remission
+    label.checkbox: input(type="checkbox") 296.89 Bipolar II Disorder
+    label.checkbox: input(type="checkbox") 299.00 Autistic Disorder
+    label.checkbox: input(type="checkbox") 300.01 Panic Disorder without Agoraphobia
+    label.checkbox: input(type="checkbox") 300.02 Generalized Anxiety Disorder
+    label.checkbox: input(type="checkbox") 300.21 Panic Disorder with Agoraphobia
+    label.checkbox: input(type="checkbox") 300.3 Obsessive-compulsive Disorder
+    label.checkbox: input(type="checkbox") 300.4 Dysthymic Disorder
+    label.checkbox: input(type="checkbox") 307.1 Anorexia nervosa
+    label.checkbox: input(type="checkbox") 309.81 Posttraumatic Stress Disorder
+    label.checkbox: input(type="checkbox") 310.2 Postconcussion Syndrome
+    label.checkbox: input(type="checkbox") 314.00 Attention Deficit/Hyperactivity Disorder, Predominantly Inattentive Type
+    label.checkbox: input(type="checkbox") 314.01 Attention Deficit/Hyperactivity Disorder, Combined Type
+    label.checkbox: input(type="checkbox") 314.01 Attention Deficit/Hyperactivity Disorder, Predominantly Hyperactive-Impulsive  Type
+    label.checkbox: input(type="checkbox") 314.9 Attention Deficit/Hyperactivity Disorder NOS
+    label.checkbox: input(type="checkbox") 315.00 Reading Disorder
+    label.checkbox: input(type="checkbox") 315.1 Mathematics Disorder
+    label.checkbox: input(type="checkbox") 315.2 Disorder of Written Expression
+    label.checkbox: input(type="checkbox") 315.9 Learning Disorder NOS
+    label.checkbox.checkbox_other: input(type="checkbox") Other
+  question
+    question_text 163. Axis II: Please select from the following choices.
+    label.checkbox: input(type="checkbox") No diagnosis
+    label.checkbox: input(type="checkbox") 301.0 Paranoid Personality Disorder
+    label.checkbox: input(type="checkbox") 301.20 Schizoid Personality Disorder
+    label.checkbox: input(type="checkbox") 301.22 Schizotypal Personality Disorder
+    label.checkbox: input(type="checkbox") 301.7 Antisocial Personality Disorder
+    label.checkbox: input(type="checkbox") 301.83 Borderline Personality Disorder
+    label.checkbox: input(type="checkbox") 301.50 Histrionic Personality Disorder
+    label.checkbox: input(type="checkbox") 301.81 Narcissistic Personality Disorder
+    label.checkbox: input(type="checkbox") 301.82 Avoidant Personality Disorder
+    label.checkbox: input(type="checkbox") 301.6 Dependent Personality Disorder
+    label.checkbox: input(type="checkbox") 301.4 Obsessive-compulsive Personality Disorder
+    label.checkbox: input(type="checkbox") 301.9 Personality Disorder NOS
+    label.checkbox: input(type="checkbox") 317 Mild Mental Retardation
+    label.checkbox: input(type="checkbox") 318.0 Moderate Mental Retardation
+    label.checkbox: input(type="checkbox") 318.1 Severe Mental Retardation
+    label.checkbox: input(type="checkbox") 318.2 Profound Mental Retardation
+    label.checkbox: input(type="checkbox") 319 Mental retardation, severity unspecified
+    label.checkbox: input(type="checkbox") V62.89 Borderline Intellectual Functioning
+    label.checkbox.checkbox_other: input(type="checkbox") Other
+    label.checkbox: input(type="checkbox") Deferred
+  question
+    question_text 164. Axis III: Medical conditions are insert from previous question.
+  question
+    question_text 165. Axis IV: Please select any stressors from the following list that may contribute to an Axis IV diagnosis. Select all that apply.
+    text PROBLEMS WITH PRIMARY SUPPORT GROUP
+    label.checkbox: input(type="checkbox") Death of a family member
+    label.checkbox: input(type="checkbox") Health problems in family
+    label.checkbox: input(type="checkbox") Disruption of family by separation
+    label.checkbox: input(type="checkbox") Disruption of family by divorce
+    label.checkbox: input(type="checkbox") Disruption of family by estrangement
+    label.checkbox: input(type="checkbox") Removal from the home
+    label.checkbox: input(type="checkbox") Remarriage of parent
+    label.checkbox: input(type="checkbox") Sexual abuse
+    label.checkbox: input(type="checkbox") Physical abuse
+    label.checkbox: input(type="checkbox") Parental overprotection
+    label.checkbox: input(type="checkbox") Neglect of child
+    label.checkbox: input(type="checkbox") Inadequate discipline
+    label.checkbox: input(type="checkbox") Discord with siblings
+    label.checkbox: input(type="checkbox") Birth of a sibling
+    text PROBLEMS RELATED TO THE SOCIAL ENVIRONMENT
+    label.checkbox: input(type="checkbox") Death or loss of friend
+    label.checkbox: input(type="checkbox") Inadequate social support
+    label.checkbox: input(type="checkbox") Living alone
+    label.checkbox: input(type="checkbox") Difficulty with acculturation
+    label.checkbox: input(type="checkbox") Discrimination
+    label.checkbox: input(type="checkbox") Adjustment to life-cycle transition
+    text EDUCATIONAL PROBLEMS
+    label.checkbox: input(type="checkbox") Illiteracy
+    label.checkbox: input(type="checkbox") Academic problems
+    label.checkbox: input(type="checkbox") Discord with teachers
+    label.checkbox: input(type="checkbox") Discord with classmates
+    label.checkbox: input(type="checkbox") Inadequate school environment
+    text OCCUPATIONAL PROBLEMS
+    label.checkbox: input(type="checkbox") Unemployment
+    label.checkbox: input(type="checkbox") Threat of job loss
+    label.checkbox: input(type="checkbox") Stressful work schedule
+    label.checkbox: input(type="checkbox") Difficult work conditions
+    label.checkbox: input(type="checkbox") Job dissatisfaction
+    label.checkbox: input(type="checkbox") Job change
+    label.checkbox: input(type="checkbox") Discord with boss
+    label.checkbox: input(type="checkbox") Discord with co-workers
+    text HOUSING PROBLEMS
+    label.checkbox: input(type="checkbox") Homelessness
+    label.checkbox: input(type="checkbox") Inadequate housing
+    label.checkbox: input(type="checkbox") Unsafe neighborhood
+    label.checkbox: input(type="checkbox") Discord with neighbors
+    label.checkbox: input(type="checkbox") Discord with landlord
+    text ECONOMIC PROBLEMS
+    label.checkbox: input(type="checkbox") Extreme poverty
+    label.checkbox: input(type="checkbox") Inadequate finances
+    label.checkbox: input(type="checkbox") Insufficient welfare support
+    text PROBLEMS WITH ACCESS TO HEALTH CARE SERVICES
+    label.checkbox: input(type="checkbox") Inadequate health care services
+    label.checkbox: input(type="checkbox") Transportation to health care facilities unavailable
+    label.checkbox: input(type="checkbox") Inadequate health insurance
+    text PROBLEMS RELATED TO INTERACTION WITH THE LEGAL SYSTEM
+    label.checkbox: input(type="checkbox") Arrest
+    label.checkbox: input(type="checkbox") Incarceration
+    label.checkbox: input(type="checkbox") Litigation
+    label.checkbox: input(type="checkbox") Victim of a crime
+    text OTHER PSYCHOSOCIAL AND ENVIRONMENTAL PROBLEMS
+    label.checkbox: input(type="checkbox") Exposure to disasters
+    label.checkbox: input(type="checkbox") Exposure to war
+    label.checkbox: input(type="checkbox") Discord with non-family caregivers
+    label.checkbox: input(type="checkbox") Discord with physician
+    label.checkbox: input(type="checkbox") Unavailability of social services agencies
+  question
+    question_text 165A. Provide any additional information as needed.
+    input.input-medium(type="text" name="Q165A" placeholder="")
+  question
+    question_text 166. Axis V: Please record the claimant’s current GAF.
+    input.input-medium(type="text" name="Q166" placeholder="")
 
-section_text Capability of Managing Funds
-question
-  question_text A187. What is the claimant’s ability to manage employment benefits?
-  label.checkbox: input(type="checkbox") likely satisfactory
-  label.checkbox.checkbox_other: input(type="checkbox" prepend=true) likely poor given
-question
-  question_text A188. Does the claimant need a protective payee?
-  label.checkbox: input(type="checkbox") yes
-  label.checkbox: input(type="checkbox") no
+section#Discussion-Prognosis
+  section_text Discussion / Prognosis
+  question
+    question_text 171. Did the claimant respond in an open and honest manner?
+    label.checkbox: input(type="checkbox") normal#1yes
+    label.checkbox: input(type="checkbox") no
+  question
+    question_text 172. Was there any exaggeration in the claimant’s responses?
+    label.checkbox: input(type="checkbox") normal#1yes (show 172a)
+    label.checkbox: input(type="checkbox") no
+  question
+    question_text 172A. If yes, please describe.
+    input.input-medium(type="text" name="Q172A" placeholder="")
+  question
+    question_text 173. Were there any inconsistencies?
+    label.checkbox: input(type="checkbox") normal#1yes (show 174)
+    label.checkbox: input(type="checkbox") no
+  question
+    question_text 174. If yes, please provide examples.
+    input.input-medium(type="text" name="Q174" placeholder="")
+  question
+    question_text 175. As evidenced by the claimant’s current and past compliance with treatment, is the claimant willing to receive treatment (psychotherapy or medications)?
+    label.checkbox: input(type="checkbox") yes
+    label.checkbox: input(type="checkbox") no
+  question
+    question_text 180. What is the claimant’s willingness to use resources?
+    label.checkbox: input(type="checkbox") good
+    label.checkbox: input(type="checkbox") fair
+    label.checkbox: input(type="checkbox") limited
+    label.checkbox: input(type="checkbox") poor
+  question
+    question_text 182. Is improvement likely?
+    label.checkbox: input(type="checkbox") yes
+    label.checkbox: input(type="checkbox") no
+    label.checkbox: input(type="checkbox") guarded
+  question
+    question_text 183. What is the likelihood the claimant will be able to respond to routine changes in the work place?
+    label.checkbox: input(type="checkbox") good
+    label.checkbox: input(type="checkbox") bad
+    label.checkbox: input(type="checkbox") guarded
+
+section#Capability-of-Managing-Funds
+  section_text Capability of Managing Funds
+  question
+    question_text A187. What is the claimant’s ability to manage employment benefits?
+    label.checkbox: input(type="checkbox") likely satisfactory
+    label.checkbox.checkbox_other: input(type="checkbox" prepend=true) likely poor given
+  question
+    question_text A188. Does the claimant need a protective payee?
+    label.checkbox: input(type="checkbox") yes
+    label.checkbox: input(type="checkbox") no
