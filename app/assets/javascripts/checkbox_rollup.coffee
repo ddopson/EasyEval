@@ -14,6 +14,13 @@ class EasyEval.CheckboxRollup
           input.checkbox_values(type="hidden", name="#{name}")
         """
 
+  english_join: (values) ->
+    switch(values.length)
+      when 0 then ""
+      when 1 then values[0]
+      when 2 then "#{values[0]} and #{values[1]}"
+      else "#{values[0..-2].join(', ')}, and #{values[-1..]}"
+
   process_checkbox: (checkbox, evt) ->
     return unless $(checkbox).parent().is('question')
     valuesbox = $(checkbox).parent().find('.checkbox_values')
@@ -34,8 +41,9 @@ class EasyEval.CheckboxRollup
           values.push("#{pre}#{txt}")
         else
           values.push(c.textContent)
-    valuesbox.val(values.join(', '))
-    console.log "Setting #{valuesbox.attr('name')} to #{values.join(', ')}"
+    joined = @english_join(values)
+    valuesbox.val(joined)
+    console.log "Setting #{valuesbox.attr('name')} to #{joined}"
 
 
   process_checkbox_other: (checkbox, evt) ->
