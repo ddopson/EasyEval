@@ -8,7 +8,7 @@
         selected = select.children( ":selected" ),
         value = selected.val() ? selected.text() : "",
         wrapper = this.wrapper = $( "<span>" )
-          .addClass( "ui-combobox" )
+          //.addClass( "ui-combobox" )
           .insertAfter( select );
 
       function removeIfInvalid( element ) {
@@ -36,11 +36,12 @@
         }
       }
 
-      input = $( "<input>" )
+      input = $( "<input type=\"text\">" )
         .appendTo( wrapper )
         .val( value )
         .attr( "title", "" )
-        .addClass( "ui-state-default ui-combobox-input" )
+        //.addClass( "ui-state-default ui-combobox-input" )
+        .addClass("input-large")
         .autocomplete({
           delay: 0,
           minLength: 0,
@@ -73,7 +74,7 @@
             }
           }
         })
-        .addClass( "ui-widget ui-widget-content ui-corner-left" );
+        //.addClass( "ui-widget ui-widget-content ui-corner-left" );
 
       input.data( "ui-autocomplete" )._renderItem = function( ul, item ) {
         return $( "<li>" )
@@ -93,7 +94,8 @@
           text: false
         })
         .removeClass( "ui-corner-all" )
-        .addClass( "ui-corner-right ui-combobox-toggle" )
+        .addClass("dropdown-nipple")
+        // .addClass( "ui-corner-right ui-combobox-toggle" )
         .mousedown(function() {
           wasOpen = input.autocomplete( "widget" ).is( ":visible" );
         })
