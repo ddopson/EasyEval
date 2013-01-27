@@ -28,13 +28,12 @@ section#Identification
     label.checkbox: input(type="checkbox") Psychological diagnostic evaluation (HIDE: 98-99, 112-116, 100-102, 200, 135-135a, 125-126, 131-132, 144-145, 149, 302, 303-306) (SHOW: Prep for Memory Qs, 121-123b, 110, 136-138, 127-129, 133-133b, 142-146b, 147-152)
     label.checkbox: input(type="checkbox") Psychological diagnostic evaluation with memory assessment (HIDE: Prep for Memory Qs, 121-123b, 100-102, 200 135-135a, 125-126, 131-132, 144-145) (SHOW: 98-99, 112-116, 110, 136-138, 127-129, 133-133b, 142-146b, 147-152, 149, 302, 303-306)
     label.checkbox: input(type="checkbox") Psychological diagnostic evaluation with intelligence assessment (HIDE: 112-116, 110, 136-138, 127-129, 133-133b, 142-146b, 149, 302, 303-306) (SHOW: 98-99, 121-123b, Prep for Memory Qs, 100-102, 200, 135-135a, 125-126, 131-132, 144-145, 147-152)
-  
+
   question
     question_text 4. What is the claimant’s age?
     input.input-medium(type="text" name="Q4" placeholder="age?")
-  question
+  question(name="Q5")
     question_text 5. What is the claimant’s ethnicity/race?
-    input.checkbox_values(type="hidden" name="Q5")
     label.checkbox: input(type="checkbox") American Indian
     label.checkbox: input(type="checkbox") African American
     label.checkbox: input(type="checkbox") Asian American
@@ -81,9 +80,8 @@ section#General-Observations
 
 section#Chief-Complaint
   section_text Chief Complaint
-  question
+  question(name="Q13")
     question_text 13. What is the claimant’s chief complaint? Select all that apply.
-    input.checkbox_values(type="hidden" name="Q13")
     label.checkbox.checkbox_enabler: input(type="checkbox" data-selector="#Q16A") Alzheimer’s Disease
     label.checkbox.checkbox_enabler: input(type="checkbox" data-selector="#Q16B") Anorexia
     label.checkbox.checkbox_enabler: input(type="checkbox" data-selector="#Q16C") Anxiety
@@ -158,7 +156,7 @@ question
 question
   question_text 20A. If no, please provide details.
   input.input-medium(type="text" name="Q20A" placeholder="")
-  
+
 section#Current-Medications
   section_text Current Medications
   question
@@ -917,7 +915,7 @@ section#Intellectual-Functioning-Sensorium
       tr
         td 47c + 10c =
         td: label.checkbox: input(type="checkbox") Correct Answer: 57c
-    
+
   text Begin at 100 and subtract 7, and keep going until I say stop.
   table
     tr

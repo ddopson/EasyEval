@@ -7,6 +7,13 @@ class window.TemplateHelpers
 
     $('.checkbox_enabler').on 'change', (evt) -> self.process_checkbox_enabler(@, evt)
     $('.checkbox_enabler').each (idx, checkbox) -> self.process_checkbox_enabler(checkbox, null)
+    $('question').each (idx, qnode) ->
+      if name = $(qnode).attr('name')
+        console.log "Adding hidden input for '#{name}'"
+        $(qnode).append """ !ijc
+          input.checkbox_values(type="hidden", name="#{name}")
+        """
+
     EasyEval.Autocomplete.initialize()
 
   process_checkbox: (checkbox, evt) ->
