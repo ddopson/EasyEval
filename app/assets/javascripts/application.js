@@ -16,5 +16,8 @@
 //= require underscore
 //= require backbone
 //= require tilt-jade/runtime
+//= require_self
 //= require_tree .
 
+window.EasyEval = {}
+window.EEData = {}

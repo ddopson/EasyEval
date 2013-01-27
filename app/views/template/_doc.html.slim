@@ -176,114 +176,18 @@ section#Current-Medications
     label.checkbox: input(type="checkbox") no
   question
     question_text 22. What medication is the claimant taking?  Select all that apply.
-    text Note to programmer: medication list used in drop down menu in the table.
-    section_text Abilify (aripiprazole)
-    section_text Intuniv (guanfacine)
-    section_text Prozac (fluoxetine)
-    section_text Adderall (amphetamine)
-    section_text Invega (paliperidone)
-    section_text Remeron (mirtazapine)
-    text Adderall XR (amphetamine- extended release)
-    section_text Klonopin (clonazepam)
-    section_text Risperdal (risperidone)
-    section_text Anafranil (clomipramine)
-    section_text Lamictal (lamotrigine)
-    section_text Ritalin (methylphenidate)
-    section_text Asendin (amoxapine)
-    section_text Lexapro (escitalopram)
-    text Ritalin LA (methylphenidate- long acting)
-    section_text Ativan (Lorazepam)
-    section_text Librium (chlordiazepoxide)
-    text Ritalin SR (methylphenidate- extended release)
-    section_text Aventyl (nortriptyline)
-    section_text lithium citrate
-    section_text Sarafem (fluoxetine)
-    section_text BuSpar (buspirone)
-    section_text Lithobid (lithium carbonate)
-    section_text Seroquel (quetiapine)
-    section_text Celexa (citalopram)
-    section_text Loxitane (loxapine)
-    section_text Sinequan (doxepin)
-    section_text Clozaril (clozapine)
-    section_text Ludiomil (maprotiline)
-    section_text Stelazine (olanzapine)
-    text Concerta (methylphenidate – long acting)
-    section_text Luvox (fluvoxamine)
-    section_text Strattera (atomoxetine)
-    section_text Cymbalta (duloxetine)
-    section_text Marplan (isocarboxazid)
-    section_text Surmontil (trimipramine)
-    text Daytrana (methylphenidate patch)
-    text Metadate CD (methylphenidate- extended release)
-    text Symbyax (Prozac &amp; Zyprexa- fluoxetine &amp; olanzapine)
-    section_text Depakote (divalproex sodium)
-    text Metadate ER (methylphenidate- extended release)
-    section_text Tegretol (carbamazepine)
-    section_text Desoxyn (methamphetamine)
-    section_text Methylin (methylphenidate)
-    section_text Thioridazine
-    section_text Desyrel (Trazodone)
-    section_text Moban (molindone)
-    section_text Thorazine (chlorpromazine)
-    text Dexedrine (dextroamphetamine)
-    section_text Nardil (phenelzine)
-    section_text Tofranil (imipramine)
-    text Dextrostat (dextroamphetamine)
-    section_text Navane (thiothixene)
-    text Tofranil-PM (imipramine pamoate)
-    section_text Effexor (venlafaxine)
-    section_text Neurontin (gabapentin)
-    section_text Topamax (topiramate)
-    section_text Elavil (amitriptyline)
-    section_text Norpramin (desipramine)
-    section_text Tranxene (clorazepate)
-    section_text Emsam (selegiline)
-    section_text Orap (pimozide)
-    section_text Trileptal (oxcarbazepine)
-    section_text Eskalith (lithium carbonate)
-    section_text Serax (Oxazepam)
-    section_text Valium (diazepam)
-    section_text Fanapt (iloperidone)
-    section_text Pamelor (nortriptyline)
-    section_text Vivactil (protriptyline)
-    section_text Fluphenazine
-    section_text Parnate (tranylcypromine)
-    text Vyvanse (lisdexamfetamine dimesylate)
-    section_text Focalin (dexmethylphenidate)
-    section_text Paxil (paroxetine)
-    section_text Wellbutrin (bupropion)
-    text Focalin XR (dexmethylphenidate- extended release)
-    section_text Perphenazine
-    section_text Xanax (alprazolam)
-    section_text Geodon (ziprasidone)
-    section_text Pexeva (paroxetine-mesylate)
-    section_text Zoloft (sertraline)
-    section_text Haldol (haloperidol)
-    section_text Pristiq (desvenlafaxine)
-    section_text Zyprexa (olanzapine)
-    section_text Other
-    input.input-medium(type="text" name="Q22" placeholder="")
-    section_text 22table.
-    section_text Medication
-    section_text Dosage (mg)
-    section_text Usefulness
-    text (medication list in a drop down menu)
-    section_text
-    input.input-medium(type="text" name="Q22" placeholder="")
-    section_text Option selected
-    text (medication list in a drop down menu)
-    section_text
-    input.input-medium(type="text" name="Q22" placeholder="")
-    section_text Option selected
-    text (medication list in a drop down menu)
-    section_text
-    input.input-medium(type="text" name="Q22" placeholder="")
-    section_text Option selected
-    text * “Add a new medication” button will open a window with the following info:
-    text Name of Medication: (drop down menu)
-    text Dosage (mg):
-    input.input-medium(type="text" name="Q22" placeholder="")
-    label.checkbox: input(type="checkbox") Usefulness:good  FORMCHECKBOX  minimal  FORMCHECKBOX  poor
+    table
+      tr
+        th Medication
+        th Dosage
+        th Usefulness
+      tr
+        td: .ui-widget: select.autocomplete-meds
+        td: input.input-medium(type="text")
+        td
+          label.checkbox: input(type="checkbox") good
+          label.checkbox: input(type="checkbox") minimal
+          label.checkbox: input(type="checkbox") poor
 
 section#Past-Psychiatric-History
   section_text Past Psychiatric History

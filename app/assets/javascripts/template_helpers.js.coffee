@@ -7,6 +7,7 @@ class window.TemplateHelpers
 
     $('.checkbox_enabler').on 'change', (evt) -> self.process_checkbox_enabler(@, evt)
     $('.checkbox_enabler').each (idx, checkbox) -> self.process_checkbox_enabler(checkbox, null)
+    EasyEval.Autocomplete.initialize()
 
   process_checkbox: (checkbox, evt) ->
     return unless $(checkbox).parent().is('question')
