@@ -379,32 +379,25 @@ section#Employment-History
     input.input-medium(type="text" name="QA54" placeholder="")
   question
     question_text A55. Please list all the jobs the claimant has held down.
-    section_text End Date
-    section_text Duration
-    section_text Employer
-    section_text Job Title/ Position
-    section_text Reason For Leaving
-    section_text
-    input.input-medium(type="text" name="QA55" placeholder="")
-    section_text
-    input.input-medium(type="text" name="QA55" placeholder="")
-    section_text
-    input.input-medium(type="text" name="QA55" placeholder="")
-    section_text
-    input.input-medium(type="text" name="QA55" placeholder="")
-    section_text
-    input.input-medium(type="text" name="QA55" placeholder="")
-    section_text
-    input.input-medium(type="text" name="QA55" placeholder="")
-    section_text
-    input.input-medium(type="text" name="QA55" placeholder="")
-    section_text
-    input.input-medium(type="text" name="QA55" placeholder="")
-    section_text
-    input.input-medium(type="text" name="QA55" placeholder="")
-    section_text
-    input.input-medium(type="text" name="QA55" placeholder="")
-    text (programmer: allow for additional rows on table if necessary)
+    table
+      tr
+        th Start Date
+        th End Date
+        th Employer
+        th Position
+        th Reason for Leaving
+      tr
+        td: input.input-medium(type="text" name="QA55_R1_START" placeholder="mm/dd/yy")
+        td: input.input-medium(type="text" name="QA55_R1_END" placeholder="mm/dd/yy")
+        td: input.input-medium(type="text" name="QA55_R1_EMPLOYER" placeholder="")
+        td: input.input-medium(type="text" name="QA55_R1_POSITION" placeholder="")
+        td: input.input-medium(type="text" name="QA55_R1_REASON" placeholder="")
+      tr
+        td: input.input-medium(type="text" name="QA55_R2_START" placeholder="mm/dd/yy")
+        td: input.input-medium(type="text" name="QA55_R2_END" placeholder="mm/dd/yy")
+        td: input.input-medium(type="text" name="QA55_R2_EMPLOYER" placeholder="")
+        td: input.input-medium(type="text" name="QA55_R2_POSITION" placeholder="")
+        td: input.input-medium(type="text" name="QA55_R2_REASON" placeholder="")
   question
     question_text A186. What is the claimant’s work history?
     label.checkbox: input(type="checkbox") good
