@@ -3,86 +3,10 @@ form(action=url_for(action: "generate") method="post")
   .container
     .row
       .span3.bs-docs-sidebar
-        ul.nav.nav-list.bs-docs-sidenav.affix
-          li
-            a(href="#Identification")
-              i.icon-chevron-right
-              | Identification
-          li
-            a(href="#General-Observations")
-              i.icon-chevron-right
-              | General Observations
-          li
-            a(href="#Chief-Complaint")
-              i.icon-chevron-right
-              | Chief Complaint
-          li
-            a(href="#History-of-Present-Illness")
-              i.icon-chevron-right
-              | History of Present Illness
-          li
-            a(href="#Current-Medications")
-              i.icon-chevron-right
-              | Current Medications
-          li
-            a(href="#Past-Psychiatric-History")
-              i.icon-chevron-right
-              | Past Psychiatric History
-          li
-            a(href="#Alcohol-and-Drug-Abuse")
-              i.icon-chevron-right
-              | Alcohol and Drug Abuse
-          li
-            a(href="#Past-Medical-History")
-              i.icon-chevron-right
-              | Past Medical History
-          li
-            a(href="#Social-and-Family-History")
-              i.icon-chevron-right
-              | Social and Family History
-          li
-            a(href="#Employment-History")
-              i.icon-chevron-right
-              | Employment History
-          li
-            a(href="#Educational-History")
-              i.icon-chevron-right
-              | Educational History
-          li
-            a(href="#Legal-Criminal-History")
-              i.icon-chevron-right
-              | Legal / Criminal History
-          li
-            a(href="#Military-History")
-              i.icon-chevron-right
-              | Military History
-          li
-            a(href="#Mental-Status-Examination")
-              i.icon-chevron-right
-              | Mental Status Examination
-          li
-            a(href="#Intellectual-Functioning-Sensorium")
-              i.icon-chevron-right
-              | Intellectual Functioning / Sensorium
-          li
-            a(href="#Current-Level-of-Functioning")
-              i.icon-chevron-right
-              | Current Level of Functioning
-          li
-            a(href="#DSM-IV-Diagnosis")
-              i.icon-chevron-right
-              | DSM-IV-Diagnosis
-          li
-            a(href="#Discussion-Prognosis")
-              i.icon-chevron-right
-              | Discussion / Prognosis
-          li
-            a(href="#Capability-of-Managing-Funds")
-              i.icon-chevron-right
-              | Capability of Managing Funds
+        ul.nav.nav-list.bs-docs-sidenav.affix#table-of-contents
+          / Gets filled in dynamically 
       .span9
         = render partial: 'doc'
-
 
   button.btn(type="submit") Generate MS Word Doc (.docx)
 
