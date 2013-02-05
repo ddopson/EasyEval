@@ -179,13 +179,16 @@ section#Current-Medications
         th Medication
         th Dosage
         th Usefulness
-      tr
+      tr.table-row-model
         td: select.autocomplete-meds
         td: input.input-medium(type="text")
         td
           label.checkbox: input(type="checkbox") good
           label.checkbox: input(type="checkbox") minimal
           label.checkbox: input(type="checkbox") poor
+      tr
+        td(colspan=3 text-align="right")
+          a.table-new-row New Row ...
 
 section#Past-Psychiatric-History
   section_text Past Psychiatric History
