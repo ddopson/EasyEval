@@ -17,7 +17,7 @@ class TemplateController < ApplicationController
     end
     i = Time.now.to_i
     path = "#{Rails.root}/app/views/template/_doc.slim"
-    File.write("#{path}.#{i}", txt.gsub(/\r\n/, "\n")
+    File.write("#{path}.#{i}", txt.gsub(/\r\n/, "\n"))
     if File.symlink?(path)
       FileUtils.rm(path)
     else
