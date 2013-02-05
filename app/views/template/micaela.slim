@@ -1,0 +1,4 @@
+form(action=url_for(action: "micaela_submit") method="post")
+  button "Update Template"
+  textarea.micaela(name="_doc.slim")
+    = File.read("#{Rails.root}/app/views/template/_doc.slim")
