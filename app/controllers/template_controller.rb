@@ -9,22 +9,37 @@ class TemplateController < ApplicationController
     raise "Forbidden" unless Rails.env.development?
   end
 
+  def micaela_docx
+    send_file("#{Rails.root}/templates/real.docx",
+      filename:      'output_template.docx',
+      type:          'application/msword',
+      disposition:   'attachment',
+    )
+  end
+
+  def write_file_and_symlink(path, contents)
+    i = Time.now.to_i
+    File.open("#{path}.#{i}", 'wb'){|file| file.write(contents) }
+    if File.symlink?(path)
+      FileUtils.rm(path)
+    else
+      FileUtils.mv(path, "#{path}.bak.#{i}")
+    end
+    File.symlink("#{path}.#{i}", path)
+  end
+
   def micaela_submit
     raise "Forbidden" unless Rails.env.development?
+
+    if contents = params['output_template.docx']
+      contents.tempfile.binmode
+      write_file_and_symlink "#{Rails.root}/templates/real.docx", contents.read
+    end
+
     ['_doc.slim', '_Q16-illness.slim'].each do |file|
-    txt = params[file]
-      unless txt.length > 200
-        raise "#{file} is REALLY short. only #{txt.length} chars"
-      end
-      i = Time.now.to_i
-      path = "#{Rails.root}/app/views/template/#{file}"
-      File.write("#{path}.#{i}", txt.gsub(/\r\n/, "\n"))
-      if File.symlink?(path)
-        FileUtils.rm(path)
-      else
-        FileUtils.mv(path, "#{path}.bak.#{i}")
-      end
-      File.symlink("#{path}.#{i}", path)
+      contents = params[file]
+        raise "#{file} is REALLY short. only #{contents.length} chars" unless contents.length > 200
+        write_file_and_symlink "#{Rails.root}/app/views/template/#{file}", contents.gsub(/\r\n/, "\n")
     end
     redirect_to '/template'
   end
