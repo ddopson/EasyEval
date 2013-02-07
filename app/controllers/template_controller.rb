@@ -11,19 +11,21 @@ class TemplateController < ApplicationController
 
   def micaela_submit
     raise "Forbidden" unless Rails.env.development?
-    txt = params['_doc.slim']
-    unless txt.length > 200
-      raise "_doc.slim is REALLY short. only #{_doc.slim.length} chars"
+    ['_doc.slim', '_Q16-illness.slim'].each do |file|
+    txt = params[file]
+      unless txt.length > 200
+        raise "#{file} is REALLY short. only #{txt.length} chars"
+      end
+      i = Time.now.to_i
+      path = "#{Rails.root}/app/views/template/#{file}"
+      File.write("#{path}.#{i}", txt.gsub(/\r\n/, "\n"))
+      if File.symlink?(path)
+        FileUtils.rm(path)
+      else
+        FileUtils.mv(path, "#{path}.bak.#{i}")
+      end
+      File.symlink("#{path}.#{i}", path)
     end
-    i = Time.now.to_i
-    path = "#{Rails.root}/app/views/template/_doc.slim"
-    File.write("#{path}.#{i}", txt.gsub(/\r\n/, "\n"))
-    if File.symlink?(path)
-      FileUtils.rm(path)
-    else
-      FileUtils.mv(path, "#{path}.bak.#{i}")
-    end
-    File.symlink("#{path}.#{i}", path)
     redirect_to '/template'
   end
 
