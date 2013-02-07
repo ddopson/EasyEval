@@ -37,3 +37,5 @@ gem "quiet_assets", ">= 1.0.1", :group => :development
 gem 'slim'
 gem "rubyzip", ">= 0.9.9"
 gem 'backbone-rails'
+gem 'bigdecimal'
+gem 'unicorn'
