@@ -1,7 +1,21 @@
 form(action=url_for(action: "micaela_submit") method="post")
   button "Update Template"
+  h4 Output_Template.docx
+  table
+    tr
+      th Download
+      th Upload
+    tr
+      td: a(href="/template/micaela_docx") output_template.docx
+      td: input(type="file" name="output_template.docx")
+
+
+
+  h4 Doc.slim:
   textarea.micaela(name="_doc.slim")
     = File.read("#{Rails.root}/app/views/template/_doc.slim")
+
+  h4 Q16-Illness.slim:
   textarea.micaela(name="_Q16-illness.slim")
     = File.read("#{Rails.root}/app/views/template/_Q16-illness.slim")
 script
