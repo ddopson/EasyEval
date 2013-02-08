@@ -66,9 +66,16 @@ class EasyEval.CheckboxRollup
 
 
   process_checkbox_enabler: (checkbox, evt) ->
+    if $(checkbox.firstChild).attr('type') == 'radio'
+      radios = $(checkbox).parents('question').find('input[type="radio"]')
+      selectors = [].join.call(radios.map((idx, node) -> $(node).attr('data-selector')), ',')
+      console.log "Disabling #{selectors}"
+      $(selectors).hide()
     sel = $(checkbox.firstChild).attr('data-selector')
     if checkbox.firstChild.checked
+      console.log "Enabling #{sel}"
       $(sel).show()
     else
+      console.log "Disabling #{sel}"
       $(sel).hide()
 
