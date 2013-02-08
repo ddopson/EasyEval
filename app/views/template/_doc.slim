@@ -159,9 +159,9 @@ section#Past-Psychiatric-History
   section_text Past Psychiatric History
   question(text="29. Has the claimant ever been admitted to a psychiatric hospital?")
     label.radio.checkbox_enabler: input(type="radio" name="Q29" data-selector=".29_no") no
-      / (disable the rest of this section)
+    / (disable the rest of this section)
     label.radio.checkbox_enabler: input(type="radio" name="Q29" data-selector=".29_yes") yes
-      / (enable 30,31,31a, and 31b)
+    / (enable 30,31,31a, and 31b)
   group.29_yes
     question(text="30. If yes, what was the date of the last admittance? Please enter in this format: Month Year.")
       input.input-medium(type="text" name="Q30" placeholder="")
@@ -176,9 +176,9 @@ section#Alcohol-and-Drug-Abuse
   section_text Alcohol and Drug Abuse
   question(text="A32. Has the claimant ever abused alcohol, tobacco, or illicit substances?")
     label.radio.checkbox_enabler: input(type="radio" name="QA32" data-selector=".A32_no") no
-      / (disable the rest of this section)
+    / (disable the rest of this section)
     label.radio.checkbox_enabler: input(type="radio" name="QA32" data-selector=".A32_yes") yes
-      / (enable A33-A36a, A189)
+    / (enable A33-A36a, A189)
   group.A32_yes
     question(text="A33. If yes, what is the substance? Select all that apply.")
       label.checkbox: input(type="checkbox") Alcohol
