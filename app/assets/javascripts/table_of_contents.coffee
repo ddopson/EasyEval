@@ -21,3 +21,5 @@ class EasyEval.TableOfContents
             = "#{label}"
         """
     $('#table-of-contents').append(content)
+    $(document.body).attr('data-spy', "scroll")
+    $(document.body).attr('data-target', ".bs-docs-sidebar")
