@@ -15,7 +15,8 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
 end
-gem 'tilt-jade', git: 'https://github.com/ddopson/tilt-jade.git', branch: 'master'
+gem 'jade-js-source', git: 'https://github.com/wavii/jade', branch: 'coffeescript-support'
+gem 'tilt-jade', '~> 1.1.2'
 gem 'jquery-rails'
 gem "thin", ">= 1.5.0"
 gem "rspec-rails", ">= 2.11.4", :group => [:development, :test]
