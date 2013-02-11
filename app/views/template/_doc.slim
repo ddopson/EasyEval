@@ -143,14 +143,17 @@ section#Current-Medications
       tr
         th Medication
         th Dosage
-        th Usefulness
+        th Effectiveness
       tr.table-row-model
-        td: select.autocomplete-meds
-        td: input.input-medium(type="text")
         td
-          label.checkbox: input(type="checkbox") good
-          label.checkbox: input(type="checkbox") minimal
-          label.checkbox: input(type="checkbox") poor
+          select.autocomplete-meds(name="Q22_MEDICATION")
+        td
+          input.input-medium(type="text" name="Q22_DOSAGE")
+        td
+          RadioSet(name="Q22_EFFECTIVENESS")
+            Value good
+            Value minimal
+            Value poor
       tr
         td(colspan=3 text-align="right")
           a.table-new-row New Row ...

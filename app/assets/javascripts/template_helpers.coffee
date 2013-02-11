@@ -3,7 +3,6 @@ class EasyEval.TemplateHelpers
     start = Date.now()
     EasyEval.Table.initialize()
     @init(document.body)
-    #EasyEval.Autocomplete.initialize()
     EasyEval.CheckboxRollup.initialize()
     EasyEval.TableOfContents.initialize($)
     duration = (Date.now() - start)
@@ -14,5 +13,6 @@ class EasyEval.TemplateHelpers
     $$ = $node.find.bind($node)
     window.thenode = node
     window.dd = $$
+    EasyEval.CheckboxSet.initialize($$)
     EasyEval.Autocomplete.initialize($$)
 
