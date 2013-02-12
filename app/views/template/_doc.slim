@@ -185,15 +185,15 @@ section#Alcohol-and-Drug-Abuse
     label.radio.checkbox_enabler: input(type="radio" name="QA32" data-selector=".A32_yes") yes
     / (enable A33-A36a, A189)
   group.A32_yes
-    question(text="A33. If yes, what is the substance? Select all that apply.")
-      label.checkbox: input(type="checkbox") Alcohol
-      label.checkbox: input(type="checkbox") Marijuana
-      label.checkbox: input(type="checkbox") Cocaine
-      label.checkbox: input(type="checkbox") Heroin
-      label.checkbox: input(type="checkbox") Methamphetamines
-      label.checkbox: input(type="checkbox") Tobacco
-      label.checkbox: input(type="checkbox") Other
-      input.input-medium(type="text" name="QA33" placeholder="")
+    question(name="A33" text="A33. If yes, what is the substance? Select all that apply.")
+      CheckboxSet
+        Value Alcohol
+        Value Marijuana
+        Value Cocaine
+        Value Heroin
+        Value Methamphetamines
+        Value Tobacco
+        ValueOther Other
     question(text="A34. On what date did claimant first use the substance? Please enter in this format: Month Year.")
       input.input-medium(type="text" name="QA34" placeholder="")
     question(text="A34A. On what date did the claimant begin to use the substance abusively? Please enter in this format: Month Year.")
