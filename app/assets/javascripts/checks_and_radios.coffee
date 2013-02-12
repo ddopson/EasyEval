@@ -1,4 +1,4 @@
-class EasyEval.CheckboxSet
+class EasyEval.CheckboxSet extends EasyEval.Widget
   @ALL: []
 
   @initialize: ($$) ->
@@ -8,55 +8,55 @@ class EasyEval.CheckboxSet
       @ALL.push new @(node, 'radio')
 
   constructor: (node, type) ->
-    @node = $(node)
+    super
     @type = type
     @values = []
-    @name = @node.attr('name') or raise "Must supply 'name' for this node"
-    for n in @node.find('value')
-      @values.push(n.textContent)
-   
     content = ''
-    #content += """ ijc input(type="hidden", name="#{@name}") """
-    for value in @values
-      content += """ !ijc
-        label(class=@type)
-          INPUT(type=@type, name=@name, value="#{value}")= "#{value}"
-        """
+    for n in @node.find('Value,ValueOther')
+      value = n.textContent
+      classes = ''
+      if $(n).is('ValueOther')
+        content += """ !ijc
+          label(class=@type)
+            INPUT.checkbox_other(type=@type, name=@guid, prepend=$(n).attr('prepend'))= "#{value}"
+            //INPUT.input-medium.other_textbox(type="text", placeholder="")
+          """
+      else
+        content += """ !ijc
+          label(class=@type)
+            INPUT(type=@type, name=@guid)= "#{value}"
+          """
 
     @node.append(content)
-  
+    self = @
+    @node.find('.checkbox_other').on 'change', (evt) -> self.process_checkbox_other(@, evt)
+
+  getJson: ->
+    values = []
+    for checkbox in @node.find('INPUT')
+      if checkbox.checked
+        $c = $(checkbox)
+        if $c.hasClass('checkbox_other')
+          pre = $c.attr('prepend')
+          if pre == 'prepend'
+            # if prepend is set to 'true' then use the text content as the prepend string
+            pre = c.textContent
+          if pre
+            pre += " "
+          pre ||= ''
+          console.log "PREPEND='#{pre}'"
+          txt = $c.parent().find('.other_textbox').val()
+          values.push("#{pre}#{txt}")
+        else
+          values.push checkbox.textContent
+    return @english_join(values)
+
   english_join: (values) ->
     switch values.length
       when 0 then ""
       when 1 then values[0]
       when 2 then "#{values[0]} and #{values[1]}"
       else "#{values[0..-2].join(', ')}, and #{values[-1..]}"
-
-
-  process_checkbox: (checkbox, evt) ->
-    return unless $(checkbox).parent().is('question')
-    valuesbox = $(checkbox).parent().find('.checkbox_values')
-    return unless valuesbox.length == 1
-    checkboxes = $(checkbox).parent().find('.checkbox')
-    values = []
-    for c in checkboxes
-      if c.firstChild.checked
-        if $(c).is('.checkbox_other')
-          pre = $(c.firstChild).attr('prepend')
-          if pre == 'prepend'
-            pre = c.textContent
-          if pre
-            pre += " "
-          pre ||= ''
-          console.log "PREPEND='#{pre}'"
-          txt = $(c).find('.other_textbox').val()
-          values.push("#{pre}#{txt}")
-        else
-          values.push(c.textContent)
-    joined = @english_join(values)
-    valuesbox.val(joined)
-    console.log "Setting #{valuesbox.attr('name')} to #{joined}"
-
 
   process_checkbox_other: (checkbox, evt) ->
     o = $(checkbox).find('.other_textbox')
@@ -75,17 +75,4 @@ class EasyEval.CheckboxSet
       o.hide()
 
 
-  process_checkbox_enabler: (checkbox, evt) ->
-    if $(checkbox.firstChild).attr('type') == 'radio'
-      radios = $(checkbox).parents('question').find('input[type="radio"]')
-      selectors = [].join.call(radios.map((idx, node) -> $(node).attr('data-selector')), ',')
-      console.log "Disabling #{selectors}"
-      $(selectors).hide()
-    sel = $(checkbox.firstChild).attr('data-selector')
-    if checkbox.firstChild.checked
-      console.log "Enabling #{sel}"
-      $(sel).show()
-    else
-      console.log "Disabling #{sel}"
-      $(sel).hide()
 

@@ -14,6 +14,7 @@
 #= require ./vendor/twitter-widgets
 #= require ./vendor/jade-runtime
 #= require_self
+#= require ./widget
 #= require_directory .
 
 window.EasyEval = {}

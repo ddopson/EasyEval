@@ -131,14 +131,16 @@ section#Current-Medications
   question(text="21. Is the claimant taking any medications?")
     label.checkbox: input(type="checkbox") no (disable the rest this section)
     label.checkbox: input(type="checkbox") yes (enable 21a, 22, and 22table)
-  question(text="177. If yes, who is writing the prescriptions?")
-    label.checkbox: input(type="checkbox") A psychiatrist
-    label.checkbox: input(type="checkbox") A PCP
-    label.checkbox: input(type="checkbox") A nurse practitioner
-  question(text="21A. If yes, did the claimant take any medication today?")
-    label.checkbox: input(type="checkbox") yes
-    label.checkbox: input(type="checkbox") no
-  question(text="22. What medication is the claimant taking?  Select all that apply.")
+  question(name="Q177" text="177. If yes, who is writing the prescriptions?")
+    CheckboxSet
+      Value A psychiatrist
+      Value A PCP
+      Value A nurse practitioner
+  question(name="Q21A" text="21A. If yes, did the claimant take any medication today?")
+    CheckboxSet
+      Value yes
+      Value no
+  question(name="Q22" text="22. Which medications is the claimant taking?")
     table
       tr
         th Medication
@@ -146,11 +148,11 @@ section#Current-Medications
         th Effectiveness
       tr.table-row-model
         td
-          select.autocomplete-meds(name="Q22_MEDICATION")
+          select.autocomplete-meds(name="MEDICATION")
         td
-          input.input-medium(type="text" name="Q22_DOSAGE")
+          input.input-medium(type="text" name="DOSAGE")
         td
-          RadioSet(name="Q22_EFFECTIVENESS")
+          RadioSet(name="EFFECTIVENESS")
             Value good
             Value minimal
             Value poor
