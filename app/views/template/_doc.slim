@@ -1,100 +1,103 @@
 section(title="Identification")
-  question(name="QQ1 Identity of Claimant:")
-" text="Q1 Identity of Claimant:")
-    input.input-medium(type="text" name="Q1_FIRST" placeholder="First"),
-    input.input-medium(type="text" name="Q1_LAST" placeholder="Last")
-  question(name="QA" text="A. Date of Birth:")
-    input.input-medium(type="text" name="Q1_BIRTHDATE" placeholder="dd/mm/yyyy")
-  question(name="QB" text="B. Case No:")
-    input.input-medium(type="text" name="Q1_CASENUM" placeholder="case_number")
-  question(name="QC" text="C. RQID:")
-    input.input-medium(type="text" name="Q1_RQID" placeholder="rqid")
-  question(name="QD" text="D. Adjudicator:")
-    input.input-medium(type="text" name="Q1_ADJUDICATOR" placeholder="Adjudicator")
-  question(name="QE" text="E. Date and Time of Exam:")
-    input.input-medium(type="text" name="Q1_EXAMDATE" placeholder="dd/mm/yyyy")
-  question(name="QF" text="F. Location:")
-    input.input-medium(type="text" name="Q1_EXAMLOC" placeholder="????")
-  question(name="Q3" text="3. What kind of examination is this?")
-    label.radio.checkbox_enabler: input(type="radio" name="Q3" data-selector=".enable-complex")     Complex psychological evaluation
-    label.radio.checkbox_enabler: input(type="radio" name="Q3" data-selector=".enable-psych-only")  Psychological diagnostic evaluation
-    label.radio.checkbox_enabler: input(type="radio" name="Q3" data-selector=".enable-psych-mem")   Psychological diagnostic evaluation with memory assessment
-    label.radio.checkbox_enabler: input(type="radio" name="Q3" data-selector=".enable-psych-intel") Psychological diagnostic evaluation with intelligence assessment
+  question(text="Name of Claimant:")
+    TextBox(name="Q1_FIRST" placeholder="First")
+    TextBox(name="Q1_LAST" placeholder="Last")
+  question(text="A. Date of Birth:")
+    TextBox(name="Q1_BIRTHDATE" placeholder="dd/mm/yyyy")
+  question(text="B. Case No:")
+    TextBox(name="Q1_CASENUM")
+  question(text="C. RQID:")
+    TextBox(name="Q1_RQID")
+  question(text="D. Adjudicator:")
+    TextBox(name="Q1_ADJUDICATOR")
+  question(text="E. Date and Time of Exam:")
+    TextBox(name="Q1_EXAMDATE" placeholder="dd/mm/yyyy")
+  question(text="F. Location:")
+    TextBox(name="Q1_EXAMLOC")
+  question(text="3. What kind of examination is this?")
+    RadioSet(name="Q3")
+      Value(enables-selector=".enable-complex")     Complex psychological evaluation
+      Value(enables-selector=".enable-psych-only")  Psychological diagnostic evaluation
+      Value(enables-selector=".enable-psych-mem")   Psychological diagnostic evaluation with memory assessment
+      Value(enables-selector=".enable-psych-intel") Psychological diagnostic evaluation with intelligence assessment
 
   question(name="Q4" text="4. What is the claimant’s age?")
-    input.input-medium(type="text" name="Q4" placeholder="age?")
+    TextBox
   question(name="Q5" text="5. What is the claimant’s ethnicity/race?")
-    label.checkbox: input(type="checkbox") American Indian
-    label.checkbox: input(type="checkbox") African American
-    label.checkbox: input(type="checkbox") Asian American
-    label.checkbox: input(type="checkbox") Caucasian American
-    label.checkbox: input(type="checkbox") Hispanic American
-    label.checkbox: input(type="checkbox") Native Hawaiian
-    label.checkbox: input(type="checkbox") Pacific Islander
-    label.checkbox.checkbox_other: input(type="checkbox") Other
+    CheckboxSet
+      Value American Indian
+      Value African American
+      Value Asian American
+      Value Caucasian American
+      Value Hispanic American
+      Value Native Hawaiian
+      Value Pacific Islander
+      ValueOther Other
   question(name="Q6" text="6. What is the claimant’s birthplace?")
-    input.input-medium(type="text" name="Q6" placeholder="birthplace?")
+    TextBox
 
 
 section#General-Observations
   section_text General Observations
   question(name="Q8" text="8. When did the claimant arrive to the examination?")
-    input.checkbox_values(type="hidden" name="Q8")
-    label.checkbox: input(type="checkbox") Early
-    label.checkbox: input(type="checkbox") On time
-    label.checkbox: input(type="checkbox") Late
+    CheckboxSet
+      Value Early
+      Value On time
+      Value Late
   question(name="Q8A" text="8A. Was the claimant:")
-    input.checkbox_values(type="hidden" name="Q8A")
-    label.checkbox: input(type="checkbox") unaccompanied
-    label.checkbox.checkbox_other: input(type="checkbox" prepend=true) accompanied by
+    CheckboxSet
+      Value unaccompanied
+      ValueOther.prepend accompanied by
   question(name="Q9" text="9. How did the claimant get to the examination?")
-    input.checkbox_values(type="hidden" name="Q9")
-    label.checkbox: input(type="checkbox") Drove
-    label.checkbox: input(type="checkbox") DSHS arranged the transportation
-    label.checkbox: input(type="checkbox") Taxi
-    label.checkbox: input(type="checkbox") Public transportation
-    label.checkbox.checkbox_other: input(type="checkbox" prepend="Driven by") Driven by
+    CheckboxSet
+      Value Drove
+      Value DSHS arranged the transportation
+      Value Taxi
+      Value Public transportation
+      ValueOther.prepend Driven by
   question(name="Q11" text="11. Is the claimant considered a reliable historian?")
-    input.checkbox_values(type="hidden" name="Q11")
-    label.checkbox: input(type="checkbox") yes
-    label.checkbox: input(type="checkbox") no (enable 11a)
+    CheckboxSet
+      Value yes
+      Value no (enable 11a)
   question(name="Q11A" text="11A. If no, who is the reliable historian for this interview?")
-    input.input-medium(type="text" name="Q11A" placeholder="")
+    TextBox
 
 
 section#Chief-Complaint
   section_text Chief Complaint
   question(name="Q13" text="13. What is the claimant’s chief complaint? Select all that apply.")
-    label.checkbox.checkbox_enabler: input(type="checkbox" data-selector="#Q16A") Alzheimer’s Disease
-    label.checkbox.checkbox_enabler: input(type="checkbox" data-selector="#Q16B") Anorexia
-    label.checkbox.checkbox_enabler: input(type="checkbox" data-selector="#Q16C") Anxiety
-    label.checkbox.checkbox_enabler: input(type="checkbox" data-selector="#Q16D") Attention Disorder
-    label.checkbox.checkbox_enabler: input(type="checkbox" data-selector="#Q16E") Autism Disorders
-    label.checkbox.checkbox_enabler: input(type="checkbox" data-selector="#Q16F") Bipolar Disorder
-    label.checkbox.checkbox_enabler: input(type="checkbox" data-selector="#Q16G") Cognitive Disorder NOS
-    label.checkbox.checkbox_enabler: input(type="checkbox" data-selector="#Q16H") Depression
-    label.checkbox.checkbox_enabler: input(type="checkbox" data-selector="#Q16I") Dysthymic Disorder
-    label.checkbox.checkbox_enabler: input(type="checkbox" data-selector="#Q16J") Learning Disability
-    label.checkbox.checkbox_enabler: input(type="checkbox" data-selector="#Q16K") Mental Retardation
-    label.checkbox.checkbox_enabler: input(type="checkbox" data-selector="#Q16L") Obsessive Compulsive Disorder
-    label.checkbox.checkbox_enabler: input(type="checkbox" data-selector="#Q16M") Panic Disorder
-    label.checkbox.checkbox_enabler: input(type="checkbox" data-selector="#Q16N") Personality Disorder
-    label.checkbox.checkbox_enabler: input(type="checkbox" data-selector="#Q16O") Postconcussion Syndrome
-    label.checkbox.checkbox_enabler: input(type="checkbox" data-selector="#Q16P") Posttraumatic Stress Disorder
-    label.checkbox.checkbox_enabler: input(type="checkbox" data-selector="#Q16Q") Schizoaffective Disorder
-    label.checkbox.checkbox_other: input(type="checkbox") Other
+    CheckboxSet
+      Value(enables-selector="#Q16A") Alzheimer’s Disease
+      Value(enables-selector="#Q16B") Anorexia
+      Value(enables-selector="#Q16C") Anxiety
+      Value(enables-selector="#Q16D") Attention Disorder
+      Value(enables-selector="#Q16E") Autism Disorders
+      Value(enables-selector="#Q16F") Bipolar Disorder
+      Value(enables-selector="#Q16G") Cognitive Disorder NOS
+      Value(enables-selector="#Q16H") Depression
+      Value(enables-selector="#Q16I") Dysthymic Disorder
+      Value(enables-selector="#Q16J") Learning Disability
+      Value(enables-selector="#Q16K") Mental Retardation
+      Value(enables-selector="#Q16L") Obsessive Compulsive Disorder
+      Value(enables-selector="#Q16M") Panic Disorder
+      Value(enables-selector="#Q16N") Personality Disorder
+      Value(enables-selector="#Q16O") Postconcussion Syndrome
+      Value(enables-selector="#Q16P") Posttraumatic Stress Disorder
+      Value(enables-selector="#Q16Q") Schizoaffective Disorder
+      ValueOther Other
 
 
 section#Review-of-Records
   section_text Review of Records
   question(name="Q14" text="14. When was the claimant first diagnosed? Please enter in this format: Month Year.")
-    input.input-medium(type="text" name="Q14" placeholder="")
+    TextBox
   question(name="Q14A" text="14A. Who diagnosed the claimant?")
-    input.input-medium(type="text" name="Q14A" placeholder="")
+    TextBox
     text Repeat 14 and 14a for each diagnosis. If possible have the diagnoses from question 13 filter down to this section. It would allow the doctor to specify who diagnosed the claimant and when for each diagnosis.
   question(name="Q15" text="15. Were there any special circumstances surrounding the onset of this impairment or condition?")
-    label.checkbox: input(type="checkbox") no
-    label.checkbox.checkbox_other: input(type="checkbox") yes (enable 15a)
+    CheckboxSet
+      Value no
+      ValueOther yes (enable 15a)
 
 
 section#History-of-Present-Illness
@@ -102,36 +105,41 @@ section#History-of-Present-Illness
   question(name="Q16" text="16. What are the claimant’s current symptoms? Select all that apply.")
     = render partial: 'Q16-illness'
     question(name="Q16A" text="16A. Please provide any additional symptoms.")
-      input.input-medium(type="text" name="Q16A" placeholder="")
+      TextBox
 
 
 question(name="Q17" text="17. Describe in detail the effect of each impairment on the claimant’s daily functioning. Please focus on relationships and work ability.")
-  input.input-medium(type="text" name="Q17" placeholder="")
+  TextBox
 question(name="QA18" text="A18. Please provide the date the claimant stopped working due to the inability to perform work duties?")
-  input.input-medium(type="text" name="QA18" placeholder="")
+  TextBox
 question(name="QA18A" text="A18A. Please include any information regarding attempts to return to the workplace.")
-  input.input-medium(type="text" name="QA18A" placeholder="")
+  TextBox
 question(name="Q19" text="19. Is the claimant currently in psychotherapy?")
-  label.checkbox: input(type="checkbox") no  (enable 179. disable 19a, 20, 20a.)
-  label.checkbox: input(type="checkbox") yes (enable 19a, 20, and 20a. disable 179)
+  CheckboxSet
+    Value no  (enable 179. disable 19a, 20, 20a.)
+    Value yes (enable 19a, 20, and 20a. disable 179)
 question(name="Q179" text="179. If no, is the claimant willing to consider psychotherapy?")
-  label.checkbox: input(type="checkbox") yes
-  label.checkbox: input(type="checkbox") no
+  CheckboxSet
+    Value yes
+    Value no
 question(name="Q19A" text="19A. If yes, with whom?")
-  label.checkbox: input(type="checkbox") A counselor
-  label.checkbox: input(type="checkbox") A psychologist
-  label.checkbox: input(type="checkbox") A therapist
+  CheckboxSet
+    Value A counselor
+    Value A psychologist
+    Value A therapist
 question(name="Q20" text="20. If yes, does the claimant find psychotherapy helpful?")
-  label.checkbox: input(type="checkbox") yes
-  label.checkbox: input(type="checkbox") no
+  CheckboxSet
+    Value yes
+    Value no
 question(name="Q20A" text="20A. If no, please provide details.")
-  input.input-medium(type="text" name="Q20A" placeholder="")
+  TextBox
 
 section#Current-Medications
   section_text Current Medications
   question(name="Q21" text="21. Is the claimant taking any medications?")
-    label.checkbox: input(type="checkbox") no (disable the rest this section)
-    label.checkbox: input(type="checkbox") yes (enable 21a, 22, and 22table)
+    CheckboxSet
+      Value no (disable the rest this section)
+      Value yes (enable 21a, 22, and 22table)
   question(name="Q177" text="177. If yes, who is writing the prescriptions?")
     CheckboxSet
       Value A psychiatrist
@@ -149,9 +157,9 @@ section#Current-Medications
         th Effectiveness
       tr.table-row-model
         td
-          select.autocomplete-meds(name="MEDICATION")
+          Autocomplete(name="MEDICATION" values="meds")
         td
-          input.input-medium(type="text" name="DOSAGE")
+          TextBox(name="DOSAGE")
         td
           RadioSet(name="EFFECTIVENESS")
             Value good
@@ -170,13 +178,13 @@ section#Past-Psychiatric-History
     / (enable 30,31,31a, and 31b)
   group.29_yes
     question(name="Q30" text="30. If yes, what was the date of the last admittance? Please enter in this format: Month Year.")
-      input.input-medium(type="text" name="Q30" placeholder="")
+      TextBox
     question(name="Q31" text="31. What was the reason for the admittance?")
-      input.input-medium(type="text" name="Q31" placeholder="")
+      TextBox
     question(name="Q31A" text="31A. What treatment did the claimant receive while admitted?")
-      input.input-medium(type="text" name="Q31A" placeholder="")
+      TextBox
     question(name="Q31B" text="31B. What was the claimant’s response to the treatment?")
-      input.input-medium(type="text" name="Q31B" placeholder="")
+      TextBox
 
 section#Alcohol-and-Drug-Abuse
   section_text Alcohol and Drug Abuse
@@ -196,128 +204,139 @@ section#Alcohol-and-Drug-Abuse
         Value Tobacco
         ValueOther Other
     question(name="QA34" text="A34. On what date did claimant first use the substance? Please enter in this format: Month Year.")
-      input.input-medium(type="text" name="QA34" placeholder="")
+      TextBox
     question(name="QA34A" text="A34A. On what date did the claimant begin to use the substance abusively? Please enter in this format: Month Year.")
-      input.input-medium(type="text" name="QA34A" placeholder="")
+      TextBox
     question(name="QA35" text="A35. What is the number of days that the claimant used the substance?")
-      label.checkbox: input(type="checkbox")
-      input.input-medium(type="text" name="QA35" placeholder="") days per week
-      label.checkbox: input(type="checkbox")
-      input.input-medium(type="text" name="QA35" placeholder="") days per month
+      TextBox
     question(name="QA35A" text="A35A. During the claimant’s worst abusive period, how much of the substance was consumed per day?")
-      input.input-medium(type="text" name="QA35A" placeholder="")
+      TextBox
     question(name="QA36" text="A36. Is the substance abuse still occurring?")
-      label.checkbox: input(type="checkbox") no
-      label.checkbox: input(type="checkbox") yes
+      CheckboxSet
+        Value no
+        Value yes
     question(name="QA36A" text="A36A. If no, how long has the claimant been ‘clean?’")
-      label.checkbox: input(type="checkbox")
-      input.input-medium(type="text" name="QA36A" placeholder="") months
-      label.checkbox: input(type="checkbox")
-      input.input-medium(type="text" name="QA36A" placeholder="") years
+      TextBox
       text Programmer: Repeat questions 34, 34a, 35, 35a, 36, and 36a for each substance selected in question 33
     question(name="QA189" text="A189. Did the claimant appear to be under the influence of drugs or alcohol?")
-      label.checkbox: input(type="checkbox") yes
-      label.checkbox: input(type="checkbox") 12no
+      CheckboxSet
+        Value yes
+        Value no
 
 section#Past-Medical-History
   section_text Past Medical History
   question(name="Q23" text="23. Has the claimant ever sustained a major head injury?")
-    label.checkbox: input(type="checkbox") no (disable the rest this section)
-    label.checkbox: input(type="checkbox") yes (enable 24, 25, 26, 26a)
+    CheckboxSet
+      Value no (disable the rest this section)
+      Value yes (enable 24, 25, 26, 26a)
   question(name="Q24" text="24. If yes, did the claimant experience a lack of consciousness, feel dazed, or see stars?")
-    label.checkbox: input(type="checkbox") no
-    label.checkbox: input(type="checkbox") yes
+    CheckboxSet
+      Value no
+      Value yes
   question(name="Q25" text="25. What is the date of the injury? Please enter in this format: Month Year.")
-    input.input-medium(type="text" name="Q25" placeholder="")
+    TextBox
   question(name="Q26" text="26. Was the claimant treated at a hospital?")
-    label.checkbox: input(type="checkbox") no
-    label.checkbox: input(type="checkbox") yes
+    CheckboxSet
+      Value no
+      Value yes
   question(name="Q26A" text="26A. If yes, what is the name of the hospital?")
-    input.input-medium(type="text" name="Q26A" placeholder="")
+    TextBox
   question(name="Q27" text="27. List any previous surgeries. If none, enter “None reported.”")
-    input.input-medium(type="text" name="Q27" placeholder="")
+    TextBox
   question(name="Q28" text="28. List any medical conditions.")
     text Select any of the following common medical conditions or write-in another option.
-    label.checkbox: input(type="checkbox") Allergies
-    label.checkbox: input(type="checkbox") Arthritis
-    label.checkbox: input(type="checkbox") Asthma
-    label.checkbox: input(type="checkbox") Back Pain
-    label.checkbox: input(type="checkbox") Cancer
-    label.checkbox: input(type="checkbox") Chest Pains
-    label.checkbox: input(type="checkbox") Chronic Pain
-    label.checkbox: input(type="checkbox") Degenerative Disc Disease
-    label.checkbox: input(type="checkbox") Diabetes
-    label.checkbox: input(type="checkbox") Digestive Problems
-    label.checkbox: input(type="checkbox") Fibromyalgia
-    label.checkbox: input(type="checkbox") Headaches
-    label.checkbox: input(type="checkbox") Heart Disease
-    label.checkbox: input(type="checkbox") Hepatitis
-    label.checkbox: input(type="checkbox") High Blood Pressure
-    label.checkbox: input(type="checkbox") Joint Problems
-    label.checkbox: input(type="checkbox") Lung Disease
-    label.checkbox: input(type="checkbox") Muscle Problems
-    label.checkbox: input(type="checkbox") Thyroid Disease
-    label.checkbox: input(type="checkbox") Urinary Tract Problems
-    label.checkbox.checkbox_other: input(type="checkbox") Other
-    label.checkbox: input(type="checkbox") None Reported
+    CheckboxSet
+      Value Allergies
+      Value Arthritis
+      Value Asthma
+      Value Back Pain
+      Value Cancer
+      Value Chest Pains
+      Value Chronic Pain
+      Value Degenerative Disc Disease
+      Value Diabetes
+      Value Digestive Problems
+      Value Fibromyalgia
+      Value Headaches
+      Value Heart Disease
+      Value Hepatitis
+      Value High Blood Pressure
+      Value Joint Problems
+      Value Lung Disease
+      Value Muscle Problems
+      Value Thyroid Disease
+      Value Urinary Tract Problems
+      ValueOther Other
+      Value None Reported
 
 section#Social-and-Family-History
   section_text Social and Family History
   question(name="QA37" text="A37. What is the claimant’s current relationship status?")
-    label.checkbox: input(type="checkbox") Single, not in a committed relationship
-    label.checkbox: input(type="checkbox") In a committed relationship (show A38)
-    label.checkbox: input(type="checkbox") Married (show A38)
-    label.checkbox: input(type="checkbox") Divorced
-    label.checkbox: input(type="checkbox") Getting a divorce
-    label.checkbox.checkbox_other: input(type="checkbox") Other
+    CheckboxSet
+      Value Single, not in a committed relationship
+      Value In a committed relationship (show A38)
+      Value Married (show A38)
+      Value Divorced
+      Value Getting a divorce
+      ValueOther Other
   question(name="QA38" text="A38. If applicable, how is the relationship?")
-    label.checkbox: input(type="checkbox") good
-    label.checkbox: input(type="checkbox") fair
-    label.checkbox: input(type="checkbox") poor
+    CheckboxSet
+      Value good
+      Value fair
+      Value poor
   question(name="QA39" text="A39. Does the claimant have children?")
-    label.checkbox: input(type="checkbox") yes (enable A40)
-    label.checkbox: input(type="checkbox") no
+    CheckboxSet
+      Value yes (enable A40)
+      Value no
   question(name="QA40" text="A40. If yes, how old?")
-    input.input-medium(type="text" name="QA40" placeholder="")
+    TextBox
   question(name="QA41" text="A41. If claimant has deceased children, please provide details.")
-    input.input-medium(type="text" name="QA41" placeholder="")
+    TextBox
   question(name="Q42" text="42. What is the claimant’s living situation?")
-    label.checkbox: input(type="checkbox") Apartment
-    label.checkbox: input(type="checkbox") Home
-    label.checkbox: input(type="checkbox") Trailer
-    label.checkbox: input(type="checkbox") Public Housing
-    label.checkbox: input(type="checkbox") Homeless
+    CheckboxSet
+      Value Apartment
+      Value Home
+      Value Trailer
+      Value Public Housing
+      Value Homeless
   question(name="Q42A" text="42A. Does the claimant live alone?")
-    label.checkbox: input(type="checkbox") lives alone
-    label.checkbox.checkbox_other: input(type="checkbox" prepend=true) lives with
+    CheckboxSet
+      Value lives alone
+      ValueOther.prepend lives with
   question(name="Q42B" text="42B. In what city does the claimant currently reside? Include state abbreviation.")
-    input.input-medium(type="text" name="Q42B" placeholder="")
+    TextBox
   question(name="Q43" text="43. Does the family have a history of mental illness?")
-    label.checkbox: input(type="checkbox") no family history of mental illness
-    label.checkbox.checkbox_other: input(type="checkbox") family has a history of
+    CheckboxSet
+      Value no family history of mental illness
+      ValueOther family has a history of
   question(name="Q45" text="45. Was there a history of child abuse?")
-    label.checkbox: input(type="checkbox") no
-    label.checkbox: input(type="checkbox") yes (enable 46 and 47)
+    CheckboxSet
+      Value no
+      Value yes (enable 46 and 47)
   question(name="Q46" text="46. If yes, what was the nature of the conflict?")
-    input.input-medium(type="text" name="Q46" placeholder="")
+    TextBox
   question(name="Q47" text="47. Is the trauma resolved?")
-    label.checkbox: input(type="checkbox") no
-    label.checkbox: input(type="checkbox") yes
+    CheckboxSet
+      Value no
+      Value yes
 
 section#Employment-History
   section_text Employment History
   question(name="QA52" text="A52. Is the claimant currently employed?")
-    label.checkbox: input(type="checkbox") No (enable A53-A56 and A184, A186)
-    label.checkbox: input(type="checkbox") Yes (enable A54-A56, and A186)
-    label.checkbox: input(type="checkbox") The claimant has no employment history.  (enable A53 and A184)
+    CheckboxSet
+      Value No (enable A53-A56 and A184, A186)
+      Value Yes (enable A54-A56, and A186)
+      Value The claimant has no employment history.  (enable A53 and A184)
   question(name="QA53" text="A53. If no, is the claimant currently looking for work?")
-    label.checkbox: input(type="checkbox") no
-    label.checkbox: input(type="checkbox") yes
+    CheckboxSet
+      Value no
+      Value yes
   question(name="QA184" text="A184. How you would describe the claimant’s attitude regarding seeking employment?")
-    label.checkbox: input(type="checkbox") positive
-    label.checkbox: input(type="checkbox") negative
+    CheckboxSet
+      Value positive
+      Value negative
   question(name="QA54" text="A54. If applicable, what was the reason the claimant left the last place of employment?")
-    input.input-medium(type="text" name="QA54" placeholder="")
+    TextBox
   question(name="QA55" text="A55. Please list all the jobs the claimant has held down.")
     table
       tr
@@ -326,257 +345,298 @@ section#Employment-History
         th Employer
         th Position
         th Reason for Leaving
+      tr.table-row-model
+        td: TextBox(name="START" placeholder="mm/dd/yyyy")
+        td: TextBox(name="END" placeholder="mm/dd/yyyy")
+        td: TextBox(name="EMPLOYER")
+        td: TextBox(name="POSITION")
+        td: TextBox(name="REASON")
       tr
-        td: input.input-medium(type="text" name="QA55_R1_START" placeholder="mm/dd/yy")
-        td: input.input-medium(type="text" name="QA55_R1_END" placeholder="mm/dd/yy")
-        td: input.input-medium(type="text" name="QA55_R1_EMPLOYER" placeholder="")
-        td: input.input-medium(type="text" name="QA55_R1_POSITION" placeholder="")
-        td: input.input-medium(type="text" name="QA55_R1_REASON" placeholder="")
-      tr
-        td: input.input-medium(type="text" name="QA55_R2_START" placeholder="mm/dd/yy")
-        td: input.input-medium(type="text" name="QA55_R2_END" placeholder="mm/dd/yy")
-        td: input.input-medium(type="text" name="QA55_R2_EMPLOYER" placeholder="")
-        td: input.input-medium(type="text" name="QA55_R2_POSITION" placeholder="")
-        td: input.input-medium(type="text" name="QA55_R2_REASON" placeholder="")
+        td(colspan=5 text-align="right")
+          a.table-new-row New Row ...
+
   question(name="QA186" text="A186. What is the claimant’s work history?")
-    label.checkbox: input(type="checkbox") good
-    label.checkbox: input(type="checkbox") limited
-    label.checkbox: input(type="checkbox") no reported work history
+    CheckboxSet
+      Value good
+      Value limited
+      Value no reported work history
   question(name="QA56" text="A56. What are the reasons for the periods of unemployment?")
-    input.input-medium(type="text" name="QA56" placeholder="")
+    TextBox
 
 
 section#Educational-History
   section_text Educational History
   question(name="Q48" text="48. What was the last education level completed?")
-    input.input-medium(type="text" name="Q48" placeholder="")
+    TextBox
   question(name="Q49" text="49. What was the claimant’s academic performance?")
-    label.checkbox: input(type="checkbox") Above average
-    label.checkbox: input(type="checkbox") Average
-    label.checkbox: input(type="checkbox") Below average
+    CheckboxSet
+      Value Above average
+      Value Average
+      Value Below average
   question(name="Q49A" text="49A. Please provide any additional relevant information about claimant’s academic performance.")
-    input.input-medium(type="text" name="Q49A" placeholder="")
+    TextBox
   question(name="Q50" text="50. Was the claimant enrolled in special education?")
-    label.checkbox: input(type="checkbox") no
-    label.checkbox: input(type="checkbox") yes (enable 51)
+    CheckboxSet
+      Value no
+      Value yes (enable 51)
   question(name="Q51" text="51. If yes, what were the subjects?")
-    input.input-medium(type="text" name="Q51" placeholder="")
+    TextBox
 
 
 section#Legal-Criminal-History
   section_text Legal / Criminal History
   question(name="QA57" text="A57. Has the claimant ever been arrested?")
-    label.checkbox: input(type="checkbox") no  (disable the rest of this section)
-    label.checkbox: input(type="checkbox") yes (enable A57a-A60a)
+    CheckboxSet
+      Value no  (disable the rest of this section)
+      Value yes (enable A57a-A60a)
   question(name="QA57A" text="A57A. If yes, what was the arrest for?")
-    input.input-medium(type="text" name="QA57A" placeholder="")
+    TextBox
   question(name="QA58" text="A58. If yes, what was the date of the last arrest? Please enter in this format: Month Year.")
-    input.input-medium(type="text" name="QA58" placeholder="")
+    TextBox
   question(name="QA59" text="A59. What was the outcome of the arrest?")
-    input.input-medium(type="text" name="QA59" placeholder="")
+    TextBox
   question(name="QA60" text="A60. Has the claimant ever been incarcerated?")
-    label.checkbox: input(type="checkbox") yes
-    label.checkbox: input(type="checkbox") no
+    CheckboxSet
+      Value yes
+      Value no
   question(name="QA60A" text="A60A. If yes, how long was the incarceration?")
-    input.input-medium(type="text" name="QA60A" placeholder="")
+    TextBox
 
 
 section#Military-History
   section_text Military History
   question(name="QA61" text="A61. Has the claimant served in the military?")
-    label.checkbox: input(type="checkbox") no (disable the rest of this section)
-    label.checkbox: input(type="checkbox") yes (enable A62-A64)
+    CheckboxSet
+      Value no (disable the rest of this section)
+      Value yes (enable A62-A64)
   question(name="QA62" text="A62. If yes, what are the dates of service?")
-    input.input-medium(type="text" name="QA62" placeholder="") to
-    input.input-medium(type="text" name="QA62" placeholder="").
+    TextBox to
+    TextBox.
   question(name="QA63" text="A63. What was the claimant’s highest rank?")
-    input.input-medium(type="text" name="QA63" placeholder="")
+    TextBox
   question(name="QA63A" text="A63A. Did the claimant receive any medals and/or ribbons?")
-    label.checkbox: input(type="checkbox") yes
-    label.checkbox: input(type="checkbox") no
+    CheckboxSet
+      Value yes
+      Value no
   question(name="QA63B" text="A63B. Was any disciplinary action (Article 15, Captain’s Mast) taken?")
-    label.checkbox: input(type="checkbox") yes
-    label.checkbox: input(type="checkbox") no
+    CheckboxSet
+      Value yes
+      Value no
   question(name="QA63C" text="A63C. Was the claimant honorably discharged?")
-    label.checkbox: input(type="checkbox") yes
-    label.checkbox: input(type="checkbox") no
+    CheckboxSet
+      Value yes
+      Value no
   question(name="QA64" text="A64. Was the claimant deployed?")
-    label.checkbox: input(type="checkbox") yes
-    label.checkbox: input(type="checkbox") no
+    CheckboxSet
+      Value yes
+      Value no
 
 section#Mental-Status-Examination
   section_text Mental Status Examination - General Appearance
   question(name="Q65" text="65. In relation to stated age, how did the claimant appear?")
-    label.checkbox: input(type="checkbox") Older
-    label.checkbox: input(type="checkbox") The Same Age
-    label.checkbox: input(type="checkbox") Younger
+    CheckboxSet
+      Value Older
+      Value The Same Age
+      Value Younger
   question(name="Q66" text="66. How was the claimant’s hygiene?")
-    label.checkbox: input(type="checkbox") Good
-    label.checkbox: input(type="checkbox") Fair
-    label.checkbox: input(type="checkbox") Poor
+    CheckboxSet
+      Value Good
+      Value Fair
+      Value Poor
   question(name="Q66A" text="66A. Was the claimant groomed or unkempt?")
-    label.checkbox: input(type="checkbox") Groomed
-    label.checkbox: input(type="checkbox") Unkempt
+    CheckboxSet
+      Value Groomed
+      Value Unkempt
   question(name="Q67" text="67. In relation to height, what was the claimant’s build?")
-    label.checkbox: input(type="checkbox") Obese
-    label.checkbox: input(type="checkbox") Overweight
-    label.checkbox: input(type="checkbox") Average
-    label.checkbox: input(type="checkbox") Slender
-    label.checkbox: input(type="checkbox") Underweight
-    label.checkbox.checkbox_other: input(type="checkbox") Other
+    CheckboxSet
+      Value Obese
+      Value Overweight
+      Value Average
+      Value Slender
+      Value Underweight
+      ValueOther Other
   question(name="Q68" text="68. How was the claimant’s eye contact?")
-    label.checkbox: input(type="checkbox") Good
-    label.checkbox: input(type="checkbox") Fair
-    label.checkbox: input(type="checkbox") Poor
+    CheckboxSet
+      Value Good
+      Value Fair
+      Value Poor
   question(name="Q69" text="69. With respect to the material’s content, how were the claimant’s facial expressions?")
-    label.checkbox: input(type="checkbox") Appropriate
-    label.checkbox: input(type="checkbox") Inappropriate
-    label.checkbox: input(type="checkbox") Nonexistent
+    CheckboxSet
+      Value Appropriate
+      Value Inappropriate
+      Value Nonexistent
   question(name="Q70" text="70. Were the claimant’s clothes presentable?")
-    label.checkbox: input(type="checkbox") yes
-    label.checkbox: input(type="checkbox") no
+    CheckboxSet
+      Value yes
+      Value no
   question(name="Q71" text="71. Describe the clothing.")
-    input.input-medium(type="text" name="Q71" placeholder="")
+    TextBox
   question(name="Q72" text="72. Was the clothing appropriate for the weather?")
-    label.checkbox: input(type="checkbox") yes
-    label.checkbox: input(type="checkbox") no
+    CheckboxSet
+      Value yes
+      Value no
   question(name="Q73" text="73. Was evidence of psychomotor agitation present?")
-    label.checkbox: input(type="checkbox") no (disable 73a)
-    label.checkbox: input(type="checkbox") yes (enable 73a)
+    CheckboxSet
+      Value no (disable 73a)
+      Value yes (enable 73a)
   question(name="Q73A" text="73A. If yes, please provide examples.")
-    input.input-medium(type="text" name="Q73A" placeholder="")
+    TextBox
   question(name="Q73B" text="73B. Was evidence of psychomotor retardation present?")
-    label.checkbox: input(type="checkbox") no (disable 73c)
-    label.checkbox: input(type="checkbox") yes (enable 73c)
+    CheckboxSet
+      Value no (disable 73c)
+      Value yes (enable 73c)
   question(name="Q73C" text="73C. If yes, please provide examples.")
-    input.input-medium(type="text" name="Q73C" placeholder="")
+    TextBox
 
   section_text Mental Status Examination - Attitude &amp; Behavior
   question(name="Q10" text="10. How was the claimant during the interview?")
-    label.checkbox: input(type="checkbox") Cooperative
-    label.checkbox: input(type="checkbox") Difficult
-    label.checkbox: input(type="checkbox") Belligerent
+    CheckboxSet
+      Value Cooperative
+      Value Difficult
+      Value Belligerent
   question(name="Q74" text="74. Was the claimant’s behavior pleasant?")
-    label.checkbox: input(type="checkbox") normal#1yes
-    label.checkbox: input(type="checkbox") no
+    CheckboxSet
+      Value normal#1yes
+      Value no
     section_text DELETE #75.
   question(name="Q76" text="76. Describe the claimant’s attitude?")
-    label.checkbox: input(type="checkbox") Positive
-    label.checkbox: input(type="checkbox") Negative
+    CheckboxSet
+      Value Positive
+      Value Negative
   question(name="Q77" text="77. Was there evidence of malingering or factitious behavior?")
-    label.checkbox: input(type="checkbox") normal#1yes (enable 77a)
-    label.checkbox: input(type="checkbox") no  (disable 77a)
+    CheckboxSet
+      Value normal#1yes (enable 77a)
+      Value no  (disable 77a)
   question(name="Q77A" text="77A. If yes, please describe.")
-    input.input-medium(type="text" name="Q77A" placeholder="")
+    TextBox
 
   section_text Mental Status Examination - Mood / Affect
   question(name="Q88" text="88. What is claimant’s current mood?")
-    input.input-medium(type="text" name="Q88" placeholder="")
+    TextBox
   question(name="Q89" text="89. Was the claimant’s affect consistent with stated mood?")
-    label.checkbox: input(type="checkbox") normal#1yes (disable 90)
-    label.checkbox: input(type="checkbox") no (enable 90)
+    CheckboxSet
+      Value normal#1yes (disable 90)
+      Value no (enable 90)
   question(name="Q90" text="90. If no, how did the claimant appear?")
-    input.input-medium(type="text" name="Q90" placeholder="")
+    TextBox
   question(name="Q91" text="91. Regarding sleep, what does the claimant say? Select all that apply.")
-    label.checkbox: input(type="checkbox") No problems
-    label.checkbox: input(type="checkbox") Difficulty falling asleep
-    label.checkbox: input(type="checkbox") Difficulty staying asleep
-    label.checkbox: input(type="checkbox") Sleeping too much
-    label.checkbox: input(type="checkbox") Persistent nightmares
-    label.checkbox.checkbox_other: input(type="checkbox") Other
+    CheckboxSet
+      Value No problems
+      Value Difficulty falling asleep
+      Value Difficulty staying asleep
+      Value Sleeping too much
+      Value Persistent nightmares
+      ValueOther Other
   question(name="Q92" text="92. Regarding appetite, what does the claimant say? Select all that apply.")
-    label.checkbox: input(type="checkbox") No problems
-    label.checkbox: input(type="checkbox") Lack of appetite
-    label.checkbox: input(type="checkbox") Easily forgets meals
-    label.checkbox: input(type="checkbox") Often over eats
-    label.checkbox.checkbox_other: input(type="checkbox") Other
+    CheckboxSet
+      Value No problems
+      Value Lack of appetite
+      Value Easily forgets meals
+      Value Often over eats
+      ValueOther Other
 
   section_text Mental Status Examination - Content of Thought
   question(name="Q82" text="82. Does the claimant have auditory hallucinations?")
-    label.checkbox: input(type="checkbox") normal#1yes (enable 83)
-    label.checkbox: input(type="checkbox") no (disable 83)
+    CheckboxSet
+      Value normal#1yes (enable 83)
+      Value no (disable 83)
   question(name="Q83" text="83. If yes, describe hallucinations.")
-    input.input-medium(type="text" name="Q83" placeholder="")
+    TextBox
   question(name="Q84" text="84. Does the claimant have visual, tactile, or olfactory hallucinations?")
-    label.checkbox: input(type="checkbox") normal#1yes (enable 85)
-    label.checkbox: input(type="checkbox") no (disable 85)
+    CheckboxSet
+      Value normal#1yes (enable 85)
+      Value no (disable 85)
   question(name="Q85" text="85. If yes, describe hallucinations.")
-    input.input-medium(type="text" name="Q85" placeholder="")
+    TextBox
   question(name="Q86" text="86. Does the claimant have suicidal ideations?")
-    label.checkbox: input(type="checkbox") yes (enable 86a)
-    label.checkbox: input(type="checkbox") no (disable 86a)
+    CheckboxSet
+      Value yes (enable 86a)
+      Value no (disable 86a)
   question(name="Q86A" text="86A. If yes, please provide details.")
-    input.input-medium(type="text" name="Q86A" placeholder="")
+    TextBox
   question(name="Q86B" text="86B. Does the claimant have homicidal ideations?")
-    label.checkbox: input(type="checkbox") normal#1yes (enable 86c)
-    label.checkbox: input(type="checkbox") no (disable 86c)
+    CheckboxSet
+      Value normal#1yes (enable 86c)
+      Value no (disable 86c)
   question(name="Q86C" text="86C. If yes, please provide details.")
-    input.input-medium(type="text" name="Q86C" placeholder="")
+    TextBox
   question(name="Q87" text="87. Does the claimant have delusions?")
-    label.checkbox: input(type="checkbox") normal#1yes (enable 87a)
-    label.checkbox: input(type="checkbox") no (disable 87a)
+    CheckboxSet
+      Value normal#1yes (enable 87a)
+      Value no (disable 87a)
   question(name="Q87A" text="87A. If yes, please provide details.")
-    input.input-medium(type="text" name="Q87A" placeholder="")
+    TextBox
 
   section_text Mental Status Examination - Stream of Mental Activity / Speech
   question(name="Q78" text="78. Was the claimant’s speech logical and coherent?")
-    label.checkbox: input(type="checkbox") yes (disable 78a)
-    label.checkbox: input(type="checkbox") no (enable 78a)
+    CheckboxSet
+      Value yes (disable 78a)
+      Value no (enable 78a)
   question(name="Q78A" text="78A. If no, please describe.")
-    input.input-medium(type="text" name="Q78A" placeholder="")
+    TextBox
   question(name="Q79" text="79. Describe the articulation.")
-    label.checkbox: input(type="checkbox") Clear
-    label.checkbox: input(type="checkbox") Distorted
-    label.checkbox: input(type="checkbox") Garbled
+    CheckboxSet
+      Value Clear
+      Value Distorted
+      Value Garbled
   question(name="Q80" text="80. Describe the speech velocity.")
-    label.checkbox: input(type="checkbox") High
-    label.checkbox: input(type="checkbox") Normal
-    label.checkbox: input(type="checkbox") Low
+    CheckboxSet
+      Value High
+      Value Normal
+      Value Low
   question(name="Q81" text="81. Describe the speech volume.")
-    label.checkbox: input(type="checkbox") High
-    label.checkbox: input(type="checkbox") Normal
-    label.checkbox: input(type="checkbox") Low
+    CheckboxSet
+      Value High
+      Value Normal
+      Value Low
 
 section#Intellectual-Functioning-Sensorium
   section_text Intellectual Functioning / Sensorium - Orientation
   question(name="Q93" text="93. How was the claimant orientated?")
-    label.checkbox: input(type="checkbox") None
-    label.checkbox: input(type="checkbox") x1 (enable 94-96)
-    label.checkbox: input(type="checkbox") x2 (enable 94-96)
-    label.checkbox: input(type="checkbox") x3
+    CheckboxSet
+      Value None
+      Value x1 (enable 94-96)
+      Value x2 (enable 94-96)
+      Value x3
     text If needed, complete the additional questions to provide more information.
     text OPTIONAL: Only complete if needed for clarification
   question(name="Q94" text="94. Was the claimant orientated to person?")
-    label.checkbox: input(type="checkbox") yes
-    label.checkbox.checkbox_other: input(type="checkbox" prepend=true) no,
+    CheckboxSet
+      Value yes
+      ValueOther.prepend no,
   question(name="Q95" text="95. Was the claimant orientated to place?")
-    label.checkbox: input(type="checkbox") yes
-    label.checkbox.checkbox_other: input(type="checkbox" prepend=true) no,
+    CheckboxSet
+      Value yes
+      ValueOther.prepend no,
   question(name="Q96" text="96. Was the claimant orientated to time?")
-    label.checkbox: input(type="checkbox") yes
-    label.checkbox.checkbox_other: input(type="checkbox" prepend=true) no,
+    CheckboxSet
+      Value yes
+      ValueOther.prepend no,
 
   group.enable-complex.enable-psych-mem.enable-psych-intel
     section_text Intellectual Functioning / Sensorium - Psychological Testing
     question(name="Q98" text="98. Which tests did the claimant take? Select all that apply.")
       text Intellectual Ability (98a)
-      label.checkbox: input(type="checkbox") Wechsler Adult Intelligence Scale (WAIS-IV)
-      label.checkbox: input(type="checkbox") Woodcock Johnson III
-      label.checkbox: input(type="checkbox") Test of Nonverbal Intelligence (TONI-III)
-      label.checkbox: input(type="checkbox") Leiter International Performance Scale- Revised (Leiter-R)
-      label.checkbox: input(type="checkbox") Stanford Binet Intelligence Test
-      label.checkbox: input(type="checkbox") Raven Progressive Matrices
-      label.checkbox: input(type="checkbox") Leiter International Scale
-      label.checkbox: input(type="checkbox") DELETE THIS OPTION-Wechsler Intelligence Scale for Children (WISC-IV)
+      CheckboxSet
+        Value Wechsler Adult Intelligence Scale (WAIS-IV)
+        Value Woodcock Johnson III
+        Value Test of Nonverbal Intelligence (TONI-III)
+        Value Leiter International Performance Scale- Revised (Leiter-R)
+        Value Stanford Binet Intelligence Test
+        Value Raven Progressive Matrices
+        Value Leiter International Scale
+        Value DELETE THIS OPTION-Wechsler Intelligence Scale for Children (WISC-IV)
       text Memory Functioning (98b)
-      label.checkbox: input(type="checkbox") Wechsler Memory Scale (WMS-IV)
-      label.checkbox: input(type="checkbox") Rey 15 Item Recognition Test
+      CheckboxSet
+        Value Wechsler Memory Scale (WMS-IV)
+        Value Rey 15 Item Recognition Test
       text Neuropsychological Tests (98c)
-      label.checkbox: input(type="checkbox") Trail Making A and B
-      label.checkbox: input(type="checkbox") Halstead-Reitan
-      label.checkbox: input(type="checkbox") Luria-Nebraska
+      CheckboxSet
+        Value Trail Making A and B
+        Value Halstead-Reitan
+        Value Luria-Nebraska
     question(name="Q99" text="99. Describe the claimant’s testing behaviors.")
-      input.input-medium(type="text" name="Q99" placeholder="")
+      TextBox
 
   group.enable-psych-only.enable-psych-intel
     section_text Intellectual Functioning / Sensorium - Preperations for Memory Questions
@@ -585,40 +645,43 @@ section#Intellectual-Functioning-Sensorium
       text LAMP, WATCH, and PEN
       text * Remember them! *
       text Check the box below to begin a 5-minute timer.
-      label.checkbox: input(type="checkbox") Timer (5 minutes)
+      button(type="button") Start Timer (5 minutes)
 
   group.enable-complex.enable-psych-mem
     section_text Intellectual Functioning / Sensorium - Memory Index Scores
     question(name="Q112" text="112. Please paste table of index scores from memory testing.")
-      input.input-medium(type="text" name="Q112" placeholder="")
+      TextBox
 
     question(name="Q113" text="113. Please paste table of subtest scores from memory testing.")
-      input.input-medium(type="text" name="Q113" placeholder="")
+      TextBox
     question(name="Q114" text="114. Comments regarding this claimant’s performance on the memory testing.")
-      input.input-medium(type="text" name="Q114" placeholder="")
+      TextBox
     question(name="Q116" text="116. Regarding the claimant’s Delayed and Immediate Memory scores, please rate abilities. Please select all that apply.")
-      label.checkbox: input(type="checkbox") very superior
-      label.checkbox: input(type="checkbox") superior
-      label.checkbox: input(type="checkbox") high average
-      label.checkbox: input(type="checkbox") average
-      label.checkbox: input(type="checkbox") low average
-      label.checkbox: input(type="checkbox") borderline
-      label.checkbox: input(type="checkbox") extremely low
-      label.checkbox: input(type="checkbox") consistent
-      label.checkbox: input(type="checkbox") inconsistent
+      CheckboxSet
+        Value very superior
+        Value superior
+        Value high average
+        Value average
+        Value low average
+        Value borderline
+        Value extremely low
+        Value consistent
+        Value inconsistent
 
   group.enable-psych-only.enable-psych-intel
     text Remote Memory
     question(name="Q121" text="121. Did the claimant remember autobiographical history and past events?")
-      label.checkbox: input(type="checkbox") yes
-      label.checkbox: input(type="checkbox") no
+      CheckboxSet
+        Value yes
+        Value no
 
     text Recent Memory
     question(name="Q122" text="122. How many objects did the claimant remember after 5-minutes?")
-      label.checkbox: input(type="checkbox") 0
-      label.checkbox: input(type="checkbox") 1
-      label.checkbox: input(type="checkbox") 2
-      label.checkbox: input(type="checkbox") 3
+      CheckboxSet
+        Value 0
+        Value 1
+        Value 2
+        Value 3
 
     text Immediate Memory
     question(name="Q123" text="123. How many digits did the claimant remember forward and backward?")
@@ -630,66 +693,70 @@ section#Intellectual-Functioning-Sensorium
           th Last level completed?
         tr
           td 3-8-4-9
-          td: label.checkbox: input(type="checkbox") correct?
+          td: label.radio: input(type="radio" name="FORWARD" value=4) correct?
           td 7-9-2
-          td: label.checkbox: input(type="checkbox") correct?
+          td: Checkbox correct?
         tr
           td 6-7-4-3-1
-          td: label.checkbox: input(type="checkbox") correct?
+          td: label.radio: input(type="radio" name="FORWARD" value=5) correct?
           td 6-5-1-3
-          td: label.checkbox: input(type="checkbox") correct?
+          td: Checkbox correct?
         tr
           td 2-4-8-5-9-3
-          td: label.checkbox: input(type="checkbox") correct?
+          td: label.radio: input(type="radio" name="FORWARD" value=6) correct?
           td 1-8-5-7-9
-          td: label.checkbox: input(type="checkbox") correct?
+          td: Checkbox correct?
         tr
           td 4-7-9-3-1-2-8
-          td: label.checkbox: input(type="checkbox") correct?
+          td: label.radio: input(type="radio" name="FORWARD" value=7) correct?
           td 2-4-8-1-3-7
-          td: label.checkbox: input(type="checkbox") correct?
+          td: Checkbox correct?
 
     question(name="Q123B" text="123B. Given the claimant’s performance on these tasks, please rate their overall memory functions.")
-      label.checkbox: input(type="checkbox") poor
-      label.checkbox: input(type="checkbox") fair
-      label.checkbox: input(type="checkbox") good
-      label.checkbox: input(type="checkbox") limited
+      CheckboxSet
+        Value poor
+        Value fair
+        Value good
+        Value limited
 
   group.enable-complex.enable-psych-intel
     section_text Intellectual Functioning / Sensorium - Intellectual Functioning Index Scores
     question(name="Q100" text="100. Please paste table of index scores from intellectual testing.")
-      input.input-medium(type="text" name="Q100" placeholder="")
+      TextBox
     question(name="Q101" text="101. Please paste table of subtest scores from intellectual testing.")
-      input.input-medium(type="text" name="Q101" placeholder="")
+      TextBox
     question(name="Q102" text="102. Comments regarding this claimant’s performance on the intellectual testing.")
-      input.input-medium(type="text" name="Q102" placeholder="")
+      TextBox
     question(name="Q200" text="200. What level is the claimant’s verbal comprehension skills (VCI)?")
-      label.checkbox: input(type="checkbox") very superior
-      label.checkbox: input(type="checkbox") superior
-      label.checkbox: input(type="checkbox") high average
-      label.checkbox: input(type="checkbox") average
-      label.checkbox: input(type="checkbox") low average
-      label.checkbox: input(type="checkbox") borderline
-      label.checkbox: input(type="checkbox") extremely low
+      CheckboxSet
+        Value very superior
+        Value superior
+        Value high average
+        Value average
+        Value low average
+        Value borderline
+        Value extremely low
 
   group.enable-psych-only.enable-psych-mem
     question(name="Q110" text="110. What is the claimant’s level of intellectual functioning?")
-      label.checkbox: input(type="checkbox") Above average
-      label.checkbox: input(type="checkbox") Average
-      label.checkbox: input(type="checkbox") Below average
+      CheckboxSet
+        Value Above average
+        Value Average
+        Value Below average
 
   group.enable-complex.enable-psych-intel
     section_text Intellectual Functioning / Sensorium - Concentration
     question(name="Q135" text="135. What level is the claimant’s working memory as indicated by the intelligence assessment?")
-      label.checkbox: input(type="checkbox") very superior
-      label.checkbox: input(type="checkbox") superior
-      label.checkbox: input(type="checkbox") high average
-      label.checkbox: input(type="checkbox") average
-      label.checkbox: input(type="checkbox") low average
-      label.checkbox: input(type="checkbox") borderline
-      label.checkbox: input(type="checkbox") extremely low
+      CheckboxSet
+        Value very superior
+        Value superior
+        Value high average
+        Value average
+        Value low average
+        Value borderline
+        Value extremely low
     question(name="Q135A" text="135A. What is the index score for this assessment section?")
-      input.input-medium(type="text" name="Q135A" placeholder="")
+      TextBox
 
   group.enable-psych-only.enable-psych-mem
     section_text Intellectual Functioning / Sensorium - Concentration
@@ -700,89 +767,78 @@ section#Intellectual-Functioning-Sensorium
     text Note how many repetitions, if any.
     text If you use the second one, note that claimant needed “2 repetitions and modification of instructions.”
     question(name="Q136" text="136. Was the claimant able to complete 3-step commands?")
-      label.checkbox: input(type="checkbox") yes, with no repetitions
-      label.checkbox: input(type="checkbox") yes, with one repetition
-      label.checkbox: input(type="checkbox") yes, with two repetitions
-      label.checkbox: input(type="checkbox") yes, with two repetitions and modification of the instructions
-      label.checkbox: input(type="checkbox") no even after several repetitions
+      CheckboxSet
+        Value yes, with no repetitions
+        Value yes, with one repetition
+        Value yes, with two repetitions
+        Value yes, with two repetitions and modification of the instructions
+        Value no even after several repetitions
 
     section_text Intellectual Functioning / Sensorium - Spelling
     question(name="Q137" text="137. Was the claimant able to spell WORLD forward?")
-      label.checkbox: input(type="checkbox") yes
-      label.checkbox: input(type="checkbox") no
+      CheckboxSet
+        Value yes
+        Value no
     question(name="Q138" text="138. Was the claimant able to spell WORLD backward?")
-      label.checkbox: input(type="checkbox") yes
-      label.checkbox: input(type="checkbox") no
+      CheckboxSet
+        Value yes
+        Value no
 
   group.enable-complex.enable-psych-intel
     section_text Intellectual Functioning / Sensorium - Fund of Knowledge / Information
     question(name="Q125" text="125. What level is the claimant’s fund of knowledge as seen in the subtest Information?")
-      label.checkbox: input(type="checkbox") very superior
-      label.checkbox: input(type="checkbox") superior
-      label.checkbox: input(type="checkbox") high average
-      label.checkbox: input(type="checkbox") average
-      label.checkbox: input(type="checkbox") low average
-      label.checkbox: input(type="checkbox") borderline
-      label.checkbox: input(type="checkbox") extremely low
+      CheckboxSet
+        Value very superior
+        Value superior
+        Value high average
+        Value average
+        Value low average
+        Value borderline
+        Value extremely low
     question(name="Q126" text="126. What is the core test’s scaled score?")
-      input.input-medium(type="text" name="Q126" placeholder="")
+      TextBox
  
   group.enable-psych-only.enable-psych-mem
     question(name="Q127" text="127. Is the claimant’s fund of knowledge consistent with education level and background?")
-      label.checkbox: input(type="checkbox") yes
-      label.checkbox: input(type="checkbox") no
+      CheckboxSet
+        Value yes
+        Value no
     question(name="Q128" text="128. Is the claimant aware of current events?")
-      label.checkbox: input(type="checkbox") yes
-      label.checkbox: input(type="checkbox") limited
-      label.checkbox: input(type="checkbox") no
-    question(name="Q129" text="129. Please ask and record the answers the following current event questions.")
-      text What is the current president of the United State of America?
-      label.checkbox: input(type="checkbox") Correct Answer
-      text   What is the capital of this state?
-      label.checkbox: input(type="checkbox") Correct Answer
-      text Who is the governor of this state?
-      label.checkbox: input(type="checkbox") Correct Answer
-      text Which states border this state?
-      label.checkbox: input(type="checkbox") Correct Answer
-      text   How many eggs are in one dozen?
-      label.checkbox: input(type="checkbox") Correct Answer
-      text Why do we put food in the refrigerator?
-      label.checkbox: input(type="checkbox") Correct Answer
+      CheckboxSet
+        Value yes
+        Value limited
+        Value no
+    question(name="Q129" text="129. Which of the following was the claimant able to answer correctly?")
+      CheckboxSet(rollup="sum")
+        Value What is the current president of the United State of America?
+        Value What is the capital of this state?
+        Value Who is the governor of this state?
+        Value Which states border this state?
+        Value How many eggs are in one dozen?
+        Value Why do we put food in the refrigerator?
 
   group.enable-complex.enable-psych-intel
     section_text Intellectual Functioning / Sensorium - Calculations
     question(name="Q131" text="131. What level is the claimant’s ability to solve basic mathematical problems?")
-      label.checkbox: input(type="checkbox") very superior
-      label.checkbox: input(type="checkbox") superior
-      label.checkbox: input(type="checkbox") high average
-      label.checkbox: input(type="checkbox") average
-      label.checkbox: input(type="checkbox") low average
-      label.checkbox: input(type="checkbox") borderline
-      label.checkbox: input(type="checkbox") extremely low
+      CheckboxSet
+        Value very superior
+        Value superior
+        Value high average
+        Value average
+        Value low average
+        Value borderline
+        Value extremely low
     question(name="Q132" text="132. What is this core test’s scaled score?")
-      input.input-medium(type="text" name="Q132" placeholder="")
+      TextBox
 
   group.enable-psych-only.enable-psych-mem
     question(name="Q133" text="133. Please ask the following questions and check the Correct Answer box if answered correctly.")
-      table
-        tr
-          th Question
-          th Answer
-        tr
-          td $9 + $7 =
-          td: label.checkbox: input(type="checkbox") Correct Answer: $16
-        tr
-          td $23 – $10  =
-          td: label.checkbox: input(type="checkbox") Correct Answer: $13
-        tr
-          td $11 x 10 =
-          td: label.checkbox: input(type="checkbox") Correct Answer: $110
-        tr
-          td $9  3 =
-          td: label.checkbox: input(type="checkbox") Correct Answer: $3
-        tr
-          td 47c + 10c =
-          td: label.checkbox: input(type="checkbox") Correct Answer: 57c
+      CheckboxSet(rollup="sum")
+        Value $9 + $7 = ? (Correct Answer: $16)
+        Value $23 – $10 = ? (Correct Answer: $13)
+        Value $11 x 10 = ? (Correct Answer: $110)
+        Value $9  3 = ? (Correct Answer: $3)
+        Value 47c + 10c = ? (Correct Answer: 57c)
 
     text Begin at 100 and subtract 7, and keep going until I say stop.
     table
@@ -796,66 +852,64 @@ section#Intellectual-Functioning-Sensorium
         td Serial 3’s
         td Correct Answer: 100-97-94-91-88-85-82-79-76-73-70-67-64-61-…
     question(name="Q133A" text="133A. Was the claimant able to execute serial-7’s?")
-      label.checkbox: input(type="checkbox") yes
-      label.checkbox: input(type="checkbox") yes, but made a few errors
-      label.checkbox: input(type="checkbox") no, the claimant completed serial-3’s accurately
-      label.checkbox: input(type="checkbox") no, the claimant was unable to execute serial-7s or serial-3
+      CheckboxSet
+        Value yes
+        Value yes, but made a few errors
+        Value no, the claimant completed serial-3’s accurately
+        Value no, the claimant was unable to execute serial-7s or serial-3
 
     section_text Intellectual Functioning / Sensorium - Word Problems
-    question
-      table
-        tr
-          th Question
-          th Answer
-        tr
-          td T-shirts are generally priced $5 each, but today, they are on sale.  T-shirts are priced 2 for $9, how much would 6 t-shirts cost? (
-          td: label.checkbox: input(type="checkbox") Correct Answer: $27
-        tr
-          td A pack of chewing gum cost 99 cents.  There are 25 pieces of chewing gum in a pack.  How many pieces of gum are in six packs?
-          td: label.checkbox: input(type="checkbox") Correct Answer: 150
-
-    question(name="Q133B" text="133B. Was the claimant able to correctly answer word problems?")
-      label.checkbox: input(type="checkbox") yes
-      label.checkbox: input(type="checkbox") no
+    question(name="Q133B" text="133B. Was the claimant able to answer the following word problems?")
+      CheckboxSet(rollup="sum")
+        Value T-shirts are generally priced $5 each, but today, they are on sale.  T-shirts are priced 2 for $9, how much would 6 t-shirts cost? (Correct Answer: $27)
+        Value A pack of chewing gum cost 99 cents.  There are 25 pieces of chewing gum in a pack.  How many pieces of gum are in six packs? (Correct Answer: 150)
 
   group.enable-complex.enable-psych-intel
     section_text Intellectual Functioning / Sensorium - Abstract Thinking
     question(name="Q144" text="144. What level is the claimant’s ability to think abstractly (Similarities)?")
-      label.checkbox: input(type="checkbox") very superior
-      label.checkbox: input(type="checkbox") superior
-      label.checkbox: input(type="checkbox") high average
-      label.checkbox: input(type="checkbox") average
-      label.checkbox: input(type="checkbox") low average
-      label.checkbox: input(type="checkbox") borderline
-      label.checkbox: input(type="checkbox") extremely low
+      CheckboxSet
+        Value very superior
+        Value superior
+        Value high average
+        Value average
+        Value low average
+        Value borderline
+        Value extremely low
     question(name="Q145" text="145. What is the scaled score for this test?")
-      input.input-medium(type="text" name="Q145" placeholder="")
+      TextBox
   
   group.enable-psych-only.enable-psych-mem
     text For the next four questions, the correct answer is provided; however, score similar responses appropriately.
     question(name="Q142" text="142. What does the proverb, “Time is golden,” mean?")
-      label.checkbox: input(type="checkbox") Correct Answer: Precious.
+      CheckboxSet
+        Value Correct Answer: Precious.
     question(name="Q142A" text="142A. What does the proverb, “Rome was not built in a day,” mean?")
-      label.checkbox: input(type="checkbox") Correct Answer: Major growth takes time.
+      CheckboxSet
+        Value Correct Answer: Major growth takes time.
     question(name="Q146" text="146. What are the similarities and differences of “a boat and a car “?")
-      label.checkbox: input(type="checkbox") Correct Answer: Both are transportation, but one is for water and the other land.
+      CheckboxSet
+        Value Correct Answer: Both are transportation, but one is for water and the other land.
     question(name="Q146A" text="146A. What are the similarities and differences of “a pen and a pencil”?")
-      label.checkbox: input(type="checkbox") Correct Answer: Both are writing instruments, but one has ink and the other graphite or lead.
+      CheckboxSet
+        Value Correct Answer: Both are writing instruments, but one has ink and the other graphite or lead.
     question(name="Q146B" text="146B. Automatically generated.")
 
   section_text Intellectual Functioning / Sensorium - Judgement and Insight
   question(name="Q147" text="147. What is the claimant’s insight into own condition?")
-    label.checkbox: input(type="checkbox") Good
-    label.checkbox: input(type="checkbox") Fair
-    label.checkbox: input(type="checkbox") Limited
-    label.checkbox: input(type="checkbox") Impaired
+    CheckboxSet
+      Value Good
+      Value Fair
+      Value Limited
+      Value Impaired
     text For the next two questions, the correct answer is provided; however, score similar responses appropriately.
   question(name="Q150" text="150. What would the claimant do if the claimant smelled smoke in a crowded movie theater?")
-    label.checkbox: input(type="checkbox") Correct Answer: Alert local authorities.
-    label.checkbox: input(type="checkbox") Incorrect Answer
+    CheckboxSet
+      Value Correct Answer: Alert local authorities.
+      Value Incorrect Answer
   question(name="Q151" text="151. What would the claimant do if the claimant found a lost purse in a store?")
-    label.checkbox: input(type="checkbox") Correct Answer: Turn in the purse to a store manager.
-    label.checkbox: input(type="checkbox") Incorrect Answer
+    CheckboxSet
+      Value Correct Answer: Turn in the purse to a store manager.
+      Value Incorrect Answer
   question(name="Q152" text="152. Automatically generated.")
 
   group.enable-complex.enable-psych-mem
@@ -954,106 +1008,121 @@ section#Intellectual-Functioning-Sensorium
           th Functioning
         tr
           th TRAIL A
-          td: input.input-medium(type="text" name="Q149_A1" placeholder="")
-          td: input.input-medium(type="text" name="Q149_A2" placeholder="")
-          td: input.input-medium(type="text" name="Q149_A3" placeholder="")
-          td: input.input-medium(type="text" name="Q149_A4" placeholder="")
+          td: TextBox(name="A1")
+          td: TextBox(name="A2")
+          td: TextBox(name="A3")
+          td: TextBox(name="A4")
         tr
           th TRAIL B
-          td: input.input-medium(type="text" name="Q149_B1" placeholder="")
-          td: input.input-medium(type="text" name="Q149_B2" placeholder="")
-          td: input.input-medium(type="text" name="Q149_B3" placeholder="")
-          td: input.input-medium(type="text" name="Q149_B4" placeholder="")
+          td: TextBox(name="B1")
+          td: TextBox(name="B2")
+          td: TextBox(name="B3")
+          td: TextBox(name="B4")
 
     question(name="Q302" text="302. Please discuss the findings of any neuropsychological testing administered.")
-      input.input-medium(type="text" name="Q302" placeholder="")
+      TextBox
     
     section_text Intellectual Functioning / Sensorium - Additional Psychological Assessments
     question(name="Q303" text="303. Please select any additional testing that was requested an administered. Select all that apply.")
       text Personality and Behavior Assessments
-      label.checkbox: input(type="checkbox") Vineland Adaptive Behavior Scale
-      label.checkbox: input(type="checkbox") MMPI-2-RF
-      label.checkbox: input(type="checkbox") Rorschach
-      label.checkbox: input(type="checkbox") MCMI
+      CheckboxSet
+        Value Vineland Adaptive Behavior Scale
+        Value MMPI-2-RF
+        Value Rorschach
+        Value MCMI
     question(name="Q304" text="304. If a test is selected, please discuss the result here.")
-      input.input-medium(type="text" name="Q304" placeholder="")
+      TextBox
     question(name="Q305" text="305. Please select any additional testing that was requested an administered. Select all that apply.")
       text Malingering Measures
-      label.checkbox: input(type="checkbox") Test of Malingering Memory (TOMM)
-      label.checkbox: input(type="checkbox") Structured Interview of Malingering Symptoms (SIMS)
-      label.checkbox: input(type="checkbox") Miller Forensic Assessment of Symptoms Test (M-FAST)
-      label.checkbox: input(type="checkbox") Portland Digit Symbol Test
-      label.checkbox: input(type="checkbox") Validity Indicator Profile (VIP)
+      CheckboxSet
+        Value Test of Malingering Memory (TOMM)
+        Value Structured Interview of Malingering Symptoms (SIMS)
+        Value Miller Forensic Assessment of Symptoms Test (M-FAST)
+        Value Portland Digit Symbol Test
+        Value Validity Indicator Profile (VIP)
     question(name="Q306" text="306. If a test is selected, please discuss the result here.")
-      input.input-medium(type="text" name="Q306" placeholder="")
+      TextBox
 
 section#Current-Level-of-Functioning
   section_text Current Level of Functioning - Activities of Daily Living
   question(name="Q153" text="153. What is the claimant’s typical day like?")
-    input.input-medium(type="text" name="Q153" placeholder="")
+    TextBox
   question(name="QA154" text="A154. Which tasks does the claimant do alone? Select all that apply.")
-    label.checkbox: input(type="checkbox") Cooking
-    label.checkbox: input(type="checkbox") Grocery shop
-    label.checkbox: input(type="checkbox") Self-care
-    label.checkbox: input(type="checkbox") Laundry
-    label.checkbox: input(type="checkbox") None
+    CheckboxSet
+      Value Cooking
+      Value Grocery shop
+      Value Self-care
+      Value Laundry
+      Value None
   question(name="QA155" text="A155. Which tasks do the claimant require help to do? Select all that apply.")
-    label.checkbox: input(type="checkbox") Cooking
-    label.checkbox: input(type="checkbox") Grocery shop
-    label.checkbox: input(type="checkbox") Self-care
-    label.checkbox: input(type="checkbox") Laundry
-    label.checkbox: input(type="checkbox") None
+    CheckboxSet
+      Value Cooking
+      Value Grocery shop
+      Value Self-care
+      Value Laundry
+      Value None
   question(name="QA155A" text="A155A. Who helps with these tasks?")
-    input.input-medium(type="text" name="QA155A" placeholder="")
+    TextBox
   question(name="Q156" text="156. Is the claimant able to complete ADLs efficiently?")
-    label.checkbox: input(type="checkbox") yes
-    label.checkbox.checkbox_other: input(type="checkbox") no,
+    CheckboxSet
+      Value yes
+      ValueOther no,
   question(name="QA156A" text="A156A. Is the claimant able to handle personal funds?")
-    label.checkbox: input(type="checkbox") yes
-    label.checkbox: input(type="checkbox") no (show A156a)
+    CheckboxSet
+      Value yes
+      Value no (show A156a)
   question(name="QA156B" text="A156B. If no, who handles this for the claimant?")
-    input.input-medium(type="text" name="QA156B" placeholder="")
+    TextBox
 
   section_text Current Level of Functioning - Social Functioning
   question(name="QA157" text="A157. Does the claimant have social friends?")
-    label.checkbox: input(type="checkbox") no (enable A157a)
-    label.checkbox: input(type="checkbox") yes, the number of social friends is
-    input.input-medium(type="text" name="QA157" placeholder="") (enable A157b)
+    CheckboxSet
+      Value no (enable A157a)
+      ValueOther yes, the number of social friends is
+    TextBox (enable A157b)
   question(name="QA157A" text="A157A. If no, is the claimant isolated from people?")
-    label.checkbox: input(type="checkbox") yes
-    label.checkbox: input(type="checkbox") no
+    CheckboxSet
+      Value yes
+      Value no
   question(name="QA157B" text="A157B. If yes, please add detail.")
-    input.input-medium(type="text" name="QA157B" placeholder="")
+    TextBox
   question(name="Q158" text="158. Is the claimant a member of an organized group?")
-    label.checkbox: input(type="checkbox") no
-    label.checkbox: input(type="checkbox") yes
+    CheckboxSet
+      Value no
+      Value yes
   question(name="Q159" text="159. Does the claimant participate in recreational activities?")
-    label.checkbox: input(type="checkbox") yes
-    label.checkbox: input(type="checkbox") no
+    CheckboxSet
+      Value yes
+      Value no
   question(name="Q159A" text="159A. Is a house of worship regularly attended?")
-    label.checkbox: input(type="checkbox") yes
-    label.checkbox: input(type="checkbox") no
+    CheckboxSet
+      Value yes
+      Value no
   question(name="Q160" text="160. Does the claimant have a history of violence?")
-    label.checkbox: input(type="checkbox") yes (enable 160a)
-    label.checkbox: input(type="checkbox") no
+    CheckboxSet
+      Value yes (enable 160a)
+      Value no
   question(name="Q160A" text="160A. If yes, please describe?")
-    input.input-medium(type="text" name="Q160A" placeholder="")
+    TextBox
   question(name="Q181" text="181. How is the claimant’s support system?")
-    label.checkbox: input(type="checkbox") Good
-    label.checkbox: input(type="checkbox") Fair
-    label.checkbox: input(type="checkbox") Limited
-    label.checkbox: input(type="checkbox") Poor
+    CheckboxSet
+      Value Good
+      Value Fair
+      Value Limited
+      Value Poor
   question(name="Q181A" text="181A. Who is included in the support system?")
-    input.input-medium(type="text" name="Q181A" placeholder="")
+    TextBox
   question(name="Q299" text="299. How are the claimant’s social and interpersonal relationships?")
-    label.checkbox: input(type="checkbox") good
-    label.checkbox: input(type="checkbox") fair
-    label.checkbox: input(type="checkbox") poor
+    CheckboxSet
+      Value good
+      Value fair
+      Value poor
   question(name="Q300" text="300. Did the claimant act appropriately with the provider and office staff?")
-    label.checkbox: input(type="checkbox") yes
-    label.checkbox: input(type="checkbox") no (enable 301)
+    CheckboxSet
+      Value yes
+      Value no (enable 301)
   question(name="Q301" text="301. Please explain any inappropriate behavior.")
-    input.input-medium(type="text" name="Q301" placeholder="")
+    TextBox
 
   section_text Current Level of Functioning - Concentration, Persistance, and Pace
   question(name="QA161" text="A161. Please provide the length of time (in minutes) the claimant participates in the following activities per day. Also, enter one of the claimant’s hobbies and the length of time the claimant can sustain the activity. If duration is listed, please provide a unit of time.")
@@ -1065,273 +1134,297 @@ section#Current-Level-of-Functioning
         th Remarks
       tr
         td Reading
-        td: input.input-medium(type="text" name="QA161" placeholder="")
+        td: TextBox
         td Watch TV
-        td: input.input-medium(type="text" name="QA161" placeholder="")
+        td: TextBox
       tr
         td Walking
-        td: input.input-medium(type="text" name="QA161" placeholder="")
+        td: TextBox
         td Driving
-        td: input.input-medium(type="text" name="QA161" placeholder="")
+        td: TextBox
       tr
         td Standing
-        td: input.input-medium(type="text" name="QA161" placeholder="")
+        td: TextBox
         td Cooking
-        td: input.input-medium(type="text" name="QA161" placeholder="")
+        td: TextBox
       tr
         td Computer
-        td: input.input-medium(type="text" name="QA161" placeholder="")
+        td: TextBox
         td Laundry
-        td: input.input-medium(type="text" name="QA161" placeholder="")
+        td: TextBox
       tr
         td Hobby
-        td: input.input-medium(type="text" name="QA161" placeholder="")
+        td: TextBox
         td Grocery shopping
-        td: input.input-medium(type="text" name="QA161" placeholder="")
+        td: TextBox
 
   section_text Current Level of Functioning - Decompensation and Deterioration
   question(name="Q167" text="167. Is there evidence of deterioration and decompensation in the work place? For children, this would read “in school?”")
-    label.checkbox: input(type="checkbox") yes (enable 168)
-    label.checkbox: input(type="checkbox") no (disable 168)
+    CheckboxSet
+      Value yes (enable 168)
+      Value no (disable 168)
   question(name="Q168" text="168. If yes, where is the deterioration and decompensation seen or evidenced by?")
-    label.checkbox: input(type="checkbox") Voluntary psychiatric commitment
-    label.checkbox: input(type="checkbox") Difficulty getting along with coworkers
-    label.checkbox: input(type="checkbox") Taking a leave of absence to manage mental illness
-    label.checkbox: input(type="checkbox") Frequent involvement with law enforcement
-    label.checkbox: input(type="checkbox") Behavioral disturbances
-    label.checkbox.checkbox_other: input(type="checkbox") Other
+    CheckboxSet
+      Value Voluntary psychiatric commitment
+      Value Difficulty getting along with coworkers
+      Value Taking a leave of absence to manage mental illness
+      Value Frequent involvement with law enforcement
+      Value Behavioral disturbances
+      ValueOther Other
   question(name="Q169" text="169. Has the claimant’s ability to work been impacted by physical and mental limitations?")
-    label.checkbox: input(type="checkbox") yes
-    label.checkbox: input(type="checkbox") no
+    CheckboxSet
+      Value yes
+      Value no
   question(name="Q170" text="170. What are the new difficulties reported by claimant? Select all that apply.")
-    label.checkbox: input(type="checkbox") Sustaining concentration and attention
-    label.checkbox: input(type="checkbox") Remembering information
-    label.checkbox: input(type="checkbox") Making good judgments at work
-    label.checkbox: input(type="checkbox") Following multi-step directions
-    label.checkbox: input(type="checkbox") Socializing with friends
-    label.checkbox: input(type="checkbox") Motivation
-    label.checkbox: input(type="checkbox") Fatigue
-    label.checkbox: input(type="checkbox") Apathy
-    label.checkbox: input(type="checkbox") Behavioral problems
-    label.checkbox: input(type="checkbox") Insomnia
-    label.checkbox: input(type="checkbox") Poor appetite
-    label.checkbox: input(type="checkbox") Inability to complete ADLS in a timely manner
-    label.checkbox: input(type="checkbox") Suicidal ideations
-    label.checkbox: input(type="checkbox") Hallucinations
-    label.checkbox: input(type="checkbox") Delusions
-    label.checkbox: input(type="checkbox") Blurred vision
-    label.checkbox: input(type="checkbox") Lower back pain
-    label.checkbox.checkbox_other: input(type="checkbox") Other
+    CheckboxSet
+      Value Sustaining concentration and attention
+      Value Remembering information
+      Value Making good judgments at work
+      Value Following multi-step directions
+      Value Socializing with friends
+      Value Motivation
+      Value Fatigue
+      Value Apathy
+      Value Behavioral problems
+      Value Insomnia
+      Value Poor appetite
+      Value Inability to complete ADLS in a timely manner
+      Value Suicidal ideations
+      Value Hallucinations
+      Value Delusions
+      Value Blurred vision
+      Value Lower back pain
+      ValueOther Other
 
 section#DSM-IV-Diagnosis
   section_text DSM-IV Diagnosis
   question(name="Q162" text="162. What is the claimant’s Axis I diagnosis? Select all that apply.")
-    label.checkbox: input(type="checkbox") DELETE-Bipolar I Disorder
-    label.checkbox: input(type="checkbox") 290.10 Dementia of the Alzheimer's Type, With Early Onset, Uncomplicated
-    label.checkbox: input(type="checkbox") 290.11 Dementia of the Alzheimer's Type, With Early Onset, With Delirium
-    label.checkbox: input(type="checkbox") 290.12 Dementia of the Alzheimer's Type, With Early Onset, With Delusions
-    label.checkbox: input(type="checkbox") 290.13 Dementia of the Alzheimer's Type, With Early Onset, With Depressed Mood
-    label.checkbox: input(type="checkbox") 290.20 Dementia of the Alzheimer's Type, With Late Onset, With Delusions
-    label.checkbox: input(type="checkbox") 290.21 Dementia of the Alzheimer's Type, With Late Onset, With Depressed Mood
-    label.checkbox: input(type="checkbox") 290.3 Dementia of the Alzheimer's Type, With Late Onset, With Delirium
-    label.checkbox: input(type="checkbox") 296.80 Bipolar Disorder NOS
-    label.checkbox: input(type="checkbox") 296.56 Bipolar I Disorder, most recent episode depressed, in full remission
-    label.checkbox: input(type="checkbox") 296.55 Bipolar I Disorder, most recent episode depressed, in partial remission
-    label.checkbox: input(type="checkbox") 296.51 Bipolar I Disorder, most recent episode depressed, mild
-    label.checkbox: input(type="checkbox") 296.52 Bipolar I Disorder, most recent episode depressed, moderate
-    label.checkbox: input(type="checkbox") 296.53 Bipolar I Disorder, most recent episode depressed, severe without psychotic features
-    label.checkbox: input(type="checkbox") 296.54 Bipolar I Disorder, most recent episode depressed, severe with psychotic features
-    label.checkbox: input(type="checkbox") 296.50 Bipolar I Disorder, most recent episode depressed, unspecified
-    label.checkbox: input(type="checkbox") 296.40 Bipolar I Disorder, most recent episode hypomanic
-    label.checkbox: input(type="checkbox") 296.46 Bipolar I Disorder, most recent episode manic, in full remission
-    label.checkbox: input(type="checkbox") 296.45 Bipolar I Disorder, most recent episode manic, in partial remission
-    label.checkbox: input(type="checkbox") 296.41 Bipolar I Disorder, most recent episode manic, mild
-    label.checkbox: input(type="checkbox") 296.42 Bipolar I Disorder, most recent episode manic, moderate
-    label.checkbox: input(type="checkbox") 296.43 Bipolar I Disorder, most recent episode manic, severe without psychotic features
-    label.checkbox: input(type="checkbox") 296.44 Bipolar I Disorder, most recent episode manic, severe with psychotic features
-    label.checkbox: input(type="checkbox") 296.40 Bipolar I Disorder, most recent episode manic, unspecified
-    label.checkbox: input(type="checkbox") 296.66 Bipolar I Disorder, most recent episode mixed, in full remission
-    label.checkbox: input(type="checkbox") 296.65 Bipolar I Disorder, most recent episode mixed, in partial remission
-    label.checkbox: input(type="checkbox") 296.61 Bipolar I Disorder, most recent episode mixed, mild
-    label.checkbox: input(type="checkbox") 296.62 Bipolar I Disorder, most recent episode mixed, moderate
-    label.checkbox: input(type="checkbox") 296.63 Bipolar I Disorder, most recent episode mixed, severe without psychotic features
-    label.checkbox: input(type="checkbox") 296.64 Bipolar I Disorder, most recent episode mixed, severe with psychotic features
-    label.checkbox: input(type="checkbox") 296.60 Bipolar I Disorder, most recent episode mixed, unspecified
-    label.checkbox: input(type="checkbox") 296.7 Bipolar I Disorder, most recent episode unspecified
-    label.checkbox: input(type="checkbox") 296.06 Bipolar I Disorder, single manic episode, in full remission
-    label.checkbox: input(type="checkbox") 296.05 Bipolar I Disorder, single manic episode, in partial remission
-    label.checkbox: input(type="checkbox") 296.01 Bipolar I Disorder, single manic episode, mild
-    label.checkbox: input(type="checkbox") 296.02 Bipolar I Disorder, single manic episode, moderate
-    label.checkbox: input(type="checkbox") 296.03 Bipolar I Disorder, single manic episode, severe without psychotic features
-    label.checkbox: input(type="checkbox") 296.04 Bipolar I Disorder, single manic episode, severe with psychotic features
-    label.checkbox: input(type="checkbox") 296.00 Bipolar I Disorder, single manic episode, unspecified
-    label.checkbox: input(type="checkbox") 294.9 Cognitive Disorder NOS
-    label.checkbox: input(type="checkbox") 295.20 Schizophrenia, Catatonic Type
-    label.checkbox: input(type="checkbox") 295.10 Schizophrenia, Disorganized Type
-    label.checkbox: input(type="checkbox") 295.30 Schizophrenia, Paranoid Type
-    label.checkbox: input(type="checkbox") 295.60 Schizophrenia, Residual Type
-    label.checkbox: input(type="checkbox") 295.90 Schizophrenia, Undifferentiated Type
-    label.checkbox: input(type="checkbox") 295.70 Schizoaffective Disorder
-    label.checkbox: input(type="checkbox") 296.20 Major Depressive Disorder, Single Episode, unspecified
-    label.checkbox: input(type="checkbox") 296.21 Major Depressive Disorder, Single Episode, Mild
-    label.checkbox: input(type="checkbox") 296.22 Major Depressive Disorder, Single Episode, Moderate
-    label.checkbox: input(type="checkbox") 296.23 Major Depressive Disorder, Single Episode, Severe without psychotic features
-    label.checkbox: input(type="checkbox") 296.24 Major Depressive Disorder, Single Episode, Severe with psychotic features
-    label.checkbox: input(type="checkbox") 296.25 Major Depressive Disorder, Single Episode, in partial remission
-    label.checkbox: input(type="checkbox") 296.26 Major Depressive Disorder, Single Episode, in full remission
-    label.checkbox: input(type="checkbox") 296.30 Major Depressive Disorder, Recurrent, unspecified
-    label.checkbox: input(type="checkbox") 296.31 Major Depressive Disorder, Recurrent, Mild
-    label.checkbox: input(type="checkbox") 296.32 Major Depressive Disorder, Recurrent, Moderate
-    label.checkbox: input(type="checkbox") 296.33 Major Depressive Disorder Recurrent, Severe without psychotic features
-    label.checkbox: input(type="checkbox") 296.34 Major Depressive Disorder, Recurrent, Severe with psychotic features
-    label.checkbox: input(type="checkbox") 296.35 Major Depressive Disorder, Recurrent, in partial remission
-    label.checkbox: input(type="checkbox") 296.36 Major Depressive Disorder, Recurrent, in full remission
-    label.checkbox: input(type="checkbox") 296.89 Bipolar II Disorder
-    label.checkbox: input(type="checkbox") 299.00 Autistic Disorder
-    label.checkbox: input(type="checkbox") 300.01 Panic Disorder without Agoraphobia
-    label.checkbox: input(type="checkbox") 300.02 Generalized Anxiety Disorder
-    label.checkbox: input(type="checkbox") 300.21 Panic Disorder with Agoraphobia
-    label.checkbox: input(type="checkbox") 300.3 Obsessive-compulsive Disorder
-    label.checkbox: input(type="checkbox") 300.4 Dysthymic Disorder
-    label.checkbox: input(type="checkbox") 307.1 Anorexia nervosa
-    label.checkbox: input(type="checkbox") 309.81 Posttraumatic Stress Disorder
-    label.checkbox: input(type="checkbox") 310.2 Postconcussion Syndrome
-    label.checkbox: input(type="checkbox") 314.00 Attention Deficit/Hyperactivity Disorder, Predominantly Inattentive Type
-    label.checkbox: input(type="checkbox") 314.01 Attention Deficit/Hyperactivity Disorder, Combined Type
-    label.checkbox: input(type="checkbox") 314.01 Attention Deficit/Hyperactivity Disorder, Predominantly Hyperactive-Impulsive  Type
-    label.checkbox: input(type="checkbox") 314.9 Attention Deficit/Hyperactivity Disorder NOS
-    label.checkbox: input(type="checkbox") 315.00 Reading Disorder
-    label.checkbox: input(type="checkbox") 315.1 Mathematics Disorder
-    label.checkbox: input(type="checkbox") 315.2 Disorder of Written Expression
-    label.checkbox: input(type="checkbox") 315.9 Learning Disorder NOS
-    label.checkbox.checkbox_other: input(type="checkbox") Other
+    CheckboxSet
+      Value DELETE-Bipolar I Disorder
+      Value 290.10 Dementia of the Alzheimer's Type, With Early Onset, Uncomplicated
+      Value 290.11 Dementia of the Alzheimer's Type, With Early Onset, With Delirium
+      Value 290.12 Dementia of the Alzheimer's Type, With Early Onset, With Delusions
+      Value 290.13 Dementia of the Alzheimer's Type, With Early Onset, With Depressed Mood
+      Value 290.20 Dementia of the Alzheimer's Type, With Late Onset, With Delusions
+      Value 290.21 Dementia of the Alzheimer's Type, With Late Onset, With Depressed Mood
+      Value 290.3 Dementia of the Alzheimer's Type, With Late Onset, With Delirium
+      Value 296.80 Bipolar Disorder NOS
+      Value 296.56 Bipolar I Disorder, most recent episode depressed, in full remission
+      Value 296.55 Bipolar I Disorder, most recent episode depressed, in partial remission
+      Value 296.51 Bipolar I Disorder, most recent episode depressed, mild
+      Value 296.52 Bipolar I Disorder, most recent episode depressed, moderate
+      Value 296.53 Bipolar I Disorder, most recent episode depressed, severe without psychotic features
+      Value 296.54 Bipolar I Disorder, most recent episode depressed, severe with psychotic features
+      Value 296.50 Bipolar I Disorder, most recent episode depressed, unspecified
+      Value 296.40 Bipolar I Disorder, most recent episode hypomanic
+      Value 296.46 Bipolar I Disorder, most recent episode manic, in full remission
+      Value 296.45 Bipolar I Disorder, most recent episode manic, in partial remission
+      Value 296.41 Bipolar I Disorder, most recent episode manic, mild
+      Value 296.42 Bipolar I Disorder, most recent episode manic, moderate
+      Value 296.43 Bipolar I Disorder, most recent episode manic, severe without psychotic features
+      Value 296.44 Bipolar I Disorder, most recent episode manic, severe with psychotic features
+      Value 296.40 Bipolar I Disorder, most recent episode manic, unspecified
+      Value 296.66 Bipolar I Disorder, most recent episode mixed, in full remission
+      Value 296.65 Bipolar I Disorder, most recent episode mixed, in partial remission
+      Value 296.61 Bipolar I Disorder, most recent episode mixed, mild
+      Value 296.62 Bipolar I Disorder, most recent episode mixed, moderate
+      Value 296.63 Bipolar I Disorder, most recent episode mixed, severe without psychotic features
+      Value 296.64 Bipolar I Disorder, most recent episode mixed, severe with psychotic features
+      Value 296.60 Bipolar I Disorder, most recent episode mixed, unspecified
+      Value 296.7 Bipolar I Disorder, most recent episode unspecified
+      Value 296.06 Bipolar I Disorder, single manic episode, in full remission
+      Value 296.05 Bipolar I Disorder, single manic episode, in partial remission
+      Value 296.01 Bipolar I Disorder, single manic episode, mild
+      Value 296.02 Bipolar I Disorder, single manic episode, moderate
+      Value 296.03 Bipolar I Disorder, single manic episode, severe without psychotic features
+      Value 296.04 Bipolar I Disorder, single manic episode, severe with psychotic features
+      Value 296.00 Bipolar I Disorder, single manic episode, unspecified
+      Value 294.9 Cognitive Disorder NOS
+      Value 295.20 Schizophrenia, Catatonic Type
+      Value 295.10 Schizophrenia, Disorganized Type
+      Value 295.30 Schizophrenia, Paranoid Type
+      Value 295.60 Schizophrenia, Residual Type
+      Value 295.90 Schizophrenia, Undifferentiated Type
+      Value 295.70 Schizoaffective Disorder
+      Value 296.20 Major Depressive Disorder, Single Episode, unspecified
+      Value 296.21 Major Depressive Disorder, Single Episode, Mild
+      Value 296.22 Major Depressive Disorder, Single Episode, Moderate
+      Value 296.23 Major Depressive Disorder, Single Episode, Severe without psychotic features
+      Value 296.24 Major Depressive Disorder, Single Episode, Severe with psychotic features
+      Value 296.25 Major Depressive Disorder, Single Episode, in partial remission
+      Value 296.26 Major Depressive Disorder, Single Episode, in full remission
+      Value 296.30 Major Depressive Disorder, Recurrent, unspecified
+      Value 296.31 Major Depressive Disorder, Recurrent, Mild
+      Value 296.32 Major Depressive Disorder, Recurrent, Moderate
+      Value 296.33 Major Depressive Disorder Recurrent, Severe without psychotic features
+      Value 296.34 Major Depressive Disorder, Recurrent, Severe with psychotic features
+      Value 296.35 Major Depressive Disorder, Recurrent, in partial remission
+      Value 296.36 Major Depressive Disorder, Recurrent, in full remission
+      Value 296.89 Bipolar II Disorder
+      Value 299.00 Autistic Disorder
+      Value 300.01 Panic Disorder without Agoraphobia
+      Value 300.02 Generalized Anxiety Disorder
+      Value 300.21 Panic Disorder with Agoraphobia
+      Value 300.3 Obsessive-compulsive Disorder
+      Value 300.4 Dysthymic Disorder
+      Value 307.1 Anorexia nervosa
+      Value 309.81 Posttraumatic Stress Disorder
+      Value 310.2 Postconcussion Syndrome
+      Value 314.00 Attention Deficit/Hyperactivity Disorder, Predominantly Inattentive Type
+      Value 314.01 Attention Deficit/Hyperactivity Disorder, Combined Type
+      Value 314.01 Attention Deficit/Hyperactivity Disorder, Predominantly Hyperactive-Impulsive  Type
+      Value 314.9 Attention Deficit/Hyperactivity Disorder NOS
+      Value 315.00 Reading Disorder
+      Value 315.1 Mathematics Disorder
+      Value 315.2 Disorder of Written Expression
+      Value 315.9 Learning Disorder NOS
+      ValueOther Other
   question(name="Q163" text="163. Axis II: Please select from the following choices.")
-    label.checkbox: input(type="checkbox") No diagnosis
-    label.checkbox: input(type="checkbox") 301.0 Paranoid Personality Disorder
-    label.checkbox: input(type="checkbox") 301.20 Schizoid Personality Disorder
-    label.checkbox: input(type="checkbox") 301.22 Schizotypal Personality Disorder
-    label.checkbox: input(type="checkbox") 301.7 Antisocial Personality Disorder
-    label.checkbox: input(type="checkbox") 301.83 Borderline Personality Disorder
-    label.checkbox: input(type="checkbox") 301.50 Histrionic Personality Disorder
-    label.checkbox: input(type="checkbox") 301.81 Narcissistic Personality Disorder
-    label.checkbox: input(type="checkbox") 301.82 Avoidant Personality Disorder
-    label.checkbox: input(type="checkbox") 301.6 Dependent Personality Disorder
-    label.checkbox: input(type="checkbox") 301.4 Obsessive-compulsive Personality Disorder
-    label.checkbox: input(type="checkbox") 301.9 Personality Disorder NOS
-    label.checkbox: input(type="checkbox") 317 Mild Mental Retardation
-    label.checkbox: input(type="checkbox") 318.0 Moderate Mental Retardation
-    label.checkbox: input(type="checkbox") 318.1 Severe Mental Retardation
-    label.checkbox: input(type="checkbox") 318.2 Profound Mental Retardation
-    label.checkbox: input(type="checkbox") 319 Mental retardation, severity unspecified
-    label.checkbox: input(type="checkbox") V62.89 Borderline Intellectual Functioning
-    label.checkbox.checkbox_other: input(type="checkbox") Other
-    label.checkbox: input(type="checkbox") Deferred
+    CheckboxSet
+      Value No diagnosis
+      Value 301.0 Paranoid Personality Disorder
+      Value 301.20 Schizoid Personality Disorder
+      Value 301.22 Schizotypal Personality Disorder
+      Value 301.7 Antisocial Personality Disorder
+      Value 301.83 Borderline Personality Disorder
+      Value 301.50 Histrionic Personality Disorder
+      Value 301.81 Narcissistic Personality Disorder
+      Value 301.82 Avoidant Personality Disorder
+      Value 301.6 Dependent Personality Disorder
+      Value 301.4 Obsessive-compulsive Personality Disorder
+      Value 301.9 Personality Disorder NOS
+      Value 317 Mild Mental Retardation
+      Value 318.0 Moderate Mental Retardation
+      Value 318.1 Severe Mental Retardation
+      Value 318.2 Profound Mental Retardation
+      Value 319 Mental retardation, severity unspecified
+      Value V62.89 Borderline Intellectual Functioning
+      ValueOther Other
+      Value Deferred
   question(name="Q164" text="164. Axis III: Medical conditions are insert from previous question.")
   question(name="Q165" text="165. Axis IV: Please select any stressors from the following list that may contribute to an Axis IV diagnosis. Select all that apply.")
     text PROBLEMS WITH PRIMARY SUPPORT GROUP
-    label.checkbox: input(type="checkbox") Death of a family member
-    label.checkbox: input(type="checkbox") Health problems in family
-    label.checkbox: input(type="checkbox") Disruption of family by separation
-    label.checkbox: input(type="checkbox") Disruption of family by divorce
-    label.checkbox: input(type="checkbox") Disruption of family by estrangement
-    label.checkbox: input(type="checkbox") Removal from the home
-    label.checkbox: input(type="checkbox") Remarriage of parent
-    label.checkbox: input(type="checkbox") Sexual abuse
-    label.checkbox: input(type="checkbox") Physical abuse
-    label.checkbox: input(type="checkbox") Parental overprotection
-    label.checkbox: input(type="checkbox") Neglect of child
-    label.checkbox: input(type="checkbox") Inadequate discipline
-    label.checkbox: input(type="checkbox") Discord with siblings
-    label.checkbox: input(type="checkbox") Birth of a sibling
+    CheckboxSet
+      Value Death of a family member
+      Value Health problems in family
+      Value Disruption of family by separation
+      Value Disruption of family by divorce
+      Value Disruption of family by estrangement
+      Value Removal from the home
+      Value Remarriage of parent
+      Value Sexual abuse
+      Value Physical abuse
+      Value Parental overprotection
+      Value Neglect of child
+      Value Inadequate discipline
+      Value Discord with siblings
+      Value Birth of a sibling
     text PROBLEMS RELATED TO THE SOCIAL ENVIRONMENT
-    label.checkbox: input(type="checkbox") Death or loss of friend
-    label.checkbox: input(type="checkbox") Inadequate social support
-    label.checkbox: input(type="checkbox") Living alone
-    label.checkbox: input(type="checkbox") Difficulty with acculturation
-    label.checkbox: input(type="checkbox") Discrimination
-    label.checkbox: input(type="checkbox") Adjustment to life-cycle transition
+    CheckboxSet
+      Value Death or loss of friend
+      Value Inadequate social support
+      Value Living alone
+      Value Difficulty with acculturation
+      Value Discrimination
+      Value Adjustment to life-cycle transition
     text EDUCATIONAL PROBLEMS
-    label.checkbox: input(type="checkbox") Illiteracy
-    label.checkbox: input(type="checkbox") Academic problems
-    label.checkbox: input(type="checkbox") Discord with teachers
-    label.checkbox: input(type="checkbox") Discord with classmates
-    label.checkbox: input(type="checkbox") Inadequate school environment
+    CheckboxSet
+      Value Illiteracy
+      Value Academic problems
+      Value Discord with teachers
+      Value Discord with classmates
+      Value Inadequate school environment
     text OCCUPATIONAL PROBLEMS
-    label.checkbox: input(type="checkbox") Unemployment
-    label.checkbox: input(type="checkbox") Threat of job loss
-    label.checkbox: input(type="checkbox") Stressful work schedule
-    label.checkbox: input(type="checkbox") Difficult work conditions
-    label.checkbox: input(type="checkbox") Job dissatisfaction
-    label.checkbox: input(type="checkbox") Job change
-    label.checkbox: input(type="checkbox") Discord with boss
-    label.checkbox: input(type="checkbox") Discord with co-workers
+    CheckboxSet
+      Value Unemployment
+      Value Threat of job loss
+      Value Stressful work schedule
+      Value Difficult work conditions
+      Value Job dissatisfaction
+      Value Job change
+      Value Discord with boss
+      Value Discord with co-workers
     text HOUSING PROBLEMS
-    label.checkbox: input(type="checkbox") Homelessness
-    label.checkbox: input(type="checkbox") Inadequate housing
-    label.checkbox: input(type="checkbox") Unsafe neighborhood
-    label.checkbox: input(type="checkbox") Discord with neighbors
-    label.checkbox: input(type="checkbox") Discord with landlord
+    CheckboxSet
+      Value Homelessness
+      Value Inadequate housing
+      Value Unsafe neighborhood
+      Value Discord with neighbors
+      Value Discord with landlord
     text ECONOMIC PROBLEMS
-    label.checkbox: input(type="checkbox") Extreme poverty
-    label.checkbox: input(type="checkbox") Inadequate finances
-    label.checkbox: input(type="checkbox") Insufficient welfare support
+    CheckboxSet
+      Value Extreme poverty
+      Value Inadequate finances
+      Value Insufficient welfare support
     text PROBLEMS WITH ACCESS TO HEALTH CARE SERVICES
-    label.checkbox: input(type="checkbox") Inadequate health care services
-    label.checkbox: input(type="checkbox") Transportation to health care facilities unavailable
-    label.checkbox: input(type="checkbox") Inadequate health insurance
+    CheckboxSet
+      Value Inadequate health care services
+      Value Transportation to health care facilities unavailable
+      Value Inadequate health insurance
     text PROBLEMS RELATED TO INTERACTION WITH THE LEGAL SYSTEM
-    label.checkbox: input(type="checkbox") Arrest
-    label.checkbox: input(type="checkbox") Incarceration
-    label.checkbox: input(type="checkbox") Litigation
-    label.checkbox: input(type="checkbox") Victim of a crime
+    CheckboxSet
+      Value Arrest
+      Value Incarceration
+      Value Litigation
+      Value Victim of a crime
     text OTHER PSYCHOSOCIAL AND ENVIRONMENTAL PROBLEMS
-    label.checkbox: input(type="checkbox") Exposure to disasters
-    label.checkbox: input(type="checkbox") Exposure to war
-    label.checkbox: input(type="checkbox") Discord with non-family caregivers
-    label.checkbox: input(type="checkbox") Discord with physician
-    label.checkbox: input(type="checkbox") Unavailability of social services agencies
+    CheckboxSet
+      Value Exposure to disasters
+      Value Exposure to war
+      Value Discord with non-family caregivers
+      Value Discord with physician
+      Value Unavailability of social services agencies
   question(name="Q165A" text="165A. Provide any additional information as needed.")
-    input.input-medium(type="text" name="Q165A" placeholder="")
+    TextBox
   question(name="Q166" text="166. Axis V: Please record the claimant’s current GAF.")
-    input.input-medium(type="text" name="Q166" placeholder="")
+    TextBox
 
 section#Discussion-Prognosis
   section_text Discussion / Prognosis
   question(name="Q171" text="171. Did the claimant respond in an open and honest manner?")
-    label.checkbox: input(type="checkbox") normal#1yes
-    label.checkbox: input(type="checkbox") no
+    CheckboxSet
+      Value normal#1yes
+      Value no
   question(name="Q172" text="172. Was there any exaggeration in the claimant’s responses?")
-    label.checkbox: input(type="checkbox") normal#1yes (show 172a)
-    label.checkbox: input(type="checkbox") no
+    CheckboxSet
+      Value normal#1yes (show 172a)
+      Value no
   question(name="Q172A" text="172A. If yes, please describe.")
-    input.input-medium(type="text" name="Q172A" placeholder="")
+    TextBox
   question(name="Q173" text="173. Were there any inconsistencies?")
-    label.checkbox: input(type="checkbox") normal#1yes (show 174)
-    label.checkbox: input(type="checkbox") no
+    CheckboxSet
+      Value normal#1yes (show 174)
+      Value no
   question(name="Q174" text="174. If yes, please provide examples.")
-    input.input-medium(type="text" name="Q174" placeholder="")
+    TextBox
   question(name="Q175" text="175. As evidenced by the claimant’s current and past compliance with treatment, is the claimant willing to receive treatment (psychotherapy or medications)?")
-    label.checkbox: input(type="checkbox") yes
-    label.checkbox: input(type="checkbox") no
+    CheckboxSet
+      Value yes
+      Value no
   question(name="Q180" text="180. What is the claimant’s willingness to use resources?")
-    label.checkbox: input(type="checkbox") good
-    label.checkbox: input(type="checkbox") fair
-    label.checkbox: input(type="checkbox") limited
-    label.checkbox: input(type="checkbox") poor
+    CheckboxSet
+      Value good
+      Value fair
+      Value limited
+      Value poor
   question(name="Q182" text="182. Is improvement likely?")
-    label.checkbox: input(type="checkbox") yes
-    label.checkbox: input(type="checkbox") no
-    label.checkbox: input(type="checkbox") guarded
+    CheckboxSet
+      Value yes
+      Value no
+      Value guarded
   question(name="Q183" text="183. What is the likelihood the claimant will be able to respond to routine changes in the work place?")
-    label.checkbox: input(type="checkbox") good
-    label.checkbox: input(type="checkbox") bad
-    label.checkbox: input(type="checkbox") guarded
+    CheckboxSet
+      Value good
+      Value bad
+      Value guarded
 
 section#Capability-of-Managing-Funds
   section_text Capability of Managing Funds
   question(name="QA187" text="A187. What is the claimant’s ability to manage employment benefits?")
-    label.checkbox: input(type="checkbox") likely satisfactory
-    label.checkbox.checkbox_other: input(type="checkbox" prepend=true) likely poor given
+    CheckboxSet
+      Value likely satisfactory
+      ValueOther.prepend likely poor given
   question(name="QA188" text="A188. Does the claimant need a protective payee?")
-    label.checkbox: input(type="checkbox") yes
-    label.checkbox: input(type="checkbox") no
+    CheckboxSet
+      Value yes
+      Value no

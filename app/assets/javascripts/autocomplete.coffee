@@ -1,11 +1,17 @@
-class EasyEval.Autocomplete
-  @initialize: ($$) ->
-    console.log "Autocomplete init for ", $$('.autocomplete-meds')
+class EasyEval.Autocomplete extends EasyEval.Widget
+  @register 'Autocomplete'
 
-    content = ""
-    for v in EEData.Autocomplete['meds']
-      content += """<option value="#{v}">#{v}</option>"""
+  constructor: (node) ->
+    super
+    content = """ !ijc
+      select
+        -for v in EEData.Autocomplete['meds']
+          option(value=v)
+    """
+    @node.append(content)
+    @input = @node.find('select')
+    @input.combobox()
 
-    $$('.autocomplete-meds').append(content)
 
-    $$('.autocomplete-meds').combobox()
+  getValue: ->
+    @input.val()

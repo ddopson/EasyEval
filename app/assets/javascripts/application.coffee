@@ -26,7 +26,7 @@ window.raise = (msg) ->
 $.fn.attr_map = (name) ->
   result = []
   for el in @
-    if a = el.attr(name)
+    if a = $(el).attr(name)
       result.push(a)
   return result
 

@@ -1,37 +1,36 @@
 class EasyEval.CheckboxSet extends EasyEval.Widget
-  @ALL: []
+  @register 'CheckboxSet'
+  @register 'RadioSet'
 
-  @initialize: ($$) ->
-    for node in $$('CheckboxSet')
-      @ALL.push new @(node, 'checkbox')
-    for node in $$('RadioSet')
-      @ALL.push new @(node, 'radio')
-
-  constructor: (node, type) ->
+  constructor: (node) ->
     super
-    @type = type
+    @rollup = @node.attr('rollup') || 'join'
+    @type = if @node[0].tagName == 'CHECKBOXSET' then 'checkbox' else 'radio'
     @values = []
     content = ''
     for n in @node.find('Value,ValueOther')
       value = n.textContent
       classes = ''
+      if sel = $(n).attr('enables-selector')
+        classes += ' checkbox_enabler'
+        $(sel).hide()
       if $(n).is('ValueOther')
         content += """ !ijc
           label(class=@type)
-            INPUT.checkbox_other(type=@type, name=@guid, prepend=$(n).attr('prepend'))= "#{value}"
-            //INPUT.input-medium.other_textbox(type="text", placeholder="")
+            INPUT.checkbox_other(class=classes, type=@type, name=@guid, prepend=$(n).attr('prepend'), data-selector=sel)= "#{value}"
           """
       else
         content += """ !ijc
           label(class=@type)
-            INPUT(type=@type, name=@guid)= "#{value}"
+            INPUT(class=classes, type=@type, name=@guid, data-selector=sel)= "#{value}"
           """
 
     @node.append(content)
     self = @
     @node.find('.checkbox_other').on 'change', (evt) -> self.process_checkbox_other(@, evt)
+    @node.find('.checkbox_enabler').on 'change', (evt) -> self.process_checkbox_enabler(@, evt)
 
-  getJson: ->
+  getValue: ->
     values = []
     for checkbox in @node.find('INPUT')
       if checkbox.checked
@@ -49,7 +48,10 @@ class EasyEval.CheckboxSet extends EasyEval.Widget
           values.push("#{pre}#{txt}")
         else
           values.push checkbox.textContent
-    return @english_join(values)
+
+    switch @rollup
+      when 'join' then return @english_join(values)
+      when 'sum' then return values.length
 
   english_join: (values) ->
     switch values.length
@@ -74,5 +76,18 @@ class EasyEval.CheckboxSet extends EasyEval.Widget
     else
       o.hide()
 
+  process_checkbox_enabler: (checkbox, evt) ->
+    if @type == 'radio'
+      selectors = @node.find('Value,ValueOther').attr_map('enables-selector').join(',')
+      console.log "Disabling #{selectors}"
+      $(selectors).hide()
+
+    sel = $(checkbox).attr('data-selector')
+    if checkbox.checked
+      console.log "Enabling #{sel}"
+      $(sel).show()
+    else
+      console.log "Disabling #{sel}"
+      $(sel).hide()
 
 
