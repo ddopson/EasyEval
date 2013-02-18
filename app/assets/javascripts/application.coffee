@@ -23,3 +23,12 @@ window.EEData = {}
 window.raise = (msg) ->
   throw new Error(msg)
 
+$.fn.attr_map = (name) ->
+  result = []
+  for el in @
+    if a = el.attr(name)
+      result.push(a)
+  return result
+
+$.fn.outerHtml = ->
+  @[0].outerHTML
