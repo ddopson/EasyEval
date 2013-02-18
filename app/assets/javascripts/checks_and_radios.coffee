@@ -16,8 +16,8 @@ class EasyEval.CheckboxSet extends EasyEval.Widget
         $(sel).hide()
       if $(n).is('ValueOther')
         content += """ !ijc
-          label(class=@type)
-            INPUT.checkbox_other(class=classes, type=@type, name=@guid, prepend=$(n).attr('prepend'), data-selector=sel)= "#{value}"
+          label.checkbox_other(class=@type)
+            INPUT(class=classes, type=@type, name=@guid, prepend=$(n).attr('prepend'), data-selector=sel)= "#{value}"
           """
       else
         content += """ !ijc
@@ -68,7 +68,6 @@ class EasyEval.CheckboxSet extends EasyEval.Widget
 
       # Need to disable clicks so that clicking the text-box won't uncheck the 'other' checkbox
       o.click (evt) -> evt.preventDefault()
-
 
     if checkbox.firstChild.checked
       o.show()
