@@ -58,8 +58,8 @@ section#General-Observations
   question(name="Q11" text="11. Is the claimant considered a reliable historian?")
     RadioSet
       Value yes
-      Value no (enable 11a)
-  question(name="Q11A" text="11A. If no, who is the reliable historian for this interview?")
+      Value(enables-selector=".11_no") no
+  question.11_no(name="Q11A" text="11A. If no, who is the reliable historian for this interview?")
     TextBox
 
 
@@ -116,58 +116,62 @@ question(name="QA18A" text="A18A. Please include any information regarding attem
   TextBox
 question(name="Q19" text="19. Is the claimant currently in psychotherapy?")
   RadioSet
-    Value no  (enable 179. disable 19a, 20, 20a.)
-    Value yes (enable 19a, 20, and 20a. disable 179)
-question(name="Q179" text="179. If no, is the claimant willing to consider psychotherapy?")
+    Value(enables-selector=".19_no") no
+    /enable 179. disable 19a, 20, 20a.
+    Value(enables-selector=".19_yes") yes
+    /enable 19a, 20, and 20a. disable 179
+question.19_no(name="Q179" text="179. If no, is the claimant willing to consider psychotherapy?")
   RadioSet
     Value yes
     Value no
-question(name="Q19A" text="19A. If yes, with whom?")
+question.19_yes(name="Q19A" text="19A. If yes, with whom?")
   CheckboxSet
     Value A counselor
     Value A psychologist
     Value A therapist
-question(name="Q20" text="20. If yes, does the claimant find psychotherapy helpful?")
+question.19_yes(name="Q20" text="20. If yes, does the claimant find psychotherapy helpful?")
   RadioSet
     Value yes
-    Value no
-question(name="Q20A" text="20A. If no, please provide details.")
+    Value(enables-selector=".20_no") no
+question.20_no(name="Q20A" text="20A. If no, please provide details.")
   TextBox
 
 section#Current-Medications
   section_text Current Medications
   question(name="Q21" text="21. Is the claimant taking any medications?")
     RadioSet
-      Value no (disable the rest this section)
-      Value yes (enable 21a, 22, and 22table)
-  question(name="Q177" text="177. If yes, who is writing the prescriptions?")
-    CheckboxSet
-      Value A psychiatrist
-      Value A PCP
-      Value A nurse practitioner
-  question(name="Q21A" text="21A. If yes, did the claimant take any medication today?")
-    RadioSet
-      Value yes
       Value no
-  question(name="Q22" text="22. Which medications is the claimant taking?")
-    table
-      tr
-        th Medication
-        th Dosage
-        th Effectiveness
-      tr.table-row-model
-        td
-          Autocomplete(name="MEDICATION" values="meds")
-        td
-          TextBox(name="DOSAGE")
-        td
-          RadioSet(name="EFFECTIVENESS")
-            Value good
-            Value minimal
-            Value poor
-      tr
-        td(colspan=3 text-align="right")
-          a.table-new-row New Row ...
+      Value(enables-selector="21_yes") yes
+      /enable 21a, 22, and 22table
+  group.21_yes
+    question(name="Q177" text="177. If yes, who is writing the prescriptions?")
+      CheckboxSet
+        Value A psychiatrist
+        Value A PCP
+        Value A nurse practitioner
+    question(name="Q21A" text="21A. If yes, did the claimant take any medication today?")
+      RadioSet
+        Value yes
+        Value no
+    question(name="Q22" text="22. Which medications is the claimant taking?")
+      table
+        tr
+          th Medication
+          th Dosage
+          th Effectiveness
+        tr.table-row-model
+          td
+            Autocomplete(name="MEDICATION" values="meds")
+          td
+            TextBox(name="DOSAGE")
+          td
+            RadioSet(name="EFFECTIVENESS")
+              Value good
+              Value minimal
+              Value poor
+        tr
+          td(colspan=3 text-align="right")
+            a.table-new-row New Row ...
 
 section#Past-Psychiatric-History
   section_text Past Psychiatric History
@@ -227,20 +231,23 @@ section#Past-Medical-History
   section_text Past Medical History
   question(name="Q23" text="23. Has the claimant ever sustained a major head injury?")
     RadioSet
-      Value no (disable the rest this section)
-      Value yes (enable 24, 25, 26, 26a)
-  question(name="Q24" text="24. If yes, did the claimant experience a lack of consciousness, feel dazed, or see stars?")
-    RadioSet
       Value no
-      Value yes
-  question(name="Q25" text="25. What is the date of the injury? Please enter in this format: Month Year.")
-    TextBox
-  question(name="Q26" text="26. Was the claimant treated at a hospital?")
-    RadioSet
-      Value no
-      Value yes
-  question(name="Q26A" text="26A. If yes, what is the name of the hospital?")
-    TextBox
+      Value(enables-selector=".23_yes") yes
+      / (enable 24, 25, 26, 26a)
+  group.23_yes
+    question(name="Q24" text="24. If yes, did the claimant experience a lack of consciousness, feel dazed, or see stars?")
+      RadioSet
+        Value no
+        Value yes
+    question(name="Q25" text="25. What is the date of the injury? Please enter in this format: Month Year.")
+      TextBox
+    question(name="Q26" text="26. Was the claimant treated at a hospital?")
+      RadioSet
+        Value no
+        Value(enables-selector=".26_yes") yes
+    question.26_yes(name="Q26A" text="26A. If yes, what is the name of the hospital?")
+      TextBox
+
   question(name="Q27" text="27. List any previous surgeries. If none, enter “None reported.”")
     TextBox
   question(name="Q28" text="28. List any medical conditions.")
@@ -274,21 +281,24 @@ section#Social-and-Family-History
   question(name="QA37" text="A37. What is the claimant’s current relationship status?")
     CheckboxSet
       Value Single, not in a committed relationship
-      Value In a committed relationship (show A38)
-      Value Married (show A38)
+      Value(enables-selector=".37_committed") In a committed relationship
+      / (show A38)
+      Value(enables-selector=".37_committed") Married
+      / (show A38)
       Value Divorced
       Value Getting a divorce
       ValueOther Other
-  question(name="QA38" text="A38. If applicable, how is the relationship?")
+  question.37_committed(name="QA38" text="A38. If applicable, how is the relationship?")
     RadioSet
       Value good
       Value fair
       Value poor
   question(name="QA39" text="A39. Does the claimant have children?")
     RadioSet
-      Value yes (enable A40)
+      Value(enables-selector=".39_yes") yes
+      / (enable A40)
       Value no
-  question(name="QA40" text="A40. If yes, how old?")
+  question.39_yes(name="QA40" text="A40. If yes, how old?")
     TextBox
   question(name="QA41" text="A41. If claimant has deceased children, please provide details.")
     TextBox
@@ -312,57 +322,62 @@ section#Social-and-Family-History
   question(name="Q45" text="45. Was there a history of child abuse?")
     RadioSet
       Value no
-      Value yes (enable 46 and 47)
-  question(name="Q46" text="46. If yes, what was the nature of the conflict?")
-    TextBox
-  question(name="Q47" text="47. Is the trauma resolved?")
-    RadioSet
-      Value no
-      Value yes
+      Value(enables-selector=".45_yes") yes
+      / (enable 46 and 47)
+  group.45_yes
+    question(name="Q46" text="46. If yes, what was the nature of the conflict?")
+      TextBox
+    question(name="Q47" text="47. Is the trauma resolved?")
+      RadioSet
+        Value no
+        Value yes
 
 section#Employment-History
   section_text Employment History
   question(name="QA52" text="A52. Is the claimant currently employed?")
     RadioSet
-      Value No (enable A53-A56 and A184, A186)
-      Value Yes (enable A54-A56, and A186)
-      Value The claimant has no employment history.  (enable A53 and A184)
-  question(name="QA53" text="A53. If no, is the claimant currently looking for work?")
-    RadioSet
-      Value no
-      Value yes
-  question(name="QA184" text="A184. How you would describe the claimant’s attitude regarding seeking employment?")
-    RadioSet
-      Value positive
-      Value negative
-  question(name="QA54" text="A54. If applicable, what was the reason the claimant left the last place of employment?")
-    TextBox
-  question(name="QA55" text="A55. Please list all the jobs the claimant has held down.")
-    table
-      tr
-        th Start Date
-        th End Date
-        th Employer
-        th Position
-        th Reason for Leaving
-      tr.table-row-model
-        td: TextBox(name="START" placeholder="mm/dd/yyyy")
-        td: TextBox(name="END" placeholder="mm/dd/yyyy")
-        td: TextBox(name="EMPLOYER")
-        td: TextBox(name="POSITION")
-        td: TextBox(name="REASON")
-      tr
-        td(colspan=5 text-align="right")
-          a.table-new-row New Row ...
+      Value(enables-selector=".52_yes") Yes
+      / (enable A54-A56, and A186)
+      Value(enables-selector=".52_no") No
+      / (enable A53-A56 and A184, A186)
+      Value(enables-selector=".52_never") The claimant has no employment history.
+      / (enable A53 and A184)
+  group.52_no
+    question(name="QA53" text="A53. If no, is the claimant currently looking for work?")
+      RadioSet
+        Value no
+        Value yes
+    question(name="QA184" text="A184. How you would describe the claimant’s attitude regarding seeking employment?")
+      RadioSet
+        Value positive
+        Value negative
 
-  question(name="QA186" text="A186. What is the claimant’s work history?")
-    RadioSet
-      Value good
-      Value limited
-      Value no reported work history
-  question(name="QA56" text="A56. What are the reasons for the periods of unemployment?")
-    TextBox
+  group.52_yes.52_no
+    question(name="QA55" text="A55. Please list all the jobs the claimant has held down.")
+      table
+        tr
+          th Start Date
+          th End Date
+          th Employer
+          th Position
+          th Reason for Leaving
+        tr.table-row-model
+          td: TextBox(name="START" placeholder="mm/dd/yyyy")
+          td: TextBox(name="END" placeholder="mm/dd/yyyy")
+          td: TextBox(name="EMPLOYER")
+          td: TextBox(name="POSITION")
+          td: TextBox(name="REASON")
+        tr
+          td(colspan=5 text-align="right")
+            a.table-new-row New Row ...
 
+    question(name="QA186" text="A186. What is the claimant’s work history?")
+      RadioSet
+        Value good
+        Value limited
+        Value no reported work history
+    question(name="QA56" text="A56. What are the reasons for the periods of unemployment?")
+      TextBox
 
 section#Educational-History
   section_text Educational History
@@ -378,8 +393,9 @@ section#Educational-History
   question(name="Q50" text="50. Was the claimant enrolled in special education?")
     RadioSet
       Value no
-      Value yes (enable 51)
-  question(name="Q51" text="51. If yes, what were the subjects?")
+      Value(enables-selector="50_yes") yes
+      / (enable 51)
+  question.50_yes(name="Q51" text="51. If yes, what were the subjects?")
     TextBox
 
 
@@ -387,49 +403,55 @@ section#Legal-Criminal-History
   section_text Legal / Criminal History
   question(name="QA57" text="A57. Has the claimant ever been arrested?")
     RadioSet
-      Value no  (disable the rest of this section)
-      Value yes (enable A57a-A60a)
-  question(name="QA57A" text="A57A. If yes, what was the arrest for?")
-    TextBox
-  question(name="QA58" text="A58. If yes, what was the date of the last arrest? Please enter in this format: Month Year.")
-    TextBox
-  question(name="QA59" text="A59. What was the outcome of the arrest?")
-    TextBox
-  question(name="QA60" text="A60. Has the claimant ever been incarcerated?")
-    RadioSet
-      Value yes
+      Value(enables-selector="A57_yes") yes
+      / (enable A57a-A60a)
       Value no
-  question(name="QA60A" text="A60A. If yes, how long was the incarceration?")
-    TextBox
+      / (disable the rest of this section)
+  group.A57_yes
+    question(name="QA57A" text="A57A. If yes, what was the arrest for?")
+      TextBox
+    question(name="QA58" text="A58. If yes, what was the date of the last arrest? Please enter in this format: Month Year.")
+      TextBox
+    question(name="QA59" text="A59. What was the outcome of the arrest?")
+      TextBox
+    question(name="QA60" text="A60. Has the claimant ever been incarcerated?")
+      RadioSet
+        Value(enables-selector="A60_yes") yes
+        Value no
+    question.A60_yes(name="QA60A" text="A60A. If yes, how long was the incarceration?")
+      TextBox
 
 
 section#Military-History
   section_text Military History
   question(name="QA61" text="A61. Has the claimant served in the military?")
     RadioSet
-      Value no (disable the rest of this section)
-      Value yes (enable A62-A64)
-  question(name="QA62" text="A62. If yes, what are the dates of service?")
-    TextBox to
-    TextBox.
-  question(name="QA63" text="A63. What was the claimant’s highest rank?")
-    TextBox
-  question(name="QA63A" text="A63A. Did the claimant receive any medals and/or ribbons?")
-    RadioSet
-      Value yes
+      Value(enables-selector="A61_yes") yes
+      / (enable A62-A64)
       Value no
-  question(name="QA63B" text="A63B. Was any disciplinary action (Article 15, Captain’s Mast) taken?")
-    RadioSet
-      Value yes
-      Value no
-  question(name="QA63C" text="A63C. Was the claimant honorably discharged?")
-    RadioSet
-      Value yes
-      Value no
-  question(name="QA64" text="A64. Was the claimant deployed?")
-    RadioSet
-      Value yes
-      Value no
+      / (disable the rest of this section)
+  group.A61_yes
+    question(name="QA62" text="A62. If yes, what are the dates of service?")
+      TextBox to
+      TextBox.
+    question(name="QA63" text="A63. What was the claimant’s highest rank?")
+      TextBox
+    question(name="QA63A" text="A63A. Did the claimant receive any medals and/or ribbons?")
+      RadioSet
+        Value yes
+        Value no
+    question(name="QA63B" text="A63B. Was any disciplinary action (Article 15, Captain’s Mast) taken?")
+      RadioSet
+        Value yes
+        Value no
+    question(name="QA63C" text="A63C. Was the claimant honorably discharged?")
+      RadioSet
+        Value yes
+        Value no
+    question(name="QA64" text="A64. Was the claimant deployed?")
+      RadioSet
+        Value yes
+        Value no
 
 section#Mental-Status-Examination
   section_text Mental Status Examination - General Appearance
@@ -477,15 +499,19 @@ section#Mental-Status-Examination
       Value no
   question(name="Q73" text="73. Was evidence of psychomotor agitation present?")
     RadioSet
-      Value no (disable 73a)
-      Value yes (enable 73a)
-  question(name="Q73A" text="73A. If yes, please provide examples.")
+      Value no
+      / (disable 73a)
+      Value(enables-selector=".73_yes") yes
+      / (enable 73a)
+  question.73_yes(name="Q73A" text="73A. If yes, please provide examples.")
     TextBox
   question(name="Q73B" text="73B. Was evidence of psychomotor retardation present?")
     RadioSet
-      Value no (disable 73c)
-      Value yes (enable 73c)
-  question(name="Q73C" text="73C. If yes, please provide examples.")
+      Value no
+      / (disable 73c)
+      Value(enables-selector="73B_yes") yes
+      / (enable 73c)
+  question.73B_yes(name="Q73C" text="73C. If yes, please provide examples.")
     TextBox
 
   section_text Mental Status Examination - Attitude &amp; Behavior
@@ -505,9 +531,11 @@ section#Mental-Status-Examination
       Value Negative
   question(name="Q77" text="77. Was there evidence of malingering or factitious behavior?")
     RadioSet
-      Value normal#1yes (enable 77a)
-      Value no  (disable 77a)
-  question(name="Q77A" text="77A. If yes, please describe.")
+      Value(enables-selector="77_yes") yes
+      / (enable 77a)
+      Value no
+      / (disable 77a)
+  question.77_yes(name="Q77A" text="77A. If yes, please describe.")
     TextBox
 
   section_text Mental Status Examination - Mood / Affect
@@ -515,9 +543,11 @@ section#Mental-Status-Examination
     TextBox
   question(name="Q89" text="89. Was the claimant’s affect consistent with stated mood?")
     RadioSet
-      Value normal#1yes (disable 90)
-      Value no (enable 90)
-  question(name="Q90" text="90. If no, how did the claimant appear?")
+      Value yes
+      / (disable 90)
+      Value(enables-selector=".89_no") no
+      / (enable 90)
+  question.89_no(name="Q90" text="90. If no, how did the claimant appear?")
     TextBox
   question(name="Q91" text="91. Regarding sleep, what does the claimant say? Select all that apply.")
     CheckboxSet
@@ -538,41 +568,53 @@ section#Mental-Status-Examination
   section_text Mental Status Examination - Content of Thought
   question(name="Q82" text="82. Does the claimant have auditory hallucinations?")
     RadioSet
-      Value normal#1yes (enable 83)
-      Value no (disable 83)
-  question(name="Q83" text="83. If yes, describe hallucinations.")
+      Value(enables-selector=".82_yes") yes
+      / (enable 83)
+      Value no
+      / (disable 83)
+  question.82_yes(name="Q83" text="83. If yes, describe hallucinations.")
     TextBox
   question(name="Q84" text="84. Does the claimant have visual, tactile, or olfactory hallucinations?")
     RadioSet
-      Value normal#1yes (enable 85)
-      Value no (disable 85)
-  question(name="Q85" text="85. If yes, describe hallucinations.")
+      Value(enables-selector=".84_yes") yes
+      / (enable 85)
+      Value no
+      / (disable 85)
+  question.84_yes(name="Q85" text="85. If yes, describe hallucinations.")
     TextBox
   question(name="Q86" text="86. Does the claimant have suicidal ideations?")
     RadioSet
-      Value yes (enable 86a)
-      Value no (disable 86a)
-  question(name="Q86A" text="86A. If yes, please provide details.")
+      Value(enables-selector=".86_yes") yes
+      / (enable 86a)
+      Value no
+      / (disable 86a)
+  question.86_yes(name="Q86A" text="86A. If yes, please provide details.")
     TextBox
   question(name="Q86B" text="86B. Does the claimant have homicidal ideations?")
     RadioSet
-      Value normal#1yes (enable 86c)
-      Value no (disable 86c)
-  question(name="Q86C" text="86C. If yes, please provide details.")
+      Value(enables-selector=".86B_yes") yes
+      / (enable 86c)
+      Value no
+      / (disable 86c)
+  question.86B_yes(name="Q86C" text="86C. If yes, please provide details.")
     TextBox
   question(name="Q87" text="87. Does the claimant have delusions?")
     RadioSet
-      Value normal#1yes (enable 87a)
-      Value no (disable 87a)
-  question(name="Q87A" text="87A. If yes, please provide details.")
+      Value(enables-selector=".87_yes") yes
+      / (enable 87a)
+      Value no
+      / (disable 87a)
+  question.87_yes(name="Q87A" text="87A. If yes, please provide details.")
     TextBox
 
   section_text Mental Status Examination - Stream of Mental Activity / Speech
   question(name="Q78" text="78. Was the claimant’s speech logical and coherent?")
     RadioSet
-      Value yes (disable 78a)
-      Value no (enable 78a)
-  question(name="Q78A" text="78A. If no, please describe.")
+      Value yes
+      / (disable 78a)
+      Value(enables-selector=".87_no") no
+      / (enable 78a)
+  question.87_no(name="Q78A" text="78A. If no, please describe.")
     TextBox
   question(name="Q79" text="79. Describe the articulation.")
     RadioSet
@@ -1075,15 +1117,16 @@ section#Current-Level-of-Functioning
   section_text Current Level of Functioning - Social Functioning
   question(name="QA157" text="A157. Does the claimant have social friends?")
     RadioSet
-      Value no (enable A157a)
-      ValueOther yes, the number of social friends is
-    TextBox (enable A157b)
-  question(name="QA157A" text="A157A. If no, is the claimant isolated from people?")
+      Value(enables-selector=".A157_no") no
+      / (enable A157a)
+      ValueOther(enables-selector=".A157_yes") yes, the number of social friends is
+  question.A157_no(name="QA157A" text="A157A. If no, is the claimant isolated from people?")
     RadioSet
       Value yes
       Value no
-  question(name="QA157B" text="A157B. If yes, please add detail.")
+  question.A157_yes(name="QA157B" text="A157B. If yes, please add detail.")
     TextBox
+
   question(name="Q158" text="158. Is the claimant a member of an organized group?")
     RadioSet
       Value no
@@ -1159,9 +1202,11 @@ section#Current-Level-of-Functioning
   section_text Current Level of Functioning - Decompensation and Deterioration
   question(name="Q167" text="167. Is there evidence of deterioration and decompensation in the work place? For children, this would read “in school?”")
     RadioSet
-      Value yes (enable 168)
-      Value no (disable 168)
-  question(name="Q168" text="168. If yes, where is the deterioration and decompensation seen or evidenced by?")
+      Value(enables-selector=".167_yes") yes
+      / (enable 168)
+      Value no
+      / (disable 168)
+  question.167_yes(name="Q168" text="168. If yes, where is the deterioration and decompensation seen or evidenced by?")
     CheckboxSet
       Value Voluntary psychiatric commitment
       Value Difficulty getting along with coworkers
