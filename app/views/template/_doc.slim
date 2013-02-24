@@ -522,7 +522,7 @@ section#Mental-Status-Examination
       Value Belligerent
   question(name="Q74" text="74. Was the claimant’s behavior pleasant?")
     RadioSet
-      Value normal#1yes
+      Value yes
       Value no
     section_text DELETE #75.
   question(name="Q76" text="76. Describe the claimant’s attitude?")
@@ -1110,8 +1110,9 @@ section#Current-Level-of-Functioning
   question(name="QA156A" text="A156A. Is the claimant able to handle personal funds?")
     RadioSet
       Value yes
-      Value no (show A156a)
-  question(name="QA156B" text="A156B. If no, who handles this for the claimant?")
+      Value(enables-selector=".156A_no") no
+      / (show A156a)
+  question.156A_no(name="QA156B" text="A156B. If no, who handles this for the claimant?")
     TextBox
 
   section_text Current Level of Functioning - Social Functioning
@@ -1141,9 +1142,10 @@ section#Current-Level-of-Functioning
       Value no
   question(name="Q160" text="160. Does the claimant have a history of violence?")
     RadioSet
-      Value yes (enable 160a)
+      Value(enables-selector=".160_yes") yes
+      / (enable 160a)
       Value no
-  question(name="Q160A" text="160A. If yes, please describe?")
+  question.160_yes(name="Q160A" text="160A. If yes, please describe?")
     TextBox
   question(name="Q181" text="181. How is the claimant’s support system?")
     RadioSet
@@ -1161,8 +1163,9 @@ section#Current-Level-of-Functioning
   question(name="Q300" text="300. Did the claimant act appropriately with the provider and office staff?")
     RadioSet
       Value yes
-      Value no (enable 301)
-  question(name="Q301" text="301. Please explain any inappropriate behavior.")
+      Value(enables-selector=".300_no") no
+      / (enable 301)
+  question.300_no(name="Q301" text="301. Please explain any inappropriate behavior.")
     TextBox
 
   section_text Current Level of Functioning - Concentration, Persistance, and Pace
@@ -1426,19 +1429,21 @@ section#Discussion-Prognosis
   section_text Discussion / Prognosis
   question(name="Q171" text="171. Did the claimant respond in an open and honest manner?")
     RadioSet
-      Value normal#1yes
+      Value yes
       Value no
   question(name="Q172" text="172. Was there any exaggeration in the claimant’s responses?")
     RadioSet
-      Value normal#1yes (show 172a)
+      Value(enables-selector=".172_yes") yes
+      / (show 172a)
       Value no
-  question(name="Q172A" text="172A. If yes, please describe.")
+  question.172_yes(name="Q172A" text="172A. If yes, please describe.")
     TextBox
   question(name="Q173" text="173. Were there any inconsistencies?")
     RadioSet
-      Value normal#1yes (show 174)
+      Value(enables-selector=".173_yes") yes
+      / (show 174)
       Value no
-  question(name="Q174" text="174. If yes, please provide examples.")
+  question.173_yes(name="Q174" text="174. If yes, please provide examples.")
     TextBox
   question(name="Q175" text="175. As evidenced by the claimant’s current and past compliance with treatment, is the claimant willing to receive treatment (psychotherapy or medications)?")
     RadioSet
