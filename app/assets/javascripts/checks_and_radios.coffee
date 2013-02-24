@@ -10,25 +10,23 @@ class EasyEval.CheckboxSet extends EasyEval.Widget
     content = ''
     for n in @node.find('Value,ValueOther')
       value = n.textContent
-      classes = ''
       if sel = $(n).attr('enables-selector')
-        classes += ' checkbox_enabler'
         $(sel).hide()
       if $(n).is('ValueOther')
         content += """ !ijc
-          label.checkbox_other(class=@type)
-            INPUT(class=classes, type=@type, name=@guid, prepend=$(n).attr('prepend'), data-selector=sel)= "#{value}"
+          label(class=@type)
+            INPUT.other(type=@type, name=@guid, prepend=$(n).attr('prepend'), data-selector=sel)= "#{value}"
           """
       else
         content += """ !ijc
           label(class=@type)
-            INPUT(class=classes, type=@type, name=@guid, data-selector=sel)= "#{value}"
+            INPUT(type=@type, name=@guid, data-selector=sel)= "#{value}"
           """
 
     @node.append(content)
     self = @
-    @node.find('.checkbox_other').on 'change', (evt) -> self.process_checkbox_other(@, evt)
-    @node.find('.checkbox_enabler').on 'change', (evt) -> self.process_checkbox_enabler(@, evt)
+    @node.find('INPUT.other').on 'change', (evt) -> self.process_checkbox_other(@, evt)
+    @node.find('INPUT').on 'change', (evt) -> self.process_change(@, evt)
 
   getValue: ->
     values = []
@@ -61,32 +59,35 @@ class EasyEval.CheckboxSet extends EasyEval.Widget
       else "#{values[0..-2].join(', ')}, and #{values[-1..]}"
 
   process_checkbox_other: (checkbox, evt) ->
-    o = $(checkbox).find('.other_textbox')
+    $parent = $(checkbox).parent()
+    o = $parent.find('.other_textbox')
     if o.length == 0
-      $(checkbox).append """ !ijc input.input-medium.other_textbox(type="text", placeholder="") """
-      o = $(checkbox).find('.other_textbox')
+      $parent.append """ !ijc input.input-medium.other_textbox(type="text", placeholder="") """
+      o = $parent.find('.other_textbox')
 
       # Need to disable clicks so that clicking the text-box won't uncheck the 'other' checkbox
       o.click (evt) -> evt.preventDefault()
 
-    if checkbox.firstChild.checked
+    if checkbox.checked
       o.show()
       o.focus()
     else
       o.hide()
 
-  process_checkbox_enabler: (checkbox, evt) ->
+  process_change: (checkbox, evt) ->
     if @type == 'radio'
-      selectors = @node.find('Value,ValueOther').attr_map('enables-selector').join(',')
-      console.log "Disabling #{selectors}"
-      $(selectors).hide()
+      # Radio buttons don't emit 'changed' for the previous selection.
+      # This provides behavioral parity with checkboxes
+      if last=@last
+        @last = null
+        $(last).trigger 'change'
+      @last = checkbox
 
-    sel = $(checkbox).attr('data-selector')
-    if checkbox.checked
-      console.log "Enabling #{sel}"
-      $(sel).show()
-    else
-      console.log "Disabling #{sel}"
-      $(sel).hide()
-
+    if sel = $(checkbox).attr('data-selector')
+      if checkbox.checked
+        console.log "Enabling #{sel}"
+        $(sel).show()
+      else
+        console.log "Disabling #{sel}"
+        $(sel).hide()
 
