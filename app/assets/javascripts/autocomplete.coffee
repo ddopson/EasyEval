@@ -6,7 +6,7 @@ class EasyEval.Autocomplete extends EasyEval.Widget
     content = """ !ijc
       select
         -for v in EEData.Autocomplete['meds']
-          option(value=v)
+          option(value=v)= v
     """
     @node.append(content)
     @input = @node.find('select')
