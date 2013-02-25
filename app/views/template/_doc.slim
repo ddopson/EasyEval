@@ -97,7 +97,7 @@ section#Review-of-Records
   question(name="Q15" text="15. Were there any special circumstances surrounding the onset of this impairment or condition?")
     CheckboxSet
       Value no
-      ValueOther yes (enable 15a)
+      ValueOther yes
 
 
 section#History-of-Present-Illness
@@ -637,23 +637,26 @@ section#Intellectual-Functioning-Sensorium
   question(name="Q93" text="93. How was the claimant orientated?")
     RadioSet
       Value None
-      Value x1 (enable 94-96)
-      Value x2 (enable 94-96)
+      Value(enables-selector=".93_yes") x1
+      / (enable 94-96)
+      Value(enables-selector=".93_yes") x2
+      / (enable 94-96)
       Value x3
-    text If needed, complete the additional questions to provide more information.
-    text OPTIONAL: Only complete if needed for clarification
-  question(name="Q94" text="94. Was the claimant orientated to person?")
-    RadioSet
-      Value yes
-      ValueOther.prepend no,
-  question(name="Q95" text="95. Was the claimant orientated to place?")
-    RadioSet
-      Value yes
-      ValueOther.prepend no,
-  question(name="Q96" text="96. Was the claimant orientated to time?")
-    RadioSet
-      Value yes
-      ValueOther.prepend no,
+    / If needed, complete the additional questions to provide more information.
+    / OPTIONAL: Only complete if needed for clarification
+  group.93_yes
+    question(name="Q94" text="94. Was the claimant orientated to person?")
+      RadioSet
+        Value yes
+        ValueOther.prepend no,
+    question(name="Q95" text="95. Was the claimant orientated to place?")
+      RadioSet
+        Value yes
+        ValueOther.prepend no,
+    question(name="Q96" text="96. Was the claimant orientated to time?")
+      RadioSet
+        Value yes
+        ValueOther.prepend no,
 
   group.enable-complex.enable-psych-mem.enable-psych-intel
     section_text Intellectual Functioning / Sensorium - Psychological Testing
