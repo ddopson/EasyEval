@@ -20,12 +20,14 @@ class TemplateController < ApplicationController
   def write_file_and_symlink(path, contents)
     i = Time.now.to_i
     File.open("#{path}.#{i}", 'wb'){|file| file.write(contents) }
-    if File.symlink?(path)
-      FileUtils.rm(path)
-    else
-      FileUtils.mv(path, "#{path}.bak.#{i}")
-    end
-    File.symlink("#{path}.#{i}", path)
+    FileUtils.rm(path)
+    File.open(path}, 'wb'){|file| file.write(contents) }
+    #    if File.symlink?(path)
+    #      FileUtils.rm(path)
+    #    else
+    #      FileUtils.mv(path, "#{path}.bak.#{i}")
+    #    end
+    #    File.symlink("#{path}.#{i}", path)
   end
 
   def micaela_submit
