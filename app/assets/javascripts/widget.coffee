@@ -9,15 +9,15 @@ class EasyEval.Widget
     getName: -> null
 
   @wireup: ->
-    @_wireup(document.body, @ROOT_VIEW)
+    @ROOT_VIEW.wireup(document.body)
 
-  @_wireup: (node, parent)->
-    p = parent
-    if view_class = TAGS[node.tagName]
-      p = new view_class(node)
-      parent.addChild(p)
+  wireup: (node)->
     for n in node.childNodes
-      @_wireup(n, p)
+      if view_class = TAGS[n.tagName]
+        @addChild(new view_class(n)).wireup(n)
+      else
+        @wireup(n)
+    return @
 
   @register: (tag_name) ->
     TAGS[tag_name.toUpperCase()] = @
@@ -43,6 +43,7 @@ class EasyEval.Widget
 
   addChild: (child) ->
     (@children ||= []).push(child)
+    return child
 
 
   constructor: (node) ->
