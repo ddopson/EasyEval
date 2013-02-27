@@ -1,14 +1,14 @@
-form(action=url_for(action: "generate") method="post")
-  /label.checkbox: input(type="checkbox" name="JSON_ONLY" value=true) JSON ONLY (DEBUGGING)
-  .container
-    .row
-      .span3.bs-docs-sidebar
-        ul.nav.nav-list.bs-docs-sidenav.affix#table-of-contents
-          / Gets filled in dynamically 
-      .span9
-        = render partial: 'doc'
+.container
+  .row
+    .span3.bs-docs-sidebar
+      ul.nav.nav-list.bs-docs-sidenav.affix#table-of-contents
+        / Gets filled in dynamically
+    .span9
+      = render partial: 'doc'
 
-  button.btn(type="submit") Generate MS Word Doc (.docx)
+      form(action=url_for(action: "generate") method="post")
+        input#json_data(type="hidden" name="json_data")
+        button#submit_button.btn(type="submit") Generate MS Word Doc (.docx)
 
 script
   | EasyEval.TemplateHelpers.initialize()

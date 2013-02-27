@@ -1,0 +1,7 @@
+.container
+  form(action=url_for(action: "generate_docx") method="post")
+    textarea.micaela(name="json_data")= @json_data
+    button.btn(type="submit") Generate MS Word Doc (.docx)
+
+script
+  | EasyEval.Micaela.initialize()

@@ -45,11 +45,12 @@ class TemplateController < ApplicationController
   end
 
   def generate
-    if params[:JSON_ONLY]
-      render :json => params
-    else
-      output_file = Template.generate("real.docx", params)
-      send_file output_file, type: "application/msword"
-    end
+    @json_data = params[:json_data]
   end
+
+  def generate_docx
+    output_file = Template.generate("real.docx", JSON.parse(params[:json_data]))
+    send_file output_file, type: "application/msword"
+  end
+
 end
