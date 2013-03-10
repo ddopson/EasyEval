@@ -11,6 +11,10 @@ form(action=url_for(action: "micaela_submit") method="post")
 
 
 
+  h4 logic.rb:
+  textarea.micaela(name="logic.rb")
+    = File.read("#{Rails.root}/app/models/logic.rb")
+
   h4 Doc.slim:
   textarea.micaela(name="_doc.slim")
     = File.read("#{Rails.root}/app/views/template/_doc.slim")

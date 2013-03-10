@@ -38,10 +38,15 @@ class TemplateController < ApplicationController
       write_file_and_symlink "#{Rails.root}/templates/real.docx", contents.read
     end
 
-    ['_doc.slim', '_Q16-illness.slim'].each do |file|
+    ['_doc.slim', '_Q16-illness.slim', 'logic.rb'].each do |file|
       contents = params[file]
         raise "#{file} is REALLY short. only #{contents.length} chars" unless contents.length > 200
-        write_file_and_symlink "#{Rails.root}/app/views/template/#{file}", contents.gsub(/\r\n/, "\n")
+        if file == 'logic.rb'
+          full_file = "#{Rails.root}/app/models/#{file}"
+        else
+          full_file = "#{Rails.root}/app/views/template/#{file}"
+        end
+        write_file_and_symlink full_file, contents.gsub(/\r\n/, "\n")
     end
     redirect_to '/template'
   end
