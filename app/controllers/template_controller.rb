@@ -21,7 +21,7 @@ class TemplateController < ApplicationController
     i = Time.now.to_i
     File.open("#{path}.#{i}", 'wb'){|file| file.write(contents) }
     FileUtils.rm(path)
-    File.open(path}, 'wb'){|file| file.write(contents) }
+    File.open(path, 'wb'){|file| file.write(contents) }
     #    if File.symlink?(path)
     #      FileUtils.rm(path)
     #    else
