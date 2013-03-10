@@ -18,6 +18,7 @@ class TemplateController < ApplicationController
   end
 
   def write_file_and_symlink(path, contents)
+    return if File.read(path) == contents
     i = Time.now.to_i
     File.open("#{path}.#{i}", 'wb'){|file| file.write(contents) }
     FileUtils.rm(path)
