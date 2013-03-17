@@ -37,7 +37,7 @@ class EasyEval.CheckboxSet extends EasyEval.Widget
           pre = $c.attr('prepend')
           if pre == 'prepend'
             # if prepend is set to 'true' then use the text content as the prepend string
-            pre = c.textContent
+            pre = checkbox.parentElement.textContent
           if pre
             pre += " "
           pre ||= ''
@@ -45,7 +45,7 @@ class EasyEval.CheckboxSet extends EasyEval.Widget
           txt = $c.parent().find('.other_textbox').val()
           values.push("#{pre}#{txt}")
         else
-          values.push checkbox.textContent
+          values.push checkbox.parentElement.textContent
 
     switch @rollup
       when 'join' then return @english_join(values)
