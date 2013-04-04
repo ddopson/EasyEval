@@ -275,7 +275,62 @@ class Logic
     #He was advised of the limitations on confidentiality and was informed that a copy of the evaluations would be provided to the Social Security Administration. The source of information was Mr. FILLIN_Q1, who FILLIN_Q11 considered a reliable historian. FILLIN_Q11A is the historian for this interview`.
     #
 
-    return params
+    params['PARAGRAPH_CHIEF_COMPLAINT'] = "Mr #{fullname} is struggling with the following mental health concerns: #{q13}."
 
+    params['PARAGRAPH_HISTORY_OF_PRESENT_ILLNESS'] = "Mr. #{fullname} was first diagnosed with #{q13} in #{q14} by #{q14A}. Current symptoms of #{q13} include: #{q16}."
+
+    params['PARAGRAPH_HISTORY_OF_PRESENT_ILLNESS'] << "Special circumstances at the onset of the conditions were: #{q15}" if q15 != "no"
+
+    params['PARAGRAPH_HISTORY_OF_PRESENT_ILLNESS'] << "Mr. #{fullname} #{q16B} traumatic event in #{q16C} in #{q16D}. There #{q16E} current effect of the trauma on his daily functioning. #{q16F} The trauma has affected his life and functioning for #{q16G}."
+
+    params['PARAGRAPH_HISTORY_OF_PRESENT_ILLNESS'] << "The effects of mental health in his daily life are: #{q17}. Mr. #{fullname} stopped working due to his impairments on #{qa18}. #{qa18A} He #{q19} currently in psychotherapy #{q19A}.Psychotherapy #{q20} helpful to Mr.#{fullname}. #{q20AHe} #{q179}.."
+
+    params['PARAGRAPH_CURRENT_MEDICATION'] = "Mr. #{fullname} #{q21} currently taking medications. He reported he #{q21A} take his medications today. They are prescribed by #{q177}."
+
+    params['PARAGRAPH_PAST_PSYCHIATRIC_HISTORY'] = "Mr. #{q1} reports he #{q29} been admitted to a psychiatric hospital."
+
+    params['PARAGRAPH_PAST_PSYCHIATRIC_HISTORY'] << "The last time he was admitted was in #{q30}. The admittance was due to #{q31}. Mr. #{q1} received the following treatment while admitted: #{q31A}. His response to treatment was #{q31B}."
+
+    params['PARAGRAPH_ALCOHOL_AND_OR_DRUG_ABUSE'] = "Mr. #{q1} #{qA32} alcohol, illicit drugs, and tobacco."
+
+    params['PARAGRAPH_ALCOHOL_AND_OR_DRUG_ABUSE'] << "Mr. #{q1} reported abusing #{qA33}. He first used in #{a34} and started using abusively in #{qa34A}. He used the substance #{qa35}. At the worst of times, he used #{qa35A} per day. He #{qa36} abusing the substance. He has been clean for #{qa36A}."
+
+    params['PARAGRAPH_PAST_MEDICAL_HISTORY'] = "Mr. #{q1} #{q23} from a major head injury, which required hospitalization. He #{q24} a lack of consciousness, felt dazed, or saw stars. The injury was sustained in #{q25}; he #{q26} treated at a hospital. The name of the hospital was #{q16A}."
+
+    params['PARAGRAPH_PAST_MEDICAL_HISTORY'] << "Surgeries include: #{q27}."
+
+    params['PARAGRAPH_PAST_MEDICAL_HISTORY'] << "Medical conditions per his report include: #{q28}."
+
+    params['PARAGRAPH_FAMILY_HISTORY'] = "Mr. #{q1} is #{qA37}. #{qA38} He #{qA39} children; #{qA40}. #{qA41} He #{q42} #{q42A} in #{q42B}. There #{q43} history of mental illness in his family. #{q44} There #{q45}history of child abuse in the family. #{q46} #{q47}"
+
+    params['PARAGRAPH_EMPLOYMENT_HISTORY'] = "Mr. #{q1} #{qA52} working. He #{qA53} actively seeking employment at this time. His attitude regarding seeking employment is #{qA184}.The reason he left his last place of employment was “#{qA54}.”"
+
+    params['PARAGRAPH_EMPLOYMENT_HISTORY'] << "He reported having a work history that included the following jobs: #{qA55}".
+
+    params['PARAGRAPH_EMPLOYMENT_HISTORY'] << "He reported the periods of unemployment were due to “#{qA56}.”".
+
+    params['PARAGRAPH_LEGAL_CRIMINAL_HISTORY'] = "Mr. #{q1} #{qA57} arrested for #{qA57A}. The arrest was on #{qA58}, and the outcome was #{qA59}. He #{qA60} incarcerated. The incarceration lasted #{qA60A}."
+
+    params['PARAGRAPH_MILITARY_HISTORY'] = "Mr. #{q1} #{qA61} serving in the military. The dates of services were #{qA62}. The highest rank he held was #{qA63}. He reports he #{qA63A} received any metals, and report disciplinary action #{qA63B} taken. Mr. #{q1} #{qA63C} he was dishonorably discharged. He #{qA64} deployed."
+
+    params['PARAGRAPH_GENERAL_APPEARANCE'] = "Mr. #{q1} appeared #{q65} his stated age. His hygiene was #{q66}; he was #{q66A}.In relation to height, his build was #{q67}.  Eye contact was #{q68}, and his facial expressions were #{q69}. Clothing was #{q70}. He was dressed in #{q71}; which #{q72} appropriate for the weather. There #{q73} evidence of psychomotor agitation, as seen when he #{q73A}. There #{q73B} evidence of psychomotor retardation, as seen when he #{q73C}."
+
+    params['PARAGRAPH_ATTITUDE_&_BEHAVIOR'] = "Mr. #{q1}’s behavior was #{q74}. Attitude was #{q76}. There #{q77} evidence of feigning or factitious behaviors. #{q77A}"
+
+    params['PARAGRAPH_MOOD_AFFECT'] = "He stated that his current mood was #{q88}.  Mr. #{q1}’s affect was #{q89} with the stated mood.  He appeared #{q90}. Regarding sleeping, he stated he has #{q91}.He reports #{q92}."
+
+    params['PARAGRAPH_CONTENT_OF_THOUGHT'] = "Mr. #{q1} #{q82} having auditory hallucinations. #{q83} He #{q84} having visual, tactile, or olfactory hallucinations. #{q85} Mr. #{q1} #{q86} having suicidal ideations. #{q86A} Mr. #{q1} #{q86B} having homicidal ideations. #{q86C} He #{q87} having delusions. #{q87A}"
+
+    params['PARAGRAPH_STREAM_OF_MENTAL_ACTIVITY_SPEECH'] = "Speech form was #{q78}. #{q78A} Articulation was #{q79}. Speech velocity was #{q80}; volume was #{q81}."
+
+    params['PARAGRAPH_ORIENTATION'] = "Mr. #{q1} was oriented #{q93} (Person- #{q94} Place- #{q95} Time- #{q96})."
+
+    params['PARAGRAPH_PSYCHOLOGICAL_ASSESSMENTS'] = "Mr. #{q1} was administered a (insert #{98a}, #{98b}, #{98c})."
+
+    params['PARAGRAPH_TESTING_BEHAVIORS'] = "#{q99}"
+
+
+
+    return params
   end
 end
