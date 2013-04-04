@@ -12,15 +12,17 @@ class EasyEval.CheckboxSet extends EasyEval.Widget
       value = n.textContent
       if sel = $(n).attr('enables-selector')
         $(sel).hide()
+
+      realValue = $(n).attr('value') ? value
       if $(n).is('ValueOther')
         content += """ !ijc
           label(class=@type)
-            INPUT.other(type=@type, name=@guid, prepend=$(n).attr('prepend'), data-selector=sel)= "#{value}"
+            INPUT.other(type=@type, name=@guid, prepend=$(n).attr('prepend'), data-selector=sel, value=realValue)= "#{value}"
           """
       else
         content += """ !ijc
           label(class=@type)
-            INPUT(type=@type, name=@guid, data-selector=sel)= "#{value}"
+            INPUT(type=@type, name=@guid, data-selector=sel, value=realValue)= "#{value}"
           """
 
     @node.append(content)
@@ -45,7 +47,7 @@ class EasyEval.CheckboxSet extends EasyEval.Widget
           txt = $c.parent().find('.other_textbox').val()
           values.push("#{pre}#{txt}")
         else
-          values.push checkbox.parentElement.textContent
+          values.push $(checkbox).attr('value')
 
     switch @rollup
       when 'join' then return @english_join(values)
