@@ -3,13 +3,17 @@ class Logic
     dob = Time.strptime(birthdate, '%m/%d/%Y')
     now = Time.now.utc.to_date
     now.year - dob.year - ((now.month > dob.month || (now.month == dob.month && now.day >= dob.day)) ? 0 : 1)
+    rescue
+      "DATE_FORMAT_ERROR"
   end
 
   def self.normalize_date(birthdate)
-    if birthdate.match /(\d+)\/(\d+)\/(\d+)/
+    if birthdate.present? and birthdate.match /(\d+)\/(\d+)\/(\d+)/
       month=$1
       day=$2
       year=$3.to_i
+    else
+      return "DATE_FORMAT_ERROR"
     end
     year += 2000 if year < 30
     year += 1900 if year < 1000
