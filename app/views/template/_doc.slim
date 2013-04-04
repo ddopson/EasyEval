@@ -235,17 +235,17 @@ section#Past-Medical-History
       Value(enables-selector=".23_yes") yes
       / (enable 24, 25, 26, 26a)
   group.23_yes
-    question(name="Q24" text="24. If yes, did the claimant experience a lack of consciousness, feel dazed, or see stars?")
+    question(name="Q24" text="24. Did the claimant experience a lack of consciousness, feel dazed, or see stars?")
       RadioSet
-        Value no
-        Value yes
+        Value(value="did not experience") no
+        Value(value="did experience") yes
     question(name="Q25" text="25. What is the date of the injury? Please enter in this format: Month Year.")
       TextBox
     question(name="Q26" text="26. Was the claimant treated at a hospital?")
       RadioSet
         Value no
         Value(enables-selector=".26_yes") yes
-    question.26_yes(name="Q26A" text="26A. If yes, what is the name of the hospital?")
+    question.26_yes(name="Q26A" text="26A. What is the name of the hospital?")
       TextBox
 
   question(name="Q27" text="27. List any previous surgeries. If none, enter “None reported.”")
@@ -288,7 +288,7 @@ section#Social-and-Family-History
       Value Divorced
       Value Getting a divorce
       ValueOther Other
-  question.37_committed(name="QA38" text="A38. If applicable, how is the relationship?")
+  question.37_committed(name="QA38" text="A38. How is the relationship?")
     RadioSet
       Value good
       Value fair
