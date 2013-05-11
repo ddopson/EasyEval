@@ -37,6 +37,24 @@ function make_slim() {
     }'
 }
 
+function xml_tab() {
+  perl -ne '
+    BEGIN {
+      $indent = 0
+    }
+    if (m#^</#) {
+      $indent--;
+      print "  " x $indent, $_;
+    } else {
+      print "  " x $indent, $_;
+      if (m#<.*/>#) {
+      } elsif (m#<#) {
+        $indent++;
+      }
+    }
+  '
+}
+
 function text_boxes() {
   perl -pe 's/\(text box ?[0-9]?\)/\n  input.input-medium(type="text" name="TEXTBOX_${\( ++$N )}" placeholder="TEXTBOX_${\( $N )}")/g'
 }
