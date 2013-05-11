@@ -41,6 +41,13 @@ class Template
     Rails.logger.info "TEMPLATE: reading '#{tmpdir}/word/document.xml'"
     contents = File.read("#{tmpdir}/word/document.xml")
     Rails.logger.info "TEMPLATE: read #{contents.size} bytes from '#{tmpdir}/word/document.xml'"
+
+    contents.gsub!(/<w:tr.*?<\/w:tr>/) do |m|
+      m.gsub!(/ROWFILLIN_([A-Z0-9_]+)/) do |mm|
+        return mm
+      end
+    end
+
     contents.gsub!(/FILLIN_([A-Z0-9_]+)/) do |m|
       key = $1
       if value = params[key]
