@@ -2,28 +2,31 @@ section(title="Identification")
   question(text="Name of Claimant:")
     TextBox(name="Q1_FIRST" placeholder="First")
     TextBox(name="Q1_LAST" placeholder="Last")
-  question(text="A. Date of Birth:")
+  question(text="Date of Birth:")
     TextBox(name="Q1_BIRTHDATE" placeholder="dd/mm/yyyy")
-  question(text="B. Case No:")
+  question(text="Sex:")
+    RadioSet(name="gender")
+        Value male
+        Value female
+  question(text="Case No:")
     TextBox(name="Q1_CASENUM")
-  question(text="C. RQID:")
+  question(text="RQID: ")
     TextBox(name="Q1_RQID")
-  question(text="D. Adjudicator:")
+  question(text="Adjudicator:")
     TextBox(name="Q1_ADJUDICATOR")
-  question(text="E. Date and Time of Exam:")
+  question(text="Date and Time of Exam:")
     TextBox(name="Q1_EXAMDATE" placeholder="dd/mm/yyyy")
-  question(text="F. Location:")
+  question(text="Location:")
     TextBox(name="Q1_EXAMLOC")
-  question(text="3. What kind of examination is this?")
+  question(text="What kind of examination is this?")
     RadioSet(name="Q3")
-      Value(enables-selector=".enable-complex")     Complex psychological evaluation
-      Value(enables-selector=".enable-psych-only")  Psychological diagnostic evaluation
-      Value(enables-selector=".enable-psych-mem")   Psychological diagnostic evaluation with memory assessment
-      Value(enables-selector=".enable-psych-intel") Psychological diagnostic evaluation with intelligence assessment
+      Value(enables-selector=".enable-complex") Complex Psychological Evaluation
+      Value(enables-selector=".enable-psych-only") Psychological Diagnostic Evaluation
+      Value(enables-selector=".enable-psych-mem") Psychological Diagnostic Evaluation with Memory Assessment
+      Value(enables-selector=".enable-psych-intel") Psychological Diagnostic Evaluation with Intelligence Assessment
 
-  question(name="Q4" text="4. What is the claimant’s age?")
-    TextBox
-  question(name="Q5" text="5. What is the claimant’s ethnicity/race?")
+
+  question(name="Q5" text="What is the claimant’s ethnicity/race? (check all that apply)")
     CheckboxSet
       Value American Indian
       Value African American
@@ -33,39 +36,39 @@ section(title="Identification")
       Value Native Hawaiian
       Value Pacific Islander
       ValueOther Other
-  question(name="Q6" text="6. What is the claimant’s birthplace?")
+  question(name="Q6" text="What is the claimant’s birthplace?")
     TextBox
 
 
 section#General-Observations
   section_text General Observations
-  question(name="Q8" text="8. When did the claimant arrive to the examination?")
+  question(name="Q8" text="When did the claimant arrive to the examination?")
     RadioSet
       Value Early
       Value On time
       Value Late
-  question(name="Q8A" text="8A. Was the claimant:")
+  question(name="Q8A" text="Was the claimant:")
     RadioSet
       Value unaccompanied
       ValueOther.prepend accompanied by
-  question(name="Q9" text="9. How did the claimant get to the examination?")
+  question(name="q9" text="How did the claimant get to the examination?")
     RadioSet
-      Value Drove
-      Value DSHS arranged the transportation
+      Value(value="personal vehicle") Drove
+      Value(value="transportation arranged by DSHS") DSHS arranged transportation
       Value Taxi
       Value Public transportation
       ValueOther.prepend Driven by
-  question(name="Q11" text="11. Is the claimant considered a reliable historian?")
+  question(name="Q11" text="Is the claimant considered a reliable historian?")
     RadioSet
-      Value yes
-      Value(enables-selector=".11_no") no
-  question.11_no(name="Q11A" text="11A. If no, who is the reliable historian for this interview?")
+      Value(value="is considered") yes
+      Value(value="is not considered" enables-selector=".11_no") no
+  question.11_no(name="Q11A" text="Who is the reliable historian for this interview?")
     TextBox
 
 
 section#Chief-Complaint
   section_text Chief Complaint
-  question(name="Q13" text="13. What is the claimant’s chief complaint? Select all that apply.")
+  question(name="Q13" text="What is the claimant’s chief complaint? Select all that apply.")
     CheckboxSet
       Value(enables-selector="#Q16A") Alzheimer’s Disease
       Value(enables-selector="#Q16B") Anorexia
@@ -89,9 +92,9 @@ section#Chief-Complaint
 
 section#Review-of-Records
   section_text Review of Records
-  question(name="Q14" text="14. When was the claimant first diagnosed? Please enter in this format: Month Year.")
+  question(name="Q14" text="Q14. When was the claimant first diagnosed? Please enter in this format: Month Year.")
     TextBox
-  question(name="Q14A" text="14A. Who diagnosed the claimant?")
+  question(name="Q14A" text="Q14A Who diagnosed the claimant?")
     TextBox
     text Repeat 14 and 14a for each diagnosis. If possible have the diagnoses from question 13 filter down to this section. It would allow the doctor to specify who diagnosed the claimant and when for each diagnosis.
   question(name="Q15" text="15. Were there any special circumstances surrounding the onset of this impairment or condition?")
@@ -102,58 +105,58 @@ section#Review-of-Records
 
 section#History-of-Present-Illness
   section_text History of Present Illness
-  question(name="Q16" text="16. What are the claimant’s current symptoms? Select all that apply.")
+  question(name="Q16" text="What are the claimant’s current symptoms? Select all that apply.")
     = render partial: 'Q16-illness'
-    question(name="Q16A" text="16A. Please provide any additional symptoms.")
+    question(name="Q16A" text="Please provide any additional symptoms.")
       TextBox
 
 
-question(name="Q17" text="17. Describe in detail the effect of each impairment on the claimant’s daily functioning. Please focus on relationships and work ability.")
+question(name="Q17" text="Describe in detail the effect of each impairment on the claimant’s daily functioning. Please focus on relationships and work ability.")
   TextBox
-question(name="QA18" text="A18. Please provide the date the claimant stopped working due to the inability to perform work duties?")
+question(name="QA18" text="Please provide the date the claimant stopped working due to the inability to perform work duties?")
   TextBox
-question(name="QA18A" text="A18A. Please include any information regarding attempts to return to the workplace.")
+question(name="QA18A" text="Please include any information regarding attempts to return to the workplace.")
   TextBox
-question(name="Q19" text="19. Is the claimant currently in psychotherapy?")
+question(name="Q19" text="Is the claimant currently in psychotherapy?")
   RadioSet
     Value(enables-selector=".19_no") no
     /enable 179. disable 19a, 20, 20a.
     Value(enables-selector=".19_yes") yes
     /enable 19a, 20, and 20a. disable 179
-question.19_no(name="Q179" text="179. If no, is the claimant willing to consider psychotherapy?")
+question.19_no(name="Q179" text="Is the claimant willing to consider psychotherapy?")
   RadioSet
     Value yes
     Value no
-question.19_yes(name="Q19A" text="19A. If yes, with whom?")
+question.19_yes(name="Q19A" text="With whom is the claimant currently in psychotherapy?")
   CheckboxSet
-    Value A counselor
-    Value A psychologist
-    Value A therapist
-question.19_yes(name="Q20" text="20. If yes, does the claimant find psychotherapy helpful?")
+    Value a counselor
+    Value a psychologist
+    Value a therapist
+question.19_yes(name="Q20" text="Does the claimant find psychotherapy helpful?")
   RadioSet
-    Value yes
-    Value(enables-selector=".20_no") no
-question.20_no(name="Q20A" text="20A. If no, please provide details.")
+    Value(value="has been") yes
+    Value(value="has not been" enables-selector=".20_no") no
+question.20_no(name="Q20A" text="Please explain the claimant's opinion of psychotherapy.")
   TextBox
 
 section#Current-Medications
   section_text Current Medications
-  question(name="Q21" text="21. Is the claimant taking any medications?")
+  question(name="Q21" text="Is the claimant taking any medications?")
     RadioSet
-      Value no
-      Value(enables-selector="21_yes") yes
+      Value(value="is not") no
+      Value(enables-selector=".21_yes" value="is") yes
       /enable 21a, 22, and 22table
   group.21_yes
-    question(name="Q177" text="177. If yes, who is writing the prescriptions?")
+    question(name="Q177" text="Who is writing the prescriptions?")
       CheckboxSet
         Value A psychiatrist
         Value A PCP
         Value A nurse practitioner
-    question(name="Q21A" text="21A. If yes, did the claimant take any medication today?")
+    question(name="Q21A" text="Did the claimant take any medication today?")
       RadioSet
-        Value yes
-        Value no
-    question(name="Q22" text="22. Which medications is the claimant taking?")
+        Value(value="did take") yes
+        Value(value="did not take") no
+    question(name="Q22" text="Which medications is the claimant taking?")
       table
         tr
           th Medication
@@ -175,30 +178,32 @@ section#Current-Medications
 
 section#Past-Psychiatric-History
   section_text Past Psychiatric History
-  question(name="Q29" text="29. Has the claimant ever been admitted to a psychiatric hospital?")
-    label.radio.checkbox_enabler: input(type="radio" name="Q29" data-selector=".29_no") no
-    / (disable the rest of this section)
-    label.radio.checkbox_enabler: input(type="radio" name="Q29" data-selector=".29_yes") yes
-    / (enable 30,31,31a, and 31b)
+  question(name="Q29" text="Has the claimant ever been admitted to a psychiatric hospital?")
+    RadioSet
+      Value(enables-selector=".29_no" value="has never") no
+      / (disable the rest of this section)
+      Value(enables-selector=".29_yes" value="has") yes
+      / (enable 30,31,31a, and 31b)
   group.29_yes
-    question(name="Q30" text="30. If yes, what was the date of the last admittance? Please enter in this format: Month Year.")
+    question(name="Q30" text="What was the date of the last admittance? Please enter in this format: Month Year.")
       TextBox
-    question(name="Q31" text="31. What was the reason for the admittance?")
+    question(name="Q31" text="What was the reason for the admittance?")
       TextBox
-    question(name="Q31A" text="31A. What treatment did the claimant receive while admitted?")
+    question(name="Q31A" text="What treatment did the claimant receive while admitted?")
       TextBox
-    question(name="Q31B" text="31B. What was the claimant’s response to the treatment?")
+    question(name="Q31B" text="What was the claimant’s response to the treatment?")
       TextBox
 
 section#Alcohol-and-Drug-Abuse
   section_text Alcohol and Drug Abuse
-  question(name="QA32" text="A32. Has the claimant ever abused alcohol, tobacco, or illicit substances?")
-    label.radio.checkbox_enabler: input(type="radio" name="QA32" data-selector=".A32_no") no
-    / (disable the rest of this section)
-    label.radio.checkbox_enabler: input(type="radio" name="QA32" data-selector=".A32_yes") yes
-    / (enable A33-A36a, A189)
+  question(name="QA32" text="Has the claimant ever abused alcohol, tobacco, or illicit substances?")
+    RadioSet
+      Value(enables-selector=".A32_no" value="has not abused") no
+      / (disable the rest of this section)
+      Value(enables-selector=".A32_yes" value="has abused") yes
+      / (enable A33-A36a, A189)
   group.A32_yes
-    question(name="QA33" text="A33. If yes, what is the substance? Select all that apply.")
+    question(name="QA33" text="If yes, what is the substance? Select all that apply.")
       CheckboxSet
         Value Alcohol
         Value Marijuana
@@ -207,50 +212,50 @@ section#Alcohol-and-Drug-Abuse
         Value Methamphetamines
         Value Tobacco
         ValueOther Other
-    question(name="QA34" text="A34. On what date did claimant first use the substance? Please enter in this format: Month Year.")
+    question(name="QA34" text="On what date did claimant first use the substance? Please enter in this format: Month Year.")
       TextBox
-    question(name="QA34A" text="A34A. On what date did the claimant begin to use the substance abusively? Please enter in this format: Month Year.")
+    question(name="QA34A" text="On what date did the claimant begin to use the substance abusively? Please enter in this format: Month Year.")
       TextBox
-    question(name="QA35" text="A35. What is the number of days that the claimant used the substance?")
+    question(name="QA35" text=" What is the number of days that the claimant used the substance? ( include unit of day, month, or year")
       TextBox
-    question(name="QA35A" text="A35A. During the claimant’s worst abusive period, how much of the substance was consumed per day?")
+    question(name="QA35A" text="During the claimant’s worst abusive period, how much of the substance was consumed per day?")
       TextBox
-    question(name="QA36" text="A36. Is the substance abuse still occurring?")
+    question(name="QA36" text="Is the substance abuse still occurring?")
       RadioSet
-        Value no
-        Value yes
+        Value(value="is no longer") no
+        Value(value="is currently") yes
     question(name="QA36A" text="A36A. If no, how long has the claimant been ‘clean?’")
       TextBox
       text Programmer: Repeat questions 34, 34a, 35, 35a, 36, and 36a for each substance selected in question 33
     question(name="QA189" text="A189. Did the claimant appear to be under the influence of drugs or alcohol?")
       RadioSet
-        Value yes
-        Value no
+        Value(value="did appear") yes
+        Value(value="did not appear") no
 
 section#Past-Medical-History
   section_text Past Medical History
   question(name="Q23" text="23. Has the claimant ever sustained a major head injury?")
     RadioSet
-      Value no
-      Value(enables-selector=".23_yes") yes
+      Value(value="has not sustained") no
+      Value(value="has sustained" enables-selector=".23_yes") yes
       / (enable 24, 25, 26, 26a)
   group.23_yes
-    question(name="Q24" text="24. Did the claimant experience a lack of consciousness, feel dazed, or see stars?")
+    question(name="Q24" text="Did the claimant experience a lack of consciousness, feel dazed, or see stars?")
       RadioSet
         Value(value="did not experience") no
         Value(value="did experience") yes
-    question(name="Q25" text="25. What is the date of the injury? Please enter in this format: Month Year.")
+    question(name="Q25" text="What is the date of the injury? Please enter in this format: Month Year.")
       TextBox
-    question(name="Q26" text="26. Was the claimant treated at a hospital?")
+    question(name="Q26" text="Was the claimant treated at a hospital?")
       RadioSet
-        Value no
-        Value(enables-selector=".26_yes") yes
-    question.26_yes(name="Q26A" text="26A. What is the name of the hospital?")
+        Value(value="was not treated") no
+        Value(value="was treated" enables-selector=".26_yes") yes
+    question.26_yes(name="Q26A" text="What is the name of the hospital where the claimant received treatment?")
       TextBox
 
-  question(name="Q27" text="27. List any previous surgeries. If none, enter “None reported.”")
+  question(name="Q27" text="List any previous surgeries. If none, enter “None reported.”")
     TextBox
-  question(name="Q28" text="28. List any medical conditions.")
+  question(name="Q28" text="List any medical conditions.")
     text Select any of the following common medical conditions or write-in another option.
     CheckboxSet
       Value Allergies
@@ -278,9 +283,9 @@ section#Past-Medical-History
 
 section#Social-and-Family-History
   section_text Social and Family History
-  question(name="QA37" text="A37. What is the claimant’s current relationship status?")
+  question(name="QA37" text="What is the claimant’s current relationship status?")
     CheckboxSet
-      Value Single, not in a committed relationship
+      Value(value="single") Single, not in a committed relationship
       Value(enables-selector=".37_committed") In a committed relationship
       / (show A38)
       Value(enables-selector=".37_committed") Married
@@ -288,72 +293,72 @@ section#Social-and-Family-History
       Value Divorced
       Value Getting a divorce
       ValueOther Other
-  question.37_committed(name="QA38" text="A38. How is the relationship?")
+  question.37_committed(name="QA38" text="If applicable, how is the relationship?")
     RadioSet
       Value good
       Value fair
       Value poor
-  question(name="QA39" text="A39. Does the claimant have children?")
+  question(name="QA39" text="Does the claimant have children?")
     RadioSet
-      Value(enables-selector=".39_yes") yes
+      Value(enables-selector=".39_yes" value="does have") yes
       / (enable A40)
-      Value no
-  question.39_yes(name="QA40" text="A40. If yes, how old?")
+      Value(value="does not have") no
+  question.39_yes(name="QA40" text="If yes, how old?")
     TextBox
-  question(name="QA41" text="A41. If claimant has deceased children, please provide details.")
+  question(name="QA41" text="If the claimant has deceased children, please provide details.")
     TextBox
-  question(name="Q42" text="42. What is the claimant’s living situation?")
+  question(name="Q42" text="What is the claimant’s living situation?")
     RadioSet
-      Value Apartment
-      Value Home
-      Value Trailer
-      Value Public Housing
-      Value Homeless
-  question(name="Q42A" text="42A. Does the claimant live alone?")
+      Value(value="an apartment") apartment
+      Value(value="a house") house
+      Value(value="a trailer") trailer
+      Value public housing
+      Value(value="and is homeless") homeless
+  question(name="Q42A" text="Does the claimant live alone?")
     RadioSet
       Value lives alone
-      ValueOther.prepend lives with
-  question(name="Q42B" text="42B. In what city does the claimant currently reside? Include state abbreviation.")
+      ValueOther.prepend lives
+  question(name="Q42B" text="In what city does the claimant currently reside? Include state abbreviation.")
     TextBox
-  question(name="Q43" text="43. Does the family have a history of mental illness?")
+  question(name="Q43" text="Does the family have a history of mental illness?")
     RadioSet
-      Value no family history of mental illness
+      Value(value="family does not have a history of mental illness") no
       ValueOther family has a history of
-  question(name="Q45" text="45. Was there a history of child abuse?")
+  question(name="Q45" text="Was there a history of child abuse?")
     RadioSet
       Value no
       Value(enables-selector=".45_yes") yes
       / (enable 46 and 47)
   group.45_yes
-    question(name="Q46" text="46. If yes, what was the nature of the conflict?")
+    question(name="Q46" text="What was the nature of the conflict?")
       TextBox
-    question(name="Q47" text="47. Is the trauma resolved?")
+    question(name="Q47" text="Is the trauma resolved?")
       RadioSet
-        Value no
-        Value yes
+        Value(value="The trauma has not been resolved.") no
+        Value(value="The trauma has been resolved.") yes
 
 section#Employment-History
   section_text Employment History
-  question(name="QA52" text="A52. Is the claimant currently employed?")
+  question(name="QA52" text="Is the claimant currently employed?")
     RadioSet
-      Value(enables-selector=".52_yes") Yes
+      Value(enables-selector=".52_yes" value="is currently") Yes
       / (enable A54-A56, and A186)
-      Value(enables-selector=".52_no") No
+      Value(enables-selector=".52_no" value="is not currently") No
       / (enable A53-A56 and A184, A186)
       Value(enables-selector=".52_never") The claimant has no employment history.
       / (enable A53 and A184)
   group.52_no
-    question(name="QA53" text="A53. If no, is the claimant currently looking for work?")
+    question(name="QA53" text="Is the claimant currently looking for work?")
       RadioSet
-        Value no
-        Value yes
-    question(name="QA184" text="A184. How you would describe the claimant’s attitude regarding seeking employment?")
+        Value(value="is not") no
+        Value(value="is") yes
+    question(name="QA184" text="How you would describe the claimant’s attitude regarding seeking employment?")
       RadioSet
         Value positive
         Value negative
 
   group.52_yes.52_no
-    question(name="QA55" text="A55. Please list all the jobs the claimant has held down.")
+    question(name="QA55" text="Please list all the jobs the claimant has held down.")
       table
         tr
           th Start Date
@@ -371,105 +376,105 @@ section#Employment-History
           td(colspan=5 text-align="right")
             a.table-new-row New Row ...
 
-    question(name="QA186" text="A186. What is the claimant’s work history?")
+    question(name="QA186" text="What is the claimant’s work history?")
       RadioSet
         Value good
         Value limited
         Value no reported work history
-    question(name="QA56" text="A56. What are the reasons for the periods of unemployment?")
+    question(name="QA56" text="What are the reasons for the periods of unemployment?")
       TextBox
 
 section#Educational-History
   section_text Educational History
-  question(name="Q48" text="48. What was the last education level completed?")
+  question(name="Q48" text="What was the last education level completed?")
     TextBox
-  question(name="Q49" text="49. What was the claimant’s academic performance?")
+  question(name="Q49" text="What was the claimant’s academic performance?")
     RadioSet
       Value Above average
       Value Average
       Value Below average
-  question(name="Q49A" text="49A. Please provide any additional relevant information about claimant’s academic performance.")
+  question(name="Q49A" text="Please provide any additional relevant information about claimant’s academic performance.")
     TextBox
-  question(name="Q50" text="50. Was the claimant enrolled in special education?")
+  question(name="Q50" text="Was the claimant enrolled in special education?")
     RadioSet
       Value no
-      Value(enables-selector="50_yes") yes
+      Value(enables-selector=".50_yes") yes
       / (enable 51)
-  question.50_yes(name="Q51" text="51. If yes, what were the subjects?")
+  question.50_yes(name="Q51" text="If yes, what were the subjects?")
     TextBox
 
 
 section#Legal-Criminal-History
   section_text Legal / Criminal History
-  question(name="QA57" text="A57. Has the claimant ever been arrested?")
+  question(name="QA57" text="Has the claimant ever been arrested?")
     RadioSet
-      Value(enables-selector="A57_yes") yes
+      Value(enables-selector=".A57_yes" value="was arrested") yes
       / (enable A57a-A60a)
-      Value no
+      Value(value="has never been arrested.") no
       / (disable the rest of this section)
   group.A57_yes
-    question(name="QA57A" text="A57A. If yes, what was the arrest for?")
+    question(name="QA57A" text="What was the arrest for?")
       TextBox
-    question(name="QA58" text="A58. If yes, what was the date of the last arrest? Please enter in this format: Month Year.")
+    question(name="QA58" text="What was the date of the last arrest? Please enter in this format: Month Year.")
       TextBox
-    question(name="QA59" text="A59. What was the outcome of the arrest?")
+    question(name="QA59" text="What was the outcome of the arrest?")
       TextBox
-    question(name="QA60" text="A60. Has the claimant ever been incarcerated?")
+    question(name="QA60" text="Has the claimant ever been incarcerated?")
       RadioSet
-        Value(enables-selector="A60_yes") yes
-        Value no
-    question.A60_yes(name="QA60A" text="A60A. If yes, how long was the incarceration?")
+        Value(enables-selector=".A60_yes" value="was") yes
+        Value(value="was never incarcerated") no
+    question.A60_yes(name="QA60A" text="How long was the incarceration?")
       TextBox
 
 
 section#Military-History
   section_text Military History
-  question(name="QA61" text="A61. Has the claimant served in the military?")
+  question(name="QA61" text="Has the claimant served in the military?")
     RadioSet
-      Value(enables-selector="A61_yes") yes
+      Value(enables-selector=".A61_yes" value="has served") yes
       / (enable A62-A64)
-      Value no
+      Value(value="has not served") no
       / (disable the rest of this section)
   group.A61_yes
-    question(name="QA62" text="A62. If yes, what are the dates of service?")
+    question(name="QA62" text="What are the dates of service?")
       TextBox to
       TextBox.
-    question(name="QA63" text="A63. What was the claimant’s highest rank?")
+    question(name="QA63" text="What was the claimant’s highest rank?")
       TextBox
-    question(name="QA63A" text="A63A. Did the claimant receive any medals and/or ribbons?")
+    question(name="QA63A" text="Did the claimant receive any medals and/or ribbons?")
       RadioSet
-        Value yes
-        Value no
-    question(name="QA63B" text="A63B. Was any disciplinary action (Article 15, Captain’s Mast) taken?")
+        Value(value="did") yes
+        Value(value="did not") no
+    question(name="QA63B" text="Was any disciplinary action (Article 15, Captain’s Mast) taken?")
       RadioSet
-        Value yes
+        Value(value="had to be") yes
         Value no
-    question(name="QA63C" text="A63C. Was the claimant honorably discharged?")
+    question(name="QA63C" text="Was the claimant honorably discharged?")
       RadioSet
-        Value yes
-        Value no
-    question(name="QA64" text="A64. Was the claimant deployed?")
+        Value(value="{pronoun} was honorably discharged") yes
+        Value(value="") no
+    question(name="QA64" text="Was the claimant deployed?")
       RadioSet
-        Value yes
-        Value no
+        Value(value="was") yes
+        Value(value="was not") no
 
 section#Mental-Status-Examination
   section_text Mental Status Examination - General Appearance
-  question(name="Q65" text="65. In relation to stated age, how did the claimant appear?")
+  question(name="Q65" text="In relation to stated age, how did the claimant appear?")
     RadioSet
-      Value Older
-      Value The Same Age
-      Value Younger
-  question(name="Q66" text="66. How was the claimant’s hygiene?")
+      Value older
+      Value the Same Age
+      Value younger
+  question(name="Q66" text="How was the claimant’s hygiene?")
     RadioSet
-      Value Good
-      Value Fair
-      Value Poor
-  question(name="Q66A" text="66A. Was the claimant groomed or unkempt?")
+      Value good
+      Value fair
+      Value poor
+  question(name="Q66A" text="Was the claimant groomed or unkempt?")
     RadioSet
-      Value Groomed
-      Value Unkempt
-  question(name="Q67" text="67. In relation to height, what was the claimant’s build?")
+      Value well-groomed
+      Value unkempt
+  question(name="Q67" text="In relation to height, what was the claimant’s build?")
     RadioSet
       Value Obese
       Value Overweight
@@ -477,164 +482,164 @@ section#Mental-Status-Examination
       Value Slender
       Value Underweight
       ValueOther Other
-  question(name="Q68" text="68. How was the claimant’s eye contact?")
+  question(name="Q68" text="How was the claimant’s eye contact?")
     RadioSet
       Value Good
       Value Fair
       Value Poor
-  question(name="Q69" text="69. With respect to the material’s content, how were the claimant’s facial expressions?")
+  question(name="Q69" text="With respect to the material’s content, how were the claimant’s facial expressions?")
     RadioSet
       Value Appropriate
       Value Inappropriate
       Value Nonexistent
-  question(name="Q70" text="70. Were the claimant’s clothes presentable?")
+  question(name="Q70" text="Were the claimant’s clothes presentable?")
     RadioSet
-      Value yes
-      Value no
-  question(name="Q71" text="71. Describe the clothing.")
+      Value(value="presentably") yes
+      Value(value="unpresentably") no
+  question(name="Q71" text="Describe the clothing.")
     TextBox
-  question(name="Q72" text="72. Was the clothing appropriate for the weather?")
+  question(name="Q72" text="Was the clothing appropriate for the weather?")
     RadioSet
-      Value yes
-      Value no
-  question(name="Q73" text="73. Was evidence of psychomotor agitation present?")
+      Value(value="was") yes
+      Value(value="was not") no
+  question(name="Q73" text="Was evidence of psychomotor agitation present?")
     RadioSet
-      Value no
+      Value(value="was not") no
       / (disable 73a)
-      Value(enables-selector=".73_yes") yes
+      Value(enables-selector=".73_yes" value="was") yes
       / (enable 73a)
-  question.73_yes(name="Q73A" text="73A. If yes, please provide examples.")
+  question.73_yes(name="Q73A" text="If yes, please provide examples.")
     TextBox
-  question(name="Q73B" text="73B. Was evidence of psychomotor retardation present?")
+  question(name="Q73B" text="Was evidence of psychomotor retardation present?")
     RadioSet
       Value no
       / (disable 73c)
-      Value(enables-selector="73B_yes") yes
+      Value(enables-selector=".73B_yes") yes
       / (enable 73c)
-  question.73B_yes(name="Q73C" text="73C. If yes, please provide examples.")
+  question.73B_yes(name="Q73C" text="If yes, please provide examples.")
     TextBox
 
   section_text Mental Status Examination - Attitude &amp; Behavior
-  question(name="Q10" text="10. How was the claimant during the interview?")
+  question(name="Q10" text="How was the claimant during the interview?")
     RadioSet
-      Value Cooperative
-      Value Difficult
-      Value Belligerent
-  question(name="Q74" text="74. Was the claimant’s behavior pleasant?")
+      Value cooperative
+      Value difficult
+      Value belligerent
+  question(name="Q74" text=" Was the claimant’s behavior pleasant?")
     RadioSet
-      Value yes
-      Value no
-    section_text DELETE #75.
-  question(name="Q76" text="76. Describe the claimant’s attitude?")
+      Value(value="pleasant") yes
+      Value(value="unpleasant") no
+    
+  question(name="Q76" text="Describe the claimant’s attitude?")
     RadioSet
       Value Positive
       Value Negative
-  question(name="Q77" text="77. Was there evidence of malingering or factitious behavior?")
+  question(name="Q77" text="Was there evidence of malingering or factitious behavior?")
     RadioSet
-      Value(enables-selector="77_yes") yes
+      Value(enables-selector=".77_yes" value="was") yes
       / (enable 77a)
-      Value no
+      Value(value="was no") no
       / (disable 77a)
-  question.77_yes(name="Q77A" text="77A. If yes, please describe.")
+  question.77_yes(name="Q77A" text="Please describe behavior.")
     TextBox
 
   section_text Mental Status Examination - Mood / Affect
-  question(name="Q88" text="88. What is claimant’s current mood?")
+  question(name="Q88" text="What is claimant’s current mood?")
     TextBox
-  question(name="Q89" text="89. Was the claimant’s affect consistent with stated mood?")
+  question(name="Q89" text="Was the claimant’s affect consistent with stated mood?")
     RadioSet
-      Value yes
+      Value(value="was") yes
       / (disable 90)
-      Value(enables-selector=".89_no") no
+      Value(enables-selector=".89_no" value="was not") no
       / (enable 90)
-  question.89_no(name="Q90" text="90. If no, how did the claimant appear?")
+  question.89_no(name="Q90" text="If no, how did the claimant appear?")
     TextBox
-  question(name="Q91" text="91. Regarding sleep, what does the claimant say? Select all that apply.")
+  question(name="Q91" text="Regarding sleep, what does the claimant say? Select all that apply.")
     CheckboxSet
-      Value No problems
-      Value Difficulty falling asleep
-      Value Difficulty staying asleep
-      Value Sleeping too much
-      Value Persistent nightmares
+      Value no problems
+      Value difficulty falling asleep
+      Value difficulty staying asleep
+      Value sleeping too much
+      Value persistent nightmares
       ValueOther Other
-  question(name="Q92" text="92. Regarding appetite, what does the claimant say? Select all that apply.")
+  question(name="Q92" text="Regarding appetite, what does the claimant say? Select all that apply.")
     CheckboxSet
-      Value No problems
-      Value Lack of appetite
-      Value Easily forgets meals
-      Value Often over eats
+      Value no problems
+      Value lack of appetite
+      Value easily forgets meals
+      Value often over eats
       ValueOther Other
 
   section_text Mental Status Examination - Content of Thought
-  question(name="Q82" text="82. Does the claimant have auditory hallucinations?")
+  question(name="Q82" text="Does the claimant have auditory hallucinations?")
     RadioSet
-      Value(enables-selector=".82_yes") yes
+      Value(enables-selector=".82_yes" value="reports") yes
       / (enable 83)
-      Value no
+      Value(value="denies") no
       / (disable 83)
-  question.82_yes(name="Q83" text="83. If yes, describe hallucinations.")
+  question.82_yes(name="Q83" text="Please describe hallucinations.")
     TextBox
   question(name="Q84" text="84. Does the claimant have visual, tactile, or olfactory hallucinations?")
     RadioSet
-      Value(enables-selector=".84_yes") yes
+      Value(enables-selector=".84_yes" value="reports") yes
       / (enable 85)
-      Value no
+      Value(value="denies") no
       / (disable 85)
-  question.84_yes(name="Q85" text="85. If yes, describe hallucinations.")
+  question.84_yes(name="Q85" text="Please describe hallucinations.")
     TextBox
-  question(name="Q86" text="86. Does the claimant have suicidal ideations?")
+  question(name="Q86" text="Does the claimant have suicidal ideations?")
     RadioSet
-      Value(enables-selector=".86_yes") yes
+      Value(enables-selector=".86_yes" value="does") yes
       / (enable 86a)
-      Value no
+      Value(value="does not") no
       / (disable 86a)
-  question.86_yes(name="Q86A" text="86A. If yes, please provide details.")
+  question.86_yes(name="Q86A" text="Please provide details.")
     TextBox
   question(name="Q86B" text="86B. Does the claimant have homicidal ideations?")
     RadioSet
-      Value(enables-selector=".86B_yes") yes
+      Value(enables-selector=".86B_yes" value="reports having") yes
       / (enable 86c)
-      Value no
+      Value(value="does not have") no
       / (disable 86c)
-  question.86B_yes(name="Q86C" text="86C. If yes, please provide details.")
+  question.86B_yes(name="Q86C" text="Please provide details.")
     TextBox
-  question(name="Q87" text="87. Does the claimant have delusions?")
+  question(name="Q87" text="Does the claimant have delusions?")
     RadioSet
-      Value(enables-selector=".87_yes") yes
+      Value(enables-selector=".87_yes" value="does") yes
       / (enable 87a)
-      Value no
+      Value(value="does not") no
       / (disable 87a)
-  question.87_yes(name="Q87A" text="87A. If yes, please provide details.")
+  question.87_yes(name="Q87A" text="Please provide details.")
     TextBox
 
   section_text Mental Status Examination - Stream of Mental Activity / Speech
-  question(name="Q78" text="78. Was the claimant’s speech logical and coherent?")
+  question(name="Q78" text="Was the claimant’s speech logical and coherent?")
     RadioSet
-      Value yes
+      Value(value="logical and coherent") yes
       / (disable 78a)
       Value(enables-selector=".87_no") no
       / (enable 78a)
-  question.87_no(name="Q78A" text="78A. If no, please describe.")
+  question.87_no(name="Q78A" text="Please describe.")
     TextBox
-  question(name="Q79" text="79. Describe the articulation.")
+  question(name="Q79" text="Describe the articulation.")
     RadioSet
-      Value Clear
-      Value Distorted
-      Value Garbled
-  question(name="Q80" text="80. Describe the speech velocity.")
+      Value clear
+      Value distorted
+      Value garbled
+  question(name="Q80" text="Select the velocity of  speech.")
     RadioSet
-      Value High
-      Value Normal
-      Value Low
-  question(name="Q81" text="81. Describe the speech volume.")
+      Value fast
+      Value normal
+      Value slow
+  question(name="Q81" text="Select the volume of speech.")
     RadioSet
-      Value High
-      Value Normal
-      Value Low
+      Value high
+      Value normal
+      Value low
 
 section#Intellectual-Functioning-Sensorium
   section_text Intellectual Functioning / Sensorium - Orientation
-  question(name="Q93" text="93. How was the claimant orientated?")
+  question(name="Q93" text="How was the claimant orientated?")
     RadioSet
       Value None
       Value(enables-selector=".93_yes") x1
@@ -645,22 +650,22 @@ section#Intellectual-Functioning-Sensorium
     / If needed, complete the additional questions to provide more information.
     / OPTIONAL: Only complete if needed for clarification
   group.93_yes
-    question(name="Q94" text="94. Was the claimant orientated to person?")
+    question(name="Q94" text="Was the claimant orientated to person?")
       RadioSet
         Value yes
         ValueOther.prepend no,
-    question(name="Q95" text="95. Was the claimant orientated to place?")
+    question(name="Q95" text="Was the claimant orientated to place?")
       RadioSet
         Value yes
         ValueOther.prepend no,
-    question(name="Q96" text="96. Was the claimant orientated to time?")
+    question(name="Q96" text="Was the claimant orientated to time?")
       RadioSet
         Value yes
         ValueOther.prepend no,
 
   group.enable-complex.enable-psych-mem.enable-psych-intel
     section_text Intellectual Functioning / Sensorium - Psychological Testing
-    question(name="Q98" text="98. Which tests did the claimant take? Select all that apply.")
+    question(name="Q98" text=" Which tests did the claimant take? Select all that apply.")
       text Intellectual Ability (98a)
       CheckboxSet
         Value Wechsler Adult Intelligence Scale (WAIS-IV)
@@ -678,7 +683,7 @@ section#Intellectual-Functioning-Sensorium
         Value Trail Making A and B
         Value Halstead-Reitan
         Value Luria-Nebraska
-    question(name="Q99" text="99. Describe the claimant’s testing behaviors.")
+    question(name="Q99" text="Describe the claimant’s testing behaviors.")
       TextBox
 
   group.enable-psych-only.enable-psych-intel
@@ -692,14 +697,14 @@ section#Intellectual-Functioning-Sensorium
 
   group.enable-complex.enable-psych-mem
     section_text Intellectual Functioning / Sensorium - Memory Index Scores
-    question(name="Q112" text="112. Please paste table of index scores from memory testing.")
+    question(name="Q112" text="Please paste table of index scores from memory testing.")
       TextBox
 
-    question(name="Q113" text="113. Please paste table of subtest scores from memory testing.")
+    question(name="Q113" text="Please paste table of subtest scores from memory testing.")
       TextBox
-    question(name="Q114" text="114. Comments regarding this claimant’s performance on the memory testing.")
+    question(name="Q114" text="Comments regarding this claimant’s performance on the memory testing.")
       TextBox
-    question(name="Q116" text="116. Regarding the claimant’s Delayed and Immediate Memory scores, please rate abilities. Please select all that apply.")
+    question(name="Q116" text="Regarding the claimant’s Delayed and Immediate Memory scores, please rate abilities. Please select all that apply.")
       CheckboxSet
         Value very superior
         Value superior
@@ -713,13 +718,13 @@ section#Intellectual-Functioning-Sensorium
 
   group.enable-psych-only.enable-psych-intel
     text Remote Memory
-    question(name="Q121" text="121. Did the claimant remember autobiographical history and past events?")
+    question(name="Q121" text="Did the claimant remember autobiographical history and past events?")
       RadioSet
-        Value yes
-        Value no
+        Value(value="strong") yes
+        Value(value="lacking") no
 
     text Recent Memory
-    question(name="Q122" text="122. How many objects did the claimant remember after 5-minutes?")
+    question(name="Q122" text="How many objects did the claimant remember after 5-minutes?")
       RadioSet
         Value 0
         Value 1
@@ -727,7 +732,7 @@ section#Intellectual-Functioning-Sensorium
         Value 3
 
     text Immediate Memory
-    question(name="Q123" text="123. How many digits did the claimant remember forward and backward?")
+    question(name="Q123" text="How many digits did the claimant remember forward and backward?")
       table
         tr
           th Digits Forward
@@ -755,7 +760,7 @@ section#Intellectual-Functioning-Sensorium
           td 2-4-8-1-3-7
           td: Checkbox correct?
 
-    question(name="Q123B" text="123B. Given the claimant’s performance on these tasks, please rate their overall memory functions.")
+    question(name="Q123B" text="Given the claimant’s performance on these tasks, please rate their overall memory functions.")
       RadioSet
         Value poor
         Value fair
@@ -764,13 +769,13 @@ section#Intellectual-Functioning-Sensorium
 
   group.enable-complex.enable-psych-intel
     section_text Intellectual Functioning / Sensorium - Intellectual Functioning Index Scores
-    question(name="Q100" text="100. Please paste table of index scores from intellectual testing.")
+    question(name="Q100" text="Please paste table of index scores from intellectual testing.")
       TextBox
-    question(name="Q101" text="101. Please paste table of subtest scores from intellectual testing.")
+    question(name="Q101" text="Please paste table of subtest scores from intellectual testing.")
       TextBox
-    question(name="Q102" text="102. Comments regarding this claimant’s performance on the intellectual testing.")
+    question(name="Q102" text="Comments regarding this claimant’s performance on the intellectual testing.")
       TextBox
-    question(name="Q200" text="200. What level is the claimant’s verbal comprehension skills (VCI)?")
+    question(name="Q200" text="What level is the claimant’s verbal comprehension skills (VCI)?")
       RadioSet
         Value very superior
         Value superior
@@ -781,15 +786,15 @@ section#Intellectual-Functioning-Sensorium
         Value extremely low
 
   group.enable-psych-only.enable-psych-mem
-    question(name="Q110" text="110. What is the claimant’s level of intellectual functioning?")
+    question(name="Q110" text="What is the claimant’s level of intellectual functioning?")
       RadioSet
-        Value Above average
-        Value Average
-        Value Below average
+        Value above average
+        Value average
+        Value below average
 
   group.enable-complex.enable-psych-intel
     section_text Intellectual Functioning / Sensorium - Concentration
-    question(name="Q135" text="135. What level is the claimant’s working memory as indicated by the intelligence assessment?")
+    question(name="Q135" text="What level is the claimant’s working memory as indicated by the intelligence assessment?")
       RadioSet
         Value very superior
         Value superior
@@ -798,7 +803,7 @@ section#Intellectual-Functioning-Sensorium
         Value low average
         Value borderline
         Value extremely low
-    question(name="Q135A" text="135A. What is the index score for this assessment section?")
+    question(name="Q135A" text="What is the index score for this assessment section?")
       TextBox
 
   group.enable-psych-only.enable-psych-mem
@@ -809,7 +814,7 @@ section#Intellectual-Functioning-Sensorium
     text If they fail that prompt then use:  “After you touch your left knee and clap three times, touch the top of your head.”
     text Note how many repetitions, if any.
     text If you use the second one, note that claimant needed “2 repetitions and modification of instructions.”
-    question(name="Q136" text="136. Was the claimant able to complete 3-step commands?")
+    question(name="Q136" text="Was the claimant able to complete 3-step commands?")
       RadioSet
         Value yes, with no repetitions
         Value yes, with one repetition
@@ -818,18 +823,18 @@ section#Intellectual-Functioning-Sensorium
         Value no even after several repetitions
 
     section_text Intellectual Functioning / Sensorium - Spelling
-    question(name="Q137" text="137. Was the claimant able to spell WORLD forward?")
+    question(name="Q137" text="Was the claimant able to spell WORLD forward?")
       RadioSet
-        Value yes
-        Value no
-    question(name="Q138" text="138. Was the claimant able to spell WORLD backward?")
+        Value(value="able") yes
+        Value(value="unable") no
+    question(name="Q138" text="Was the claimant able to spell WORLD backward?")
       RadioSet
         Value yes
         Value no
 
   group.enable-complex.enable-psych-intel
     section_text Intellectual Functioning / Sensorium - Fund of Knowledge / Information
-    question(name="Q125" text="125. What level is the claimant’s fund of knowledge as seen in the subtest Information?")
+    question(name="Q125" text="What level is the claimant’s fund of knowledge as seen in the subtest Information?")
       RadioSet
         Value very superior
         Value superior
@@ -838,20 +843,20 @@ section#Intellectual-Functioning-Sensorium
         Value low average
         Value borderline
         Value extremely low
-    question(name="Q126" text="126. What is the core test’s scaled score?")
+    question(name="Q126" text="What is the core test’s scaled score?")
       TextBox
  
   group.enable-psych-only.enable-psych-mem
-    question(name="Q127" text="127. Is the claimant’s fund of knowledge consistent with education level and background?")
+    question(name="Q127" text="Is the claimant’s fund of knowledge consistent with education level and background?")
       RadioSet
-        Value yes
-        Value no
-    question(name="Q128" text="128. Is the claimant aware of current events?")
+        Value(value="was") yes
+        Value(value="was not") no
+    question(name="Q128" text="Is the claimant aware of current events?")
       RadioSet
-        Value yes
-        Value limited
-        Value no
-    question(name="Q129" text="129. Which of the following was the claimant able to answer correctly?")
+        Value(value="is aware") yes
+        Value(value="has limited awareness") limited
+        Value(value="is unaware") no
+    question(name="Q129" text="Which of the following was the claimant able to answer correctly?")
       CheckboxSet(rollup="sum")
         Value What is the current president of the United State of America?
         Value What is the capital of this state?
@@ -862,7 +867,7 @@ section#Intellectual-Functioning-Sensorium
 
   group.enable-complex.enable-psych-intel
     section_text Intellectual Functioning / Sensorium - Calculations
-    question(name="Q131" text="131. What level is the claimant’s ability to solve basic mathematical problems?")
+    question(name="Q131" text="What level is the claimant’s ability to solve basic mathematical problems?")
       RadioSet
         Value very superior
         Value superior
@@ -871,18 +876,22 @@ section#Intellectual-Functioning-Sensorium
         Value low average
         Value borderline
         Value extremely low
-    question(name="Q132" text="132. What is this core test’s scaled score?")
+    question(name="Q132" text="What is this core test’s scaled score?")
       TextBox
 
   group.enable-psych-only.enable-psych-mem
-    question(name="Q133" text="133. Please ask the following questions and check the Correct Answer box if answered correctly.")
+    question(name="Q133" text="Please ask the following questions and check the Correct Answer box if answered correctly.")
       CheckboxSet(rollup="sum")
         Value $9 + $7 = ? (Correct Answer: $16)
+        ValueOther.prepend Incorrect Answer:
         Value $23 – $10 = ? (Correct Answer: $13)
+        ValueOther.prepend Incorrect Answer:
         Value $11 x 10 = ? (Correct Answer: $110)
+        ValueOther.prepend Incorrect Answer:
         Value $9  3 = ? (Correct Answer: $3)
+        ValueOther.prepend Incorrect Answer:
         Value 47c + 10c = ? (Correct Answer: 57c)
-
+        ValueOther.prepend Incorrect Answer:
     text Begin at 100 and subtract 7, and keep going until I say stop.
     table
       tr
@@ -902,14 +911,14 @@ section#Intellectual-Functioning-Sensorium
         Value no, the claimant was unable to execute serial-7s or serial-3
 
     section_text Intellectual Functioning / Sensorium - Word Problems
-    question(name="Q133B" text="133B. Was the claimant able to answer the following word problems?")
+    question(name="Q133B" text="Was the claimant able to answer the following word problems?")
       CheckboxSet(rollup="sum")
         Value T-shirts are generally priced $5 each, but today, they are on sale.  T-shirts are priced 2 for $9, how much would 6 t-shirts cost? (Correct Answer: $27)
         Value A pack of chewing gum cost 99 cents.  There are 25 pieces of chewing gum in a pack.  How many pieces of gum are in six packs? (Correct Answer: 150)
 
   group.enable-complex.enable-psych-intel
     section_text Intellectual Functioning / Sensorium - Abstract Thinking
-    question(name="Q144" text="144. What level is the claimant’s ability to think abstractly (Similarities)?")
+    question(name="Q144" text="What level is the claimant’s ability to think abstractly (Similarities)?")
       RadioSet
         Value very superior
         Value superior
@@ -918,46 +927,50 @@ section#Intellectual-Functioning-Sensorium
         Value low average
         Value borderline
         Value extremely low
-    question(name="Q145" text="145. What is the scaled score for this test?")
+    question(name="Q145" text="What is the scaled score for this test?")
       TextBox
   
   group.enable-psych-only.enable-psych-mem
     text For the next four questions, the correct answer is provided; however, score similar responses appropriately.
-    question(name="Q142" text="142. What does the proverb, “Time is golden,” mean?")
+    question(name="Q142" text="What does the proverb, “Time is golden,” mean?")
       CheckboxSet
         Value Correct Answer: Precious.
-    question(name="Q142A" text="142A. What does the proverb, “Rome was not built in a day,” mean?")
+        ValueOther.prepend Incorrect Answer:
+    question(name="Q142A" text="What does the proverb, “Rome was not built in a day,” mean?")
       CheckboxSet
         Value Correct Answer: Major growth takes time.
-    question(name="Q146" text="146. What are the similarities and differences of “a boat and a car “?")
+        ValueOther.prepend Incorrect Answer:
+    question(name="Q146" text="What are the similarities and differences of “a boat and a car “?")
       CheckboxSet
         Value Correct Answer: Both are transportation, but one is for water and the other land.
-    question(name="Q146A" text="146A. What are the similarities and differences of “a pen and a pencil”?")
+        ValueOther.prepend Incorrect Answer: 
+    question(name="Q146A" text="What are the similarities and differences of “a pen and a pencil”?")
       CheckboxSet
         Value Correct Answer: Both are writing instruments, but one has ink and the other graphite or lead.
-    question(name="Q146B" text="146B. Automatically generated.")
+        ValueOther.prepend Incorrect Answer:
+    question(name="Q146B" text="Automatically generated.")
 
   section_text Intellectual Functioning / Sensorium - Judgement and Insight
-  question(name="Q147" text="147. What is the claimant’s insight into own condition?")
+  question(name="Q147" text="What is the claimant’s insight into own condition?")
     RadioSet
       Value Good
       Value Fair
       Value Limited
       Value Impaired
     text For the next two questions, the correct answer is provided; however, score similar responses appropriately.
-  question(name="Q150" text="150. What would the claimant do if the claimant smelled smoke in a crowded movie theater?")
+  question(name="Q150" text="What would the claimant do if the claimant smelled smoke in a crowded movie theater?")
     RadioSet
       Value Correct Answer: Alert local authorities.
       ValueOther.prepend Incorrect Answer:
-  question(name="Q151" text="151. What would the claimant do if the claimant found a lost purse in a store?")
+  question(name="Q151" text="What would the claimant do if the claimant found a lost purse in a store?")
     RadioSet
       Value Correct Answer: Turn in the purse to a store manager.
       ValueOther.prepend Incorrect Answer: 
-  question(name="Q152" text="152. Automatically generated.")
+  question(name="Q152" text=" Automatically generated.")
 
   group.enable-complex.enable-psych-mem
     section_text Intellectual Functioning / Sensorium - Neuropsychological Tests
-    question(name="Q149" text="149. Trail Making Tests")
+    question(name="Q149" text="Trail Making Tests")
       p The following is a chart containing the norms for this Trail making A &amp; B test. Please use the data to fill in the rows on the table for question 149. The numbers listed are in seconds.
       table
         tr
@@ -1062,20 +1075,20 @@ section#Intellectual-Functioning-Sensorium
           td: TextBox(name="B3")
           td: TextBox(name="B4")
 
-    question(name="Q302" text="302. Please discuss the findings of any neuropsychological testing administered.")
+    question(name="Q302" text=" Please discuss the findings of any neuropsychological testing administered.")
       TextBox
     
     section_text Intellectual Functioning / Sensorium - Additional Psychological Assessments
-    question(name="Q303" text="303. Please select any additional testing that was requested an administered. Select all that apply.")
+    question(name="Q303" text="Please select any additional testing that was requested an administered. Select all that apply.")
       text Personality and Behavior Assessments
       CheckboxSet
         Value Vineland Adaptive Behavior Scale
         Value MMPI-2-RF
         Value Rorschach
         Value MCMI
-    question(name="Q304" text="304. If a test is selected, please discuss the result here.")
+    question(name="Q304" text="If a test is selected, please discuss the result here.")
       TextBox
-    question(name="Q305" text="305. Please select any additional testing that was requested an administered. Select all that apply.")
+    question(name="Q305" text="Please select any additional testing that was requested an administered. Select all that apply.")
       text Malingering Measures
       CheckboxSet
         Value Test of Malingering Memory (TOMM)
@@ -1083,96 +1096,98 @@ section#Intellectual-Functioning-Sensorium
         Value Miller Forensic Assessment of Symptoms Test (M-FAST)
         Value Portland Digit Symbol Test
         Value Validity Indicator Profile (VIP)
-    question(name="Q306" text="306. If a test is selected, please discuss the result here.")
+    question(name="Q306" text="If a test is selected, please discuss the result here.")
       TextBox
 
 section#Current-Level-of-Functioning
   section_text Current Level of Functioning - Activities of Daily Living
-  question(name="Q153" text="153. What is the claimant’s typical day like?")
+  question(name="Q153" text="What is the claimant’s typical day like?")
     TextBox
-  question(name="QA154" text="A154. Which tasks does the claimant do alone? Select all that apply.")
+  question(name="QA154" text="Which tasks does the claimant do alone? Select all that apply.")
     CheckboxSet
-      Value Cooking
-      Value Grocery shop
-      Value Self-care
-      Value Laundry
-      Value None
-  question(name="QA155" text="A155. Which tasks do the claimant require help to do? Select all that apply.")
+      Value cook
+      Value grocery shop
+      Value self-care
+      Value do laundry
+      Value(value="do no daily tasks") None
+  question(name="QA155" text="Which tasks do the claimant require help to do? Select all that apply.")
     CheckboxSet
-      Value Cooking
-      Value Grocery shop
-      Value Self-care
-      Value Laundry
-      Value None
-  question(name="QA155A" text="A155A. Who helps with these tasks?")
+      Value cook
+      Value grocery shop
+      Value self-care
+      Value laundry
+      Value(value="no daily tasks") none
+  question(name="QA155A" text="Who helps with these tasks?")
     TextBox
-  question(name="Q156" text="156. Is the claimant able to complete ADLs efficiently?")
+  question(name="Q156" text="Is the claimant able to complete ADLs efficiently?")
     RadioSet
-      Value yes
-      ValueOther no,
-  question(name="QA156A" text="A156A. Is the claimant able to handle personal funds?")
+      Value(value="is able to complete ADLs efficiently") yes
+      ValueOther(value="is unable to complete ADLs efficiently") no,
+  question(name="QA156A" text="Is the claimant able to handle personal funds?")
     RadioSet
-      Value yes
-      Value(enables-selector=".156A_no") no
+      Value(value="able") yes
+      Value(enables-selector=".156A_no" value="unable") no
       / (show A156a)
-  question.156A_no(name="QA156B" text="A156B. If no, who handles this for the claimant?")
+  question.156A_no(name="QA156B" text="Who handles this for the claimant?")
     TextBox
 
   section_text Current Level of Functioning - Social Functioning
-  question(name="QA157" text="A157. Does the claimant have social friends?")
+  question(name="QA157" text="Does the claimant have social friends?")
     RadioSet
       Value(enables-selector=".A157_no") no
       / (enable A157a)
       ValueOther(enables-selector=".A157_yes") yes, the number of social friends is
-  question.A157_no(name="QA157A" text="A157A. If no, is the claimant isolated from people?")
+  question.A157_no(name="QA157A" text="Is the claimant isolated from people?")
     RadioSet
-      Value yes
-      Value no
-  question.A157_yes(name="QA157B" text="A157B. If yes, please add detail.")
+      Value(value="is") yes
+      Value(value="is not") no
+  question.A157_yes(name="QA157B" text="A157B. Please add detail.")
     TextBox
 
-  question(name="Q158" text="158. Is the claimant a member of an organized group?")
+  question(name="Q158" text="Is the claimant a member of an organized group?")
     RadioSet
-      Value no
-      Value yes
-  question(name="Q159" text="159. Does the claimant participate in recreational activities?")
+      Value(value="not involved in an organized group.") no
+      Value(enables-selector=".158_yes")yes
+  question.158_yes
+    TextBox(value="is involved in TextBox")
+  question(name="Q159" text="Does the claimant participate in recreational activities?")
     RadioSet
-      Value yes
-      Value no
-  question(name="Q159A" text="159A. Is a house of worship regularly attended?")
+      Value(value="does") yes
+      Value(value="does not") no
+  question(name="Q159A" text="Is a house of worship regularly attended?")
     RadioSet
-      Value yes
-      Value no
-  question(name="Q160" text="160. Does the claimant have a history of violence?")
+      Value(value="is") yes
+      Value(value="is not") no
+  question(name="Q160" text="Does the claimant have a history of violence?")
     RadioSet
-      Value(enables-selector=".160_yes") yes
+      Value(enables-selector=".160_yes" value="does") yes
       / (enable 160a)
-      Value no
-  question.160_yes(name="Q160A" text="160A. If yes, please describe?")
+      Value(value="does not") no
+  question.160_yes(name="Q160A" text="Please describe?")
     TextBox
-  question(name="Q181" text="181. How is the claimant’s support system?")
+  question(name="Q181" text="How is the claimant’s support system?")
     RadioSet
       Value Good
       Value Fair
       Value Limited
       Value Poor
-  question(name="Q181A" text="181A. Who is included in the support system?")
+  question(name="Q181A" text="Who is included in the support system?")
     TextBox
-  question(name="Q299" text="299. How are the claimant’s social and interpersonal relationships?")
+  question(name="Q299" text="How are the claimant’s social and interpersonal relationships?")
     RadioSet
       Value good
       Value fair
       Value poor
-  question(name="Q300" text="300. Did the claimant act appropriately with the provider and office staff?")
+  question(name="Q300" text="Did the claimant act appropriately with the provider and office staff?")
     RadioSet
       Value yes
       Value(enables-selector=".300_no") no
       / (enable 301)
-  question.300_no(name="Q301" text="301. Please explain any inappropriate behavior.")
+  question.300_no(name="Q301" text="Please explain any inappropriate behavior.")
     TextBox
 
   section_text Current Level of Functioning - Concentration, Persistance, and Pace
-  question(name="QA161" text="A161. Please provide the length of time (in minutes) the claimant participates in the following activities per day. Also, enter one of the claimant’s hobbies and the length of time the claimant can sustain the activity. If duration is listed, please provide a unit of time.")
+  question(name="QA161" text="Please provide the length of time (in minutes) the claimant participates in the following activities per day. Also, enter one of the claimant’s hobbies and the length of time the claimant can sustain the activity. If duration is listed, please provide a unit of time.")
     table
       tr
         th Activity
@@ -1206,50 +1221,49 @@ section#Current-Level-of-Functioning
         td: TextBox
 
   section_text Current Level of Functioning - Decompensation and Deterioration
-  question(name="Q167" text="167. Is there evidence of deterioration and decompensation in the work place? For children, this would read “in school?”")
+  question(name="Q167" text="Is there evidence of deterioration and decompensation in the work place? For children, this would read “in school?”")
     RadioSet
-      Value(enables-selector=".167_yes") yes
+      Value(enables-selector=".167_yes" value="is") yes
       / (enable 168)
-      Value no
+      Value(value="is not") no
       / (disable 168)
-  question.167_yes(name="Q168" text="168. If yes, where is the deterioration and decompensation seen or evidenced by?")
+  question.167_yes(name="Q168" text="Where is the deterioration and decompensation seen or evidenced by?")
     CheckboxSet
-      Value Voluntary psychiatric commitment
-      Value Difficulty getting along with coworkers
-      Value Taking a leave of absence to manage mental illness
-      Value Frequent involvement with law enforcement
-      Value Behavioral disturbances
+      Value voluntary psychiatric commitment
+      Value difficulty getting along with coworkers
+      Value taking a leave of absence to manage mental illness
+      Value frequent involvement with law enforcement
+      Value behavioral disturbances
       ValueOther Other
-  question(name="Q169" text="169. Has the claimant’s ability to work been impacted by physical and mental limitations?")
+  question(name="Q169" text="Has the claimant’s ability to work been impacted by physical and mental limitations?")
     RadioSet
-      Value yes
-      Value no
-  question(name="Q170" text="170. What are the new difficulties reported by claimant? Select all that apply.")
+      Value(value="has been") yes
+      Value(value="has not been") no
+  question(name="Q170" text="What are the new difficulties reported by claimant? Select all that apply.")
     CheckboxSet
-      Value Sustaining concentration and attention
-      Value Remembering information
-      Value Making good judgments at work
-      Value Following multi-step directions
-      Value Socializing with friends
-      Value Motivation
-      Value Fatigue
-      Value Apathy
-      Value Behavioral problems
-      Value Insomnia
-      Value Poor appetite
-      Value Inability to complete ADLS in a timely manner
-      Value Suicidal ideations
-      Value Hallucinations
-      Value Delusions
-      Value Blurred vision
-      Value Lower back pain
+      Value sustaining concentration and attention
+      Value remembering information
+      Value making good judgments at work
+      Value following multi-step directions
+      Value socializing with friends
+      Value motivation
+      Value fatigue
+      Value apathy
+      Value behavioral problems
+      Value insomnia
+      Value poor appetite
+      Value inability to complete ADLS in a timely manner
+      Value suicidal ideations
+      Value hallucinations
+      Value delusions
+      Value blurred vision
+      Value lower back pain
       ValueOther Other
 
 section#DSM-IV-Diagnosis
   section_text DSM-IV Diagnosis
-  question(name="Q162" text="162. What is the claimant’s Axis I diagnosis? Select all that apply.")
+  question(name="Q162" text="What is the claimant’s Axis I diagnosis? Select all that apply.")
     CheckboxSet
-      Value DELETE-Bipolar I Disorder
       Value 290.10 Dementia of the Alzheimer's Type, With Early Onset, Uncomplicated
       Value 290.11 Dementia of the Alzheimer's Type, With Early Onset, With Delirium
       Value 290.12 Dementia of the Alzheimer's Type, With Early Onset, With Delusions
@@ -1328,7 +1342,7 @@ section#DSM-IV-Diagnosis
       Value 315.2 Disorder of Written Expression
       Value 315.9 Learning Disorder NOS
       ValueOther Other
-  question(name="Q163" text="163. Axis II: Please select from the following choices.")
+  question(name="Q163" text="Axis II: Please select from the following choices.")
     CheckboxSet
       Value No diagnosis
       Value 301.0 Paranoid Personality Disorder
@@ -1350,8 +1364,8 @@ section#DSM-IV-Diagnosis
       Value V62.89 Borderline Intellectual Functioning
       ValueOther Other
       Value Deferred
-  question(name="Q164" text="164. Axis III: Medical conditions are insert from previous question.")
-  question(name="Q165" text="165. Axis IV: Please select any stressors from the following list that may contribute to an Axis IV diagnosis. Select all that apply.")
+  question(name="Q164" text="Axis III: Medical conditions are insert from previous question.")
+  question(name="Q165" text="Axis IV: Please select any stressors from the following list that may contribute to an Axis IV diagnosis. Select all that apply.")
     text PROBLEMS WITH PRIMARY SUPPORT GROUP
     CheckboxSet
       Value Death of a family member
@@ -1423,47 +1437,47 @@ section#DSM-IV-Diagnosis
       Value Discord with non-family caregivers
       Value Discord with physician
       Value Unavailability of social services agencies
-  question(name="Q165A" text="165A. Provide any additional information as needed.")
+  question(name="Q165A" text="Provide any additional information as needed.")
     TextBox
-  question(name="Q166" text="166. Axis V: Please record the claimant’s current GAF.")
+  question(name="Q166" text="Axis V: Please record the claimant’s current GAF.")
     TextBox
 
 section#Discussion-Prognosis
   section_text Discussion / Prognosis
-  question(name="Q171" text="171. Did the claimant respond in an open and honest manner?")
+  question(name="Q171" text="Did the claimant respond in an open and honest manner?")
     RadioSet
-      Value yes
-      Value no
-  question(name="Q172" text="172. Was there any exaggeration in the claimant’s responses?")
+      Value(value="was") yes
+      Value(value="was not") no
+  question(name="Q172" text="Was there any exaggeration in the claimant’s responses?")
     RadioSet
-      Value(enables-selector=".172_yes") yes
+      Value(enables-selector=".172_yes" value="seems") yes
       / (show 172a)
-      Value no
-  question.172_yes(name="Q172A" text="172A. If yes, please describe.")
+      Value(value="did not seem") no
+  question.172_yes(name="Q172A" text="Please describe.")
     TextBox
-  question(name="Q173" text="173. Were there any inconsistencies?")
+  question(name="Q173" text="Were there any inconsistencies?")
     RadioSet
-      Value(enables-selector=".173_yes") yes
+      Value(enables-selector=".173_yes" value="did appear") yes
       / (show 174)
-      Value no
-  question.173_yes(name="Q174" text="174. If yes, please provide examples.")
+      Value(value="did not appear") no
+  question.173_yes(name="Q174" text="Please provide examples.")
     TextBox
   question(name="Q175" text="175. As evidenced by the claimant’s current and past compliance with treatment, is the claimant willing to receive treatment (psychotherapy or medications)?")
     RadioSet
-      Value yes
-      Value no
-  question(name="Q180" text="180. What is the claimant’s willingness to use resources?")
+      Value(value="willing") yes
+      Value(value="unwilling") no
+  question(name="Q180" text="What is the claimant’s willingness to use resources?")
     RadioSet
       Value good
       Value fair
       Value limited
       Value poor
-  question(name="Q182" text="182. Is improvement likely?")
+  question(name="Q182" text="How likely is the claimant to improve in the next twelve months?")
     RadioSet
-      Value yes
-      Value no
+      Value likely
+      Value unlikely
       Value guarded
-  question(name="Q183" text="183. What is the likelihood the claimant will be able to respond to routine changes in the work place?")
+  question(name="Q183" text="What is the likelihood the claimant will be able to respond to routine changes in the work place?")
     RadioSet
       Value good
       Value bad
@@ -1471,11 +1485,11 @@ section#Discussion-Prognosis
 
 section#Capability-of-Managing-Funds
   section_text Capability of Managing Funds
-  question(name="QA187" text="A187. What is the claimant’s ability to manage employment benefits?")
+  question(name="QA187" text="What is the claimant’s ability to manage employment benefits?")
     RadioSet
       Value likely satisfactory
       ValueOther.prepend likely poor given
-  question(name="QA188" text="A188. Does the claimant need a protective payee?")
+  question(name="QA188" text="Does the claimant need a protective payee?")
     RadioSet
-      Value yes
-      Value no
+      Value(value="does") yes
+      Value(value="does not") no

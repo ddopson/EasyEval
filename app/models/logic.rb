@@ -1,19 +1,18 @@
+# encoding: utf-8
 class Logic
   def self.age(birthdate)
     dob = Time.strptime(birthdate, '%m/%d/%Y')
     now = Time.now.utc.to_date
     now.year - dob.year - ((now.month > dob.month || (now.month == dob.month && now.day >= dob.day)) ? 0 : 1)
-    rescue
-      "DATE_FORMAT_ERROR"
   end
 
   def self.normalize_date(birthdate)
-    if birthdate.present? and birthdate.match /(\d+)\/(\d+)\/(\d+)/
+    if birthdate.match /(\d+)\/(\d+)\/(\d+)/
       month=$1
       day=$2
       year=$3.to_i
     else
-      return "DATE_FORMAT_ERROR"
+      return nil
     end
     year += 2000 if year < 30
     year += 1900 if year < 1000
@@ -27,109 +26,125 @@ class Logic
     commaname = "#{lastname}, #{firstname}"
     birthdate = self.normalize_date(params['Q1_BIRTHDATE'])
     birthplace = params['Q6']
-    age = self.age(birthdate)
+    age = self.age(birthdate) if birthdate
     ethnicity = params['Q5']
+    sex = params['gender']
+
+    if params['gender'] == "male"
+      pronoun = "he"
+      cap_pronoun = "He"
+      pos_pronoun = "his"
+      cap_pos = "His"
+      title = "Mr."
+    else
+      pronoun     = "she"
+      cap_pronoun = "She"
+      pos_pronoun = "her"
+      cap_pos = "Her"
+      title = "Ms."
+    end
 
 
-    q1_FIRST = params["Q1_FIRST"]
-    q1_LAST = params["Q1_LAST"]
-    q1_BIRTHDATE = params["Q1_BIRTHDATE"]
-    q1_CASENUM = params["Q1_CASENUM"]
-    q1_RQID = params["Q1_RQID"]
-    q1_ADJUDICATOR = params["Q1_ADJUDICATOR"]
-    q1_EXAMDATE = params["Q1_EXAMDATE"]
-    q1_EXAMLOC = params["Q1_EXAMLOC"]
+    q1_first = params["Q1_FIRST"]
+    last = lastname = q1_last = params["Q1_LAST"]
+    q1_birthdate = params["Q1_BIRTHDATE"]
+    q1_casenum = params["Q1_CASENUM"]
+    q1_rqid = params["Q1_RQID"]
+    q1_adjudicator = params["Q1_ADJUDICATOR"]
+    q1_examdate = params["Q1_EXAMDATE"]
+    q1_examloc = params["Q1_EXAMLOC"]
     q3 = params["Q3"]
-    q4 = params["Q4"]
     q5 = params["Q5"]
     q6 = params["Q6"]
     q8 = params["Q8"]
-    q8A = params["Q8A"]
-    q9 = params["Q9"]
+    q8a = params["Q8A"]
+    q9 = params["q9"]
     q11 = params["Q11"]
-    q11A = params["Q11A"]
+    q11a = params["Q11A"]
     q13 = params["Q13"]
     q14 = params["Q14"]
-    q14A = params["Q14A"]
+    q14a = params["Q14A"]
     q15 = params["Q15"]
     q16 = params["Q16"]
-    q16_Q16F = params["Q16_Q16F"]
-    q16_Q16B = params["Q16_Q16B"]
-    q16_Q16C = params["Q16_Q16C"]
-    q16_Q16D = params["Q16_Q16D"]
-    q16_Q16E = params["Q16_Q16E"]
-    q16_Q16G = params["Q16_Q16G"]
-    q16_Q16A = params["Q16_Q16A"]
+    q16f = params["Q16_Q16F"]
+    q16b = params["Q16_Q16B"]
+    q16c = params["Q16_Q16C"]
+    q16d = params["Q16_Q16D"]
+    q16e = params["Q16_Q16E"]
+    q16g = params["Q16_Q16G"]
+    q16a = params["Q16_Q16A"]
     q17 = params["Q17"]
-    qA18 = params["QA18"]
-    qA18A = params["QA18A"]
+    qa18 = params["QA18"]
+    qa18a = params["QA18A"]
     q19 = params["Q19"]
     q179 = params["Q179"]
-    q19A = params["Q19A"]
+    q19a = params["Q19A"]
     q20 = params["Q20"]
-    q20A = params["Q20A"]
+    q20a = params["Q20A"]
     q21 = params["Q21"]
     q177 = params["Q177"]
-    q21A = params["Q21A"]
+    q21a = params["Q21A"]
     q22 = params["Q22"]
     q30 = params["Q30"]
     q31 = params["Q31"]
-    q31A = params["Q31A"]
-    q31B = params["Q31B"]
-    qA33 = params["QA33"]
-    qA34 = params["QA34"]
-    qA34A = params["QA34A"]
-    qA35 = params["QA35"]
-    qA35A = params["QA35A"]
-    qA36 = params["QA36"]
-    qA36A = params["QA36A"]
-    qA189 = params["QA189"]
+    q31a = params["Q31A"]
+    q31b = params["Q31B"]
+    qa32 = params["QA32"]
+    qa33 = params["QA33"]
+    qa34 = params["QA34"]
+    qa34a = params["QA34A"]
+    qa35 = params["QA35"]
+    qa35a = params["QA35A"]
+    qa36 = params["QA36"]
+    qa36a = params["QA36A"]
+    qa189 = params["QA189"]
     q23 = params["Q23"]
     q24 = params["Q24"]
     q25 = params["Q25"]
     q26 = params["Q26"]
-    q26A = params["Q26A"]
+    q26a = params["Q26A"]
     q27 = params["Q27"]
     q28 = params["Q28"]
-    qA37 = params["QA37"]
-    qA38 = params["QA38"]
-    qA39 = params["QA39"]
-    qA40 = params["QA40"]
-    qA41 = params["QA41"]
+    q29 = params["Q29"]
+    qa37 = params["QA37"]
+    qa38 = params["QA38"]
+    qa39 = params["QA39"]
+    qa40 = params["QA40"]
+    qa41 = params["QA41"]
     q42 = params["Q42"]
-    q42A = params["Q42A"]
-    q42B = params["Q42B"]
+    q42a = params["Q42A"]
+    q42b = params["Q42B"]
     q43 = params["Q43"]
     q45 = params["Q45"]
     q46 = params["Q46"]
     q47 = params["Q47"]
-    qA52 = params["QA52"]
-    qA53 = params["QA53"]
-    qA184 = params["QA184"]
-    qA55 = params["QA55"]
-    qA186 = params["QA186"]
-    qA56 = params["QA56"]
+    qa52 = params["QA52"]
+    qa53 = params["QA53"]
+    qa184 = params["QA184"]
+    qa55 = params["QA55"]
+    qa186 = params["QA186"]
+    qa56 = params["QA56"]
     q48 = params["Q48"]
     q49 = params["Q49"]
-    q49A = params["Q49A"]
+    q49a = params["Q49A"]
     q50 = params["Q50"]
     q51 = params["Q51"]
-    qA57 = params["QA57"]
-    qA57A = params["QA57A"]
-    qA58 = params["QA58"]
-    qA59 = params["QA59"]
-    qA60 = params["QA60"]
-    qA60A = params["QA60A"]
-    qA61 = params["QA61"]
-    qA62 = params["QA62"]
-    qA63 = params["QA63"]
-    qA63A = params["QA63A"]
-    qA63B = params["QA63B"]
-    qA63C = params["QA63C"]
-    qA64 = params["QA64"]
+    qa57 = params["QA57"]
+    qa57a = params["QA57A"]
+    qa58 = params["QA58"]
+    qa59 = params["QA59"]
+    qa60 = params["QA60"]
+    qa60a = params["QA60A"]
+    qa61 = params["QA61"]
+    qa62 = params["QA62"]
+    qa63 = params["QA63"]
+    qa63a = params["QA63A"]
+    qa63b = params["QA63B"]
+    qa63c = params["QA63C"]
+    qa64 = params["QA64"]
     q65 = params["Q65"]
     q66 = params["Q66"]
-    q66A = params["Q66A"]
+    q66a = params["Q66A"]
     q67 = params["Q67"]
     q68 = params["Q68"]
     q69 = params["Q69"]
@@ -137,14 +152,14 @@ class Logic
     q71 = params["Q71"]
     q72 = params["Q72"]
     q73 = params["Q73"]
-    q73A = params["Q73A"]
-    q73B = params["Q73B"]
-    q73C = params["Q73C"]
+    q73a = params["Q73A"]
+    q73b = params["Q73B"]
+    q73c = params["Q73C"]
     q10 = params["Q10"]
     q74 = params["Q74"]
     q76 = params["Q76"]
     q77 = params["Q77"]
-    q77A = params["Q77A"]
+    q77a = params["Q77A"]
     q88 = params["Q88"]
     q89 = params["Q89"]
     q90 = params["Q90"]
@@ -155,13 +170,13 @@ class Logic
     q84 = params["Q84"]
     q85 = params["Q85"]
     q86 = params["Q86"]
-    q86A = params["Q86A"]
-    q86B = params["Q86B"]
-    q86C = params["Q86C"]
+    q86a = params["Q86A"]
+    q86b = params["Q86B"]
+    q86c = params["Q86C"]
     q87 = params["Q87"]
-    q87A = params["Q87A"]
+    q87a = params["Q87A"]
     q78 = params["Q78"]
-    q78A = params["Q78A"]
+    q78a = params["Q78A"]
     q79 = params["Q79"]
     q80 = params["Q80"]
     q81 = params["Q81"]
@@ -177,14 +192,14 @@ class Logic
     q116 = params["Q116"]
     q121 = params["Q121"]
     q122 = params["Q122"]
-    q123B = params["Q123B"]
+    q123b = params["Q123B"]
     q100 = params["Q100"]
     q101 = params["Q101"]
     q102 = params["Q102"]
     q200 = params["Q200"]
     q110 = params["Q110"]
     q135 = params["Q135"]
-    q135A = params["Q135A"]
+    q135a = params["Q135A"]
     q136 = params["Q136"]
     q137 = params["Q137"]
     q138 = params["Q138"]
@@ -196,51 +211,53 @@ class Logic
     q131 = params["Q131"]
     q132 = params["Q132"]
     q133 = params["Q133"]
-    q133A = params["Q133A"]
-    q133B = params["Q133B"]
+    q133a = params["Q133A"]
+    q133b = params["Q133B"]
     q144 = params["Q144"]
     q145 = params["Q145"]
     q142 = params["Q142"]
-    q142A = params["Q142A"]
+    q142a = params["Q142A"]
     q146 = params["Q146"]
-    q146A = params["Q146A"]
+    q146a = params["Q146A"]
+    q146b = params["Q146B"]
     q147 = params["Q147"]
     q150 = params["Q150"]
     q151 = params["Q151"]
-    q149_A1 = params["Q149_A1"]
-    q149_A2 = params["Q149_A2"]
-    q149_A3 = params["Q149_A3"]
-    q149_A4 = params["Q149_A4"]
-    q149_B1 = params["Q149_B1"]
-    q149_B2 = params["Q149_B2"]
-    q149_B3 = params["Q149_B3"]
-    q149_B4 = params["Q149_B4"]
+    q149_a1 = params["Q149_A1"]
+    q149_a2 = params["Q149_A2"]
+    q149_a3 = params["Q149_A3"]
+    q149_a4 = params["Q149_A4"]
+    q149_b1 = params["Q149_B1"]
+    q149_b2 = params["Q149_B2"]
+    q149_b3 = params["Q149_B3"]
+    q149_b4 = params["Q149_B4"]
     q302 = params["Q302"]
     q303 = params["Q303"]
     q304 = params["Q304"]
     q305 = params["Q305"]
     q306 = params["Q306"]
+    q152 = params["Q152"]
     q153 = params["Q153"]
-    qA154 = params["QA154"]
-    qA155 = params["QA155"]
-    qA155A = params["QA155A"]
+    qa154 = params["QA154"]
+    qa155 = params["QA155"]
+    qa155a = params["QA155A"]
     q156 = params["Q156"]
-    qA156A = params["QA156A"]
-    qA156B = params["QA156B"]
-    qA157 = params["QA157"]
-    qA157A = params["QA157A"]
-    qA157B = params["QA157B"]
+    qa156a = params["QA156A"]
+    qa156b = params["QA156B"]
+    qa157 = params["QA157"]
+    qa157a = params["QA157A"]
+    qa157b = params["QA157B"]
     q158 = params["Q158"]
     q159 = params["Q159"]
-    q159A = params["Q159A"]
+    q159a = params["Q159A"]
     q160 = params["Q160"]
-    q160A = params["Q160A"]
+    q160a = params["Q160A"]
     q181 = params["Q181"]
-    q181A = params["Q181A"]
+    q181a = params["Q181A"]
     q299 = params["Q299"]
     q300 = params["Q300"]
     q301 = params["Q301"]
-    qA161 = params["QA161"]
+    qa161 = params["QA161"]
     q167 = params["Q167"]
     q168 = params["Q168"]
     q169 = params["Q169"]
@@ -248,89 +265,228 @@ class Logic
     q162 = params["Q162"]
     q163 = params["Q163"]
     q165 = params["Q165"]
-    q165A = params["Q165A"]
+    q165a = params["Q165A"]
     q166 = params["Q166"]
     q171 = params["Q171"]
     q172 = params["Q172"]
-    q172A = params["Q172A"]
+    q172a = params["Q172A"]
     q173 = params["Q173"]
     q174 = params["Q174"]
     q175 = params["Q175"]
     q180 = params["Q180"]
     q182 = params["Q182"]
     q183 = params["Q183"]
-    qA187 = params["QA187"]
-    qA188 = params["QA188"]
+    qa186 = params["QA186"]
+    qa187 = params["QA187"]
+    qa188 = params["QA188"]
+
+    last_employment_place = 'FILL_THIS_IN' # ie, use the Q55 table and pull out the "last" row
 
 
+    params['PARAGRAPH_IDENTIFICATION'] = " #{fullname} is a #{age}-year old #{ethnicity} #{sex}. #{cap_pronoun} was born in #{birthplace} on #{birthdate}."
 
-    params['PARAGRAPH_IDENTIFICATION'] = "Mr #{fullname} is a #{age}-year old #{ethnicity} male. He was born in #{birthplace} on #{birthdate}."
+    params['PARAGRAPH_GENERAL'] = "#{title} #{lastname} arrived #{q8}, by #{q9} and was #{q8a}. Throughout the interview, #{pronoun} was #{q10}."
 
-    params['PARAGRAPH_GENERAL'] = "Mr #{fullname} arrived #{q8}, and was {q8A}"
+    params['PARAGRAPH_CONFIDENTIALITY'] = "#{cap_pronoun} was advised of the limitations on confidentiality and was informed that a copy of the evaluations would be provided to the Social Security Administration. The source of information was #{title} #{q1_last}, who #{q11} a reliable historian. "
 
-    #    Mr. FILLIN_Q1_FIRST FILLIN_Q1_LAST arrived FILLIN_Q8_VALUES, and was FILLIN_Q8A_VALUES. He FILLIN_Q9_VALUES.
-    #
-    #Throughout the interview, he was FILLIN_Q10.
-    #
-    #He was advised of the limitations on confidentiality and was informed that a copy of the evaluations would be provided to the Social Security Administration. The source of information was Mr. FILLIN_Q1, who FILLIN_Q11 considered a reliable historian. FILLIN_Q11A is the historian for this interview`.
-    #
+    if q11!="no"
+      params['PARAGRAPH_CONFIDENTIALITY'] << "#{q11a} is the historian for this interview."
+    end
+    params['PARAGRAPH_HISTORY_OF_PRESENT_ILLNESS'] = "#{title} #{lastname} was first diagnosed with #{q13} in #{q14} by #{q14a}. Current symptoms of #{q13} include: #{q16}."
 
-    params['PARAGRAPH_CHIEF_COMPLAINT'] = "Mr #{fullname} is struggling with the following mental health concerns: #{q13}."
+    if q15 != "no"
+      params['PARAGRAPH_HISTORY_OF_PRESENT_ILLNESS'] << "Special circumstances at the onset of the conditions were: #{q15}" 
+    end
+    params['PARAGRAPH_HISTORY_OF_PRESENT_ILLNESS'] << "#{title} #{lastname} #{q16b} traumatic event in #{q16c} in #{q16d}. There #{q16e} current effect of the trauma on #{pos_pronoun} daily functioning. #{q16f} The trauma has affected #{pos_pronoun} life and functioning since #{q16g}."
 
-    params['PARAGRAPH_HISTORY_OF_PRESENT_ILLNESS'] = "Mr. #{fullname} was first diagnosed with #{q13} in #{q14} by #{q14A}. Current symptoms of #{q13} include: #{q16}."
+    params['PARAGRAPH_HISTORY_OF_PRESENT_ILLNESS'] << "The effects of mental health in #{pos_pronoun} daily life are as described: \"#{q17}\". #{title} #{lastname} stopped working due to #{pos_pronoun} impairments on #{qa18}. #{qa18a} #{cap_pronoun} #{q19} currently in psychotherapy with #{q19a}.Psychotherapy #{q20} helpful to #{title}#{q1_last}. #{q20a} #{cap_pronoun} #{q179}."
 
-    params['PARAGRAPH_HISTORY_OF_PRESENT_ILLNESS'] << "Special circumstances at the onset of the conditions were: #{q15}" if q15 != "no"
+    params['PARAGRAPH_CURRENT_MEDICATION'] = "#{title} #{fullname} #{q21} currently taking #{q22}. #{cap_pronoun} reported #{pronoun} #{q21a} #{pos_pronoun} medications today. They are prescribed by #{q177}."
 
-    params['PARAGRAPH_HISTORY_OF_PRESENT_ILLNESS'] << "Mr. #{fullname} #{q16B} traumatic event in #{q16C} in #{q16D}. There #{q16E} current effect of the trauma on his daily functioning. #{q16F} The trauma has affected his life and functioning for #{q16G}."
+    params['PARAGRAPH_PAST_PSYCHIATRIC_HISTORY'] = "#{title} #{lastname} reports #{pronoun} #{q29} been admitted to a psychiatric hospital." 
+   
+    if q29 != "no"
+      params['PARAGRAPH_PAST_PSYCHIATRIC_HISTORY'] << "#{cap_pronoun} was last admitted in #{q30}. The admittance was due to #{q31}. #{title} #{lastname} received the following treatment while admitted: #{q31a}. #{cap_pos} response to treatment was #{q31b}."
 
-    params['PARAGRAPH_HISTORY_OF_PRESENT_ILLNESS'] << "The effects of mental health in his daily life are: #{q17}. Mr. #{fullname} stopped working due to his impairments on #{qa18}. #{qa18A} He #{q19} currently in psychotherapy #{q19A}.Psychotherapy #{q20} helpful to Mr.#{fullname}. #{q20AHe} #{q179}.."
+      params['PARAGRAPH_ALCOHOL_AND_OR_DRUG_ABUSE'] = "#{title} #{last} #{qa32} alcohol, illicit drugs, or tobacco."
+    end  
 
-    params['PARAGRAPH_CURRENT_MEDICATION'] = "Mr. #{fullname} #{q21} currently taking medications. He reported he #{q21A} take his medications today. They are prescribed by #{q177}."
+    if qa32 != "no"
+      params['PARAGRAPH_ALCOHOL_AND_OR_DRUG_ABUSE'] << "#{title} #{last} reported abusing #{qa33}. #{cap_pronoun} first used in #{qa34} and started using abusively in #{qa34a}. #{cap_pronoun} used the substance #{qa35}. At the peak of #{pos_pronoun} #{qa33} abuse, #{pronoun} used #{qa35a} per day. #{cap_pronoun} #{qa36} abusing the substance. #{cap_pronoun} has been clean for #{qa36a}. During the interview, #{pronoun} #{qa189} to be under the influence of drugs or alcohol"
+    end
 
-    params['PARAGRAPH_PAST_PSYCHIATRIC_HISTORY'] = "Mr. #{q1} reports he #{q29} been admitted to a psychiatric hospital."
-
-    params['PARAGRAPH_PAST_PSYCHIATRIC_HISTORY'] << "The last time he was admitted was in #{q30}. The admittance was due to #{q31}. Mr. #{q1} received the following treatment while admitted: #{q31A}. His response to treatment was #{q31B}."
-
-    params['PARAGRAPH_ALCOHOL_AND_OR_DRUG_ABUSE'] = "Mr. #{q1} #{qA32} alcohol, illicit drugs, and tobacco."
-
-    params['PARAGRAPH_ALCOHOL_AND_OR_DRUG_ABUSE'] << "Mr. #{q1} reported abusing #{qA33}. He first used in #{a34} and started using abusively in #{qa34A}. He used the substance #{qa35}. At the worst of times, he used #{qa35A} per day. He #{qa36} abusing the substance. He has been clean for #{qa36A}."
-
-    params['PARAGRAPH_PAST_MEDICAL_HISTORY'] = "Mr. #{q1} #{q23} from a major head injury, which required hospitalization. He #{q24} a lack of consciousness, felt dazed, or saw stars. The injury was sustained in #{q25}; he #{q26} treated at a hospital. The name of the hospital was #{q16A}."
+    if q23 != "no"
+      params['PARAGRAPH_PAST_MEDICAL_HISTORY'] = "#{title} #{lastname} #{q23} a major head injury, which required hospitalization. #{cap_pronoun} #{q24} a lack of consciousness, feel dazed, or see stars. The injury was sustained in #{q25}; #{pronoun} #{q26} at a hospital. The name of the hospital was #{q26a}."
+    end
 
     params['PARAGRAPH_PAST_MEDICAL_HISTORY'] << "Surgeries include: #{q27}."
 
-    params['PARAGRAPH_PAST_MEDICAL_HISTORY'] << "Medical conditions per his report include: #{q28}."
+    params['PARAGRAPH_PAST_MEDICAL_HISTORY'] << "Medical conditions per #{pos_pronoun} report include: #{q28}."
 
-    params['PARAGRAPH_FAMILY_HISTORY'] = "Mr. #{q1} is #{qA37}. #{qA38} He #{qA39} children; #{qA40}. #{qA41} He #{q42} #{q42A} in #{q42B}. There #{q43} history of mental illness in his family. #{q44} There #{q45}history of child abuse in the family. #{q46} #{q47}"
+    params['PARAGRAPH_FAMILY_HISTORY'] = "#{title} #{lastname} is #{qa37}. #{qa38} #{cap_pronoun} #{qa39} children; #{qa40}. #{qa41} #{cap_pronoun} #{q42a} in #{q42} in #{q42b}. #{pos_pronoun} #{q43}. There #{q45} history of child abuse in the family. #{q46} #{q47}"
 
-    params['PARAGRAPH_EMPLOYMENT_HISTORY'] = "Mr. #{q1} #{qA52} working. He #{qA53} actively seeking employment at this time. His attitude regarding seeking employment is #{qA184}.The reason he left his last place of employment was “#{qA54}.”"
+    params['PARAGRAPH_EMPLOYMENT_HISTORY'] = "#{title} #{lastname} #{qa52} working. #{cap_pronoun} #{qa53} actively seeking employment at this time. #{cap_pos} attitude regarding seeking employment is #{qa184}. The reason #{pronoun} left #{pos_pronoun} last place of employment was #{last_employment_place}."
 
-    params['PARAGRAPH_EMPLOYMENT_HISTORY'] << "He reported having a work history that included the following jobs: #{qA55}".
+    params['PARAGRAPH_EMPLOYMENT_HISTORY'] << "#{cap_pronoun} reported having a work history that included the following jobs: #{qa55}"
 
-    params['PARAGRAPH_EMPLOYMENT_HISTORY'] << "He reported the periods of unemployment were due to “#{qA56}.”".
+    params['PARAGRAPH_EMPLOYMENT_HISTORY'] << "#{cap_pronoun} reported the periods of unemployment were due to #{qa56}."
 
-    params['PARAGRAPH_LEGAL_CRIMINAL_HISTORY'] = "Mr. #{q1} #{qA57} arrested for #{qA57A}. The arrest was on #{qA58}, and the outcome was #{qA59}. He #{qA60} incarcerated. The incarceration lasted #{qA60A}."
+    params['PARAGRAPH_LEGAL_CRIMINAL_HISTORY'] = "#{fullname} #{qa57}."
 
-    params['PARAGRAPH_MILITARY_HISTORY'] = "Mr. #{q1} #{qA61} serving in the military. The dates of services were #{qA62}. The highest rank he held was #{qA63}. He reports he #{qA63A} received any metals, and report disciplinary action #{qA63B} taken. Mr. #{q1} #{qA63C} he was dishonorably discharged. He #{qA64} deployed."
+    if qa57 != "yes"
+      params['PARAGRAPH_LEGAL_CRIMINAL_HISTORY'] << "for #{qa57a}. The arrest was on #{qa58}, and the outcome was #{qa59}. #{cap_pronoun} #{qa60} incarcerated. The incarceration lasted #{qa60a}."
+    end
 
-    params['PARAGRAPH_GENERAL_APPEARANCE'] = "Mr. #{q1} appeared #{q65} his stated age. His hygiene was #{q66}; he was #{q66A}.In relation to height, his build was #{q67}.  Eye contact was #{q68}, and his facial expressions were #{q69}. Clothing was #{q70}. He was dressed in #{q71}; which #{q72} appropriate for the weather. There #{q73} evidence of psychomotor agitation, as seen when he #{q73A}. There #{q73B} evidence of psychomotor retardation, as seen when he #{q73C}."
+    params['PARAGRAPH_MILITARY_HISTORY'] = "#{title} #{lastname} #{qa61} in the military. The dates of services were #{qa62}. The highest rank #{pronoun} held was #{qa63}. #{cap_pronoun} #{qa63a} receive medals. During #{pos_pronoun} service  disciplinary action (Article 15, Captian's Mast) #{qa63b} taken. #{title} #{lastname} #{qa63c} #{pronoun} was honorably discharged. #{cap_pronoun} #{qa64} deployed."
 
-    params['PARAGRAPH_ATTITUDE_&_BEHAVIOR'] = "Mr. #{q1}’s behavior was #{q74}. Attitude was #{q76}. There #{q77} evidence of feigning or factitious behaviors. #{q77A}"
+    params['PARAGRAPH_GENERAL_APPEARANCE'] = "#{title} #{lastname} appeared #{q65} than #{pos_pronoun} stated age. #{cap_pronoun} exhibited #{q66} hygiene; #{pronoun} was #{q66a}.In relation to height, #{pos_pronoun} build was #{q67}.  During the interview #{pos_pronoun} eye contact was #{q68} and #{pos_pronoun} facial expressions were #{q69}. #{cap_pronoun} was #{q70} dressed in #{q71}; which #{q72} appropriate for the weather. There #{q73} evidence of psychomotor agitation, as seen when #{pronoun} #{q73a}. There #{q73b} evidence of psychomotor retardation, as seen when #{pronoun} #{q73c}."
 
-    params['PARAGRAPH_MOOD_AFFECT'] = "He stated that his current mood was #{q88}.  Mr. #{q1}’s affect was #{q89} with the stated mood.  He appeared #{q90}. Regarding sleeping, he stated he has #{q91}.He reports #{q92}."
+    params['PARAGRAPH_ATTITUDE_&_BEHAVIOR'] = "#{fullname}’s behavior was #{q74} and #{pos_pronoun} attitude was #{q76}. There #{q77} evidence of feigning or factitious behaviors. #{q77a}"
 
-    params['PARAGRAPH_CONTENT_OF_THOUGHT'] = "Mr. #{q1} #{q82} having auditory hallucinations. #{q83} He #{q84} having visual, tactile, or olfactory hallucinations. #{q85} Mr. #{q1} #{q86} having suicidal ideations. #{q86A} Mr. #{q1} #{q86B} having homicidal ideations. #{q86C} He #{q87} having delusions. #{q87A}"
+    params['PARAGRAPH_MOOD_AFFECT'] = "#{cap_pronoun} stated that #{pos_pronoun} current mood was #{q88}.  #{title} #{lastname}’s affect #{q89} consistent with the stated mood.  #{cap_pronoun} appeared #{q90}. Regarding sleeping, #{pronoun} stated #{pronoun} has #{q91}. #{cap_pronoun} reports #{q92} regarding appetite."
 
-    params['PARAGRAPH_STREAM_OF_MENTAL_ACTIVITY_SPEECH'] = "Speech form was #{q78}. #{q78A} Articulation was #{q79}. Speech velocity was #{q80}; volume was #{q81}."
+    params['PARAGRAPH_CONTENT_OF_THOUGHT'] = "#{title} #{lastname} #{q82} having auditory hallucinations, desribed as: #{q83}, #{cap_pronoun} #{q84} having visual, tactile, or olfactory hallucinations #{q85}. #{title} #{lastname} #{q86} have suicidal ideations. #{q86a} #{title} #{lastname} #{q86b} homicidal ideations. #{q86c} #{cap_pronoun} #{q87} have delusions. #{q87a}"
 
-    params['PARAGRAPH_ORIENTATION'] = "Mr. #{q1} was oriented #{q93} (Person- #{q94} Place- #{q95} Time- #{q96})."
+    params['PARAGRAPH_STREAM_OF_MENTAL_ACTIVITY_SPEECH'] = " #{fullname}'s speech was #{q78}#{q78a}; articulation was #{q79}. The velocity of #{pos_pronoun} speech was #{q80}; volume was #{q81}."
 
-    params['PARAGRAPH_PSYCHOLOGICAL_ASSESSMENTS'] = "Mr. #{q1} was administered a (insert #{98a}, #{98b}, #{98c})."
+    params['PARAGRAPH_ORIENTATION'] = "#{fullname} was oriented #{q93} (Person- #{q94} Place- #{q95} Time- #{q96})."
 
-    params['PARAGRAPH_TESTING_BEHAVIORS'] = "#{q99}"
+    params['PARAGRAPH_PSYCHOLOGICAL_ASSESSMENTS'] = "#{cap_pronoun} was administered a #{q98}."
+
+    params['PARAGRAPH_TESTING_BEHAVIORS'] =" The claimant's testing behavior was as described: #{q99}."
+    params['PARAGRAPH_INTELLECTUAL_FUNCTIONING'] = "If using Psychological Testing:"
+
+    params['PARAGRAPH_INTELLECTUAL_FUNCTIONING'] << "INDEX SCORES: #q98a"
+
+    params['PARAGRAPH_INTELLECTUAL_FUNCTIONING'] << "#{q100}"
+
+    #This text box should be able to maintain the form of a pasted table.
+
+    params['PARAGRAPH_INTELLECTUAL_FUNCTIONING'] << "SUBTEST SCORES: #q98a"
+
+    params['PARAGRAPH_INTELLECTUAL_FUNCTIONING'] << "#{q101}"
+
+    #This text box should be able to maintain the form of a pasted table.
+
+    params['PARAGRAPH_INTELLECTUAL_FUNCTIONING'] << "#{q102}"
+
+    params['PARAGRAPH_INTELLECTUAL_FUNCTIONING'] << "If using Interview Questions:"
+
+    params['PARAGRAPH_INTELLECTUAL_FUNCTIONING'] << "#{title} #{lastname}’s intellectual functioning appeared to be in the #{q110}range as evidenced by vocabulary and ability to express thoughts."
+
+    params['PARAGRAPH_MEMORY'] = "If using Psychological Testing:"
+
+    params['PARAGRAPH_MEMORY'] << "INDEX SCORES: #q98b"
+
+    params['PARAGRAPH_MEMORY'] << "#{q112}"
+
+    #This text box should be able to maintain the form of a pasted table.
+
+    params['PARAGRAPH_MEMORY'] << "SUBTEST SCORES: #q98b"
+
+    params['PARAGRAPH_MEMORY'] << "#{q113}"
+
+    #This text box should be able to maintain the form of a pasted table.
+
+    params['PARAGRAPH_MEMORY'] << "#{q114}"
+
+    params['PARAGRAPH_MEMORY'] << "If using Interview Questions:"
+
+    params['PARAGRAPH_MEMORY'] << "Remote memory was #{q121} as evidenced by #{pos_pronoun} ability to recount biographical history and other past events. Regarding recent memory, #{pronoun} can remember #{q122} objects after a five-minute delay. Immediate memory for digits forward was (insert 123 column 2); digits backward was (insert 123 column 4)."
+
+    params['PARAGRAPH_FUND_OF_KNOWLEDGE_INFORMATION'] = "If using Psychological Testing:}"
+
+    params['PARAGRAPH_FUND_OF_KNOWLEDGE_INFORMATION'] << "#{fullname}’s fund of knowledge is #{q125} when compared to #{pos_pronoun} peers, as seen on the intelligence assessment (scaled score is #{q126})."
+
+    params['PARAGRAPH_FUND_OF_KNOWLEDGE_INFORMATION'] << "If using Interview Questions:"
+
+    params['PARAGRAPH_FUND_OF_KNOWLEDGE_INFORMATION'] << "#{title} #{lastname}’s fund of knowledge #{q127} consistent with #{pos_pronoun} education level and background. #{cap_pronoun} #{q128} of current events. #{cap_pronoun} answered #{q129} of six questions correctly."
+
+    params['PARAGRAPH_CALCULATIONS'] = "If using Psychological Testing:"
+
+    params['PARAGRAPH_CALCULATIONS'] << "This is based on #{pos_pronoun} ability to perform basic mathematical calculations as evidenced in the intelligence assessment where #{pos_pronoun} performance was #{q131} (scaled score is #{q132})."
+
+    params['PARAGRAPH_CALCULATIONS'] << "If using Interview Questions:"
+
+    params['PARAGRAPH_CALCULATIONS'] << "This is based on ability to perform basic mathematical calculations and perform serials."
+
+    params['PARAGRAPH_CALCULATIONS'] << "#{title} #{lastname} correctly answered #{q133} of five basic math problems. #{cap_pronoun} #{q133a}."
+
+    params['PARAGRAPH_CALCULATIONS'] << "#{title} #{lastname} #{q133b} able to correctly answer word problems."
+
+    params['PARAGRAPH_CONCENTRATION'] = "If using Psychological Testing:"
+
+    params['PARAGRAPH_CONCENTRATION'] << "#{cap_pos} ability to sustain attention, concentration, and exert mental control is in the #{q135} range (WMI = #{q135a})."
+
+    params['PARAGRAPH_CONCENTRATION'] << "If using Interview Questions:"
+
+    params['PARAGRAPH_CONCENTRATION'] << "#{title} #{lastname} #{q136}. #{cap_pronoun} was #{q137} to spell world forward and #{q138} to spell world backward."
+
+    params['PARAGRAPH_JUDGMENT_INSIGHT'] = "#{title} #{lastname}’s insight into #{pos_pronoun} condition was #{q147}."
+
+    params['PARAGRAPH_TRAILS'] = "Trails are a test of visual conceptual and visuomotor tracking; it involves motor speed and attention functions.  Rote memory and motor speed is demonstrated on Trail A. Cognitive flexibility, planning and the ability to maintain focused attention is demonstrated on Trail B."
+
+    params['PARAGRAPH_ACTIVITIES_OF_DAILY_LIVING'] = "#{title} #{lastname}’s typical day is \“#{q153}\". #{cap_pronoun} is able to #{qa154} on #{pos_pronoun} own. #{cap_pronoun} requires help with #{qa155}. #{qa155a} helps with these tasks.  #{cap_pronoun} #{q156}. #{cap_pronoun} is #{qa156a} to handle #{pos_pronoun} personal finances. #{cap_pronoun} finances are handled by #{qa156b}."
+
+    params['PARAGRAPH_SOCIAL_FUNCTIONING'] = "#{title} #{lastname} reports having #{qa157} social friends. #{cap_pronoun} #{qa157a} isolated from others. #{cap_pronoun} is #{q158}. #{cap_pronoun} #{q159} participate in recreational activities. A house of worship #{q159a}regularly attended. #{cap_pronoun} #{q160} have a history of violence. #{q160a}"
+
+    params['PARAGRAPH_CONCENTRATION_PERSISTANCE_AND_PACE'] = "#{title} #{lastname} is able to engage in and sustain the following activities for the stated length of time."
+
+    params['PARAGRAPH_DECOMPENSATION_AND_DETERIORATION'] = "There #{q167} evidence of deterioration and decompensation in the work place, evidenced by #{q168}. #{cap_pos} ability to engage in former work activities #{q169} impacted because of the reported mental health issues and physical limitations. #{cap_pronoun} reports difficulties with #{q170}."
+
+    params['PARAGRAPH_DSM_IV_DIAGNOSIS'] = "Axis I: #{q162}"
+
+    params['PARAGRAPH_DSM_IV_DIAGNOSIS'] = "Axis II: #{q163}"
+
+    params['PARAGRAPH_DSM_IV_DIAGNOSIS'] = "Axis III: #{cap_pronoun} reports: #{q28}"
+
+    params['PARAGRAPH_DSM_IV_DIAGNOSIS'] = "Axis IV: Stressors are: #{q165} #{q165a}"
+
+    params['PARAGRAPH_DSM_IV_DIAGNOSIS'] = "Axis V: Current GAF is #{q166}."
+
+    params['PARAGRAPH_DISCUSSION_PROGNOSIS'] = "#{title} #{lastname} #{q171} able to respond to questions in an open and honest manner. There #{q172} to be evidence of exaggerating symptoms. #{q172a} There #{q173} to be inconsistencies throughout the evaluation, as described #{q174}"
+
+    params['PARAGRAPH_DISCUSSION_PROGNOSIS'] << "#{title} #{lastname} is #{q175} to receive treatment as demonstrated by #{pos_pronoun} history with previous compliance. #{cap_pos} willingness to use available resources is #{q180}; #{pos_pronoun} support system is #{q181}, and includes #{q181a}."
+
+    params['PARAGRAPH_DISCUSSION_PROGNOSIS'] << "The likelihood of #{pos_pronoun} mental health condition improving in the next 12 months is #{q182}. #{cap_pos} ability to respond to routine changes in the work place is #{q183}."
+
+    params['PARAGRAPH_DISCUSSION_PROGNOSIS'] << "#{cap_pos} work history is #{qa186}."
+
+    params['PARAGRAPH_CAPABILITY_OF_MANAGING_FUNDS'] = "#{title} #{lastname}’s ability to manage benefits is #{pos_pronoun} own best interest is #{qa187}. #{cap_pronoun} #{qa188} need a protective payee."
+
+    params['PARAGRAPH_MEDICAL_SOURCE_STATEMENT'] = "If using psychological testing:"
+
+    params['PARAGRAPH_MEDICAL_SOURCE_STATEMENT'] << "The ability to reason is in the #{q144} range as evidenced by #{pos_pronoun} performance on the psychological tests. #{cap_pronoun} showed evidence of #{q152} judgment when responding to the questions regarding the movie theater fire and lost purse."
+
+    params['PARAGRAPH_MEDICAL_SOURCE_STATEMENT'] << "If using interview questions:"
+
+    params['PARAGRAPH_MEDICAL_SOURCE_STATEMENT'] << "The ability to reason is #{q146b} as evidenced by #{pos_pronoun} responses to the intellectual questions. #{cap_pronoun} showed evidence of #{q152} judgment when responding to the questions regarding the movie theater fire and lost purse."
+
+    params['PARAGRAPH_MEDICAL_SOURCE_STATEMENT'] << "If using interview questions:"
+
+    params['PARAGRAPH_MEDICAL_SOURCE_STATEMENT'] << "#{cap_pronoun} #{q133b} able to complete word problems involving extraneous information."
+
+    params['PARAGRAPH_MEDICAL_SOURCE_STATEMENT'] << "If using psychological testing:"
+
+    params['PARAGRAPH_MEDICAL_SOURCE_STATEMENT'] << "Memory functions are #{q116} as indicated by #{pos_pronoun} performance on the psychological assessments."
+
+    params['PARAGRAPH_MEDICAL_SOURCE_STATEMENT'] << "If using interview questions:"
+
+    params['PARAGRAPH_MEDICAL_SOURCE_STATEMENT'] << "Memory functions are #{q123b} as indicated by #{pos_pronoun} responses to the interview questions. Recent memory was q122a as evidenced by #{pos_pronoun} ability to remember #{q122} objects after five minutes.  Immediate memory was {q123a} as evidenced by the ability to hold (insert 123-column 2) digits. Working memory is q123a as evidenced by the ability to hold (insert 123-column 4) digits backward."
+
+    params['PARAGRAPH_MEDICAL_SOURCE_STATEMENT'] << "If using psychological testing:"
+
+    params['PARAGRAPH_MEDICAL_SOURCE_STATEMENT'] << "#{q125}. cap_pos ability to solve basic mathematical problems is #{q131}. #{cap_pronoun} #{q156}"
+
+    params['PARAGRAPH_MEDICAL_SOURCE_STATEMENT'] << "If using interview questions:"
+
+    params['PARAGRAPH_MEDICAL_SOURCE_STATEMENT'] << "Sustained concentration and persistence is {q136a}. #{cap_pronoun} #{q133} to solve basic mathematical problems correctly. Regarding serials, #{pronoun} #{q133a}. #{cap_pronoun} #{q156}."
+
+    params['PARAGRAPH_MEDICAL_SOURCE_STATEMENT'] << "Based upon the mental status examination, there #{qa189} to be evidence #{pronoun} was engaging in substance abuse at the time of the evaluation."
 
 
 
     return params
+
   end
 end
