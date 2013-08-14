@@ -62,6 +62,7 @@ class Logic
     q11 = params["Q11"]
     q11a = params["Q11A"]
     q13 = params["Q13"]
+    qa14 = params["QA14"]
     q14 = params["Q14"]
     q14a = params["Q14A"]
     q15 = params["Q15"]
@@ -295,7 +296,7 @@ class Logic
     params['PARAGRAPH_HISTORY_OF_PRESENT_ILLNESS'] = "#{title} #{lastname} was first diagnosed with #{q13} in #{q14} by #{q14a}. Current symptoms of #{q13} include: #{q16}."
 
     if q15 != "no"
-      params['PARAGRAPH_HISTORY_OF_PRESENT_ILLNESS'] << "Special circumstances at the onset of the conditions were: #{q15}" 
+      params['PARAGRAPH_HISTORY_OF_PRESENT_ILLNESS'] << "Special circumstances at the onset of the conditions were: #{q15}"
     end
     params['PARAGRAPH_HISTORY_OF_PRESENT_ILLNESS'] << "#{title} #{lastname} #{q16b} traumatic event in #{q16c} in #{q16d}. There #{q16e} current effect of the trauma on #{pos_pronoun} daily functioning. #{q16f} The trauma has affected #{pos_pronoun} life and functioning since #{q16g}."
 
@@ -303,13 +304,13 @@ class Logic
 
     params['PARAGRAPH_CURRENT_MEDICATION'] = "#{title} #{fullname} #{q21} currently taking #{q22}. #{cap_pronoun} reported #{pronoun} #{q21a} #{pos_pronoun} medications today. They are prescribed by #{q177}."
 
-    params['PARAGRAPH_PAST_PSYCHIATRIC_HISTORY'] = "#{title} #{lastname} reports #{pronoun} #{q29} been admitted to a psychiatric hospital." 
-   
+    params['PARAGRAPH_PAST_PSYCHIATRIC_HISTORY'] = "#{title} #{lastname} reports #{pronoun} #{q29} been admitted to a psychiatric hospital."
+
     if q29 != "no"
       params['PARAGRAPH_PAST_PSYCHIATRIC_HISTORY'] << "#{cap_pronoun} was last admitted in #{q30}. The admittance was due to #{q31}. #{title} #{lastname} received the following treatment while admitted: #{q31a}. #{cap_pos} response to treatment was #{q31b}."
 
       params['PARAGRAPH_ALCOHOL_AND_OR_DRUG_ABUSE'] = "#{title} #{last} #{qa32} alcohol, illicit drugs, or tobacco."
-    end  
+    end
 
     if qa32 != "no"
       params['PARAGRAPH_ALCOHOL_AND_OR_DRUG_ABUSE'] << "#{title} #{last} reported abusing #{qa33}. #{cap_pronoun} first used in #{qa34} and started using abusively in #{qa34a}. #{cap_pronoun} used the substance #{qa35}. At the peak of #{pos_pronoun} #{qa33} abuse, #{pronoun} used #{qa35a} per day. #{cap_pronoun} #{qa36} abusing the substance. #{cap_pronoun} has been clean for #{qa36a}. During the interview, #{pronoun} #{qa189} to be under the influence of drugs or alcohol"
