@@ -44,7 +44,7 @@ class Template
 
     contents.gsub!(/<w:tr.*?<\/w:tr>/) do |m|
       m.gsub!(/ROWFILLIN_([A-Z0-9_]+)/) do |mm|
-        return mm
+        mm
       end
     end
 
