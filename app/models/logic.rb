@@ -19,6 +19,24 @@ class Logic
     "#{month}/#{day}/#{year}"
   end
 
+  def self.is_truish(str)
+    case str
+
+    when ""          then return false
+
+    when "has"       then return true
+    when "has never" then return false
+
+    when "yes"       then return true
+    when "no"        then return false
+
+    when "is considered" then return true
+    when "is not considered" then return false
+
+    else raise "ACK, is_true doesn't understand '#{str}'"
+    end
+  end
+
   def self.process(params)
     firstname = params['Q1_FIRST']
     lastname = params['Q1_LAST']
@@ -30,7 +48,7 @@ class Logic
     ethnicity = params['Q5']
     sex = params['gender']
 
-    if params['gender'] == "male"
+    if params['gender'] == "Male"
       pronoun = "he"
       cap_pronoun = "He"
       pos_pronoun = "his"
@@ -65,6 +83,7 @@ class Logic
     qa14 = params["QA14"]
     q14 = params["Q14"]
     q14a = params["Q14A"]
+    q14b = params["Q14B"]
     q15 = params["Q15"]
     q16 = params["Q16"]
     q16f = params["Q16_Q16F"]
@@ -99,6 +118,7 @@ class Logic
     qa36 = params["QA36"]
     qa36a = params["QA36A"]
     qa189 = params["QA189"]
+    qa189b = params["QA189B"]
     q23 = params["Q23"]
     q24 = params["Q24"]
     q25 = params["Q25"]
@@ -132,6 +152,7 @@ class Logic
     q51 = params["Q51"]
     qa57 = params["QA57"]
     qa57a = params["QA57A"]
+    qa57b = params["QA57B"]
     qa58 = params["QA58"]
     qa59 = params["QA59"]
     qa60 = params["QA60"]
@@ -281,43 +302,56 @@ class Logic
     qa187 = params["QA187"]
     qa188 = params["QA188"]
 
+
+    params['PARAGRAPH_GENERAL'] = ""
+    params['PARAGRAPH_CONFIDENTIALITY'] = ""
+    params['PARAGRAPH_IDENTIFICATION'] = ""
+    params['PARAGRAPH_HISTORY_OF_PRESENT_ILLNESS'] = ""
+    params['PARAGRAPH_CURRENT_MEDICATION'] = ""
+    params['PARAGRAPH_ALCOHOL_AND_OR_DRUG_ABUSE'] = ""
+    params['PARAGRAPH_PAST_MEDICAL_HISTORY'] = ""
+
     last_employment_place = 'FILL_THIS_IN' # ie, use the Q55 table and pull out the "last" row
 
 
-    params['PARAGRAPH_IDENTIFICATION'] = " #{fullname} is a #{age}-year old #{ethnicity} #{sex}. #{cap_pronoun} was born in #{birthplace} on #{birthdate}."
+    params['PARAGRAPH_IDENTIFICATION'] << " #{fullname} is a #{age}-year old #{ethnicity} #{sex}. #{cap_pronoun} was born in #{birthplace} on #{birthdate}."
 
-    params['PARAGRAPH_GENERAL'] = "#{title} #{lastname} arrived #{q8}, by #{q9} and was #{q8a}. Throughout the interview, #{pronoun} was #{q10}."
+    params['PARAGRAPH_GENERAL'] << "#{title} #{lastname} arrived #{q8}, by #{q9} and was #{q8a}. Throughout the interview, #{pronoun} was #{q10}."
 
-    params['PARAGRAPH_CONFIDENTIALITY'] = "#{cap_pronoun} was advised of the limitations on confidentiality and was informed that a copy of the evaluations would be provided to the Social Security Administration. The source of information was #{title} #{q1_last}, who #{q11} a reliable historian. "
+    params['PARAGRAPH_CONFIDENTIALITY'] << "#{cap_pronoun} was advised of the limitations on confidentiality and was informed that a copy of the evaluations would be provided to the Social Security Administration. The source of information was #{title} #{q1_last}, who #{q11} a reliable historian. "
 
-    if q11!="no"
+    if is_truish(q11)
       params['PARAGRAPH_CONFIDENTIALITY'] << "#{q11a} is the historian for this interview."
     end
-    params['PARAGRAPH_HISTORY_OF_PRESENT_ILLNESS'] = "#{title} #{lastname} was first diagnosed with #{q13} in #{q14} by #{q14a}. Current symptoms of #{q13} include: #{q16}."
 
-    if q15 != "no"
-      params['PARAGRAPH_HISTORY_OF_PRESENT_ILLNESS'] << "Special circumstances at the onset of the conditions were: #{q15}"
+    params['PARAGRAPH_HISTORY_OF_PRESENT_ILLNESS'] << "#{title} #{lastname} was first diagnosed with #{q13} in #{q14} by #{q14a}. Current symptoms of #{q13} include: #{q16}. #{cap_pronoun} also reports additional symptoms of: #{q16a}."
+
+    if is_truish(q15)
+      params['PARAGRAPH_HISTORY_OF_PRESENT_ILLNESS'] << "Special circumstances at the onset of the conditions were #{q15}"
     end
+
     params['PARAGRAPH_HISTORY_OF_PRESENT_ILLNESS'] << "#{title} #{lastname} #{q16b} traumatic event in #{q16c} in #{q16d}. There #{q16e} current effect of the trauma on #{pos_pronoun} daily functioning. #{q16f} The trauma has affected #{pos_pronoun} life and functioning since #{q16g}."
 
     params['PARAGRAPH_HISTORY_OF_PRESENT_ILLNESS'] << "The effects of mental health in #{pos_pronoun} daily life are as described: \"#{q17}\". #{title} #{lastname} stopped working due to #{pos_pronoun} impairments on #{qa18}. #{qa18a} #{cap_pronoun} #{q19} currently in psychotherapy with #{q19a}.Psychotherapy #{q20} helpful to #{title}#{q1_last}. #{q20a} #{cap_pronoun} #{q179}."
 
-    params['PARAGRAPH_CURRENT_MEDICATION'] = "#{title} #{fullname} #{q21} currently taking #{q22}. #{cap_pronoun} reported #{pronoun} #{q21a} #{pos_pronoun} medications today. They are prescribed by #{q177}."
+    params['PARAGRAPH_CURRENT_MEDICATION'] << "#{title} #{fullname} #{q21} currently taking #{q22}. #{cap_pronoun} reported #{pronoun} #{q21a} #{pos_pronoun} medications today. They are prescribed by #{q177}."
 
     params['PARAGRAPH_PAST_PSYCHIATRIC_HISTORY'] = "#{title} #{lastname} reports #{pronoun} #{q29} been admitted to a psychiatric hospital."
 
-    if q29 != "no"
+
+    if is_truish(q29)
       params['PARAGRAPH_PAST_PSYCHIATRIC_HISTORY'] << "#{cap_pronoun} was last admitted in #{q30}. The admittance was due to #{q31}. #{title} #{lastname} received the following treatment while admitted: #{q31a}. #{cap_pos} response to treatment was #{q31b}."
 
-      params['PARAGRAPH_ALCOHOL_AND_OR_DRUG_ABUSE'] = "#{title} #{last} #{qa32} alcohol, illicit drugs, or tobacco."
+      params['PARAGRAPH_ALCOHOL_AND_OR_DRUG_ABUSE'] << "#{title} #{last} #{qa32} alcohol, illicit drugs, or tobacco."
     end
 
-    if qa32 != "no"
-      params['PARAGRAPH_ALCOHOL_AND_OR_DRUG_ABUSE'] << "#{title} #{last} reported abusing #{qa33}. #{cap_pronoun} first used in #{qa34} and started using abusively in #{qa34a}. #{cap_pronoun} used the substance #{qa35}. At the peak of #{pos_pronoun} #{qa33} abuse, #{pronoun} used #{qa35a} per day. #{cap_pronoun} #{qa36} abusing the substance. #{cap_pronoun} has been clean for #{qa36a}. During the interview, #{pronoun} #{qa189} to be under the influence of drugs or alcohol"
+    if is_truish(qa32)
+      params['PARAGRAPH_ALCOHOL_AND_OR_DRUG_ABUSE'] << "#{title} #{last} reported abusing #{qa33}. #{cap_pronoun} first used in #{qa34} and started using abusively in #{qa34a}. #{cap_pronoun} used the substance #{qa35}. At the peak of #{pos_pronoun} #{qa33} abuse, #{pronoun} used #{qa35a} per day. #{cap_pronoun} #{qa36} abusing the substance. #{cap_pronoun} has been clean for #{qa36a}. During the interview, #{pronoun} #{qa189} to be under the influence of drugs or alcohol."
     end
 
-    if q23 != "no"
-      params['PARAGRAPH_PAST_MEDICAL_HISTORY'] = "#{title} #{lastname} #{q23} a major head injury, which required hospitalization. #{cap_pronoun} #{q24} a lack of consciousness, feel dazed, or see stars. The injury was sustained in #{q25}; #{pronoun} #{q26} at a hospital. The name of the hospital was #{q26a}."
+
+    if is_truish(q23)
+      params['PARAGRAPH_PAST_MEDICAL_HISTORY'] << "#{title} #{lastname} #{q23} a major head injury, which required hospitalization. #{cap_pronoun} #{q24} a lack of consciousness, feel dazed, or see stars. The injury was sustained in #{q25}; #{pronoun} #{q26} at a hospital. The name of the hospital was #{q26a}."
     end
 
     params['PARAGRAPH_PAST_MEDICAL_HISTORY'] << "Surgeries include: #{q27}."
@@ -335,7 +369,7 @@ class Logic
     params['PARAGRAPH_LEGAL_CRIMINAL_HISTORY'] = "#{fullname} #{qa57}."
 
     if qa57 != "yes"
-      params['PARAGRAPH_LEGAL_CRIMINAL_HISTORY'] << "for #{qa57a}. The arrest was on #{qa58}, and the outcome was #{qa59}. #{cap_pronoun} #{qa60} incarcerated. The incarceration lasted #{qa60a}."
+      params['PARAGRAPH_LEGAL_CRIMINAL_HISTORY'] << "for #{qa57a}. The most recent arrest was on #{qa58}, and the outcome was #{qa59}. #{cap_pronoun} #{qa57b} been arrested multiple times. #{cap_pronoun} #{qa60} incarcerated. The incarceration lasted #{qa60a}."
     end
 
     params['PARAGRAPH_MILITARY_HISTORY'] = "#{title} #{lastname} #{qa61} in the military. The dates of services were #{qa62}. The highest rank #{pronoun} held was #{qa63}. #{cap_pronoun} #{qa63a} receive medals. During #{pos_pronoun} service  disciplinary action (Article 15, Captian's Mast) #{qa63b} taken. #{title} #{lastname} #{qa63c} #{pronoun} was honorably discharged. #{cap_pronoun} #{qa64} deployed."
