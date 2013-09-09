@@ -56,8 +56,15 @@ class TemplateController < ApplicationController
     @json_data = params[:json_data]
   end
 
+  def generate2
+    p = JSON.parse(params[:json_data])
+    p = Logic.process(p)
+    @json_data = JSON.pretty_generate(p)
+  end
+
   def generate_docx
-    output_file = Template.generate("real.docx", JSON.parse(params[:json_data]))
+    pms = JSON.parse(params[:json_data])
+    output_file = Template.generate("real.docx", pms)
     send_file output_file, type: "application/msword"
   end
 

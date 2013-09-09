@@ -30,7 +30,6 @@ class Template
   end
 
   def self.generate(template_file, params)
-    params = Logic.process(params)
     unless template_file.match(/^\//)
       template_file = "#{Rails.root}/templates/#{template_file}"
     end
