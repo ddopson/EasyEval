@@ -167,7 +167,7 @@ subsection#Q16G(title="Cognitive Impairment NOS")
     Value Moderate
     Value Moderately Severe
     Value Severe
-  text Please write in symptoms.
+  text Please write in symptoms:
   TextBox(name="Q16F")
 
 
@@ -507,13 +507,13 @@ subsection#Q16P(title="Post-traumatic Stress Disorder")
     RadioSet(name="Q16B")
       Value Yes
       Value No
-  question(text="16C. When did the trauma occur? Please enter in this format: Month Year.")
+  question(text="16C. When did the trauma occur? (Month Year)")
     TextBox(name="Q16C")
   question(text="16D. Where did the trauma occur?")
     TextBox(name="Q16D")
   question(text="16E. Does the trauma currently impact the claimant’s functioning particularly in work and relationship?")
     RadioSet(name="Q16E")
-      Value No
+      Value(value="is no") No
       ValueOther Yes
   question(text="16G. How long in the past did the trauma hamper the claimant’s functioning?")
     TextBox(name="Q16G")
