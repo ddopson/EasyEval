@@ -17,7 +17,7 @@ class EasyEval.CheckboxSet extends EasyEval.Widget
       if $(n).is('ValueOther')
         content += """ !ijc
           label(class=@type)
-            INPUT.other(type=@type, name=@guid, prepend=$(n).attr('prepend'), data-selector=sel, value=realValue)= "#{value}"
+            INPUT.other(type=@type, name=@guid, prepend=$(n).hasClass('prepend'), data-selector=sel, value=realValue)= "#{value}"
           """
       else
         content += """ !ijc
@@ -33,21 +33,22 @@ class EasyEval.CheckboxSet extends EasyEval.Widget
   getValue: ->
     values = []
     for checkbox in @node.find('INPUT')
-      if checkbox.checked
-        $c = $(checkbox)
-        if $c.hasClass('checkbox_other')
-          pre = $c.attr('prepend')
-          if pre == 'prepend'
-            # if prepend is set to 'true' then use the text content as the prepend string
-            pre = checkbox.parentElement.textContent
-          if pre
-            pre += " "
-          pre ||= ''
-          console.log "PREPEND='#{pre}'"
-          txt = $c.parent().find('.other_textbox').val()
-          values.push("#{pre}#{txt}")
-        else
-          values.push $(checkbox).attr('value')
+      continue unless checkbox.checked
+      $c = $(checkbox)
+      if $c.hasClass('other')
+        pre = $c.attr('prepend')
+        if pre == 'prepend'
+          # if prepend is set to 'true' then use the text content as the prepend string
+          pre = checkbox.parentElement.textContent
+        if pre
+          pre += " "
+        pre ||= ''
+        console.log "PREPEND='#{pre}'"
+        txt = $c.parent().find('.other_textbox').val()
+        console.log "TXT=#{txt}", $c
+        values.push("#{pre}#{txt}")
+      else
+        values.push $(checkbox).attr('value')
 
     switch @rollup
       when 'join' then return @english_join(values)
