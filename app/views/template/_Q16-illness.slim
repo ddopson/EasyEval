@@ -95,6 +95,7 @@ subsection#Q16E(title="Autism Disorder")
 
 
 subsection#Q16F(title="Bipolar Disorder")
+  text HELLO WORLD!!!
   text Manic Episode:
   CheckboxSet
     Value A distinct period of abnormally and persistently elevated, expansive, or irritable mood, lasting at least 1 week.
@@ -503,20 +504,22 @@ subsection#Q16P(title="Post-traumatic Stress Disorder")
     Value Exaggerated startle response
     Value The symptoms are causing significant impairment to person’s functioning
   text Regarding the traumatic event:
-  question(text="16B. Did the traumatic event happen to the claimant?")
-    RadioSet(name="Q16B")
-      Value Yes
-      Value No
-  question(text="16C. When did the trauma occur? (Month Year)")
-    TextBox(name="Q16C")
-  question(text="16D. Where did the trauma occur?")
-    TextBox(name="Q16D")
-  question(text="16E. Does the trauma currently impact the claimant’s functioning particularly in work and relationship?")
-    RadioSet(name="Q16E")
-      Value(value="is no") No
-      ValueOther Yes
-  question(text="16G. How long in the past did the trauma hamper the claimant’s functioning?")
-    TextBox(name="Q16G")
+  question(name="Q16B" text="Did the traumatic event happen to the claimant?")
+    RadioSet
+      Value(value="has") Yes
+      Value(value="has not") No
+  question(name="Q16C" text="When did the trauma occur? (Month Year)")
+    TextBox
+  question(name="Q16D" text="Where did the trauma occur?")
+    TextBox
+  question(name="Q16E" text="Does the trauma currently impact the claimant’s functioning particularly in work and relationship?")
+    RadioSet
+      Value(enables-selector=".a16e_yes" value="are") Yes
+      Value(value="are no") No
+  question.a16e_yes(name="QA16E" text="Please describe:")
+    TextBox
+  question(name="Q16G" text="How long in the past did the trauma hamper the claimant’s functioning? (Month Year)")
+    TextBox
 
 subsection#Q16Q(title="Schizoaffective Disorder")
   text An uninterrupted period of illness during which, at some time, there is either:
@@ -614,4 +617,3 @@ subsection#Q16Q(title="Schizoaffective Disorder")
   CheckboxSet
     Value Absence of prominent delusions, hallucinations, disorganized speech, and grossly disorganized or catatonic behavior.
     Value There is continuing evidence of the disturbance, as indicated by the presence of negative symptoms or two or more symptoms listed in Criterion A for Schizophrenia, present in an attenuated form (e.g., odd beliefs, unusual perceptual experiences).
-
