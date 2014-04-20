@@ -54,6 +54,7 @@ class TemplateController < ApplicationController
 
   def generate
     @json_data = params[:json_data]
+    write_file_and_symlink "#{Rails.root}/data/data.json", @json_data
   end
 
   def generate2
