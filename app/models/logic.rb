@@ -403,13 +403,58 @@ class Logic
 
     params = {}
 
-    params['PARAGRAPH_GENERAL'] = ""
-    params['PARAGRAPH_CONFIDENTIALITY'] = ""
-    params['PARAGRAPH_IDENTIFICATION'] = ""
-    params['PARAGRAPH_HISTORY_OF_PRESENT_ILLNESS'] = ""
-    params['PARAGRAPH_CURRENT_MEDICATION'] = ""
-    params['PARAGRAPH_ALCOHOL_AND_OR_DRUG_ABUSE'] = ""
-    params['PARAGRAPH_PAST_MEDICAL_HISTORY'] = ""
+    params["Q1_FIRST"] = q1_first
+    params["Q1_LAST"] = q1_last
+    params["Q1_BIRTHDATE"] = q1_birthdate
+    params["Q1_CASENUM"] = q1_casenum
+    params["Q1_RQID"] = q1_rqid
+    params["Q1_ADJUDICATOR"] = q1_adjudicator
+    params["Q1_EXAMDATE"] = q1_examdate
+    params["Q1_EXAMLOC"] = q1_examloc
+    params['Q3'] = q3
+
+    params["PARAGRAPH_GENERAL"]                            = ""
+    params["PARAGRAPH_CHIEF_COMPLAINT"]                    = ""
+    params["PARAGRAPH_REVIEW_OF_RECORDS"]                  = ""
+    params["PARAGRAPH_CONFIDENTIALITY"]                    = ""
+    params["PARAGRAPH_IDENTIFICATION"]                     = ""
+    params["PARAGRAPH_HISTORY_OF_PRESENT_ILLNESS"]         = ""
+    params["PARAGRAPH_CURRENT_MEDICATIONS"]                = ""
+    params["PARAGRAPH_ALCOHOL_AND_OR_DRUG_ABUSE"]          = ""
+    params["PARAGRAPH_PAST_MEDICAL_HISTORY"]               = ""
+    params["PARAGRAPH_PAST_PSYCHIATRIC_HISTORY"]           = ""
+    params["PARAGRAPH_FAMILY_HISTORY"]                     = ""
+    params["PARAGRAPH_EMPLOYMENT_HISTORY"]                 = ""
+    params["PARAGRAPH_EDUCATIONAL_HISTORY"]                = ""
+    params["PARAGRAPH_LEGAL_CRIMINAL_HISTORY"]             = ""
+    params["PARAGRAPH_MILITARY_HISTORY"]                   = ""
+    params["PARAGRAPH_GENERAL_APPEARANCE"]                 = ""
+    params["PARAGRAPH_ATTITUDE_AND_BEHAVIOR"]              = ""
+    params["PARAGRAPH_ORIENTATION"]                        = ""
+    params["PARAGRAPH_STREAM_OF_MENTAL_ACTIVITY_SPEECH"]   = ""
+    params["PARAGRAPH_MOOD_AFFECT"]                        = ""
+    params["PARAGRAPH_CONTENT_OF_THOUGHT"]                 = ""
+    params["PARAGRAPH_JUDGMENT_INSIGHT"]                   = ""
+    params["PARAGRAPH_PSYCHOLOGICAL_ASSESSMENTS"]          = ""
+    params["PARAGRAPH_TESTING_BEHAVIORS"]                  = ""
+    params["PARAGRAPH_MEMORY"]                             = ""
+    params["PARAGRAPH_INTELLECTUAL_FUNCTIONING"]           = ""
+    params["PARAGRAPH_FUND_OF_KNOWLEDGE_INFORMATION"]      = ""
+    params["PARAGRAPH_CALCULATIONS"]                       = ""
+    params["PARAGRAPH_CONCENTRATION"]                      = ""
+    params["PARAGRAPH_TRAILS"]                             = ""
+    params["PARAGRAPH_ACTIVITIES_OF_DAILY_LIVING"]         = ""
+    params["PARAGRAPH_SOCIAL_FUNCTIONING"]                 = ""
+    params["PARAGRAPH_CONCENTRATION_PERSISTANCE_AND_PACE"] = ""
+    params["PARAGRAPH_DECOMPENSATION_AND_DETERIORATION"]   = ""
+    params["PARAGRAPH_DSM_IV_DIAGNOSIS_AXIS_I"]            = ""
+    params["PARAGRAPH_DSM_IV_DIAGNOSIS_AXIS_II"]           = ""
+    params["PARAGRAPH_DSM_IV_DIAGNOSIS_AXIS_III"]          = ""
+    params["PARAGRAPH_DSM_IV_DIAGNOSIS_AXIS_IV"]           = ""
+    params["PARAGRAPH_DSM_IV_DIAGNOSIS_AXIS_V"]            = ""
+    params["PARAGRAPH_DISCUSSION_PROGNOSIS"]               = ""
+    params["PARAGRAPH_CAPABILITY_OF_MANAGING_FUNDS"]       = ""
+    params["PARAGRAPH_MEDICAL_SOURCE_STATEMENT"]           = ""
 
     last_employment_place = 'FILL_THIS_IN' # ie, use the Q55 table and pull out the "last" row
 
@@ -460,13 +505,13 @@ class Logic
       params['PARAGRAPH_HISTORY_OF_PRESENT_ILLNESS'] << "#{q20a}. "
     end
 
-    params['PARAGRAPH_CURRENT_MEDICATION'] << "#{title} #{fullname} #{q21} currently taking medication. "
+    params['PARAGRAPH_CURRENT_MEDICATIONS'] << "#{title} #{fullname} #{q21} currently taking medication. "
 
     if is_truish(q21)
-      params['PARAGRAPH_CURRENT_MEDICATION'] = "#{cap_pronoun} is prescribed #{q22}. #{cap_pronoun} reported #{pronoun} #{q21a} #{pos_pronoun} medications today. They are prescribed by #{q177.downcase}."
+      params['PARAGRAPH_CURRENT_MEDICATIONS'] << "#{cap_pronoun} is prescribed #{q22}. #{cap_pronoun} reported #{pronoun} #{q21a} #{pos_pronoun} medications today. They are prescribed by #{q177.downcase}."
     end
 
-    params['PARAGRAPH_PAST_PSYCHIATRIC_HISTORY'] = "#{title} #{lastname} reported #{pronoun} #{q29} been admitted to a psychiatric hospital. "
+    params['PARAGRAPH_PAST_PSYCHIATRIC_HISTORY'] << "#{title} #{lastname} reported #{pronoun} #{q29} been admitted to a psychiatric hospital. "
 
     if is_truish(q29)
       params['PARAGRAPH_PAST_PSYCHIATRIC_HISTORY'] << "#{cap_pronoun} was last admitted in #{q30}. The admittance was due to #{q31}. #{title} #{lastname} received the following treatment while admitted: #{q31a}. #{cap_pos} response to treatment was #{q31b}."
@@ -495,15 +540,15 @@ class Logic
     params['PARAGRAPH_PAST_MEDICAL_HISTORY'] << "Medical conditions per #{pos_pronoun} report include: #{q28.downcase}."
 
     if is_truish(qa37)  
-      params['PARAGRAPH_FAMILY_HISTORY'] = "#{title} #{lastname} is #{qa37.downcase} and #{pronoun} described the relationship as #{qa38.downcase}. "
+      params['PARAGRAPH_FAMILY_HISTORY'] << "#{title} #{lastname} is #{qa37.downcase} and #{pronoun} described the relationship as #{qa38.downcase}. "
     else
-      params['PARAGRAPH_FAMILY_HISTORY'] = "#{title} #{lastname} is #{qa37.downcase}. "
+      params['PARAGRAPH_FAMILY_HISTORY'] << "#{title} #{lastname} is #{qa37.downcase}. "
     end
 
     if is_truish(qa39)
-      params['PARAGRAPH_FAMILY_HISTORY'] = "#{cap_pronoun} #{qa39} children: ages #{qa40}. "
+      params['PARAGRAPH_FAMILY_HISTORY'] << "#{cap_pronoun} #{qa39} children: ages #{qa40}. "
     else
-      params['PARAGRAPH_FAMILY_HISTORY'] = "#{cap_pronoun} #{qa39} children. "
+      params['PARAGRAPH_FAMILY_HISTORY'] << "#{cap_pronoun} #{qa39} children. "
     end
 
     if is_truish(qa41a)
@@ -527,19 +572,19 @@ class Logic
     end
 
     if is_truish(qa52)
-      params['PARAGRAPH_EMPLOYMENT_HISTORY'] = "#{title} #{lastname} #{qa52} working. "
+      params['PARAGRAPH_EMPLOYMENT_HISTORY'] << "#{title} #{lastname} #{qa52} working. "
         if is_truish(qa53)
           params['PARAGRAPH_EMPLOYMENT_HISTORY'] << "#{cap_pronoun} #{qa53} actively seeking employment at this time. #{cap_pos} attitude regarding seeking employment is #{qa184.downcase}. The reason #{pronoun} left #{pos_pronoun} last place of employment was #{last_employment_place}. "
         end
       params['PARAGRAPH_EMPLOYMENT_HISTORY'] << "#{cap_pronoun} reported having a work history that included the following jobs: #{qa55}. "
     else
-      params['PARAGRAPH_EMPLOYMENT_HISTORY'] = "#{title} #{lastname} has no employment history. "
+      params['PARAGRAPH_EMPLOYMENT_HISTORY'] << "#{title} #{lastname} has no employment history. "
     end
     if is_truish(qa186a)
       params['PARAGRAPH_EMPLOYMENT_HISTORY'] << "#{cap_pronoun} reported #{pronoun} #{qa186a} had periods of unemployment due to #{qa56}. "
     end
 
-    params['PARAGRAPH_EDUCATIONAL_HISTORY'] = "#{title} #{lastname}'s last level of education completed was #{q48}. #{cap_pronoun} reported #{pos_pronoun} academic performance was #{q49.downcase}. Additional relevant information about #{pos_pronoun} academic performance includes: #{q49a}. #{cap_pronoun} #{q50} enrolled in special education courses"
+    params['PARAGRAPH_EDUCATIONAL_HISTORY'] << "#{title} #{lastname}'s last level of education completed was #{q48}. #{cap_pronoun} reported #{pos_pronoun} academic performance was #{q49.downcase}. Additional relevant information about #{pos_pronoun} academic performance includes: #{q49a}. #{cap_pronoun} #{q50} enrolled in special education courses"
 
     if is_truish(q50)
       params['PARAGRAPH_EDUCATIONAL_HISTORY'] << " in the following subjects: #{q51}. "
@@ -547,34 +592,34 @@ class Logic
       params['PARAGRAPH_EDUCATIONAL_HISTORY'] << "."
     end
 
-    params['PARAGRAPH_LEGAL_CRIMINAL_HISTORY'] = "#{title} #{lastname} #{qa57}"
+    params['PARAGRAPH_LEGAL_CRIMINAL_HISTORY'] << "#{title} #{lastname} #{qa57}"
     if is_truish(qa57)
       params['PARAGRAPH_LEGAL_CRIMINAL_HISTORY'] << " for #{qa57a}. The most recent arrest was on #{qa58}, and the outcome was #{qa59}. #{cap_pronoun} #{qa57b} been arrested multiple times. "
     end
     if is_truish(qa60)
-      params['PARAGRAPH_LEGAL_CRIMINAL_HISTORY'] << "#{cap_pronoun} #{qa60} incarcerated on #{qa60b}. The incarceration lasted #{qa60a}. 
+      params['PARAGRAPH_LEGAL_CRIMINAL_HISTORY'] << "#{cap_pronoun} #{qa60} incarcerated on #{qa60b}. The incarceration lasted #{qa60a}. "
     else
       params['PARAGRAPH_LEGAL_CRIMINAL_HISTORY'] << "#{cap_pronoun} has never been incarcerated. "
     end
 
-    params['PARAGRAPH_MILITARY_HISTORY'] = "#{title} #{lastname} #{qa61} in the military. "
+    params['PARAGRAPH_MILITARY_HISTORY'] << "#{title} #{lastname} #{qa61} in the military. "
     if is_truish(qa61)
-      params['PARAGRAPH_MILITARY_HISTORY'] = "The dates of services were #{qa62} to #{qa62a}. The highest rank #{pronoun} held was #{qa63}. #{cap_pronoun} #{qa63a} receive medals. During #{pos_pronoun} service disciplinary action (e.g. Article 15, Captian's Mast) #{qa63b}. #{title} #{lastname} #{qa63c}. #{cap_pronoun} #{qa64} deployed. "
+      params['PARAGRAPH_MILITARY_HISTORY'] << "The dates of services were #{qa62} to #{qa62a}. The highest rank #{pronoun} held was #{qa63}. #{cap_pronoun} #{qa63a} receive medals. During #{pos_pronoun} service disciplinary action (e.g. Article 15, Captian's Mast) #{qa63b}. #{title} #{lastname} #{qa63c}. #{cap_pronoun} #{qa64} deployed. "
     end
 
-    params['PARAGRAPH_GENERAL_APPEARANCE'] = "#{title} #{lastname} appeared #{q65} #{pos_pronoun} stated age. #{cap_pronoun} exhibited #{q66.downcase} hygiene; #{pronoun} was #{q66a.downcase}. #{cap_pronoun} was #{q70} dressed in #{q71}; which #{q72.downcase} for the weather. In relation to height, #{pos_pronoun} build was #{q67.downcase}. During the interview #{pos_pronoun} eye contact was #{q68.downcase} and #{pos_pronoun} facial expressions were #{q69.downcase}. "
+    params['PARAGRAPH_GENERAL_APPEARANCE'] << "#{title} #{lastname} appeared #{q65} #{pos_pronoun} stated age. #{cap_pronoun} exhibited #{q66.downcase} hygiene; #{pronoun} was #{q66a.downcase}. #{cap_pronoun} was #{q70} dressed in #{q71}; which #{q72.downcase} for the weather. In relation to height, #{pos_pronoun} build was #{q67.downcase}. During the interview #{pos_pronoun} eye contact was #{q68.downcase} and #{pos_pronoun} facial expressions were #{q69.downcase}. "
 
-    params['PARAGRAPH_ATTITUDE_&_BEHAVIOR'] = "#{fullname} was #{q10.downcase} throughout the interview. #{cap_pos} behavior was #{q74.downcase} and #{pos_pronoun} attitude was #{q76.downcase}. " 
+    params['PARAGRAPH_ATTITUDE_AND_BEHAVIOR'] << "#{fullname} was #{q10.downcase} throughout the interview. #{cap_pos} behavior was #{q74.downcase} and #{pos_pronoun} attitude was #{q76.downcase}. " 
 
-    params['PARAGRAPH_ATTITUDE_&_BEHAVIOR'] << "There #{q77} evidence of malingering or factitious behavior. "
+    params['PARAGRAPH_ATTITUDE_AND_BEHAVIOR'] << "There #{q77} evidence of malingering or factitious behavior. "
     if is_truish(q77)
-      params['PARAGRAPH_ATTITUDE_&_BEHAVIOR'] << "Such behavior was evidenced by: #{q77a}. "
+      params['PARAGRAPH_ATTITUDE_AND_BEHAVIOR'] << "Such behavior was evidenced by: #{q77a}. "
     end
 
     if is_truish(q93)
-      params['PARAGRAPH_ORIENTATION'] = "#{fullname} was orientated to person, place, and time."
+      params['PARAGRAPH_ORIENTATION'] << "#{fullname} was orientated to person, place, and time."
     else
-      params['PARAGRAPH_ORIENTATION'] = "#{fullname} was not fully orientated to person, place, and time. "
+      params['PARAGRAPH_ORIENTATION'] << "#{fullname} was not fully orientated to person, place, and time. "
         if is_truish(q94)
           params['PARAGRAPH_ORIENTATION'] << ""
         else
@@ -592,7 +637,7 @@ class Logic
         end
     end
 
-    params['PARAGRAPH_STREAM_OF_MENTAL_ACTIVITY_SPEECH'] = "#{fullname}'s speech #{q78} logical and coherent"
+    params['PARAGRAPH_STREAM_OF_MENTAL_ACTIVITY_SPEECH'] << "#{fullname}'s speech #{q78} logical and coherent"
     if is_truish(q78)
       params['PARAGRAPH_STREAM_OF_MENTAL_ACTIVITY_SPEECH'] << ". " 
     else
@@ -601,7 +646,7 @@ class Logic
 
     params['PARAGRAPH_STREAM_OF_MENTAL_ACTIVITY_SPEECH'] << "Articulation was #{q79.downcase}. The velocity of #{pos_pronoun} speech was #{q80.downcase}; volume was #{q81.downcase}. "
 
-    params['PARAGRAPH_MOOD_AFFECT'] = "#{fullname} exhibited #{q190} level of consciousness. #{cap_pronoun} stated that #{pos_pronoun} current mood was #{q88.downcase}.  #{title} #{lastname}’s affect #{q89} consistent with #{pos_pronoun} stated mood. "
+    params['PARAGRAPH_MOOD_AFFECT'] << "#{fullname} exhibited #{q190} level of consciousness. #{cap_pronoun} stated that #{pos_pronoun} current mood was #{q88.downcase}.  #{title} #{lastname}’s affect #{q89} consistent with #{pos_pronoun} stated mood. "
     if is_truish(q89)
       params['PARAGRAPH_MOOD_AFFECT'] << ""
     else
@@ -610,7 +655,7 @@ class Logic
 
     params['PARAGRAPH_MOOD_AFFECT'] << "Regarding sleeping, #{pronoun} stated #{pronoun} has #{q91.downcase}. #{cap_pronoun} reported #{q92.downcase}. "
 
-    params['PARAGRAPH_CONTENT_OF_THOUGHT'] = "#{title} #{lastname} #{q82} having auditory hallucinations" 
+    params['PARAGRAPH_CONTENT_OF_THOUGHT'] << "#{title} #{lastname} #{q82} having auditory hallucinations" 
     if is_truish(q82)
       params['PARAGRAPH_CONTENT_OF_THOUGHT'] << ", described as: #{q83}. "
     else
@@ -641,7 +686,7 @@ class Logic
       params['PARAGRAPH_CONTENT_OF_THOUGHT'] << ". "
     end  
 
-    params['PARAGRAPH_JUDGMENT_INSIGHT'] = "#{title} #{lastname}’s insight into #{pos_pronoun} condition was #{q147.downcase}. #{cap_pronoun} showed evidence of #{q152.downcase} judgment when responding to the questions regarding the movie theater fire and lost purse"
+    params['PARAGRAPH_JUDGMENT_INSIGHT'] << "#{title} #{lastname}’s insight into #{pos_pronoun} condition was #{q147.downcase}. #{cap_pronoun} showed evidence of #{q152.downcase} judgment when responding to the questions regarding the movie theater fire and lost purse"
    if is_truish(q151)
       params['PARAGRAPH_JUDGMENT_INSIGHT'] << ". #{cap_pronoun} gave this incorrect response regarding a lost purse: #{q151a}"
     else
@@ -654,13 +699,15 @@ class Logic
     end  
 
 
-    params['PARAGRAPH_PSYCHOLOGICAL_ASSESSMENTS'] = "#{cap_pronoun} was administered a #{q98}."
+    params['PARAGRAPH_PSYCHOLOGICAL_ASSESSMENTS'] << "#{cap_pronoun} was administered a #{q98}."
     params['PARAGRAPH_PSYCHOLOGICAL_ASSESSMENTS'] << "Additional tests include: #{q303}, and #{q305}."
 
-    params['PARAGRAPH_TESTING_BEHAVIORS'] = "The claimant's testing behavior was as described: #{q99}."
+    params['PARAGRAPH_TESTING_BEHAVIORS'] << "The claimant's testing behavior was as described: #{q99}."
 
 
-    params['PARAGRAPH_MEMORY'] = "Remote memory was #{q121} as evidenced by #{pos_pronoun} ability to recount biographical history and other past events. Regarding recent memory, #{pronoun} can remember #{q122}/3 objects after a five-minute delay. Immediate memory for digits forward was (insert 123 column 2); digits backward was (insert 123 column 4). "
+    params['PARAGRAPH_MEMORY'] << "Remote memory was #{q121} as evidenced by #{pos_pronoun} ability to recount biographical history and other past events. "
+    params['PARAGRAPH_MEMORY'] << "Regarding recent memory, #{pronoun} can remember #{q122}/3 objects after a five-minute delay. "
+    params['PARAGRAPH_MEMORY'] << "Immediate memory for digits forward was (insert 123 column 2); digits backward was (insert 123 column 4). "
 
 
     params['PARAGRAPH_MEMORY'] << "If using Psychological Testing: "
@@ -669,23 +716,21 @@ class Logic
     params['PARAGRAPH_MEMORY'] << "COMMENTS: #{q114} "
 
 
-    params['PARAGRAPH_INTELLECTUAL_FUNCTIONING'] = "#{title} #{lastname}’s intellectual functioning appeared to be in the #{q110} range as evidenced by vocabulary and ability to express thoughts. "
-
-
+    params['PARAGRAPH_INTELLECTUAL_FUNCTIONING'] << "#{title} #{lastname}’s intellectual functioning appeared to be in the #{q110} range as evidenced by vocabulary and ability to express thoughts. "
     params['PARAGRAPH_INTELLECTUAL_FUNCTIONING'] << "If using Psychological Testing: "
     params['PARAGRAPH_INTELLECTUAL_FUNCTIONING'] << "INDEX SCORES: #{q100} "
     params['PARAGRAPH_INTELLECTUAL_FUNCTIONING'] << "SUBTEST SCORES: #{q101} "
     params['PARAGRAPH_INTELLECTUAL_FUNCTIONING'] << "COMMENTS: #{q102} "
 
 
-    params['PARAGRAPH_FUND_OF_KNOWLEDGE_INFORMATION'] = "#{title} #{lastname}’s fund of knowledge #{q127} consistent with #{pos_pronoun} education level and background. #{cap_pronoun} #{q128} of current events. #{cap_pronoun} answered #{q129}/6 questions correctly. "
+    params['PARAGRAPH_FUND_OF_KNOWLEDGE_INFORMATION'] << "#{title} #{lastname}’s fund of knowledge #{q127} consistent with #{pos_pronoun} education level and background. #{cap_pronoun} #{q128} of current events. #{cap_pronoun} answered #{q129}/6 questions correctly. "
 
 
     params['PARAGRAPH_FUND_OF_KNOWLEDGE_INFORMATION'] << "If using Psychological Testing: "
     params['PARAGRAPH_FUND_OF_KNOWLEDGE_INFORMATION'] << "#{fullname}’s fund of knowledge is #{q125.downcase} when compared to #{pos_pronoun} peers, as seen on the intelligence assessment (scaled score is #{q126}). "
 
 
-    params['PARAGRAPH_CALCULATIONS'] = "#{title} #{lastname} correctly answered #{q133}/5 basic math problems. #{cap_pronoun} was #{q133a}. "
+    params['PARAGRAPH_CALCULATIONS'] << "#{title} #{lastname} correctly answered #{q133}/5 basic math problems. #{cap_pronoun} was #{q133a}. "
 
     params['PARAGRAPH_CALCULATIONS'] << "#{title} #{lastname} was able to correctly answer #{q133b}/2 word problems. "
 
@@ -695,7 +740,7 @@ class Logic
     params['PARAGRAPH_CALCULATIONS'] << "This is based on #{pos_pronoun} ability to perform basic mathematical calculations as evidenced in the intelligence assessment. #{cap_pronoun} performance was #{q131.downcase} (scaled score is #{q132}). "
 
 
-    params['PARAGRAPH_CONCENTRATION'] = "#{title} #{lastname} #{q136}. #{cap_pronoun} was #{q137} to spell world forward and #{q138} to spell world backward. "
+    params['PARAGRAPH_CONCENTRATION'] << "#{title} #{lastname} #{q136}. #{cap_pronoun} was #{q137} to spell world forward and #{q138} to spell world backward. "
 
 
     params['PARAGRAPH_CONCENTRATION'] << "If using Psychological Testing: "
@@ -703,10 +748,14 @@ class Logic
 
 
 
-    params['PARAGRAPH_TRAILS'] = "As part of the evaluation, #{title} #{lastname} was administered Trails Making A and B. Trails Making A and B are tests of visual conceptual and visuomotor tracking; it involves motor speed and attention functions. Rote memory and motor speed is demonstrated on Trail A. Cognitive flexibility, planning and the ability to maintain focused attention is demonstrated on Trail B. "
+    params['PARAGRAPH_TRAILS'] << "As part of the evaluation, #{title} #{lastname} was administered Trails Making A and B. "
+    params['PARAGRAPH_TRAILS'] << "Trails Making A and B are tests of visual conceptual and visuomotor tracking; it involves motor speed and attention functions. "
+    params['PARAGRAPH_TRAILS'] << "Rote memory and motor speed is demonstrated on Trail A. Cognitive flexibility, planning and the ability to maintain focused attention is demonstrated on Trail B. "
 
 
-    params['PARAGRAPH_ACTIVITIES_OF_DAILY_LIVING'] = "#{title} #{lastname}’s typical day is: #{q153}. #{cap_pronoun} reported being able to complete tasks of #{qa154.downcase} on #{pos_pronoun} own. #{cap_pronoun} #{q156}. #{cap_pronoun} is #{qa156a} to handle #{pos_pronoun} personal finances. "
+    params['PARAGRAPH_ACTIVITIES_OF_DAILY_LIVING'] << "#{title} #{lastname}’s typical day is: #{q153}. "
+    params['PARAGRAPH_ACTIVITIES_OF_DAILY_LIVING'] << "#{cap_pronoun} reported being able to complete tasks of #{qa154.downcase} on #{pos_pronoun} own. "
+    params['PARAGRAPH_ACTIVITIES_OF_DAILY_LIVING'] << "#{cap_pronoun} #{q156}. #{cap_pronoun} is #{qa156a} to handle #{pos_pronoun} personal finances. "
 
     if is_truish(qa156a)
       params['PARAGRAPH_ACTIVITIES_OF_DAILY_LIVING'] << ""
@@ -718,7 +767,7 @@ class Logic
       params['PARAGRAPH_ACTIVITIES_OF_DAILY_LIVING'] << "#{cap_pronoun} reported requiring help with #{qa155.downcase}. #{qa155a.capitalize} helps with these tasks. "
     end
 
-    params['PARAGRAPH_SOCIAL_FUNCTIONING'] = "#{title} #{lastname} reported #{qa157} social friends. "
+    params['PARAGRAPH_SOCIAL_FUNCTIONING'] << "#{title} #{lastname} reported #{qa157} social friends. "
     if is_truish(qa157)
       params['PARAGRAPH_SOCIAL_FUNCTIONING'] << ""
     else
@@ -737,9 +786,9 @@ class Logic
       params['PARAGRAPH_SOCIAL_FUNCTIONING'] << ". "
     end
 
-    params['PARAGRAPH_CONCENTRATION_PERSISTANCE_AND_PACE'] = "#{title} #{lastname} is able to engage in and sustain the following activities for the stated length of time. "
+    params['PARAGRAPH_CONCENTRATION_PERSISTANCE_AND_PACE'] << "#{title} #{lastname} is able to engage in and sustain the following activities for the stated length of time. "
  
-    params['PARAGRAPH_DECOMPENSATION_AND_DETERIORATION'] = "There #{q167} evidence of deterioration and decompensation in the workplace"
+    params['PARAGRAPH_DECOMPENSATION_AND_DETERIORATION'] << "There #{q167} evidence of deterioration and decompensation in the workplace"
     if is_truish(q167)
       params['PARAGRAPH_DECOMPENSATION_AND_DETERIORATION'] << ", evidenced by #{q168.downcase}. "
     else
@@ -749,19 +798,19 @@ class Logic
     params['PARAGRAPH_DECOMPENSATION_AND_DETERIORATION'] << "#{cap_pos} ability to engage in former work activities #{q169} impacted because of the reported mental health issues and physical limitations. #{cap_pronoun} reported difficulties with #{q170.downcase}. "
 
 
-    params['PARAGRAPH_DSM_IV_DIAGNOSIS_AXIS_I'] = "Axis I: #{q162} "
+    params['PARAGRAPH_DSM_IV_DIAGNOSIS_AXIS_I'] << "Axis I: #{q162} "
 
-    params['PARAGRAPH_DSM_IV_DIAGNOSIS_AXIS_II'] = "Axis II: #{q163} "
+    params['PARAGRAPH_DSM_IV_DIAGNOSIS_AXIS_II'] << "Axis II: #{q163} "
 
-    params['PARAGRAPH_DSM_IV_DIAGNOSIS_AXIS_III'] = "Axis III: #{cap_pronoun} reported: #{q28} "
+    params['PARAGRAPH_DSM_IV_DIAGNOSIS_AXIS_III'] << "Axis III: #{cap_pronoun} reported: #{q28} "
 
-    params['PARAGRAPH_DSM_IV_DIAGNOSIS_AXIS_IV'] = "Axis IV: Stressors are: #{q165}. Comments: #{q165a} "
+    params['PARAGRAPH_DSM_IV_DIAGNOSIS_AXIS_IV'] << "Axis IV: Stressors are: #{q165}. Comments: #{q165a} "
 
-    params['PARAGRAPH_DSM_IV_DIAGNOSIS_AXIS_V'] = "Axis V: Current GAF is #{q166}. "
+    params['PARAGRAPH_DSM_IV_DIAGNOSIS_AXIS_V'] << "Axis V: Current GAF is #{q166}. "
 
 
 
-    params['PARAGRAPH_DISCUSSION_PROGNOSIS'] = "#{title} #{lastname} #{q171} able to respond to questions in an open and honest manner. There #{q172} to be evidence of exaggerating symptoms" 
+    params['PARAGRAPH_DISCUSSION_PROGNOSIS'] << "#{title} #{lastname} #{q171} able to respond to questions in an open and honest manner. There #{q172} to be evidence of exaggerating symptoms" 
     if is_truish(q172)
       params['PARAGRAPH_DISCUSSION_PROGNOSIS'] << ", described as: #{q172a}. "
     else
@@ -780,26 +829,26 @@ class Logic
 
     params['PARAGRAPH_DISCUSSION_PROGNOSIS'] << "#{cap_pos} work history is #{qa186.downcase}. "
 
+    params['PARAGRAPH_CAPABILITY_OF_MANAGING_FUNDS'] << "#{title} #{lastname}’s ability to manage benefits in #{pos_pronoun} own best interest is #{qa187.downcase}. #{cap_pronoun} #{qa188} need a protective payee. "
 
-    params['PARAGRAPH_CAPABILITY_OF_MANAGING_FUNDS'] = "#{title} #{lastname}’s ability to manage benefits in #{pos_pronoun} own best interest is #{qa187.downcase}. #{cap_pronoun} #{qa188} need a protective payee. "
 
-
-    params['PARAGRAPH_MEDICAL_SOURCE_STATEMENT'] = "The ability to reason is #{q146b} as evidenced by #{pos_pronoun} responses to the intellectual questions. #{cap_pronoun} showed evidence of #{q152.downcase} judgment when responding to the questions regarding the movie theater fire and lost purse. "
-
+    params['PARAGRAPH_MEDICAL_SOURCE_STATEMENT'] << "The ability to reason is #{q146b} as evidenced by #{pos_pronoun} responses to the intellectual questions. "
+    params['PARAGRAPH_MEDICAL_SOURCE_STATEMENT'] << "#{cap_pronoun} showed evidence of #{q152.downcase} judgment when responding to the questions regarding the movie theater fire and lost purse. "
     params['PARAGRAPH_MEDICAL_SOURCE_STATEMENT'] << "#{cap_pronoun} was able to correctly answer #{q133b}/2 word problems involving extraneous information. "
-
-    params['PARAGRAPH_MEDICAL_SOURCE_STATEMENT'] << "Memory functions are #{q123b.downcase} as indicated by #{pos_pronoun} responses to the interview questions. Recent memory was q122a as evidenced by #{pos_pronoun} ability to remember #{q122}/3 objects after five minutes. Immediate memory was {q123a} as evidenced by the ability to hold (insert 123-column 2) digits. Remote memory was #{q121} as evidenced by #{pos_pronoun} ability to recount biographical history and other past events. "
-
-    params['PARAGRAPH_MEDICAL_SOURCE_STATEMENT'] << "Sustained concentration and persistence is {q136a}. #{cap_pronoun} correctly answered #{q133}/5 basic math problems. Regarding serials, #{pronoun} was #{q133a}. #{cap_pronoun} #{q156}. "
-
+    params['PARAGRAPH_MEDICAL_SOURCE_STATEMENT'] << "Memory functions are #{q123b.downcase} as indicated by #{pos_pronoun} responses to the interview questions. "
+    params['PARAGRAPH_MEDICAL_SOURCE_STATEMENT'] << "Recent memory was q122a as evidenced by #{pos_pronoun} ability to remember #{q122}/3 objects after five minutes. "
+    params['PARAGRAPH_MEDICAL_SOURCE_STATEMENT'] << "Immediate memory was {q123a} as evidenced by the ability to hold (insert 123-column 2) digits. "
+    params['PARAGRAPH_MEDICAL_SOURCE_STATEMENT'] << "Remote memory was #{q121} as evidenced by #{pos_pronoun} ability to recount biographical history and other past events. "
+    params['PARAGRAPH_MEDICAL_SOURCE_STATEMENT'] << "Sustained concentration and persistence is {q136a}. "
+    params['PARAGRAPH_MEDICAL_SOURCE_STATEMENT'] << "#{cap_pronoun} correctly answered #{q133}/5 basic math problems. "
+    params['PARAGRAPH_MEDICAL_SOURCE_STATEMENT'] << "Regarding serials, #{pronoun} was #{q133a}. #{cap_pronoun} #{q156}. "
     params['PARAGRAPH_MEDICAL_SOURCE_STATEMENT'] << "Based upon the mental status examination, there #{qa189} to be evidence #{pronoun} was engaging in substance abuse at the time of the evaluation. "
-
-
     params['PARAGRAPH_MEDICAL_SOURCE_STATEMENT'] << "If using psychological testing: "
-    params['PARAGRAPH_MEDICAL_SOURCE_STATEMENT'] << "The ability to reason abstractly is in the #{q144.downcase} range as evidenced by #{pos_pronoun} performance on the psychological tests and interpreting proverbs. #{cap_pronoun} showed evidence of #{q152.downcase} judgment when responding to the questions regarding the movie theater fire and lost purse. "
+    params['PARAGRAPH_MEDICAL_SOURCE_STATEMENT'] << "The ability to reason abstractly is in the #{q144.downcase} range as evidenced by #{pos_pronoun} performance on the psychological tests and interpreting proverbs. "
+    params['PARAGRAPH_MEDICAL_SOURCE_STATEMENT'] << "#{cap_pronoun} showed evidence of #{q152.downcase} judgment when responding to the questions regarding the movie theater fire and lost purse. "
     params['PARAGRAPH_MEDICAL_SOURCE_STATEMENT'] << "Memory functions are #{q116.downcase} as indicated by #{pos_pronoun} performance on the psychological assessments. "
-    params['PARAGRAPH_MEDICAL_SOURCE_STATEMENT'] << "#{fullname}’s fund of knowledge is #{q125.downcase} when compared to #{pos_pronoun} peers. #{cap_pos} ability to solve basic mathematical problems is #{q131.downcase}. #{cap_pronoun} #{q156}. "
-
+    params['PARAGRAPH_MEDICAL_SOURCE_STATEMENT'] << "#{fullname}’s fund of knowledge is #{q125.downcase} when compared to #{pos_pronoun} peers. "
+    params['PARAGRAPH_MEDICAL_SOURCE_STATEMENT'] << "#{cap_pos} ability to solve basic mathematical problems is #{q131.downcase}. #{cap_pronoun} #{q156}. "
 
     return params
     end
