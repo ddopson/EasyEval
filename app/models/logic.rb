@@ -315,6 +315,7 @@ class Logic
     q126 = params["Q126"]
     q127 = params["Q127"]
     q128 = params["Q128"]
+    q128a = params ["Q128A"]
     q129 = params["Q129"]
     q131 = params["Q131"]
     q132 = params["Q132"]
@@ -398,6 +399,9 @@ class Logic
     qa188 = params["QA188"]
     q190 = params["Q190"]
     qa161 = params["QA161"]
+    qa39a = params["QA39A"]
+    q49b = params["Q49B"]
+    q49c = params["Q49C"]
 
     params = {}
 
@@ -460,7 +464,7 @@ class Logic
 
     params['PARAGRAPH_IDENTIFICATION'] << "#{fullname} is a #{age}-year old #{ethnicity} #{sex.downcase}. #{cap_pronoun} was born in #{birthplace} on #{birthdate}."
 
-    params['PARAGRAPH_GENERAL'] << "#{title} #{lastname} arrived #{q8.downcase}, by #{q9.downcase} and was #{q8a.downcase}."
+    params['PARAGRAPH_GENERAL'] << "#{title} #{lastname} arrived #{q8.downcase}, #{q9.downcase} and was #{q8a.downcase}."
 
     params['PARAGRAPH_CONFIDENTIALITY'] << "#{cap_pronoun} was advised of the limitations on confidentiality and was informed that a copy of the evaluations would be provided to the Social Security Administration. "
     if is_truish(q11)
@@ -513,15 +517,15 @@ class Logic
     if is_truish(q29)
       params['PARAGRAPH_PAST_PSYCHIATRIC_HISTORY'] << "#{cap_pronoun} was last admitted in #{q30}. "
       params['PARAGRAPH_PAST_PSYCHIATRIC_HISTORY'] << "The admittance was due to #{q31}. #{title} #{lastname} received the following treatment while admitted: #{q31a}. "
-      params['PARAGRAPH_PAST_PSYCHIATRIC_HISTORY'] << "#{cap_pos} response to treatment was #{q31b}."
+      params['PARAGRAPH_PAST_PSYCHIATRIC_HISTORY'] << "#{cap_pos} response to treatment was #{q31b.downcase}."
     end
     
-    params['PARAGRAPH_ALCOHOL_AND_OR_DRUG_ABUSE'] << "#{title} #{last} #{qa32} alcohol, illicit drugs, or tobacco. "
+    params['PARAGRAPH_ALCOHOL_AND_OR_DRUG_ABUSE']
 
     if is_truish(qa32)
       params['PARAGRAPH_ALCOHOL_AND_OR_DRUG_ABUSE'] << "#{title} #{last} reported abusing #{qa33.downcase}. "
-      params['PARAGRAPH_ALCOHOL_AND_OR_DRUG_ABUSE'] << "#{cap_pronoun} first used in #{qa34} and started using abusively in #{qa34a}. #{cap_pronoun} used the substance #{qa35}. "
-      params['PARAGRAPH_ALCOHOL_AND_OR_DRUG_ABUSE'] << "At the peak of #{pos_pronoun} #{qa33.downcase} abuse, #{pronoun} used #{qa35a} times per day. "
+      params['PARAGRAPH_ALCOHOL_AND_OR_DRUG_ABUSE'] << "#{cap_pronoun} first used in #{qa34.downcase} and started using abusively in #{qa34a}. #{cap_pronoun} used the substance #{qa35}. "
+      params['PARAGRAPH_ALCOHOL_AND_OR_DRUG_ABUSE'] << "At the peak of #{pos_pronoun} #{qa33.downcase} abuse, #{pronoun} used #{qa35a.downcase} per day. "
       params['PARAGRAPH_ALCOHOL_AND_OR_DRUG_ABUSE'] << "#{cap_pronoun} #{qa36} abusing the substance. " 
     
         if is_truish(qa36)
@@ -529,13 +533,22 @@ class Logic
         else
           params['PARAGRAPH_ALCOHOL_AND_OR_DRUG_ABUSE'] << "#{cap_pronoun} has been clean for #{qa36a}. "
         end
-      params['PARAGRAPH_ALCOHOL_AND_OR_DRUG_ABUSE'] << "During the interview, #{pronoun} #{qa189} to be under the influence of drugs or alcohol."
+          params['PARAGRAPH_ALCOHOL_AND_OR_DRUG_ABUSE'] << "During the interview, #{pronoun} #{qa189} to be under the influence of drugs or alcohol."
+    
+        else 
+          params['PARAGRAPH_ALCOHOL_AND_OR_DRUG_ABUSE'] << "#{title} #{last} #{qa32} alcohol, illicit drugs, or tobacco. "
     end
 
     if is_truish(q23)
       params['PARAGRAPH_PAST_MEDICAL_HISTORY'] << "#{title} #{lastname} #{q23} a major head injury, which required hospitalization. "
       params['PARAGRAPH_PAST_MEDICAL_HISTORY'] << "#{cap_pronoun} #{q24} a lack of consciousness, feeling dazed, or seeing stars. "
-      params['PARAGRAPH_PAST_MEDICAL_HISTORY'] << "The injury was sustained in #{q25}; #{pronoun} #{q26} at a hospital. The name of the hospital was #{q26a}. "
+      params['PARAGRAPH_PAST_MEDICAL_HISTORY'] << "The injury was sustained in #{q25}; #{pronoun} #{q26} at a hospital."
+    end
+
+    if is_truish(q26)
+           params['PARAGRAPH_PAST_MEDICAL_HISTORY'] << "The name of the hospital was #{q26a}. "
+    else
+           params['PARAGRAPH_PAST_MEDICAL_HISTORY'] << ""
     end
 
     params['PARAGRAPH_PAST_MEDICAL_HISTORY'] << "Surgeries include: #{q27}. "
@@ -549,7 +562,7 @@ class Logic
     end
 
     if is_truish(qa39)
-      params['PARAGRAPH_FAMILY_HISTORY'] << "#{cap_pronoun} #{qa39} children: ages #{qa40}. "
+      params['PARAGRAPH_FAMILY_HISTORY'] << "#{cap_pronoun} #{qa39} #{qa39a} children: ages #{qa40}. "
     else
       params['PARAGRAPH_FAMILY_HISTORY'] << "#{cap_pronoun} #{qa39} children. "
     end
@@ -592,13 +605,22 @@ class Logic
     params['PARAGRAPH_EDUCATIONAL_HISTORY'] << "#{title} #{lastname}'s last level of education completed was #{q48}. "
     params['PARAGRAPH_EDUCATIONAL_HISTORY'] << "#{cap_pronoun} reported #{pos_pronoun} academic performance was #{q49.downcase}. "
     params['PARAGRAPH_EDUCATIONAL_HISTORY'] << "Additional relevant information about #{pos_pronoun} academic performance includes: #{q49a}. "
-    params['PARAGRAPH_EDUCATIONAL_HISTORY'] << "#{cap_pronoun} #{q50} enrolled in special education courses"
+    params['PARAGRAPH_EDUCATIONAL_HISTORY'] << "#{cap_pronoun} #{q49b} involved in school related activities"
+    if is_truish(q49b)
+      params['PARAGRAPH_EDUCATIONAL_HISTORY'] << " such as: #{q49c}. "
+    else
+      params['PARAGRAPH_EDUCATIONAL_HISTORY'] << "."
+    end
 
+    params['PARAGRAPH_EDUCATIONAL_HISTORY'] << "#{cap_pronoun} #{q50} enrolled in special education courses"
     if is_truish(q50)
       params['PARAGRAPH_EDUCATIONAL_HISTORY'] << " in the following subjects: #{q51}. "
     else
       params['PARAGRAPH_EDUCATIONAL_HISTORY'] << "."
     end
+
+
+
 
     params['PARAGRAPH_LEGAL_CRIMINAL_HISTORY'] << "#{title} #{lastname} #{qa57}"
     if is_truish(qa57)
@@ -843,5 +865,5 @@ class Logic
     params['PARAGRAPH_MEDICAL_SOURCE_STATEMENT'] << "#{cap_pos} ability to solve basic mathematical problems is #{q131.downcase}. #{cap_pronoun} #{q156}. "
 
     return params
-    end
   end
+end

@@ -18,7 +18,7 @@ section(title="Identification")
     TextBox(name="Q1_EXAMDATE" placeholder="dd/mm/yyyy")
   question(text="Location:")
     TextBox(name="Q1_EXAMLOC")
-  question(text="What kind of examination is this?")
+  question(text="Examination type:")
     RadioSet(name="Q3")
       Value(enables-selector=".enable-child") Child Psychological Diagnostic Evaluation (turn on different questions to be determined) 
       Value(enables-selector=".enable-complex") Complex Psychological Evaluation
@@ -27,7 +27,7 @@ section(title="Identification")
       Value(enables-selector=".enable-psych-intel") Psychological Diagnostic Evaluation with Intelligence Assessment
 
 
-  question(name="Q5" text="What is the claimant’s ethnicity/race? Select all that apply.")
+  question(name="Q5" text="The claimant's ethnicity/race is:")
     CheckboxSet
       Value American Indian
       Value African American
@@ -43,12 +43,12 @@ section(title="Identification")
 
 section#General-Observations
   section_text General Observations
-  question(name="Q8" text="When did the claimant arrive to the examination?")
+  question(name="Q8" text="The claimant arrived to the examination:")
     RadioSet
       Value Early
       Value On time
       Value Late
-  question(name="Q8A" text="Was the claimant:")
+  question(name="Q8A" text="The claimant was:")
     RadioSet
       Value Unaccompanied
       ValueOther.prepend Accompanied by
@@ -106,7 +106,7 @@ section#Review-of-Records
     question(name="Q14B" text="List any additional diagnoses previously made:")
       table
         tr
-          th Clinican
+          th Clinician
           th Date
           th Diagnosis
         tr.table-row-model
@@ -175,7 +175,7 @@ section#Current-Medications
   group.21_yes
     question(name="Q177" text="Who is writing the prescriptions?")
       CheckboxSet
-        Value A psychiatrist
+        Value A psychiatristf
         Value A PCP
         Value A nurse practitioner
     question(name="Q21A" text="Did the claimant take any medication today?")
@@ -229,7 +229,7 @@ section#Alcohol-and-Drug-Abuse
       Value(enables-selector=".A32_no" value="has not abused") No
       / (disable the rest of this section)
   group.A32_yes
-    question(name="QA33" text="If yes, what is the substance? Select all that apply.")
+    question(name="QA33" text="If yes, what are the substances? Select all that apply.")
       CheckboxSet
         Value Alcohol
         Value Marijuana
@@ -326,7 +326,7 @@ section#Past-Medical-History
 
 section#Social-and-Family-History
   section_text Social and Family History
-  question(name="QA37" text="What is the claimant’s current relationship status?")
+  question(name="QA37" text="The claimant's current relationship status:")
     CheckboxSet
       Value(value="single") Single, not in a committed relationship
       Value(enables-selector=".37_committed") In a committed relationship
@@ -344,9 +344,11 @@ section#Social-and-Family-History
   question(name="QA39" text="Does the claimant have children?")
     RadioSet
       Value(enables-selector=".39_yes" value="does have") Yes
-      / (enable A40)
+      / (enable A39A, A40)
       Value(value="does not have") No
-  question.39_yes(name="QA40" text="If yes, how old?")
+  question.39_yes(name="QA39A" text="How many children?")
+    TextBox 
+  question.39_yes(name="QA40" text="What age(s)?")
     TextBox
   question(name="QA41A" text="Does the claimant have deceased children?")
     RadioSet
@@ -354,7 +356,7 @@ section#Social-and-Family-History
       Value No
   question.41_yes(name="QA41" text="Please provide details:")
     TextBox
-  question(name="Q42" text="What is the claimant’s living situation?")
+  question(name="Q42" text="The claimant's current living situation:")
     RadioSet
       Value(value="an apartment") Apartment
       Value(value="a house") House
@@ -373,13 +375,13 @@ section#Social-and-Family-History
       Value(value="does not have") No
   question.43_yes(name="Q43A" text="Please describe:")
     TextBox
-  question(name="Q45" text="Was there a history of child abuse?")
+  question(name="Q45" text="Was the claimant abused as a child?")
     RadioSet
       Value(enables-selector=".45_yes"value="is") Yes
       / (enable 46 and 47)
       Value(value="is no") No
   group.45_yes
-    question(name="Q46" text="Describe the nature of the conflict:")
+    question(name="Q46" text="Describe the nature of the abuse")
       TextBox
     question(name="Q47" text="Is the trauma resolved?")
       RadioSet
@@ -442,20 +444,34 @@ section#Educational-History
   section_text Educational History
   question(name="Q48" text="What was the last education level completed?")
     TextBox
-  question(name="Q49" text="What was the claimant’s academic performance?")
+  question(name="Q49" text="The claimant's academic performance:")
     RadioSet
       Value Above average
       Value Average
       Value Below average
   question(name="Q49A" text="Please provide any additional relevant information about claimant’s academic performance:")
     TextBox
+
+  question(name="Q49B" text="Was the claimant involved in any school related activities?")
+    RadioSet
+      Value(enables-selector=".49_yes" value="was") Yes
+      / (enable 49C)
+      Value(value="was not") No
+  question.49_yes(name="Q49C" text="Please describe:")
+    TextBox
+
   question(name="Q50" text="Was the claimant enrolled in special education?")
     RadioSet
       Value(enables-selector=".50_yes" value="was") Yes
       / (enable 51)
       Value(value="was not") No
   question.50_yes(name="Q51" text="If yes, what were the subjects?")
-    TextBox
+    CheckboxSet
+      Value English
+      Value Social Studies
+      Value Math
+      Value Science
+      ValueOther Other
 
 
 section#Legal-Criminal-History
@@ -473,7 +489,7 @@ section#Legal-Criminal-History
         Value(value="has not") No
     question(name="QA57A" text="What was the most recent arrest for?")
       TextBox
-    question(name="QA58" text="What was the date of the most recent arrest? (Month Year)")
+    question(name="QA58" text="What was the release date from the most recent incarceration? (Month Year)")
       TextBox
     question(name="QA59" text="What was the outcome of the most recent arrest?")
       TextBox
@@ -520,21 +536,21 @@ section#Military-History
         Value(value="was not") No
 section#Mental-Status-Examination
   section_text Mental Status Examination - General Appearance
-  question(name="Q65" text="In relation to stated age, how did the claimant appear?")
+  question(name="Q65" text="In relation to stated age, the claimant appeared...")
     RadioSet
       Value(value="older than") Older
       Value(value="the same age as") The same age
       Value(value="younger than") Younger
-  question(name="Q66" text="How was the claimant’s hygiene?")
+  question(name="Q66" text="The claimant's hygiene is:")
     RadioSet
       Value Good
       Value Fair
       Value Poor
-  question(name="Q66A" text="Was the claimant groomed or unkempt?")
+  question(name="Q66A" text="The claimant is:")
     RadioSet
       Value Well-groomed
       Value Unkempt
-  question(name="Q67" text="In relation to height, what was the claimant’s build?")
+  question(name="Q67" text="In relation to height, the claimant's build is:")
     RadioSet
       Value Obese
       Value Overweight
@@ -542,13 +558,13 @@ section#Mental-Status-Examination
       Value Slender
       Value Underweight
       ValueOther Other
-  question(name="Q68" text="How was the claimant’s eye contact?")
+  question(name="Q68" text="The claimant's eye contact is:")
     RadioSet
       Value Good
       Value Fair
       Value Poor
       Value Avoidant
-  question(name="Q69" text="With respect to the material’s content, how were the claimant’s facial expressions?")
+  question(name="Q69" text="With respect to the material’s content, the claimant’s facial expressions are:")
     RadioSet
       Value Appropriate
       Value Inappropriate
@@ -581,7 +597,7 @@ section#Mental-Status-Examination
     TextBox
 
   section_text Mental Status Exam - Attitude and Behavior
-  question(name="Q10" text="How was the claimant during the interview?")
+  question(name="Q10" text="The claimant's attitude during the interview: (Select all that apply)")
     CheckboxSet
       Value Cooperative
       Value Hostile
@@ -611,7 +627,7 @@ section#Mental-Status-Examination
     TextBox
 
   section_text Mental Status Exam - Mood and Affect
-  question(name="Q190" text="What is the claimant's level of consciousness?")
+  question(name="Q190" text="The claimant's level of consciousness during the interview: (Select all that apply)")
     CheckboxSet
       Value(value="a vigilant") Vigilant
       Value(value="an alert") Alert
@@ -621,7 +637,10 @@ section#Mental-Status-Examination
       Value(value="a confused") Confused
       Value(value="a fluctuating") Fluctuating
   question(name="Q88" text="What is the claimant's current mood?")
-    TextBox
+    Radioset
+      Value(value="euthymic") Euthymic
+      Value(value="dysphoric") Dysphoric 
+      Value(value="flat") Flat
   question(name="Q89" text="Was the claimant’s affect consistent with stated mood?")
     RadioSet
       Value(value="was") Yes
@@ -817,15 +836,6 @@ section#Mental-Status-Examination
         Value Inconsistent
 
   section_text Mental Status Exam- Intellectual Functioning: Fund of Knowledge
-  question(name="Q127" text="Is the claimant’s fund of knowledge consistent with education level and background?")
-    RadioSet
-      Value(value="was") Yes
-      Value(value="was not") No
-  question(name="Q128" text="Is the claimant aware of current events?")
-    RadioSet
-      Value(value="is aware") Yes
-      Value(value="has limited awareness") Limited
-      Value(value="is unaware") No
   question(name="Q129" text="Which of the following was the claimant able to answer correctly?")
     CheckboxSet(rollup="sum")
       Value Who is the current president of the United State of America?
@@ -833,23 +843,34 @@ section#Mental-Status-Examination
       Value Who is the governor of this state?
       Value Which states border this state?
       Value How many eggs are in one dozen?
-      Value Why do we put food in the refrigerator?
+      Value Why do we put food in the refrigerator?  
+  question(name="Q128" text="Is the claimant aware of current events?")
+    RadioSet
+      Value(enables-selector=".128_yes" value="is aware") Yes
+      Value(value="has limited awareness") Limited
+      Value(value="is unaware") No
+    question.128_yes(name="Q128A" text="The claimant reported the following current events")
+      TextBox
+  question(name="Q127" text="Is the claimant’s fund of knowledge consistent with education level and background?")
+    RadioSet
+      Value(value="was") Yes
+      Value(value="was not") No
 
   section_text Mental Status Exam- Concentration
 
   text Three-Step Command Instructions:
-  text Ask “Which hand is your dominant hand?”
+  text Ask the claimant “Which hand is your dominant hand?”
   text Then state: Before you touch the top of your head with your dominant hand; first touch your left knee and then clap three times.”
   text If they fail that prompt then use:  “After you touch your left knee and clap three times, touch the top of your head.”
   text Note how many repetitions, if any.
   text If you use the second one, note that claimant needed “two repetitions and modification of instructions.”
 
   question(name="Q136" text="Was the claimant able to complete 3-step commands?")
-    RadioSet
+    Radioset 
       Value(value="was able to complete 3-step commands with no repetitions of command") Yes, with no repetitions
       Value(value="was able to complete 3-step commands with one repetition of command") Yes, with one repetition
       Value(value="was able to complete 3-step commands with two repetitions of command") Yes, with two repetitions
-      Value(value="was able to complete 3-step commands with two repetitions of command and modifications of the instructions") Yes, with two repetitions and modification of the instructions
+      Value(value="was able to complete 3-step commands with two repetitions of command and modifications of the instructions") Yes, with two repetitions and modification of the instructions 
       Value(value="was not able to complete 3-step commands even after several repetitions") No, even after several repetitions
       Value(value="refused to attempt 3-step command") No, claimant refused to attempt commands
 
@@ -866,20 +887,24 @@ section#Mental-Status-Examination
 
   section_text Mental Status Exam- Concentration: Calculations
   question(name="Q133" text="Please ask the following questions and check the Correct Answer box if answered correctly.")
-    CheckboxSet(rollup="sum")
+    RadioSet(rollup="sum")
       Value $9 + $7 = ? (Correct Answer: $16)
       Value Incorrect Answer
+    Radioset
       Value $23 – $10 = ? (Correct Answer: $13)
       Value Incorrect Answer
+    Radioset  
       Value $11 x $10 = ? (Correct Answer: $110)
       Value Incorrect Answer
+    Radioset
       Value $9 / $3 = ? (Correct Answer: $3)
       Value Incorrect Answer
+    Radioset
       Value 47 cents + 10 cents = ? (Correct Answer: 57 cents)
       Value Incorrect Answer
 
 
-  text Instructions for Serials: Have claimant begin at 100 and subtract by 7's, and keep going until they reach the end of the string below or until they are no longer able to complete.
+  text Instructions for Serials: Have claimant begin at 100 and subtract by 7's, and keep going until they reach the end of the string below or until they are no longer able to complete. If the claimant is unable to do serial 7's, have them do the serial 3's.
 
   table
     tr
@@ -1220,7 +1245,7 @@ section#Current-Level-of-Functioning
   section_text Current Level of Functioning - Activities of Daily Living
   question(name="Q153" text="What is the claimant’s typical day like?")
     TextBox
-  question(name="QA154" text="Which tasks does the claimant execute without assistance? Select all that apply.")
+  question(name="QA154" text="The claimnt is able to execute the following without assistance: (Select all that apply)")
     CheckboxSet
       Value Cooking
       Value Grocery shopping
@@ -1617,7 +1642,7 @@ section#Discussion-Prognosis
   question(name="Q183" text="What is the likelihood the claimant will be able to respond to routine changes in the workplace?")
     RadioSet
       Value Good
-      Value Bad
+      Value Poor
       Value Guarded
 
 section#Capability-of-Managing-Funds
